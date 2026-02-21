@@ -37,7 +37,7 @@ Die deutsche Verwaltungs-IT ist geprägt durch die föderale Struktur:
 
 | System | Betreiber | Status | Nutzung |
 |--------|-----------|--------|---------|
-| **Verwaltung.bund.de** | BMI / FITKO | ✅ Produktiv | Informationsportal; 575 OZG-Leistungen gelistet |
+| **Verwaltung.bund.de (Bundesportal)** | BMI / FITKO | ✅ Produktiv | Transaktionsportal; 620+ Bundesleistungen online beantragbar |
 | **Landesportale** | 16 Länder | ✅ Produktiv (heterogen) | service.berlin.de, service.bund.de, etc. |
 | **Kommunale Portale** | ~11.000 Kommunen | ⚠️ Teilweise | Oft nur Informationsseiten, selten echte Transaktionen |
 | **ELSTER (Steuer)** | BayLfSt | ✅ Produktiv | ~42 Mio. Einkommensteuererklärungen/Jahr |
@@ -134,7 +134,7 @@ Die deutsche Verwaltungs-IT ist geprägt durch die föderale Struktur:
 | Dimension | Reifegrad | Beschreibung |
 |-----------|-----------|-------------|
 | **Identität** | ⚠️ Fragmentiert | 18+ Konten; eID geringe Nutzung; kein einheitliches SSO |
-| **Portal** | ⚠️ Fragmentiert | Hunderte Portale; selten transaktionsfähig |
+| **Portal** | ⚠️ Fragmentiert | Bundesportal mit 620+ Leistungen; aber 16 Landesportale + tausende Kommunalportale uneinheitlich |
 | **Register** | 🔴 Kritischer Gap | NOOTS Pilotphase; Registermodernisierung verzögert |
 | **Postfach** | 🔴 Kritischer Gap | De-Mail gescheitert; kein funktionierendes Bürger-Postfach |
 | **Payment** | ⚠️ Fragmentiert | ePayBL existiert; keine einheitliche UX |
@@ -214,14 +214,14 @@ Für jeden Building Block des Zielbilds wird bewertet:
 
 | Dimension | Ist | Soll (Zielbild) |
 |-----------|-----|-----------------|
-| **Zentrales Portal** | verwaltung.bund.de (Info); 16 Landesportale; tausende Kommunalportale | Ein Deutschland-Portal + Deutschland-App |
+| **Zentrales Portal** | verwaltung.bund.de (Bundesportal, 620+ Leistungen); 16 Landesportale; tausende Kommunalportale | Ein Deutschland-Portal + Deutschland-App |
 | **Formulare** | PDF-Download, vereinzelt Online-Formulare (FIT-Connect) | Adaptive, vorausgefüllte Formulare mit Validierung |
 | **Vorausfüllung** | Nicht vorhanden (kein NOOTS) | Automatisch über NOOTS + Consent |
 | **Design** | Inkonsistent; jede Behörde eigenes Design | Einheitliches Design-System |
 | **Barrierefreiheit** | Teilweise WCAG 2.1 AA; oft nicht geprüft | 100% WCAG 2.2 AA; Leichte Sprache |
 
 **GAP:**
-- ❌ Kein zentrales, transaktionsfähiges Portal
+- ⚠️ Bundesportal (verwaltung.bund.de) mit 620+ Leistungen vorhanden, aber kein einheitliches Deutschland-Portal über alle Ebenen
 - ❌ Formulare nicht vorausgefüllt (NOOTS fehlt)
 - ❌ Kein einheitliches Design-System über alle Ebenen
 - ❌ FIT-Connect rudimentär; wenige angebundene Fachverfahren
