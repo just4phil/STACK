@@ -1,322 +1,468 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VerwDigiStack – Spezifikation</title>
-  <meta name="description" content="Verwaltungsdigitalisierungs-Stack: Modulare Building-Block-Spezifikation zur Beschleunigung der öffentlichen Digitalisierung.">
+  <meta name="description"
+    content="Verwaltungsdigitalisierungs-Stack: Modulare Building-Block-Spezifikation zur Beschleunigung der öffentlichen Digitalisierung.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/main.css">
 </head>
+
 <body>
 
-<div class="layout">
-  <!-- Shell (topbar + sidebar) injected by shell.js -->
+  <div class="layout">
+    <!-- Shell (topbar + sidebar) injected by shell.js -->
 
-  <main class="content" id="main-content">
-    <div class="content__main" style="max-width:100%">
+    <main class="content" id="main-content">
+      <div class="content__main" style="max-width:100%">
 
-      <!-- HERO -->
-      <section class="hero">
-        <div class="hero__kicker">◈ Building-Block-Spezifikation · v0.1 DRAFT</div>
-        <h1>Verwaltungsdigitalisierungs-Stack</h1>
-        <p class="hero__subtitle">
-          Modulare, interoperable Basiskomponenten für eine schnelle, 
-          souveräne und KI-fähige Verwaltungsdigitalisierung —  
-          frei nach dem Vorbild von GovStack.
-        </p>
-        <div class="hero__actions">
-          <a class="btn btn--primary" href="building-blocks/index.html">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-            Building Blocks
-          </a>
-          <a class="btn btn--secondary" href="architecture/index.html">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
-            Architektur lesen
-          </a>
-        </div>
-
-        <div class="stats-row">
-          <div class="stat-item">
-            <span class="stat-item__value">12</span>
-            <span class="stat-item__label">Building Blocks</span>
+        <!-- HERO -->
+        <section class="hero">
+          <div class="hero__kicker">◈ Building-Block-Spezifikation · v0.1 DRAFT</div>
+          <h1>Verwaltungsdigitalisierungs-Stack</h1>
+          <p class="hero__subtitle">
+            Modulare, interoperable Basiskomponenten für eine schnelle,
+            souveräne und KI-fähige Verwaltungsdigitalisierung —
+            frei nach dem Vorbild von GovStack.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="building-blocks/index.html">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7" />
+                <rect x="14" y="3" width="7" height="7" />
+                <rect x="14" y="14" width="7" height="7" />
+                <rect x="3" y="14" width="7" height="7" />
+              </svg>
+              Building Blocks
+            </a>
+            <a class="btn btn--secondary" href="architecture/index.html">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3" />
+                <path
+                  d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" />
+              </svg>
+              Architektur lesen
+            </a>
           </div>
-          <div class="stat-item">
-            <span class="stat-item__value">6</span>
-            <span class="stat-item__label">Vorhanden</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-item__value">3</span>
-            <span class="stat-item__label">Konformitätsstufen</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-item__value">9</span>
-            <span class="stat-item__label">Architekturprinzipien</span>
-          </div>
-        </div>
-      </section>
 
-      <!-- OVERVIEW CONTENT -->
-      <div style="max-width:var(--content-max-width); margin: 0 auto; padding: 0 var(--space-4)">
-
-        <div class="callout callout--info" style="margin-bottom:var(--space-8)">
-          <div class="callout__icon">ℹ</div>
-          <div class="callout__content">
-            <div class="callout__title">Dokument im Aufbau</div>
-            <div class="callout__body">
-              Diese Spezifikation befindet sich im Draft-Stadium und wird sukzessive erweitert.
-              Analog zu <a href="https://specs.govstack.global/" target="_blank" rel="noopener">GovStack</a>
-              wird jeder Building Block nach einem einheitlichen Template spezifiziert.
-              Alle Anforderungen sind gemäß <strong>RFC 2119</strong> formuliert (<span class="req req--muss">MUSS</span> <span class="req req--soll">SOLL</span> <span class="req req--kann">KANN</span>).
+          <div class="stats-row">
+            <div class="stat-item">
+              <span class="stat-item__value">12</span>
+              <span class="stat-item__label">Building Blocks</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-item__value">6</span>
+              <span class="stat-item__label">Vorhanden</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-item__value">3</span>
+              <span class="stat-item__label">Konformitätsstufen</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-item__value">9</span>
+              <span class="stat-item__label">Architekturprinzipien</span>
             </div>
           </div>
-        </div>
+        </section>
 
-        <!-- Sections Overview -->
-        <h2 id="sektionen" style="margin-top:0">Struktur der Spezifikation</h2>
-        <p style="color:var(--color-text-secondary);margin-bottom:var(--space-6)">
-          Die Spezifikation gliedert sich in drei Hauptbereiche – analog zum GovStack-Ansatz:
-        </p>
+        <!-- OVERVIEW CONTENT -->
+        <div style="max-width:var(--content-max-width); margin: 0 auto; padding: 0 var(--space-4)">
 
-        <div class="bb-grid" style="grid-template-columns: repeat(auto-fill,minmax(280px,1fr));margin-bottom:var(--space-12)">
-
-          <a class="bb-card" href="architecture/index.html">
-            <div class="bb-card__header">
-              <div class="bb-card__icon bb-card__icon--gateway">⚙</div>
-              <span class="bb-card__status badge--done">Vorhanden</span>
+          <!-- NEU VERFÜGBAR -->
+          <div style="margin-bottom:var(--space-10)">
+            <div style="display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-5)">
+              <span
+                style="background:rgba(99,102,241,.15);color:rgb(165,180,252);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:3px 10px;border-radius:20px;border:1px solid rgba(99,102,241,.25)">✦
+                Neu verfügbar</span>
+              <span style="color:var(--color-text-secondary);font-size:.85rem">Zuletzt ergänzte Seiten dieser
+                Spezifikation</span>
             </div>
-            <div class="bb-card__title">Architektur & Querschnittsanforderungen</div>
-            <div class="bb-card__desc">Grundlegende Architekturprinzipien, API-Guidelines, Sicherheitsmodell, Semantik-Framework und Konformitätsprogramm.</div>
-            <div class="bb-card__footer">
-              <span>9 Kapitel</span>
-              <span>→</span>
-            </div>
-          </a>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:var(--space-4)">
 
-          <a class="bb-card" href="building-blocks/index.html">
-            <div class="bb-card__header">
-              <div class="bb-card__icon bb-card__icon--generic">◈</div>
-              <span class="bb-card__status badge--draft">In Arbeit</span>
-            </div>
-            <div class="bb-card__title">Building Blocks</div>
-            <div class="bb-card__desc">12 austauschbare Softwarekomponenten mit verbindlichen API-Schnittstellen. 6 bestehend, 6 neu zu spezifizieren.</div>
-            <div class="bb-card__footer">
-              <span>12 BBs</span>
-              <span>→</span>
-            </div>
-          </a>
+              <a href="zielbild/index.html"
+                style="text-decoration:none;display:flex;flex-direction:column;padding:var(--space-5);border-radius:var(--radius-lg);background:linear-gradient(135deg,rgba(99,102,241,.08),rgba(139,92,246,.04));border:1px solid rgba(99,102,241,.2);transition:border-color .2s,transform .2s;position:relative;overflow:hidden"
+                onmouseover="this.style.borderColor='rgba(99,102,241,.5)';this.style.transform='translateY(-2px)'"
+                onmouseout="this.style.borderColor='rgba(99,102,241,.2)';this.style.transform='translateY(0)'">
+                <div style="font-size:2rem;margin-bottom:var(--space-3)">🎯</div>
+                <div
+                  style="font-weight:700;font-size:1rem;color:var(--color-text-primary);margin-bottom:var(--space-2)">
+                  Zielbild 2031</div>
+                <div style="font-size:.85rem;color:var(--color-text-secondary);line-height:1.6;flex:1">Nutzerzentrierte
+                  digitale Verwaltung in 5 Jahren: Szenarien, Kanalstrategie, DSGVO als Feature, Lebenslage-Engine und
+                  17 Building Blocks.</div>
+                <div
+                  style="margin-top:var(--space-4);font-size:.82rem;font-weight:600;color:rgb(165,180,252);display:flex;align-items:center;gap:var(--space-1)">
+                  Zur Seite <span>→</span></div>
+              </a>
 
-          <a class="bb-card" href="implementation-playbook/index.html">
-            <div class="bb-card__header">
-              <div class="bb-card__icon bb-card__icon--portal">▷</div>
-              <span class="bb-card__status badge--draft">In Arbeit</span>
-            </div>
-            <div class="bb-card__title">Implementation Playbook</div>
-            <div class="bb-card__desc">6-Phasen-Vorgehensmodell von der Governance-Gründung über die Spezifikation bis zur Pilotierung.</div>
-            <div class="bb-card__footer">
-              <span>6 Phasen</span>
-              <span>→</span>
-            </div>
-          </a>
+              <a href="deutschland-app/index.html"
+                style="text-decoration:none;display:flex;flex-direction:column;padding:var(--space-5);border-radius:var(--radius-lg);background:linear-gradient(135deg,rgba(16,185,129,.08),rgba(52,211,153,.03));border:1px solid rgba(16,185,129,.2);transition:border-color .2s,transform .2s;position:relative;overflow:hidden"
+                onmouseover="this.style.borderColor='rgba(16,185,129,.5)';this.style.transform='translateY(-2px)'"
+                onmouseout="this.style.borderColor='rgba(16,185,129,.2)';this.style.transform='translateY(0)'">
+                <div style="font-size:2rem;margin-bottom:var(--space-3)">📱</div>
+                <div
+                  style="font-weight:700;font-size:1rem;color:var(--color-text-primary);margin-bottom:var(--space-2)">
+                  Deutschland-App</div>
+                <div style="font-size:.85rem;color:var(--color-text-secondary);line-height:1.6;flex:1">
+                  Super-App-Spezifikation: 5-Tab-Struktur, dezentrale Architektur, 3 Integrationsmuster, Module
+                  Interface Contract und 5-Phasen-Rollout.</div>
+                <div
+                  style="margin-top:var(--space-4);font-size:.82rem;font-weight:600;color:rgb(52,211,153);display:flex;align-items:center;gap:var(--space-1)">
+                  Zur Seite <span>→</span></div>
+              </a>
 
-        </div>
+              <a href="gap-analyse/index.html"
+                style="text-decoration:none;display:flex;flex-direction:column;padding:var(--space-5);border-radius:var(--radius-lg);background:linear-gradient(135deg,rgba(239,68,68,.07),rgba(252,165,165,.03));border:1px solid rgba(239,68,68,.2);transition:border-color .2s,transform .2s;position:relative;overflow:hidden"
+                onmouseover="this.style.borderColor='rgba(239,68,68,.5)';this.style.transform='translateY(-2px)'"
+                onmouseout="this.style.borderColor='rgba(239,68,68,.2)';this.style.transform='translateY(0)'">
+                <div style="font-size:2rem;margin-bottom:var(--space-3)">📊</div>
+                <div
+                  style="font-weight:700;font-size:1rem;color:var(--color-text-primary);margin-bottom:var(--space-2)">
+                  GAP-Analyse</div>
+                <div style="font-size:.85rem;color:var(--color-text-secondary);line-height:1.6;flex:1">Ist-Zustand der
+                  IT-Landschaft (Bund, Länder, Kommunen) vs. Zielbild 2031: alle 17 BBs bewertet, kritischer Pfad und
+                  Quick Wins identifiziert.</div>
+                <div
+                  style="margin-top:var(--space-4);font-size:.82rem;font-weight:600;color:rgb(252,165,165);display:flex;align-items:center;gap:var(--space-1)">
+                  Zur Seite <span>→</span></div>
+              </a>
 
-        <!-- BB Overview -->
-        <h2 id="building-blocks">Building Blocks im Überblick</h2>
-        <p style="color:var(--color-text-secondary);margin-bottom:var(--space-6)">
-          Jeder Building Block ist eine eigenständige, austauschbare Komponente mit verbindlichen Schnittstellen.
-          Produkte sind <strong>stack-konform</strong>, wenn sie die normativen APIs eines BBs korrekt implementieren.
-        </p>
+              <a href="fachverfahren/index.html"
+                style="text-decoration:none;display:flex;flex-direction:column;padding:var(--space-5);border-radius:var(--radius-lg);background:linear-gradient(135deg,rgba(245,158,11,.08),rgba(251,191,36,.03));border:1px solid rgba(245,158,11,.2);transition:border-color .2s,transform .2s;position:relative;overflow:hidden"
+                onmouseover="this.style.borderColor='rgba(245,158,11,.5)';this.style.transform='translateY(-2px)'"
+                onmouseout="this.style.borderColor='rgba(245,158,11,.2)';this.style.transform='translateY(0)'">
+                <div style="font-size:2rem;margin-bottom:var(--space-3)">⚙️</div>
+                <div
+                  style="font-weight:700;font-size:1rem;color:var(--color-text-primary);margin-bottom:var(--space-2)">
+                  Fachverfahren-Strategie</div>
+                <div style="font-size:.85rem;color:var(--color-text-secondary);line-height:1.6;flex:1">
+                  Ende-zu-Ende-Digitalisierung für 300+ Fachverfahren: Stack-Connect API, 3 Konformitätsstufen, 7
+                  Ökosystem-Hebel und Stack-Marktplatz.</div>
+                <div
+                  style="margin-top:var(--space-4);font-size:.82rem;font-weight:600;color:rgb(251,191,36);display:flex;align-items:center;gap:var(--space-1)">
+                  Zur Seite <span>→</span></div>
+              </a>
 
-        <div class="bb-grid">
-
-          <a class="bb-card" href="building-blocks/bb-identity/index.html">
-            <div class="bb-card__header">
-              <div class="bb-card__icon bb-card__icon--identity">🪪</div>
-              <span class="bb-card__status badge--done">✓ Vorhanden</span>
-            </div>
-            <div class="bb-card__title">BB-01 · Identity</div>
-            <div class="bb-card__desc">Authentifizierung, Autorisierung, Identitätsmanagement. OIDC/SAML, eIDAS 2.0, BundID.</div>
-            <div class="bb-card__footer"><span>Wave 1</span><span>→</span></div>
-          </a>
-
-          <a class="bb-card" href="building-blocks/bb-portal/index.html">
-            <div class="bb-card__header">
-              <div class="bb-card__icon bb-card__icon--portal">🖥</div>
-              <span class="bb-card__status badge--done">✓ Vorhanden</span>
-            </div>
-            <div class="bb-card__title">BB-02 · Portal & Formular</div>
-            <div class="bb-card__desc">OZG-Portal, Formularmanagement, Antragstellung. Native-App-Ergänzung geplant.</div>
-            <div class="bb-card__footer"><span>Wave 2</span><span>→</span></div>
-          </a>
-
-          <a class="bb-card" href="building-blocks/bb-postfach/index.html">
-            <div class="bb-card__header">
-              <div class="bb-card__icon bb-card__icon--postfach">📬</div>
-              <span class="bb-card__status badge--done">✓ Vorhanden</span>
-            </div>
-            <div class="bb-card__title">BB-03 · Postfach</div>
-            <div class="bb-card__desc">Sicheres Behördenpostfach. Messaging, Benachrichtigungen, Multi-Kanal.</div>
-            <div class="bb-card__footer"><span>Wave 2</span><span>→</span></div>
-          </a>
-
-          <a class="bb-card" href="building-blocks/bb-payment/index.html">
-            <div class="bb-card__header">
-              <div class="bb-card__icon bb-card__icon--payment">💳</div>
-              <span class="bb-card__status badge--done">✓ Vorhanden</span>
-            </div>
-            <div class="bb-card__title">BB-04 · Payment</div>
-            <div class="bb-card__desc">e-Payment für Verwaltungsgebühren. XFinanz, XRechnung, Multi-PSP.</div>
-            <div class="bb-card__footer"><span>Wave 2</span><span>→</span></div>
-          </a>
-
-          <a class="bb-card" href="building-blocks/bb-wallet/index.html">
-            <div class="bb-card__header">
-              <div class="bb-card__icon bb-card__icon--wallet">👛</div>
-              <span class="bb-card__status badge--done">✓ Vorhanden</span>
-            </div>
-            <div class="bb-card__title">BB-05 · EUDI Wallet</div>
-            <div class="bb-card__desc">EU Digital Identity Wallet. Verifiable Credentials, eIDAS 2.0, SD-JWT.</div>
-            <div class="bb-card__footer"><span>Wave 3</span><span>→</span></div>
-          </a>
-
-          <a class="bb-card" href="building-blocks/bb-noots/index.html">
-            <div class="bb-card__header">
-              <div class="bb-card__icon bb-card__icon--register">🗂</div>
-              <span class="bb-card__status badge--done">✓ Vorhanden</span>
-            </div>
-            <div class="bb-card__title">BB-06 · Register (NOOTS)</div>
-            <div class="bb-card__desc">Registerabruf via National Once-Only Technical System. OOTS, RegMoG.</div>
-            <div class="bb-card__footer"><span>Wave 3</span><span>→</span></div>
-          </a>
-
-          <a class="bb-card" href="building-blocks/bb-api-gateway/index.html">
-            <div class="bb-card__header">
-              <div class="bb-card__icon bb-card__icon--gateway">⇄</div>
-              <span class="bb-card__status badge--critical">🔴 Kritisch</span>
-            </div>
-            <div class="bb-card__title">BB-07 · API-Gateway</div>
-            <div class="bb-card__desc">Zentraler Information Mediator. Routing, Rate-Limiting, API-Versionierung, Service Mesh.</div>
-            <div class="bb-card__footer"><span>Wave 1</span><span>→</span></div>
-          </a>
-
-          <a class="bb-card" href="building-blocks/bb-event-bus/index.html">
-            <div class="bb-card__header">
-              <div class="bb-card__icon bb-card__icon--events">⚡</div>
-              <span class="bb-card__status badge--critical">🔴 Kritisch</span>
-            </div>
-            <div class="bb-card__title">BB-08 · Event-Bus</div>
-            <div class="bb-card__desc">Asynchrone Entkopplung via CloudEvents. AMQP/Kafka, Pub/Sub, Event Sourcing.</div>
-            <div class="bb-card__footer"><span>Wave 1</span><span>→</span></div>
-          </a>
-
-          <a class="bb-card" href="building-blocks/bb-consent/index.html">
-            <div class="bb-card__header">
-              <div class="bb-card__icon bb-card__icon--consent">🔏</div>
-              <span class="bb-card__status badge--critical">🔴 Kritisch</span>
-            </div>
-            <div class="bb-card__title">BB-09 · Consent Management</div>
-            <div class="bb-card__desc">DSGVO-konforme Einwilligungsverwaltung. Granulare Zweckbindung, Widerruf, Audit.</div>
-            <div class="bb-card__footer"><span>Wave 2</span><span>→</span></div>
-          </a>
-
-          <a class="bb-card" href="building-blocks/bb-esignatur/index.html">
-            <div class="bb-card__header">
-              <div class="bb-card__icon bb-card__icon--esig">✍</div>
-              <span class="bb-card__status badge--high">🟡 Hoch</span>
-            </div>
-            <div class="bb-card__title">BB-10 · E-Signatur</div>
-            <div class="bb-card__desc">QES/FES gemäß eIDAS. Integration mit EUDI Wallet, XTA, VDG.</div>
-            <div class="bb-card__footer"><span>Wave 3</span><span>→</span></div>
-          </a>
-
-          <a class="bb-card" href="building-blocks/bb-bpm/index.html">
-            <div class="bb-card__header">
-              <div class="bb-card__icon bb-card__icon--bpm">⟲</div>
-              <span class="bb-card__status badge--high">🟡 Hoch</span>
-            </div>
-            <div class="bb-card__title">BB-11 · BPM / Workflow</div>
-            <div class="bb-card__desc">BPMN 2.0-Prozessorchestrierung. DMN für Entscheidungslogik, Human Tasks.</div>
-            <div class="bb-card__footer"><span>Wave 4</span><span>→</span></div>
-          </a>
-
-          <a class="bb-card" href="building-blocks/bb-ai-gateway/index.html">
-            <div class="bb-card__header">
-              <div class="bb-card__icon bb-card__icon--ai">🤖</div>
-              <span class="bb-card__status badge--high">🟡 Hoch</span>
-            </div>
-            <div class="bb-card__title">BB-12 · KI / AI-Gateway</div>
-            <div class="bb-card__desc">Zentrale Inference-API, Modellregistry, Guardrails, Human-in-the-Loop, Audit.</div>
-            <div class="bb-card__footer"><span>Wave 5</span><span>→</span></div>
-          </a>
-
-        </div>
-
-        <!-- Principles quick view -->
-        <h2 id="prinzipien">Leitende Prinzipien</h2>
-
-        <div class="table-wrapper">
-          <table>
-            <thead><tr><th>Prinzip</th><th>Umsetzung</th></tr></thead>
-            <tbody>
-              <tr><td><strong>API First</strong></td><td>Jeder BB primär über REST-API; OpenAPI 3.1 verbindlich</td></tr>
-              <tr><td><strong>Zero Trust</strong></td><td>Kein implizites Vertrauen; mTLS + Token für jede Anfrage</td></tr>
-              <tr><td><strong>Cloud Native</strong></td><td>OCI-Container, Kubernetes, 12-Factor-App</td></tr>
-              <tr><td><strong>Lose Kopplung</strong></td><td>Asynchrone Events, keine DB-zu-DB-Kopplung</td></tr>
-              <tr><td><strong>Portierbarkeit</strong></td><td>Multi-Cloud; keine proprietären Cloud-Services in BB-Kernlogik</td></tr>
-              <tr><td><strong>Buy over Make</strong></td><td>Standardsoftware bevorzugt; Eigenentwicklung bei Marktlücke</td></tr>
-              <tr><td><strong>Digitale Souveränität</strong></td><td>Open Source bevorzugt; proprietär nur mit offenen Schnittstellen</td></tr>
-              <tr><td><strong>Secure AI</strong></td><td>Audit-Trail, Explainability, Human-in-the-Loop verpflichtend</td></tr>
-              <tr><td><strong>Semantik-First</strong></td><td>JSON-LD-Annotationen, FIM/XÖV-Mapping, SPARQL-Endpoint</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <!-- Konformität quick view -->
-        <h2 id="konformitaet">Konformitätsstufen</h2>
-
-        <div class="bb-grid" style="grid-template-columns: repeat(3,1fr); margin-bottom:var(--space-8)">
-          <div style="background:var(--color-surface-1);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);text-align:center">
-            <div style="font-size:2rem;margin-bottom:var(--space-2)">①</div>
-            <div style="font-weight:600;color:var(--color-text-primary);margin-bottom:var(--space-1)">API-Compliant</div>
-            <div style="font-size:var(--text-sm);color:var(--color-text-muted)">Pflicht-APIs korrekt implementiert</div>
-          </div>
-          <div style="background:var(--color-surface-1);border:1px solid var(--color-brand-500);border-radius:var(--radius-lg);padding:var(--space-5);text-align:center">
-            <div style="font-size:2rem;margin-bottom:var(--space-2)">②</div>
-            <div style="font-weight:600;color:var(--color-brand-400);margin-bottom:var(--space-1)">Feature-Complete</div>
-            <div style="font-size:var(--text-sm);color:var(--color-text-muted)">Alle MUSS- und SOLL-Anforderungen</div>
-          </div>
-          <div style="background:var(--color-surface-1);border:1px solid var(--color-accent-500);border-radius:var(--radius-lg);padding:var(--space-5);text-align:center">
-            <div style="font-size:2rem;margin-bottom:var(--space-2)">③</div>
-            <div style="font-weight:600;color:var(--color-accent-400);margin-bottom:var(--space-1)">Fully Certified</div>
-            <div style="font-size:var(--text-sm);color:var(--color-text-muted)">Interop-Test mit Referenzumgebung</div>
-          </div>
-        </div>
-
-        <!-- Footer -->
-        <div class="page-footer">
-          <div class="page-footer__meta">
-            Apache-2.0 License · Stand: Februar 2026 · Version 0.1 DRAFT
-          </div>
-          <div class="page-footer__feedback">
-            <span class="page-footer__feedback-label">War diese Seite hilfreich?</span>
-            <div class="page-footer__feedback-btns">
-              <button class="feedback-btn">👍 Ja</button>
-              <button class="feedback-btn">👎 Nein</button>
             </div>
           </div>
-        </div>
 
-      </div><!-- /max-width wrapper -->
-    </div>
-  </main>
+          <div class="callout callout--info" style="margin-bottom:var(--space-8)">
+            <div class="callout__icon">ℹ</div>
+            <div class="callout__content">
+              <div class="callout__title">Dokument im Aufbau</div>
+              <div class="callout__body">
+                Diese Spezifikation befindet sich im Draft-Stadium und wird sukzessive erweitert.
+                Analog zu <a href="https://specs.govstack.global/" target="_blank" rel="noopener">GovStack</a>
+                wird jeder Building Block nach einem einheitlichen Template spezifiziert.
+                Alle Anforderungen sind gemäß <strong>RFC 2119</strong> formuliert (<span
+                  class="req req--muss">MUSS</span> <span class="req req--soll">SOLL</span> <span
+                  class="req req--kann">KANN</span>).
+              </div>
+            </div>
+          </div>
 
-</div><!-- /.layout -->
+          <!-- Sections Overview -->
+          <h2 id="sektionen" style="margin-top:0">Struktur der Spezifikation</h2>
+          <p style="color:var(--color-text-secondary);margin-bottom:var(--space-6)">
+            Die Spezifikation gliedert sich in drei Hauptbereiche – analog zum GovStack-Ansatz:
+          </p>
 
-<script src="assets/js/shell.js"></script>
-<script src="assets/js/site.js"></script>
+          <div class="bb-grid"
+            style="grid-template-columns: repeat(auto-fill,minmax(280px,1fr));margin-bottom:var(--space-12)">
+
+            <a class="bb-card" href="architecture/index.html">
+              <div class="bb-card__header">
+                <div class="bb-card__icon bb-card__icon--gateway">⚙</div>
+                <span class="bb-card__status badge--done">Vorhanden</span>
+              </div>
+              <div class="bb-card__title">Architektur & Querschnittsanforderungen</div>
+              <div class="bb-card__desc">Grundlegende Architekturprinzipien, API-Guidelines, Sicherheitsmodell,
+                Semantik-Framework und Konformitätsprogramm.</div>
+              <div class="bb-card__footer">
+                <span>9 Kapitel</span>
+                <span>→</span>
+              </div>
+            </a>
+
+            <a class="bb-card" href="building-blocks/index.html">
+              <div class="bb-card__header">
+                <div class="bb-card__icon bb-card__icon--generic">◈</div>
+                <span class="bb-card__status badge--draft">In Arbeit</span>
+              </div>
+              <div class="bb-card__title">Building Blocks</div>
+              <div class="bb-card__desc">12 austauschbare Softwarekomponenten mit verbindlichen API-Schnittstellen. 6
+                bestehend, 6 neu zu spezifizieren.</div>
+              <div class="bb-card__footer">
+                <span>12 BBs</span>
+                <span>→</span>
+              </div>
+            </a>
+
+            <a class="bb-card" href="implementation-playbook/index.html">
+              <div class="bb-card__header">
+                <div class="bb-card__icon bb-card__icon--portal">▷</div>
+                <span class="bb-card__status badge--draft">In Arbeit</span>
+              </div>
+              <div class="bb-card__title">Implementation Playbook</div>
+              <div class="bb-card__desc">6-Phasen-Vorgehensmodell von der Governance-Gründung über die Spezifikation bis
+                zur Pilotierung.</div>
+              <div class="bb-card__footer">
+                <span>6 Phasen</span>
+                <span>→</span>
+              </div>
+            </a>
+
+          </div>
+
+          <!-- BB Overview -->
+          <h2 id="building-blocks">Building Blocks im Überblick</h2>
+          <p style="color:var(--color-text-secondary);margin-bottom:var(--space-6)">
+            Jeder Building Block ist eine eigenständige, austauschbare Komponente mit verbindlichen Schnittstellen.
+            Produkte sind <strong>stack-konform</strong>, wenn sie die normativen APIs eines BBs korrekt implementieren.
+          </p>
+
+          <div class="bb-grid">
+
+            <a class="bb-card" href="building-blocks/bb-identity/index.html">
+              <div class="bb-card__header">
+                <div class="bb-card__icon bb-card__icon--identity">🪪</div>
+                <span class="bb-card__status badge--done">✓ Vorhanden</span>
+              </div>
+              <div class="bb-card__title">BB-01 · Identity</div>
+              <div class="bb-card__desc">Authentifizierung, Autorisierung, Identitätsmanagement. OIDC/SAML, eIDAS 2.0,
+                BundID.</div>
+              <div class="bb-card__footer"><span>Wave 1</span><span>→</span></div>
+            </a>
+
+            <a class="bb-card" href="building-blocks/bb-portal/index.html">
+              <div class="bb-card__header">
+                <div class="bb-card__icon bb-card__icon--portal">🖥</div>
+                <span class="bb-card__status badge--done">✓ Vorhanden</span>
+              </div>
+              <div class="bb-card__title">BB-02 · Portal & Formular</div>
+              <div class="bb-card__desc">OZG-Portal, Formularmanagement, Antragstellung. Native-App-Ergänzung geplant.
+              </div>
+              <div class="bb-card__footer"><span>Wave 2</span><span>→</span></div>
+            </a>
+
+            <a class="bb-card" href="building-blocks/bb-postfach/index.html">
+              <div class="bb-card__header">
+                <div class="bb-card__icon bb-card__icon--postfach">📬</div>
+                <span class="bb-card__status badge--done">✓ Vorhanden</span>
+              </div>
+              <div class="bb-card__title">BB-03 · Postfach</div>
+              <div class="bb-card__desc">Sicheres Behördenpostfach. Messaging, Benachrichtigungen, Multi-Kanal.</div>
+              <div class="bb-card__footer"><span>Wave 2</span><span>→</span></div>
+            </a>
+
+            <a class="bb-card" href="building-blocks/bb-payment/index.html">
+              <div class="bb-card__header">
+                <div class="bb-card__icon bb-card__icon--payment">💳</div>
+                <span class="bb-card__status badge--done">✓ Vorhanden</span>
+              </div>
+              <div class="bb-card__title">BB-04 · Payment</div>
+              <div class="bb-card__desc">e-Payment für Verwaltungsgebühren. XFinanz, XRechnung, Multi-PSP.</div>
+              <div class="bb-card__footer"><span>Wave 2</span><span>→</span></div>
+            </a>
+
+            <a class="bb-card" href="building-blocks/bb-wallet/index.html">
+              <div class="bb-card__header">
+                <div class="bb-card__icon bb-card__icon--wallet">👛</div>
+                <span class="bb-card__status badge--done">✓ Vorhanden</span>
+              </div>
+              <div class="bb-card__title">BB-05 · EUDI Wallet</div>
+              <div class="bb-card__desc">EU Digital Identity Wallet. Verifiable Credentials, eIDAS 2.0, SD-JWT.</div>
+              <div class="bb-card__footer"><span>Wave 3</span><span>→</span></div>
+            </a>
+
+            <a class="bb-card" href="building-blocks/bb-noots/index.html">
+              <div class="bb-card__header">
+                <div class="bb-card__icon bb-card__icon--register">🗂</div>
+                <span class="bb-card__status badge--done">✓ Vorhanden</span>
+              </div>
+              <div class="bb-card__title">BB-06 · Register (NOOTS)</div>
+              <div class="bb-card__desc">Registerabruf via National Once-Only Technical System. OOTS, RegMoG.</div>
+              <div class="bb-card__footer"><span>Wave 3</span><span>→</span></div>
+            </a>
+
+            <a class="bb-card" href="building-blocks/bb-api-gateway/index.html">
+              <div class="bb-card__header">
+                <div class="bb-card__icon bb-card__icon--gateway">⇄</div>
+                <span class="bb-card__status badge--critical">🔴 Kritisch</span>
+              </div>
+              <div class="bb-card__title">BB-07 · API-Gateway</div>
+              <div class="bb-card__desc">Zentraler Information Mediator. Routing, Rate-Limiting, API-Versionierung,
+                Service Mesh.</div>
+              <div class="bb-card__footer"><span>Wave 1</span><span>→</span></div>
+            </a>
+
+            <a class="bb-card" href="building-blocks/bb-event-bus/index.html">
+              <div class="bb-card__header">
+                <div class="bb-card__icon bb-card__icon--events">⚡</div>
+                <span class="bb-card__status badge--critical">🔴 Kritisch</span>
+              </div>
+              <div class="bb-card__title">BB-08 · Event-Bus</div>
+              <div class="bb-card__desc">Asynchrone Entkopplung via CloudEvents. AMQP/Kafka, Pub/Sub, Event Sourcing.
+              </div>
+              <div class="bb-card__footer"><span>Wave 1</span><span>→</span></div>
+            </a>
+
+            <a class="bb-card" href="building-blocks/bb-consent/index.html">
+              <div class="bb-card__header">
+                <div class="bb-card__icon bb-card__icon--consent">🔏</div>
+                <span class="bb-card__status badge--critical">🔴 Kritisch</span>
+              </div>
+              <div class="bb-card__title">BB-09 · Consent Management</div>
+              <div class="bb-card__desc">DSGVO-konforme Einwilligungsverwaltung. Granulare Zweckbindung, Widerruf,
+                Audit.</div>
+              <div class="bb-card__footer"><span>Wave 2</span><span>→</span></div>
+            </a>
+
+            <a class="bb-card" href="building-blocks/bb-esignatur/index.html">
+              <div class="bb-card__header">
+                <div class="bb-card__icon bb-card__icon--esig">✍</div>
+                <span class="bb-card__status badge--high">🟡 Hoch</span>
+              </div>
+              <div class="bb-card__title">BB-10 · E-Signatur</div>
+              <div class="bb-card__desc">QES/FES gemäß eIDAS. Integration mit EUDI Wallet, XTA, VDG.</div>
+              <div class="bb-card__footer"><span>Wave 3</span><span>→</span></div>
+            </a>
+
+            <a class="bb-card" href="building-blocks/bb-bpm/index.html">
+              <div class="bb-card__header">
+                <div class="bb-card__icon bb-card__icon--bpm">⟲</div>
+                <span class="bb-card__status badge--high">🟡 Hoch</span>
+              </div>
+              <div class="bb-card__title">BB-11 · BPM / Workflow</div>
+              <div class="bb-card__desc">BPMN 2.0-Prozessorchestrierung. DMN für Entscheidungslogik, Human Tasks.</div>
+              <div class="bb-card__footer"><span>Wave 4</span><span>→</span></div>
+            </a>
+
+            <a class="bb-card" href="building-blocks/bb-ai-gateway/index.html">
+              <div class="bb-card__header">
+                <div class="bb-card__icon bb-card__icon--ai">🤖</div>
+                <span class="bb-card__status badge--high">🟡 Hoch</span>
+              </div>
+              <div class="bb-card__title">BB-12 · KI / AI-Gateway</div>
+              <div class="bb-card__desc">Zentrale Inference-API, Modellregistry, Guardrails, Human-in-the-Loop, Audit.
+              </div>
+              <div class="bb-card__footer"><span>Wave 5</span><span>→</span></div>
+            </a>
+
+          </div>
+
+          <!-- Principles quick view -->
+          <h2 id="prinzipien">Leitende Prinzipien</h2>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Prinzip</th>
+                  <th>Umsetzung</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>API First</strong></td>
+                  <td>Jeder BB primär über REST-API; OpenAPI 3.1 verbindlich</td>
+                </tr>
+                <tr>
+                  <td><strong>Zero Trust</strong></td>
+                  <td>Kein implizites Vertrauen; mTLS + Token für jede Anfrage</td>
+                </tr>
+                <tr>
+                  <td><strong>Cloud Native</strong></td>
+                  <td>OCI-Container, Kubernetes, 12-Factor-App</td>
+                </tr>
+                <tr>
+                  <td><strong>Lose Kopplung</strong></td>
+                  <td>Asynchrone Events, keine DB-zu-DB-Kopplung</td>
+                </tr>
+                <tr>
+                  <td><strong>Portierbarkeit</strong></td>
+                  <td>Multi-Cloud; keine proprietären Cloud-Services in BB-Kernlogik</td>
+                </tr>
+                <tr>
+                  <td><strong>Buy over Make</strong></td>
+                  <td>Standardsoftware bevorzugt; Eigenentwicklung bei Marktlücke</td>
+                </tr>
+                <tr>
+                  <td><strong>Digitale Souveränität</strong></td>
+                  <td>Open Source bevorzugt; proprietär nur mit offenen Schnittstellen</td>
+                </tr>
+                <tr>
+                  <td><strong>Secure AI</strong></td>
+                  <td>Audit-Trail, Explainability, Human-in-the-Loop verpflichtend</td>
+                </tr>
+                <tr>
+                  <td><strong>Semantik-First</strong></td>
+                  <td>JSON-LD-Annotationen, FIM/XÖV-Mapping, SPARQL-Endpoint</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Konformität quick view -->
+          <h2 id="konformitaet">Konformitätsstufen</h2>
+
+          <div class="bb-grid" style="grid-template-columns: repeat(3,1fr); margin-bottom:var(--space-8)">
+            <div
+              style="background:var(--color-surface-1);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);text-align:center">
+              <div style="font-size:2rem;margin-bottom:var(--space-2)">①</div>
+              <div style="font-weight:600;color:var(--color-text-primary);margin-bottom:var(--space-1)">API-Compliant
+              </div>
+              <div style="font-size:var(--text-sm);color:var(--color-text-muted)">Pflicht-APIs korrekt implementiert
+              </div>
+            </div>
+            <div
+              style="background:var(--color-surface-1);border:1px solid var(--color-brand-500);border-radius:var(--radius-lg);padding:var(--space-5);text-align:center">
+              <div style="font-size:2rem;margin-bottom:var(--space-2)">②</div>
+              <div style="font-weight:600;color:var(--color-brand-400);margin-bottom:var(--space-1)">Feature-Complete
+              </div>
+              <div style="font-size:var(--text-sm);color:var(--color-text-muted)">Alle MUSS- und SOLL-Anforderungen
+              </div>
+            </div>
+            <div
+              style="background:var(--color-surface-1);border:1px solid var(--color-accent-500);border-radius:var(--radius-lg);padding:var(--space-5);text-align:center">
+              <div style="font-size:2rem;margin-bottom:var(--space-2)">③</div>
+              <div style="font-weight:600;color:var(--color-accent-400);margin-bottom:var(--space-1)">Fully Certified
+              </div>
+              <div style="font-size:var(--text-sm);color:var(--color-text-muted)">Interop-Test mit Referenzumgebung
+              </div>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <div class="page-footer">
+            <div class="page-footer__meta">
+              Apache-2.0 License · Stand: Februar 2026 · Version 0.1 DRAFT
+            </div>
+            <div class="page-footer__feedback">
+              <span class="page-footer__feedback-label">War diese Seite hilfreich?</span>
+              <div class="page-footer__feedback-btns">
+                <button class="feedback-btn">👍 Ja</button>
+                <button class="feedback-btn">👎 Nein</button>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /max-width wrapper -->
+      </div>
+    </main>
+
+  </div><!-- /.layout -->
+
+  <script src="assets/js/shell.js"></script>
+  <script src="assets/js/site.js"></script>
 </body>
+
 </html>
