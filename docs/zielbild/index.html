@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zielbild 2031 – VerwDigiStack Spezifikation</title>
+    <meta name="description"
+        content="Nutzerzentrierte Digitale Verwaltung 2031: Vision, Nutzererlebnis und erforderliche Komponenten.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/tokens.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <style>
+        /* ── Zielbild-specific styles ───────────────────────────── */
+        .vision-statement {
+            position: relative;
+            padding: var(--space-6) var(--space-7);
+            margin: var(--space-6) 0;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, rgba(99, 102, 241, .12), rgba(16, 185, 129, .08));
+            border-left: 4px solid var(--color-accent)
+        }
+
+        .vision-statement blockquote {
+            margin: 0;
+            font-size: 1.3rem;
+            font-style: italic;
+            line-height: 1.6;
+            color: var(--color-text-primary);
+            border: none;
+            padding: 0;
+            background: none
+        }
+
+        .vision-bullets {
+            list-style: none;
+            padding: 0;
+            margin: var(--space-5) 0
+        }
+
+        .vision-bullets li {
+            position: relative;
+            padding: var(--space-3) var(--space-3) var(--space-3) var(--space-5);
+            margin-bottom: var(--space-2);
+            border-radius: var(--radius-md);
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border)
+        }
+
+        .vision-bullets li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            border-radius: 3px 0 0 3px;
+            background: var(--color-accent)
+        }
+
+        .vision-bullets li strong {
+            color: var(--color-accent)
+        }
+
+        .scenario-box {
+            padding: var(--space-5);
+            border-radius: var(--radius-lg);
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            margin: var(--space-5) 0;
+            overflow-x: auto
+        }
+
+        .scenario-box__title {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: var(--space-3);
+            color: var(--color-text-primary)
+        }
+
+        .scenario-box__title .icon {
+            font-size: 1.4rem
+        }
+
+        .scenario-steps {
+            counter-reset: step;
+            list-style: none;
+            padding: 0;
+            margin: 0
+        }
+
+        .scenario-steps li {
+            counter-increment: step;
+            position: relative;
+            padding: var(--space-3) var(--space-2) var(--space-3) 3.2rem;
+            margin-bottom: var(--space-2);
+            border-left: 2px solid var(--color-border);
+            font-size: .95rem;
+            line-height: 1.5
+        }
+
+        .scenario-steps li::before {
+            content: counter(step);
+            position: absolute;
+            left: .3rem;
+            top: var(--space-3);
+            width: 1.8rem;
+            height: 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--color-accent);
+            color: #fff;
+            font-size: .75rem;
+            font-weight: 700
+        }
+
+        .scenario-steps li:last-child {
+            border-left-color: transparent
+        }
+
+        .scenario-steps li strong {
+            color: var(--color-text-primary)
+        }
+
+        .channel-grid {
+            display: grid;
+            gap: var(--space-4);
+            margin: var(--space-5) 0
+        }
+
+        .channel-card {
+            padding: var(--space-5);
+            border-radius: var(--radius-lg);
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            transition: border-color .2s
+        }
+
+        .channel-card:hover {
+            border-color: var(--color-accent)
+        }
+
+        .channel-card__title {
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: var(--space-2);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2)
+        }
+
+        .channel-card__title .icon {
+            font-size: 1.3rem
+        }
+
+        .channel-card__list {
+            padding-left: var(--space-4);
+            margin: var(--space-2) 0 0;
+            font-size: .9rem;
+            line-height: 1.8
+        }
+
+        .konto-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: var(--space-3);
+            margin: var(--space-4) 0
+        }
+
+        .konto-feature {
+            padding: var(--space-4);
+            border-radius: var(--radius-md);
+            background: var(--color-bg-tertiary);
+            border: 1px solid var(--color-border);
+            font-size: .9rem
+        }
+
+        .konto-feature__title {
+            font-weight: 600;
+            margin-bottom: var(--space-1);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2)
+        }
+
+        .konto-feature__title .icon {
+            font-size: 1.2rem
+        }
+
+        .dsgvo-table td:first-child {
+            width: 200px;
+            font-weight: 600;
+            white-space: nowrap;
+            color: var(--color-accent)
+        }
+
+        .dsgvo-table code {
+            font-size: .8rem;
+            padding: 1px 4px;
+            border-radius: 3px;
+            background: rgba(99, 102, 241, .15)
+        }
+
+        .layer-diagram {
+            margin: var(--space-5) 0
+        }
+
+        .layer {
+            padding: var(--space-4);
+            margin-bottom: 2px;
+            border-radius: var(--radius-md);
+            font-size: .9rem
+        }
+
+        .layer__title {
+            font-weight: 700;
+            margin-bottom: var(--space-2);
+            font-size: .85rem;
+            text-transform: uppercase;
+            letter-spacing: .04em
+        }
+
+        .layer--user {
+            background: linear-gradient(135deg, rgba(99, 102, 241, .15), rgba(139, 92, 246, .1));
+            border: 1px solid rgba(99, 102, 241, .25)
+        }
+
+        .layer--experience {
+            background: linear-gradient(135deg, rgba(16, 185, 129, .12), rgba(52, 211, 153, .08));
+            border: 1px solid rgba(16, 185, 129, .2)
+        }
+
+        .layer--bb {
+            background: linear-gradient(135deg, rgba(245, 158, 11, .1), rgba(251, 191, 36, .06));
+            border: 1px solid rgba(245, 158, 11, .2)
+        }
+
+        .layer--integration {
+            background: linear-gradient(135deg, rgba(236, 72, 153, .1), rgba(244, 114, 182, .06));
+            border: 1px solid rgba(236, 72, 153, .2)
+        }
+
+        .layer--platform {
+            background: linear-gradient(135deg, rgba(100, 116, 139, .12), rgba(148, 163, 184, .06));
+            border: 1px solid rgba(100, 116, 139, .2)
+        }
+
+        .layer .bb-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-1);
+            margin-top: var(--space-2)
+        }
+
+        .layer .bb-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: var(--radius-sm);
+            font-size: .78rem;
+            background: rgba(255, 255, 255, .06);
+            border: 1px solid rgba(255, 255, 255, .08)
+        }
+
+        .layer .bb-tag--new {
+            border-color: rgba(16, 185, 129, .3);
+            color: rgb(52, 211, 153)
+        }
+
+        .metric-row {
+            display: grid;
+            grid-template-columns: 1fr 140px 200px;
+            gap: var(--space-2);
+            padding: var(--space-3);
+            border-bottom: 1px solid var(--color-border);
+            font-size: .9rem;
+            align-items: center
+        }
+
+        .metric-row:first-child {
+            font-weight: 700;
+            color: var(--color-text-secondary);
+            font-size: .8rem;
+            text-transform: uppercase;
+            letter-spacing: .03em;
+            border-bottom: 2px solid var(--color-border)
+        }
+
+        .metric-value {
+            font-weight: 600;
+            color: var(--color-accent)
+        }
+
+        .consent-flow {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+            margin: var(--space-5) 0;
+            position: relative;
+            padding-left: var(--space-5);
+            border-left: 3px solid var(--color-accent)
+        }
+
+        .consent-flow__step {
+            padding: var(--space-3) var(--space-4);
+            background: var(--color-bg-secondary);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--color-border);
+            font-size: .9rem
+        }
+
+        .consent-flow__step strong {
+            color: var(--color-accent)
+        }
+
+        @media(min-width:768px) {
+            .channel-grid {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <script>window.PAGE_META = { title: 'Zielbild 2031', section: 'Zielbild' };</script>
+
+    <div class="layout">
+
+        <main class="content">
+            <article class="content__main prose">
+
+                <!-- HEADER -->
+                <div class="prose-header">
+                    <div class="prose-header__breadcrumb">
+                        <a href="../index.html">VerwDigiStack</a>
+                        <span class="prose-header__breadcrumb-sep">/</span>
+                        <span>Zielbild 2031</span>
+                    </div>
+                    <div class="prose-header__meta">
+                        <span class="prose-header__tag"
+                            style="background:rgba(99,102,241,.15);color:rgb(165,180,252)">🎯 Zielbild</span>
+                        <span class="prose-header__version">Version 1.0 · Februar 2026</span>
+                    </div>
+                    <h1>Zielbild 2031: Nutzerzentrierte Digitale Verwaltung</h1>
+                    <p>
+                        Wie erleben Bürger:innen und Unternehmen die digitale Verwaltung in 5 Jahren?
+                        Dieses Zielbild beschreibt das Nutzererlebnis, die DSGVO-Architektur und die
+                        erforderlichen Komponenten – unabhängig von föderalen Zuständigkeiten.
+                    </p>
+                </div>
+
+                <!-- ═══════════════════════════════════════════════ -->
+                <!-- 1  VISION -->
+                <!-- ═══════════════════════════════════════════════ -->
+                <h2 id="vision">1 · Vision</h2>
+
+                <div class="vision-statement">
+                    <blockquote>
+                        Im Jahr 2031 erledigen Bürger:innen und Unternehmen alle Behördenangelegenheiten
+                        digital – jederzeit, von überall, in Minuten statt Wochen.
+                        Der Staat kommt zu den Menschen, nicht umgekehrt.
+                    </blockquote>
+                </div>
+
+                <ul class="vision-bullets">
+                    <li><strong>Ein Portal, eine App – alles drin.</strong> Das Deutschland-Portal und die
+                        Deutschland-App sind der zentrale Zugang zu allen staatlichen Leistungen.</li>
+                    <li><strong>Proaktiv statt reaktiv.</strong> Der Staat meldet sich, wenn Leistungen zustehen –
+                        Bürger:innen müssen nicht wissen, was sie beantragen können.</li>
+                    <li><strong>Einmal sagen reicht.</strong> Daten, die der Verwaltung vorliegen, werden nie erneut
+                        abgefragt (Once-Only).</li>
+                    <li><strong>Datensouverän und transparent.</strong> Bürger:innen kontrollieren jederzeit, wer welche
+                        Daten warum nutzt.</li>
+                    <li><strong>Barrierefrei und inklusiv.</strong> WCAG 2.2 AA, Leichte Sprache, assistive
+                        Technologien.</li>
+                </ul>
+
+                <!-- ═══════════════════════════════════════════════ -->
+                <!-- 2  NUTZERERLEBNIS -->
+                <!-- ═══════════════════════════════════════════════ -->
+                <h2 id="nutzererlebnis">2 · Nutzererlebnis – „Ein Tag im Jahr 2031"</h2>
+
+                <h3 id="szenario-geburt">Szenario: Geburt eines Kindes</h3>
+
+                <div class="scenario-box">
+                    <div class="scenario-box__title"><span class="icon">👶</span> Lebensereignis „Geburt"</div>
+                    <ol class="scenario-steps">
+                        <li><strong>Standesamt meldet Geburt digital.</strong></li>
+                        <li><strong>Deutschland-App sendet Push:</strong> „Herzlichen Glückwunsch! Folgende Leistungen
+                            stehen Ihnen zu. Möchten Sie diese jetzt beantragen?" – Elterngeld, Kindergeld,
+                            Kinderreisepass, Kinderzuschlag.</li>
+                        <li><strong>EUDI Wallet bestätigt Identität</strong> (Fingerabdruck / Face ID).</li>
+                        <li><strong>Consent-Dialog:</strong> „Folgende Daten werden verwendet: Name, Geburtsdatum Kind,
+                            Einkommen, Steuer-ID. Quellen: Melderegister, Finanzamt. Gültig für: diesen Antrag." – [Alle
+                            bestätigen] [Einzeln prüfen] [Ablehnen]</li>
+                        <li><strong>Im Hintergrund:</strong> NOOTS ruft Registerdaten ab (Once-Only) · BPM-Engine
+                            orchestriert 4 parallele Anträge · KI prüft Anspruchsberechtigung · Sachbearbeiter:in prüft
+                            KI-Vorschlag (Human-in-Loop).</li>
+                        <li><strong>Nach 48 Stunden:</strong> QES-signierte Bescheide im Postfach. Elterngeld-Credential
+                            im EUDI Wallet. Kindergeld startet ab Folgemonat.</li>
+                    </ol>
+                    <p style="margin-top:var(--space-3);font-weight:600;color:var(--color-accent)">⏱ Gesamtdauer
+                        Bürgerperspektive: 5 Minuten aktive Interaktion.</p>
+                </div>
+
+                <h3 id="szenario-gewerbe">Szenario: Gewerbeanmeldung</h3>
+                <div class="scenario-box">
+                    <div class="scenario-box__title"><span class="icon">🏢</span> Lebensereignis „Gewerbe anmelden"
+                    </div>
+                    <ol class="scenario-steps">
+                        <li>Nutzer:in öffnet Deutschland-App → „Gewerbe anmelden"</li>
+                        <li>Identifizierung per <strong>EUDI Wallet</strong> (Personalausweis-Credential).</li>
+                        <li>Formular ist <strong>vorausgefüllt</strong> (Name, Adresse, Steuer-ID) – via NOOTS aus
+                            Registern.</li>
+                        <li>Consent-Dialog: „Gewerbeamt erhält [Daten]. Gültig: 30 Tage."</li>
+                        <li>Nutzer:in ergänzt nur: <strong>Tätigkeit, Betriebsstätte, Rechtsform.</strong></li>
+                        <li>Qualifizierte <strong>elektronische Signatur</strong> via EUDI Wallet.</li>
+                        <li>Push nach 24h: <strong>„Gewerbeschein liegt im Postfach vor."</strong></li>
+                    </ol>
+                </div>
+
+                <h3 id="szenario-umzug">Szenario: Umzug</h3>
+                <div class="scenario-box">
+                    <div class="scenario-box__title"><span class="icon">🏡</span> Lebensereignis „Umzug"</div>
+                    <ol class="scenario-steps">
+                        <li>Deutschland-App → „Umzug melden"</li>
+                        <li><strong>Neue Adresse</strong> eingeben – die einzige neue Information.</li>
+                        <li>Consent: „Folgende Stellen werden informiert: Einwohnermeldeamt, Finanzamt, Kfz-Zulassung,
+                            Rundfunkbeitrag, Krankenkasse."</li>
+                        <li><strong>Ein Klick</strong> → alle Behörden erhalten die neue Adresse automatisch.</li>
+                        <li>Adress-Update im <strong>EUDI Wallet</strong> (Remote-Update, kein Behördengang).</li>
+                        <li>Optional: Ummeldung Kfz, Schulwechsel – werden <strong>proaktiv angeboten</strong>.</li>
+                    </ol>
+                </div>
+
+                <!-- ═══════════════════════════════════════════════ -->
+                <!-- 3  KANAL-STRATEGIE -->
+                <!-- ═══════════════════════════════════════════════ -->
+                <h2 id="kanaele">3 · Kanal-Strategie</h2>
+
+                <div class="channel-grid">
+                    <div class="channel-card">
+                        <div class="channel-card__title"><span class="icon">🌐</span> Deutschland-Portal (Web)</div>
+                        <ul class="channel-card__list">
+                            <li>Vollzugang zu <strong>allen</strong> staatlichen Leistungen</li>
+                            <li>Desktop-optimiert, Responsive</li>
+                            <li>WCAG 2.2 AA, Leichte Sprache</li>
+                        </ul>
+                    </div>
+                    <div class="channel-card">
+                        <div class="channel-card__title"><span class="icon">📱</span> Deutschland-App (iOS/Android)
+                        </div>
+                        <ul class="channel-card__list">
+                            <li>Identischer Leistungsumfang wie Portal</li>
+                            <li>Push-Benachrichtigungen, Wallet-Integration</li>
+                            <li>Biometrie, Offline-Fähigkeit für Dokumente</li>
+                        </ul>
+                    </div>
+                    <div class="channel-card">
+                        <div class="channel-card__title"><span class="icon">🏛</span> Spezialisierte Fachportale (5–8)
+                        </div>
+                        <ul class="channel-card__list">
+                            <li>Justizportal · ELSTER/Steuerportal · Gesundheitsportal</li>
+                            <li>Unternehmensportal · Bildungsportal</li>
+                            <li>Via SSO angebunden, gleiche UX-Patterns</li>
+                        </ul>
+                    </div>
+                    <div class="channel-card">
+                        <div class="channel-card__title"><span class="icon">🤖</span> Assistenzsysteme</div>
+                        <ul class="channel-card__list">
+                            <li>KI-Chatbot (Portal + App)</li>
+                            <li>Telefonauskunft (KI-unterstützt)</li>
+                            <li>Vor-Ort-Terminale (digitale Teilhabe)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ═══════════════════════════════════════════════ -->
+                <!-- 4  MEIN KONTO -->
+                <!-- ═══════════════════════════════════════════════ -->
+                <h2 id="mein-konto">4 · Mein Deutschland-Konto</h2>
+                <p>Jede/r Bürger:in und jedes Unternehmen hat ein zentrales Konto:</p>
+
+                <div class="konto-grid">
+                    <div class="konto-feature">
+                        <div class="konto-feature__title"><span class="icon">📊</span> Dashboard</div>Übersicht
+                        laufender Anträge, Fristen, ausstehende Aktionen.
+                    </div>
+                    <div class="konto-feature">
+                        <div class="konto-feature__title"><span class="icon">📬</span> Postfach</div>Alle
+                        Behördennachrichten und Bescheide an einem Ort.
+                    </div>
+                    <div class="konto-feature">
+                        <div class="konto-feature__title"><span class="icon">👛</span> Wallet</div>EUDI Wallet:
+                        Personalausweis, Führerschein, Bescheide als VCs.
+                    </div>
+                    <div class="konto-feature">
+                        <div class="konto-feature__title"><span class="icon">🔍</span> Datenübersicht</div>Welche
+                        Behörde hat welche Daten? Wann abgerufen? (DSGVO live)
+                    </div>
+                    <div class="konto-feature">
+                        <div class="konto-feature__title"><span class="icon">🔏</span> Consent-Center</div>
+                        Einwilligungen einsehen, widerrufen, granular anpassen.
+                    </div>
+                    <div class="konto-feature">
+                        <div class="konto-feature__title"><span class="icon">📁</span> Dokumente</div>Eigene Dokumente
+                        hochladen; Bescheide archivieren.
+                    </div>
+                    <div class="konto-feature">
+                        <div class="konto-feature__title"><span class="icon">🤝</span> Vollmachten</div>Digitale
+                        Vertretungsvollmachten (Eltern, Betreuung, Firma).
+                    </div>
+                    <div class="konto-feature">
+                        <div class="konto-feature__title"><span class="icon">💡</span> Lebenslage-Finder</div>„Was steht
+                        mir zu?" – KI-gestützter Assistent.
+                    </div>
+                </div>
+
+                <!-- ═══════════════════════════════════════════════ -->
+                <!-- 5  DSGVO -->
+                <!-- ═══════════════════════════════════════════════ -->
+                <h2 id="dsgvo">5 · DSGVO – Datenschutz als Feature</h2>
+                <p>Die DSGVO wird konsequent als <strong>Vertrauens-Feature</strong> implementiert:</p>
+
+                <div class="table-wrapper">
+                    <table class="dsgvo-table">
+                        <thead>
+                            <tr>
+                                <th>DSGVO-Prinzip</th>
+                                <th>Umsetzung im Zielbild</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Zweckbindung <code>Art.5(1)b</code></td>
+                                <td>Jede Datenverwendung zeigt exakt den Zweck; automatische Löschung nach Erfüllung.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Datenminimierung <code>Art.5(1)c</code></td>
+                                <td>Formulare fragen nur Notwendiges; NOOTS ruft nur bewilligte Felder ab.</td>
+                            </tr>
+                            <tr>
+                                <td>Transparenz <code>Art.12–14</code></td>
+                                <td>Live-Dashboard: „Wer hat wann welche Daten abgerufen?"</td>
+                            </tr>
+                            <tr>
+                                <td>Auskunftsrecht <code>Art.15</code></td>
+                                <td>Ein-Klick-Datenauskunft: alle gespeicherten Daten in Sekunden.</td>
+                            </tr>
+                            <tr>
+                                <td>Berichtigung <code>Art.16</code></td>
+                                <td>Fehlerhafte Daten direkt im Konto melden → automatisierter Korrektur-Workflow.</td>
+                            </tr>
+                            <tr>
+                                <td>Löschung <code>Art.17</code></td>
+                                <td>Lösch-Anträge im Konto; automatische Prüfung gegen Aufbewahrungsfristen.</td>
+                            </tr>
+                            <tr>
+                                <td>Einwilligung <code>Art.7</code></td>
+                                <td>Consent-Center: granulare Checkboxen pro Zweck, Behörde, Datenkategorie; jederzeit
+                                    widerrufbar.</td>
+                            </tr>
+                            <tr>
+                                <td>Übertragbarkeit <code>Art.20</code></td>
+                                <td>Export aller eigenen Daten als maschinenlesbares JSON-LD.</td>
+                            </tr>
+                            <tr>
+                                <td>Privacy by Design <code>Art.25</code></td>
+                                <td>Alle BBs: Verschlüsselung, Pseudonymisierung, minimale Zugriffsrechte.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 id="consent-architektur">Consent-Flow (Ablauf)</h3>
+                <div class="consent-flow">
+                    <div class="consent-flow__step"><strong>1 · Antrag:</strong> Nutzer:in startet „Elterngeld
+                        beantragen"</div>
+                    <div class="consent-flow__step"><strong>2 · Consent-Dialog:</strong> System zeigt benötigte Daten,
+                        Quellen, Zweck, Gültigkeit. Nutzer:in bestätigt oder lehnt ab.</div>
+                    <div class="consent-flow__step"><strong>3 · Token:</strong> Consent-BB erstellt Consent-Token mit
+                        Scope, Zweck und TTL.</div>
+                    <div class="consent-flow__step"><strong>4 · Abruf:</strong> NOOTS ruft mit Consent-Token nur die
+                        bewilligten Register-Felder ab.</div>
+                    <div class="consent-flow__step"><strong>5 · Audit:</strong> Jeder Zugriff wird protokolliert und ist
+                        im Datensouveränitäts-Dashboard sichtbar.</div>
+                    <div class="consent-flow__step"><strong>6 · Widerruf:</strong> Jederzeit im Consent-Center möglich;
+                        löscht den Token und benachrichtigt alle Empfänger.</div>
+                </div>
+
+                <!-- ═══════════════════════════════════════════════ -->
+                <!-- 6  PROAKTIVE VERWALTUNG -->
+                <!-- ═══════════════════════════════════════════════ -->
+                <h2 id="proaktiv">6 · Proaktive Verwaltung</h2>
+                <p>Die Lebenslage-Engine erkennt Ansprüche und bietet sie aktiv an:</p>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Lebensereignis</th>
+                                <th>Proaktives Angebot</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>👶 Geburt</td>
+                                <td>Elterngeld, Kindergeld, Kinderzuschlag, Kinderreisepass</td>
+                            </tr>
+                            <tr>
+                                <td>🎂 18. Geburtstag</td>
+                                <td>Wahlbenachrichtigung, Personalausweis-Erneuerung</td>
+                            </tr>
+                            <tr>
+                                <td>🏡 Umzug</td>
+                                <td>Automatische Ummeldung bei allen Stellen</td>
+                            </tr>
+                            <tr>
+                                <td>🎓 Studium</td>
+                                <td>BAföG, Semesterticket, Wohngeldberechtigung</td>
+                            </tr>
+                            <tr>
+                                <td>🏢 Gründung</td>
+                                <td>Gewerbeanmeldung, Steuer-Nr., IHK-Anmeldung, Pflichten-Checkliste</td>
+                            </tr>
+                            <tr>
+                                <td>👴 Renteneintritt</td>
+                                <td>Rentenansprüche, Steuererklärung-Änderungen, GKV-Beitrag</td>
+                            </tr>
+                            <tr>
+                                <td>⏰ Ablaufende Dokumente</td>
+                                <td>Personalausweis, Führerschein, Genehmigungen – rechtzeitige Erinnerung</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ═══════════════════════════════════════════════ -->
+                <!-- 7  ERFORDERLICHE KOMPONENTEN -->
+                <!-- ═══════════════════════════════════════════════ -->
+                <h2 id="komponenten">7 · Erforderliche Komponenten</h2>
+
+                <h3 id="schichtenmodell">Schichtenmodell</h3>
+
+                <div class="layer-diagram">
+                    <div class="layer layer--user">
+                        <div class="layer__title">🖥 Nutzer-Layer</div>
+                        <div class="bb-tags">
+                            <span class="bb-tag">Deutschland-Portal</span>
+                            <span class="bb-tag">Deutschland-App</span>
+                            <span class="bb-tag">Fachportale (5–8)</span>
+                            <span class="bb-tag">KI-Chatbot</span>
+                            <span class="bb-tag">Vor-Ort-Terminale</span>
+                            <span class="bb-tag">UX-Design-System</span>
+                        </div>
+                    </div>
+                    <div class="layer layer--experience">
+                        <div class="layer__title">✨ Erlebnis-Layer</div>
+                        <div class="bb-tags">
+                            <span class="bb-tag">Lebenslage-Engine</span>
+                            <span class="bb-tag">Personalisierung (Consent-basiert)</span>
+                            <span class="bb-tag">Antragstracker</span>
+                            <span class="bb-tag">Barrierefreiheits-Layer</span>
+                        </div>
+                    </div>
+                    <div class="layer layer--bb">
+                        <div class="layer__title">◈ Building-Block-Layer (17 BBs)</div>
+                        <div class="bb-tags">
+                            <span class="bb-tag">Identity</span>
+                            <span class="bb-tag">Portal & Formular</span>
+                            <span class="bb-tag">Postfach</span>
+                            <span class="bb-tag">Payment</span>
+                            <span class="bb-tag">EUDI Wallet</span>
+                            <span class="bb-tag">Register (NOOTS)</span>
+                            <span class="bb-tag">API-Gateway</span>
+                            <span class="bb-tag">Event-Bus</span>
+                            <span class="bb-tag">Consent</span>
+                            <span class="bb-tag">E-Signatur</span>
+                            <span class="bb-tag">BPM/Workflow</span>
+                            <span class="bb-tag">KI/AI-Gateway</span>
+                            <span class="bb-tag bb-tag--new">CMS (neu)</span>
+                            <span class="bb-tag bb-tag--new">Notification (neu)</span>
+                            <span class="bb-tag bb-tag--new">Scheduler (neu)</span>
+                            <span class="bb-tag bb-tag--new">DMS/E-Akte (neu)</span>
+                            <span class="bb-tag bb-tag--new">Knowledge Graph (neu)</span>
+                        </div>
+                    </div>
+                    <div class="layer layer--integration">
+                        <div class="layer__title">⇄ Integration-Layer</div>
+                        <div class="bb-tags">
+                            <span class="bb-tag">API-Gateway / Info. Mediator</span>
+                            <span class="bb-tag">Event-Bus (CloudEvents)</span>
+                            <span class="bb-tag">Semantic Mediator / Linked Data</span>
+                        </div>
+                    </div>
+                    <div class="layer layer--platform">
+                        <div class="layer__title">⚙ Plattform & Infrastruktur</div>
+                        <div class="bb-tags">
+                            <span class="bb-tag">IAM</span>
+                            <span class="bb-tag">Secret Mgmt</span>
+                            <span class="bb-tag">Policy Engine</span>
+                            <span class="bb-tag">SIEM</span>
+                            <span class="bb-tag">OpenTelemetry</span>
+                            <span class="bb-tag">Sovereign Cloud (SCS/Gaia-X)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 id="bb-tabelle">Alle 17 Building Blocks</h3>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>BB</th>
+                                <th>Rolle im Zielbild</th>
+                                <th>Nutzereffekt</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>BB-01 Identity</strong></td>
+                                <td>SSO, eID, Unternehmensidentität</td>
+                                <td>Eine Anmeldung für alles</td>
+                            </tr>
+                            <tr>
+                                <td><strong>BB-02 Portal & Formular</strong></td>
+                                <td>Adaptive Formulare, Vorausfüllung</td>
+                                <td>Kurze, intelligente Formulare</td>
+                            </tr>
+                            <tr>
+                                <td><strong>BB-03 Postfach</strong></td>
+                                <td>Zentraler Bescheideingang, Multi-Kanal</td>
+                                <td>Alle Behördenpost an einem Ort</td>
+                            </tr>
+                            <tr>
+                                <td><strong>BB-04 Payment</strong></td>
+                                <td>Gebühren, Erstattungen</td>
+                                <td>Sofort bezahlen / Erstattung</td>
+                            </tr>
+                            <tr>
+                                <td><strong>BB-05 EUDI Wallet</strong></td>
+                                <td>Personalausweis, Führerschein, VCs</td>
+                                <td>Ausweisen per Smartphone</td>
+                            </tr>
+                            <tr>
+                                <td><strong>BB-06 NOOTS</strong></td>
+                                <td>Registerabruf (Once-Only)</td>
+                                <td>Keine doppelte Dateneingabe</td>
+                            </tr>
+                            <tr>
+                                <td><strong>BB-07 API-Gateway</strong></td>
+                                <td>Routing, Rate-Limiting, Governance</td>
+                                <td>Schnelle, stabile Services</td>
+                            </tr>
+                            <tr>
+                                <td><strong>BB-08 Event-Bus</strong></td>
+                                <td>Asynchrone Entkopplung, Echtzeit</td>
+                                <td>Sofortige Statusupdates</td>
+                            </tr>
+                            <tr>
+                                <td><strong>BB-09 Consent</strong></td>
+                                <td>Granulare Einwilligungen</td>
+                                <td>Volle Datenkontrolle</td>
+                            </tr>
+                            <tr>
+                                <td><strong>BB-10 E-Signatur</strong></td>
+                                <td>QES für Anträge und Bescheide</td>
+                                <td>Rechtsgültig per App unterschreiben</td>
+                            </tr>
+                            <tr>
+                                <td><strong>BB-11 BPM/Workflow</strong></td>
+                                <td>Antragsorchestrierung, Parallelbearbeitung</td>
+                                <td>Schnellere Bearbeitung</td>
+                            </tr>
+                            <tr>
+                                <td><strong>BB-12 KI/AI-Gateway</strong></td>
+                                <td>Chatbot, Anspruchsprüfung, Leichte Sprache</td>
+                                <td>Intelligente Hilfe</td>
+                            </tr>
+                            <tr>
+                                <td style="color:rgb(52,211,153)"><strong>BB-13 CMS</strong> ★</td>
+                                <td>Content-Plattform, barrierefreie Infos</td>
+                                <td>Aktuelle Informationen</td>
+                            </tr>
+                            <tr>
+                                <td style="color:rgb(52,211,153)"><strong>BB-14 Notification</strong> ★</td>
+                                <td>Push, SMS, E-Mail, Postfach – Multi-Kanal</td>
+                                <td>Proaktive Erinnerungen</td>
+                            </tr>
+                            <tr>
+                                <td style="color:rgb(52,211,153)"><strong>BB-15 Scheduler</strong> ★</td>
+                                <td>Terminbuchung bei Behörden</td>
+                                <td>Online-Terminbuchung</td>
+                            </tr>
+                            <tr>
+                                <td style="color:rgb(52,211,153)"><strong>BB-16 DMS/E-Akte</strong> ★</td>
+                                <td>Dokumentenmanagement, E-Akte</td>
+                                <td>Alle Dokumente digital</td>
+                            </tr>
+                            <tr>
+                                <td style="color:rgb(52,211,153)"><strong>BB-17 Knowledge Graph</strong> ★</td>
+                                <td>Semantische Vernetzung, Leistungskatalog</td>
+                                <td>KI kann Leistungen finden</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="font-size:.85rem;color:var(--color-text-secondary)">★ = Neu im Zielbild 2031 (bisher nicht im
+                    Stack enthalten)</p>
+
+                <!-- ═══════════════════════════════════════════════ -->
+                <!-- 8  QUALITÄTSKRITERIEN -->
+                <!-- ═══════════════════════════════════════════════ -->
+                <h2 id="qualitaet">8 · Nutzererlebnis-Qualitätskriterien</h2>
+
+                <div
+                    style="border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;margin:var(--space-4) 0">
+                    <div class="metric-row"><span>Kriterium</span><span>Zielwert</span><span>Messmethode</span></div>
+                    <div class="metric-row"><span>Time-to-Service</span><span class="metric-value">&lt; 5
+                            min</span><span>Median Antragsdauer</span></div>
+                    <div class="metric-row"><span>Einmal-Interaktion</span><span
+                            class="metric-value">80%</span><span>Nachforderungsquote</span></div>
+                    <div class="metric-row"><span>Proaktive Angebote</span><span class="metric-value">20
+                            Lebensereignisse</span><span>Katalog</span></div>
+                    <div class="metric-row"><span>Barrierefreiheit</span><span class="metric-value">100%
+                            AA</span><span>Automatisierter + manueller Audit</span></div>
+                    <div class="metric-row"><span>Nutzerzufriedenheit</span><span class="metric-value">NPS ≥
+                            60</span><span>Halbjährliche Befragung</span></div>
+                    <div class="metric-row"><span>Erreichbarkeit</span><span
+                            class="metric-value">99,9%</span><span>Uptime-Monitoring</span></div>
+                    <div class="metric-row"><span>Mobile Nutzung</span><span class="metric-value">≥
+                            60%</span><span>Analytics (anonymisiert)</span></div>
+                    <div class="metric-row"><span>Consent-Transparenz</span><span
+                            class="metric-value">100%</span><span>Audit-Log-Vollständigkeit</span></div>
+                    <div class="metric-row"><span>Bearbeitungsdauer</span><span class="metric-value">&lt; 5
+                            Werktage</span><span>End-to-End-Tracking</span></div>
+                </div>
+
+                <!-- ═══════════════════════════════════════════════ -->
+                <!-- 9  ENABLER -->
+                <!-- ═══════════════════════════════════════════════ -->
+                <h2 id="enabler">9 · Von Heute zum Zielbild – Enabler</h2>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Enabler</th>
+                                <th>Warum nötig</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td><strong>Einheitliches Design-System</strong></td>
+                                <td>Konsistente UX über alle Kanäle und Fachportale</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td><strong>Vollständige NOOTS-Anbindung</strong></td>
+                                <td>Once-Only nur wenn alle Register angeschlossen</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td><strong>Lebensereignis-Katalog</strong> (maschinenlesbar)</td>
+                                <td>Basis für proaktive Dienste und KI</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td><strong>EUDI Wallet-Rollout</strong></td>
+                                <td>Identifizierung und Credentials in der App</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td><strong>Consent-Management</strong> als Infrastruktur</td>
+                                <td>DSGVO-Compliance; Nutzervertrauen</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td><strong>KI-Modelle</strong> (Leichte Sprache, Chatbot)</td>
+                                <td>Inklusion und Proaktivität</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td><strong>BPM-Engine</strong> mit Standard-Prozessen</td>
+                                <td>Automatisierung und Parallelisierung</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td><strong>Semantischer Leistungskatalog</strong></td>
+                                <td>KI kann Leistungen finden und zuordnen</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td><strong>Mandantenfähige Plattform</strong></td>
+                                <td>Ein Portal, eine Codebasis, alle Mandanten</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td><strong>Organisationsübergreifende E-Akte</strong></td>
+                                <td>Behördenübergreifend ohne Medienbruch</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ═══════════════════════════════════════════════ -->
+                <!-- 10  ZUSAMMENFASSUNG -->
+                <!-- ═══════════════════════════════════════════════ -->
+                <h2 id="zusammenfassung">10 · Zusammenfassung</h2>
+
+                <ul class="vision-bullets">
+                    <li><strong>Unsichtbar:</strong> Bürger:innen interagieren mit einem einzigen digitalen Zugang.</li>
+                    <li><strong>Proaktiv:</strong> Der Staat erkennt Ansprüche und bietet sie aktiv an.</li>
+                    <li><strong>Datenschutz:</strong> DSGVO wird zur Vertrauensgrundlage, nicht zum Hindernis.</li>
+                    <li><strong>Schnell:</strong> Minuten statt Wochen für Standardvorgänge.</li>
+                    <li><strong>Inklusiv:</strong> Barrierefrei, mehrsprachig, assistenztechnologie-kompatibel.</li>
+                    <li><strong>Offen:</strong> Offene Schnittstellen, austauschbare Komponenten, Open Source.</li>
+                </ul>
+
+                <div class="callout callout--info">
+                    <div class="callout__icon">📄</div>
+                    <div class="callout__content">
+                        <div class="callout__title">Vollständiges Dokument</div>
+                        <div class="callout__body">
+                            Das Zielbild ist auch als
+                            <a href="https://github.com/" target="_blank">Markdown-Datei (ZIELBILD_2031.md)</a>
+                            im Repository verfügbar.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pagination">
+                    <a class="pagination__link pagination__link--prev" href="../index.html">
+                        <span class="pagination__dir">← Zurück</span>
+                        <span class="pagination__title">Startseite</span>
+                    </a>
+                    <a class="pagination__link pagination__link--next" href="../architecture/index.html">
+                        <span class="pagination__dir">Weiter →</span>
+                        <span class="pagination__title">Architektur</span>
+                    </a>
+                </div>
+
+                <div class="page-footer">
+                    <div class="page-footer__meta">Apache-2.0 · Version 1.0 · Februar 2026</div>
+                    <div class="page-footer__feedback">
+                        <span class="page-footer__feedback-label">War diese Seite hilfreich?</span>
+                        <div class="page-footer__feedback-btns">
+                            <button class="feedback-btn">👍 Ja</button>
+                            <button class="feedback-btn">👎 Nein</button>
+                        </div>
+                    </div>
+                </div>
+
+            </article>
+
+            <aside class="content__toc">
+                <div class="toc" id="toc">
+                    <div class="toc__title">Auf dieser Seite</div>
+                    <ul class="toc__list"></ul>
+                </div>
+            </aside>
+        </main>
+
+    </div>
+
+    <script src="../assets/js/shell.js"></script>
+    <script src="../assets/js/site.js"></script>
+</body>
+
+</html>

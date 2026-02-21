@@ -20,6 +20,7 @@ const SHELL_HTML = `
   </a>
   <div class="topbar__divider"></div>
   <nav class="topbar__nav">
+    <a class="topbar__nav-link" href="${ROOT}zielbild/index.html">Zielbild</a>
     <a class="topbar__nav-link" href="${ROOT}architecture/index.html">Architektur</a>
     <a class="topbar__nav-link" href="${ROOT}building-blocks/index.html">Building Blocks</a>
     <a class="topbar__nav-link" href="${ROOT}implementation-playbook/index.html">Playbook</a>
@@ -45,6 +46,16 @@ const SHELL_HTML = `
       <li class="sidebar__nav-item">
         <a class="sidebar__nav-link" href="${ROOT}index.html">
           <span class="sidebar__nav-link-icon">⬡</span> Übersicht
+        </a>
+      </li>
+      <li class="sidebar__nav-item">
+        <a class="sidebar__nav-link" href="${ROOT}zielbild/index.html">
+          <span class="sidebar__nav-link-icon">🎯</span> Zielbild 2031
+        </a>
+      </li>
+      <li class="sidebar__nav-item">
+        <a class="sidebar__nav-link" href="${ROOT}deutschland-app/index.html">
+          <span class="sidebar__nav-link-icon">📱</span> Deutschland-App
         </a>
       </li>
     </ul>
@@ -157,34 +168,34 @@ const SHELL_HTML = `
 
 // Compute relative root from current page depth
 function computeRelativeRoot() {
-    if (window.location.protocol === 'file:') {
-        const parts = window.location.pathname.split('/');
-        const docsIdx = parts.findIndex(p => p === 'docs');
-        if (docsIdx !== -1) {
-            const depth = parts.length - docsIdx - 2; // files below docs/
-            return depth > 0 ? '../'.repeat(depth) : './';
-        }
+  if (window.location.protocol === 'file:') {
+    const parts = window.location.pathname.split('/');
+    const docsIdx = parts.findIndex(p => p === 'docs');
+    if (docsIdx !== -1) {
+      const depth = parts.length - docsIdx - 2; // files below docs/
+      return depth > 0 ? '../'.repeat(depth) : './';
     }
-    // For a web server: count path segments below /docs/
-    const pathParts = window.location.pathname.replace(/\/+$/, '').split('/');
-    const docsIdx = pathParts.findIndex(p => p === 'docs');
-    const depth = docsIdx !== -1 ? pathParts.length - docsIdx - 2 : 0;
-    return depth > 0 ? '../'.repeat(depth) : './';
+  }
+  // For a web server: count path segments below /docs/
+  const pathParts = window.location.pathname.replace(/\/+$/, '').split('/');
+  const docsIdx = pathParts.findIndex(p => p === 'docs');
+  const depth = docsIdx !== -1 ? pathParts.length - docsIdx - 2 : 0;
+  return depth > 0 ? '../'.repeat(depth) : './';
 }
 
 // Inject shell into .layout
 (function () {
-    const layout = document.querySelector('.layout');
-    if (!layout) return;
+  const layout = document.querySelector('.layout');
+  if (!layout) return;
 
-    const ROOT = computeRelativeRoot();
-    const html = SHELL_HTML.replace(/\${ROOT}/g, ROOT);
+  const ROOT = computeRelativeRoot();
+  const html = SHELL_HTML.replace(/\${ROOT}/g, ROOT);
 
-    layout.insertAdjacentHTML('afterbegin', html);
+  layout.insertAdjacentHTML('afterbegin', html);
 
-    // Update document title
-    const meta = window.PAGE_META || {};
-    if (meta.title) {
-        document.title = `${meta.title} | VerwDigiStack Spec`;
-    }
+  // Update document title
+  const meta = window.PAGE_META || {};
+  if (meta.title) {
+    document.title = `${meta.title} | VerwDigiStack Spec`;
+  }
 })();
