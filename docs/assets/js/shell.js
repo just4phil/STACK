@@ -63,6 +63,11 @@ const SHELL_HTML = `
           <span class="sidebar__nav-link-icon">📊</span> GAP-Analyse
         </a>
       </li>
+      <li class="sidebar__nav-item">
+        <a class="sidebar__nav-link" href="${ROOT}fachverfahren/index.html">
+          <span class="sidebar__nav-link-icon">⚙️</span> Fachverfahren
+        </a>
+      </li>
     </ul>
   </div>
 
