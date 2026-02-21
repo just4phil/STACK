@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deutschland-App – VerwDigiStack Spezifikation</title>
+    <meta name="description"
+        content="Die Verwaltungs-Super-App: Funktionale Struktur, Machbarkeit und dezentrale Umsetzungsarchitektur.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/tokens.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <style>
+        /* ── Deutschland-App – page-specific styles ──────────── */
+        .verdict {
+            position: relative;
+            padding: var(--space-6);
+            margin: var(--space-5) 0;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, rgba(16, 185, 129, .12), rgba(52, 211, 153, .06));
+            border: 1px solid rgba(16, 185, 129, .25)
+        }
+
+        .verdict__label {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: var(--radius-sm);
+            background: rgba(16, 185, 129, .2);
+            color: rgb(52, 211, 153);
+            font-size: .78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            margin-bottom: var(--space-3)
+        }
+
+        .verdict p {
+            margin: 0;
+            font-size: 1.05rem;
+            line-height: 1.6
+        }
+
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 180px 1fr 1fr;
+            gap: 1px;
+            background: var(--color-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin: var(--space-5) 0;
+            font-size: .88rem
+        }
+
+        .compare-grid__cell {
+            padding: var(--space-3);
+            background: var(--color-bg-secondary)
+        }
+
+        .compare-grid__cell--head {
+            background: var(--color-bg-tertiary);
+            font-weight: 600;
+            font-size: .8rem;
+            text-transform: uppercase;
+            letter-spacing: .03em;
+            color: var(--color-text-secondary)
+        }
+
+        .compare-grid__cell--win {
+            background: rgba(16, 185, 129, .08);
+            border-left: 3px solid rgba(16, 185, 129, .5)
+        }
+
+        @media(max-width:640px) {
+            .compare-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .ref-flags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-3);
+            margin: var(--space-4) 0
+        }
+
+        .ref-flag {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-3);
+            border-radius: var(--radius-md);
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            font-size: .88rem
+        }
+
+        .ref-flag__emoji {
+            font-size: 1.3rem
+        }
+
+        .ref-flag strong {
+            font-weight: 600
+        }
+
+        .tab-showcase {
+            display: grid;
+            gap: var(--space-4);
+            margin: var(--space-5) 0
+        }
+
+        .tab-card {
+            padding: var(--space-5);
+            border-radius: var(--radius-lg);
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            transition: border-color .2s
+        }
+
+        .tab-card:hover {
+            border-color: var(--color-accent)
+        }
+
+        .tab-card__head {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            margin-bottom: var(--space-3)
+        }
+
+        .tab-card__icon {
+            font-size: 1.8rem;
+            width: 2.6rem;
+            height: 2.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-md);
+            background: rgba(99, 102, 241, .12)
+        }
+
+        .tab-card__title {
+            font-weight: 700;
+            font-size: 1.1rem
+        }
+
+        .tab-card__subtitle {
+            font-size: .82rem;
+            color: var(--color-text-secondary);
+            margin-top: 2px
+        }
+
+        .tab-card__features {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: var(--space-2);
+            margin-top: var(--space-3)
+        }
+
+        .tab-card__feature {
+            display: flex;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-3);
+            background: var(--color-bg-tertiary);
+            border-radius: var(--radius-sm);
+            font-size: .85rem;
+            line-height: 1.4
+        }
+
+        .tab-card__feature-icon {
+            flex-shrink: 0;
+            margin-top: 2px;
+            color: var(--color-accent)
+        }
+
+        .pattern-section {
+            padding: var(--space-5);
+            border-radius: var(--radius-lg);
+            margin: var(--space-4) 0;
+            border: 1px solid var(--color-border)
+        }
+
+        .pattern-section--native {
+            background: linear-gradient(135deg, rgba(99, 102, 241, .08), rgba(139, 92, 246, .04));
+            border-color: rgba(99, 102, 241, .2)
+        }
+
+        .pattern-section--webview {
+            background: linear-gradient(135deg, rgba(245, 158, 11, .08), rgba(251, 191, 36, .04));
+            border-color: rgba(245, 158, 11, .2)
+        }
+
+        .pattern-section--api {
+            background: linear-gradient(135deg, rgba(16, 185, 129, .08), rgba(52, 211, 153, .04));
+            border-color: rgba(16, 185, 129, .2)
+        }
+
+        .pattern-section__label {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: var(--radius-sm);
+            font-size: .75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            margin-bottom: var(--space-2)
+        }
+
+        .pattern-section__label--native {
+            background: rgba(99, 102, 241, .15);
+            color: rgb(165, 180, 252)
+        }
+
+        .pattern-section__label--webview {
+            background: rgba(245, 158, 11, .15);
+            color: rgb(251, 191, 36)
+        }
+
+        .pattern-section__label--api {
+            background: rgba(16, 185, 129, .15);
+            color: rgb(52, 211, 153)
+        }
+
+        .pattern-section h4 {
+            margin-top: 0;
+            font-size: 1rem
+        }
+
+        .pattern-section__use {
+            font-size: .9rem;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-2)
+        }
+
+        .pattern-section ul {
+            font-size: .9rem;
+            line-height: 1.7
+        }
+
+        .arch-layer {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            margin: var(--space-5) 0
+        }
+
+        .arch-layer__block {
+            padding: var(--space-4);
+            border-radius: var(--radius-md);
+            font-size: .9rem
+        }
+
+        .arch-layer__title {
+            font-weight: 700;
+            font-size: .82rem;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            margin-bottom: var(--space-2)
+        }
+
+        .arch-layer__block--shell {
+            background: linear-gradient(135deg, rgba(99, 102, 241, .15), rgba(139, 92, 246, .08));
+            border: 1px solid rgba(99, 102, 241, .2)
+        }
+
+        .arch-layer__block--modules {
+            background: linear-gradient(135deg, rgba(245, 158, 11, .1), rgba(251, 191, 36, .05));
+            border: 1px solid rgba(245, 158, 11, .2)
+        }
+
+        .arch-layer__block--platform {
+            background: linear-gradient(135deg, rgba(100, 116, 139, .12), rgba(148, 163, 184, .05));
+            border: 1px solid rgba(100, 116, 139, .2)
+        }
+
+        .arch-layer__block--apis {
+            background: linear-gradient(135deg, rgba(16, 185, 129, .1), rgba(52, 211, 153, .05));
+            border: 1px solid rgba(16, 185, 129, .2)
+        }
+
+        .arch-layer .bb-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-1);
+            margin-top: var(--space-2)
+        }
+
+        .arch-layer .bb-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: var(--radius-sm);
+            font-size: .78rem;
+            background: rgba(255, 255, 255, .06);
+            border: 1px solid rgba(255, 255, 255, .08)
+        }
+
+        .cross-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: var(--space-3);
+            margin: var(--space-4) 0
+        }
+
+        .cross-feature {
+            padding: var(--space-3);
+            border-radius: var(--radius-md);
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            font-size: .88rem
+        }
+
+        .cross-feature__title {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            margin-bottom: var(--space-1);
+            font-size: .9rem
+        }
+
+        .gov-model {
+            display: grid;
+            gap: var(--space-3);
+            margin: var(--space-4) 0
+        }
+
+        .gov-model__rule {
+            padding: var(--space-3) var(--space-4);
+            border-radius: var(--radius-md);
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            font-size: .9rem;
+            border-left: 3px solid var(--color-accent)
+        }
+
+        .gov-model__rule strong {
+            color: var(--color-accent)
+        }
+
+        .phase-timeline {
+            display: grid;
+            gap: var(--space-3);
+            margin: var(--space-5) 0;
+            counter-reset: phase
+        }
+
+        .phase-card {
+            counter-increment: phase;
+            position: relative;
+            padding: var(--space-4) var(--space-4) var(--space-4) 4rem;
+            border-radius: var(--radius-lg);
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            font-size: .9rem
+        }
+
+        .phase-card::before {
+            content: counter(phase);
+            position: absolute;
+            left: var(--space-4);
+            top: var(--space-4);
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--color-accent);
+            color: #fff;
+            font-size: .85rem;
+            font-weight: 700
+        }
+
+        .phase-card__title {
+            font-weight: 700;
+            margin-bottom: var(--space-1)
+        }
+
+        .phase-card__time {
+            font-size: .8rem;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-2)
+        }
+
+        .code-contract {
+            background: var(--color-bg-tertiary);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-4);
+            margin: var(--space-4) 0;
+            overflow-x: auto;
+            font-size: .82rem;
+            line-height: 1.6
+        }
+
+        .code-contract code {
+            font-family: var(--font-mono);
+            color: var(--color-text-primary)
+        }
+
+        .code-contract .kw {
+            color: rgb(198, 120, 221)
+        }
+
+        .code-contract .tp {
+            color: rgb(86, 182, 194)
+        }
+
+        .code-contract .cm {
+            color: var(--color-text-muted)
+        }
+
+        .code-contract .st {
+            color: rgb(152, 195, 121)
+        }
+
+        @media(min-width:768px) {
+            .tab-showcase {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <script>window.PAGE_META = { title: 'Deutschland-App', section: 'Deutschland-App' };</script>
+
+    <div class="layout">
+
+        <main class="content">
+            <article class="content__main prose">
+
+                <!-- HEADER -->
+                <div class="prose-header">
+                    <div class="prose-header__breadcrumb">
+                        <a href="../index.html">VerwDigiStack</a>
+                        <span class="prose-header__breadcrumb-sep">/</span>
+                        <span>Deutschland-App</span>
+                    </div>
+                    <div class="prose-header__meta">
+                        <span class="prose-header__tag"
+                            style="background:rgba(139,92,246,.15);color:rgb(196,181,253)">📱 Super-App</span>
+                        <span class="prose-header__version">Version 1.0 · Februar 2026</span>
+                    </div>
+                    <h1>Deutschland-App: Die Verwaltungs-Super-App</h1>
+                    <p>
+                        Alle staatlichen Dienste in einer App – ohne App-Sprünge, ohne Multi-Login.
+                        eID, Wallet, Anträge, Postfach, Consent, Behördenkommunikation, Payment
+                        und Statusverfolgung in einer einzigen, nutzerzentrierten Super-App.
+                    </p>
+                </div>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- 1  ANALYSE -->
+                <!-- ═══════════════════════════════════════ -->
+                <h2 id="analyse">1 · Super-App vs. Multi-App – Ist das sinnvoll?</h2>
+
+                <div class="verdict">
+                    <div class="verdict__label">✓ Bewertung</div>
+                    <p>
+                        <strong>Ja – eine Super-App ist sinnvoll, realistisch und international erprobt.</strong>
+                        Der Schlüssel liegt in der richtigen Architektur: App-Shell + dezentrale Module + verbindliche
+                        APIs.
+                    </p>
+                </div>
+
+                <div class="compare-grid">
+                    <div class="compare-grid__cell compare-grid__cell--head">Faktor</div>
+                    <div class="compare-grid__cell compare-grid__cell--head">Multi-App (Status quo)</div>
+                    <div class="compare-grid__cell compare-grid__cell--head">Super-App (Zielbild)</div>
+
+                    <div class="compare-grid__cell">Nutzererlebnis</div>
+                    <div class="compare-grid__cell">App-Sprünge, verschiedene Logins, inkonsistente UX</div>
+                    <div class="compare-grid__cell compare-grid__cell--win">Ein Einstiegspunkt, ein Login, ein Design
+                    </div>
+
+                    <div class="compare-grid__cell">Adoption</div>
+                    <div class="compare-grid__cell">Nutzer installieren nur 1–2 Apps</div>
+                    <div class="compare-grid__cell compare-grid__cell--win">Eine App → immer schon installiert</div>
+
+                    <div class="compare-grid__cell">Auffindbarkeit</div>
+                    <div class="compare-grid__cell">Welche App für welche Leistung?</div>
+                    <div class="compare-grid__cell compare-grid__cell--win">„Alles in der Deutschland-App"</div>
+
+                    <div class="compare-grid__cell">Authentifizierung</div>
+                    <div class="compare-grid__cell">Pro App neu oder SSO konfigurieren</div>
+                    <div class="compare-grid__cell compare-grid__cell--win">Einmal anmelden → fertig</div>
+
+                    <div class="compare-grid__cell">Datensouveränität</div>
+                    <div class="compare-grid__cell">Consent pro App verteilt</div>
+                    <div class="compare-grid__cell compare-grid__cell--win">Zentrales Consent-Center</div>
+
+                    <div class="compare-grid__cell">Wartung</div>
+                    <div class="compare-grid__cell">5+ Apps updaten</div>
+                    <div class="compare-grid__cell compare-grid__cell--win">Eine App updaten</div>
+                </div>
+
+                <h3 id="international">Internationale Referenzen</h3>
+                <div class="ref-flags">
+                    <div class="ref-flag"><span class="ref-flag__emoji">🇪🇪</span>
+                        <div><strong>Estland – mRiik</strong><br>99% aller Verwaltungsleistungen digital</div>
+                    </div>
+                    <div class="ref-flag"><span class="ref-flag__emoji">🇸🇬</span>
+                        <div><strong>Singapur – Singpass</strong><br>Super-App, 2.000+ Services, 97% Adoption</div>
+                    </div>
+                    <div class="ref-flag"><span class="ref-flag__emoji">🇺🇦</span>
+                        <div><strong>Ukraine – Diia</strong><br>Wallet + Anträge + Postfach, 20 Mio. Nutzer</div>
+                    </div>
+                    <div class="ref-flag"><span class="ref-flag__emoji">🇮🇳</span>
+                        <div><strong>Indien – UMANG</strong><br>1.700+ Services von 300+ Behörden</div>
+                    </div>
+                    <div class="ref-flag"><span class="ref-flag__emoji">🇦🇹</span>
+                        <div><strong>Österreich – Digitales Amt</strong><br>Gebündelte Verwaltungsservices</div>
+                    </div>
+                </div>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- 2  FUNKTIONALE STRUKTUR -->
+                <!-- ═══════════════════════════════════════ -->
+                <h2 id="struktur">2 · Funktionale Struktur – Die 5 Tabs</h2>
+
+                <div class="tab-showcase">
+
+                    <!-- TAB 1 -->
+                    <div class="tab-card" style="grid-column:1/-1">
+                        <div class="tab-card__head">
+                            <div class="tab-card__icon">🏠</div>
+                            <div>
+                                <div class="tab-card__title">Tab 1 · Start (Dashboard)</div>
+                                <div class="tab-card__subtitle">Persönliches Startbild – kontextbezogen, proaktiv,
+                                    aktuell</div>
+                            </div>
+                        </div>
+                        <div class="tab-card__features">
+                            <div class="tab-card__feature"><span class="tab-card__feature-icon">→</span>Proaktive
+                                Karten: „Ihnen steht Kindergeld zu", „Ausweis läuft ab"</div>
+                            <div class="tab-card__feature"><span class="tab-card__feature-icon">→</span>Offene Vorgänge
+                                mit Status-Ampel und geschätzter Restzeit</div>
+                            <div class="tab-card__feature"><span class="tab-card__feature-icon">→</span>Vorschau
+                                neuester Postfach-Nachrichten</div>
+                            <div class="tab-card__feature"><span class="tab-card__feature-icon">→</span>4
+                                personalisierbare Quick Actions</div>
+                            <div class="tab-card__feature"><span class="tab-card__feature-icon">→</span>KI-Assistent:
+                                „Wie kann ich helfen?"</div>
+                            <div class="tab-card__feature"><span class="tab-card__feature-icon">→</span>Begrüßung mit
+                                Kontext (Uhrzeit, Standort)</div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 2 -->
+                    <div class="tab-card">
+                        <div class="tab-card__head">
+                            <div class="tab-card__icon">📋</div>
+                            <div>
+                                <div class="tab-card__title">Tab 2 · Services</div>
+                                <div class="tab-card__subtitle">Alle Verwaltungsleistungen</div>
+                            </div>
+                        </div>
+                        <div class="tab-card__features">
+                            <div class="tab-card__feature"><span class="tab-card__feature-icon">→</span>Freitextsuche +
+                                KI-Vorschläge</div>
+                            <div class="tab-card__feature"><span
+                                    class="tab-card__feature-icon">→</span>Lebenslagen-Navigation</div>
+                            <div class="tab-card__feature"><span class="tab-card__feature-icon">→</span>575+
+                                OZG-Leistungen</div>
+                            <div class="tab-card__feature"><span class="tab-card__feature-icon">→</span>Favoriten &
+                                Service-Karten</div>
+                            <div class="tab-card__feature"><span
+                                    class="tab-card__feature-icon">→</span>Fachportal-Integration via WebView</div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 3 -->
+                    <div class="tab-card">
+                        <div class="tab-card__head">
+                            <div class="tab-card__icon">📬</div>
+                            <div>
+                                <div class="tab-card__title">Tab 3 · Postfach</div>
+                                <div class="tab-card__subtitle">Kommunikation & Bescheide</div>
+                            </div>
+                        </div>
+                        <div class="tab-card__features">
+                            <div class="tab-card__feature"><span class="tab-card__feature-icon">→</span>Alle
+                                Behördenpost an einem Ort</div>
+                            <div class="tab-card__feature"><span class="tab-card__feature-icon">→</span>Bescheid-Viewer
+                                + QES-Prüfung</div>
+                            <div class="tab-card__feature"><span class="tab-card__feature-icon">→</span>Antwort-Funktion
+                                & Behörden-Chat</div>
+                            <div class="tab-card__feature"><span class="tab-card__feature-icon">→</span>Granulare
+                                Push-Einstellungen</div>
+                            <div class="tab-card__feature"><span class="tab-card__feature-icon">→</span>Durchsuchbares
+                                Archiv</div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 4 -->
+                    <div class="tab-card">
+                        <div class="tab-card__head">
+                            <div class="tab-card__icon">👛</div>
+                            <div>
+                                <div class="tab-card__title">Tab 4 · Wallet</div>
+                                <div class="tab-card__subtitle">Digitale Ausweise & Nachweise</div>
+                            </div>
+                        </div>
+                        <div class="tab-card__features">
+                            <div class="tab-card__feature"><span class="tab-card__feature-icon">→</span>Personalausweis
+                                (PID via NFC)</div>
+                            <div class="tab-card__feature"><span class="tab-card__feature-icon">→</span>Führerschein
+                                (mDL)</div>
+                            <div class="tab-card__feature"><span class="tab-card__feature-icon">→</span>Bescheide als
+                                Verifiable Credentials</div>
+                            <div class="tab-card__feature"><span class="tab-card__feature-icon">→</span>Selective
+                                Disclosure</div>
+                            <div class="tab-card__feature"><span class="tab-card__feature-icon">→</span>QR/NFC-Scanner &
+                                Backup</div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 5 -->
+                    <div class="tab-card">
+                        <div class="tab-card__head">
+                            <div class="tab-card__icon">⚙</div>
+                            <div>
+                                <div class="tab-card__title">Tab 5 · Konto</div>
+                                <div class="tab-card__subtitle">Selbstverwaltung & Datenschutz</div>
+                            </div>
+                        </div>
+                        <div class="tab-card__features">
+                            <div class="tab-card__feature"><span class="tab-card__feature-icon">→</span>Consent-Center:
+                                Einwilligungen steuern</div>
+                            <div class="tab-card__feature"><span
+                                    class="tab-card__feature-icon">→</span>Datenabruf-Protokoll (DSGVO Art. 15)</div>
+                            <div class="tab-card__feature"><span class="tab-card__feature-icon">→</span>Datenexport &
+                                Löschanträge</div>
+                            <div class="tab-card__feature"><span class="tab-card__feature-icon">→</span>Vollmachten
+                                verwalten</div>
+                            <div class="tab-card__feature"><span class="tab-card__feature-icon">→</span>Zahlungsmittel,
+                                Sicherheit, Barrierefreiheit</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <h3 id="cross-funktionen">Übergreifende Funktionen</h3>
+                <div class="cross-features">
+                    <div class="cross-feature">
+                        <div class="cross-feature__title">🤖 KI-Chatbot</div>Floating Button auf jeder Seite: Fragen,
+                        Formularhilfe, Status
+                    </div>
+                    <div class="cross-feature">
+                        <div class="cross-feature__title">📝 Formular-Engine</div>Adaptive Formulare, Vorausfüllung,
+                        Zwischenspeicher
+                    </div>
+                    <div class="cross-feature">
+                        <div class="cross-feature__title">🔐 Biometrie-Auth</div>Face ID / Fingerabdruck + PIN-Fallback
+                    </div>
+                    <div class="cross-feature">
+                        <div class="cross-feature__title">💳 In-App Payment</div>Apple Pay / Google Pay / SEPA, kein
+                        App-Wechsel
+                    </div>
+                    <div class="cross-feature">
+                        <div class="cross-feature__title">✍ E-Signatur (QES)</div>Qualifiziert signieren direkt in der
+                        App
+                    </div>
+                    <div class="cross-feature">
+                        <div class="cross-feature__title">📅 Terminbuchung</div>Behördentermine buchen +
+                        Kalender-Integration
+                    </div>
+                    <div class="cross-feature">
+                        <div class="cross-feature__title">🔗 Deep Links</div>Jeder Antrag hat eine URL: teilbar,
+                        bookmarkbar
+                    </div>
+                    <div class="cross-feature">
+                        <div class="cross-feature__title">📴 Offline-Modus</div>Wallet, Bescheide, Entwürfe offline
+                        verfügbar
+                    </div>
+                </div>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- 3  ARCHITEKTUR -->
+                <!-- ═══════════════════════════════════════ -->
+                <h2 id="architektur">3 · Dezentrale Umsetzungsarchitektur</h2>
+
+                <div class="callout callout--info">
+                    <div class="callout__icon">💡</div>
+                    <div class="callout__content">
+                        <div class="callout__title">Das Kernproblem</div>
+                        <div class="callout__body">
+                            Wie baut man <strong>eine einheitliche App</strong>, wenn 50+ Teams an 17+
+                            Building Blocks arbeiten, jeder sein eigenes Release-Tempo hat und
+                            niemand auf niemanden warten soll?
+                        </div>
+                    </div>
+                </div>
+
+                <div class="verdict">
+                    <div class="verdict__label">Lösung</div>
+                    <p><strong>App-Shell + Module Federation + API-Integration.</strong> Die App-Shell ist der
+                        einheitliche Container; Module werden von verschiedenen Teams gebaut und zur Laufzeit
+                        integriert.</p>
+                </div>
+
+                <h3 id="schichten">App-Architektur (Schichtenmodell)</h3>
+                <div class="arch-layer">
+                    <div class="arch-layer__block arch-layer__block--shell">
+                        <div class="arch-layer__title">📱 App-Shell (zentral gepflegt)</div>
+                        <div class="bb-tags">
+                            <span class="bb-tag">Navigation & Tab-Bar</span>
+                            <span class="bb-tag">Auth-Gate (Biometrie)</span>
+                            <span class="bb-tag">Design-System</span>
+                            <span class="bb-tag">Push-Handler</span>
+                            <span class="bb-tag">Offline-Layer</span>
+                            <span class="bb-tag">Module-Loader</span>
+                            <span class="bb-tag">Shared APIs (Consent, Payment, Signatur)</span>
+                        </div>
+                    </div>
+                    <div class="arch-layer__block arch-layer__block--modules">
+                        <div class="arch-layer__title">🧩 Funktionsmodule (dezentral gepflegt)</div>
+                        <div class="bb-tags">
+                            <span class="bb-tag">eID / Auth (BB-01)</span>
+                            <span class="bb-tag">Wallet (BB-05)</span>
+                            <span class="bb-tag">Formular-Engine (BB-02)</span>
+                            <span class="bb-tag">Postfach (BB-03)</span>
+                            <span class="bb-tag">Payment (BB-04)</span>
+                            <span class="bb-tag">E-Signatur (BB-10)</span>
+                            <span class="bb-tag">KI-Chatbot (BB-12)</span>
+                            <span class="bb-tag">Leistungskatalog (BB-13/17)</span>
+                            <span class="bb-tag">Termine (BB-15)</span>
+                            <span class="bb-tag">Consent-Center (BB-09)</span>
+                        </div>
+                    </div>
+                    <div class="arch-layer__block arch-layer__block--platform">
+                        <div class="arch-layer__title">🔒 On-Device Plattform</div>
+                        <div class="bb-tags">
+                            <span class="bb-tag">Secure Enclave</span>
+                            <span class="bb-tag">SQLite / Realm</span>
+                            <span class="bb-tag">Biometrie-API</span>
+                            <span class="bb-tag">Kryptografie</span>
+                            <span class="bb-tag">FCM / APNs</span>
+                        </div>
+                    </div>
+                    <div class="arch-layer__block arch-layer__block--apis">
+                        <div class="arch-layer__title">⇄ Backend APIs (via API-Gateway BB-07)</div>
+                        <div class="bb-tags">
+                            <span class="bb-tag">BB-01 … BB-17 APIs</span>
+                            <span class="bb-tag">OpenAPI 3.1</span>
+                            <span class="bb-tag">mTLS</span>
+                            <span class="bb-tag">OIDC Token</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 id="integrationsmuster">Drei Integrationsmuster</h3>
+
+                <div class="pattern-section pattern-section--native">
+                    <div class="pattern-section__label pattern-section__label--native">Muster 1: Native Module</div>
+                    <h4>Für Hardware-nahe Features</h4>
+                    <div class="pattern-section__use"><strong>Einsatz:</strong> Wallet, eID/PID, Biometrie, E-Signatur,
+                        Payment, Push</div>
+                    <ul>
+                        <li>Module werden als <strong>native Libraries</strong> (Swift Package / Kotlin Module) gebaut
+                        </li>
+                        <li>App-Shell bindet sie über ein <strong>Module Interface Protocol</strong> ein</li>
+                        <li>Nutzen zentrale <strong>Design-System-Library</strong></li>
+                        <li>Updates über <strong>App Store Release</strong> (2-Wochen-Zyklus)</li>
+                    </ul>
+                </div>
+
+                <div class="pattern-section pattern-section--webview">
+                    <div class="pattern-section__label pattern-section__label--webview">Muster 2: WebView-Module</div>
+                    <h4>Für Content- und Formular-Features</h4>
+                    <div class="pattern-section__use"><strong>Einsatz:</strong> Formulare, Leistungskatalog,
+                        Fachportale, KI-Chatbot</div>
+                    <ul>
+                        <li>Module werden als <strong>Micro-Frontends</strong> (React/Vue) auf CDN deployt</li>
+                        <li>App lädt sie in einen <strong>eingebetteten WebView</strong></li>
+                        <li><strong>JavaScript Bridge</strong> für native Features: Consent-Dialog, Signatur, Payment
+                        </li>
+                        <li>Module-Teams können <strong>täglich deployen</strong> ohne App-Update</li>
+                    </ul>
+                </div>
+
+                <div class="pattern-section pattern-section--api">
+                    <div class="pattern-section__label pattern-section__label--api">Muster 3: API-only</div>
+                    <h4>Für Daten-Features</h4>
+                    <div class="pattern-section__use"><strong>Einsatz:</strong> Postfach-Listen, Antragsstatus, Termine,
+                        Consent-Dashboard, Protokolle</div>
+                    <ul>
+                        <li>App-Shell enthält die <strong>UI-Komponenten</strong> (Listen, Karten, Detail-Views)</li>
+                        <li>BB-Teams liefern nur die <strong>API</strong> (OpenAPI 3.1 Contract)</li>
+                        <li><strong>Lokales Caching</strong> für Offline-Zugang</li>
+                        <li>Kein eigener UI-Code vom BB-Team nötig</li>
+                    </ul>
+                </div>
+
+                <h3 id="modulzuordnung">Modulzuordnung</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Modul</th>
+                                <th>Muster</th>
+                                <th>BB-Team</th>
+                                <th>Begründung</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>eID / Identifizierung</td>
+                                <td><span class="req req--muss">Native</span></td>
+                                <td>BB-01 + BB-05</td>
+                                <td>NFC, Secure Enclave</td>
+                            </tr>
+                            <tr>
+                                <td>Wallet (Credentials)</td>
+                                <td><span class="req req--muss">Native</span></td>
+                                <td>BB-05</td>
+                                <td>Kryptografie, Biometrie</td>
+                            </tr>
+                            <tr>
+                                <td>E-Signatur</td>
+                                <td><span class="req req--muss">Native</span></td>
+                                <td>BB-10</td>
+                                <td>Secure Enclave</td>
+                            </tr>
+                            <tr>
+                                <td>Payment</td>
+                                <td><span class="req req--muss">Native</span></td>
+                                <td>BB-04</td>
+                                <td>Apple Pay / Google Pay</td>
+                            </tr>
+                            <tr>
+                                <td>Formular-Engine</td>
+                                <td><span class="req req--soll">WebView</span></td>
+                                <td>BB-02</td>
+                                <td>Häufige Änderungen</td>
+                            </tr>
+                            <tr>
+                                <td>Leistungskatalog</td>
+                                <td><span class="req req--soll">WebView</span></td>
+                                <td>BB-13 / BB-17</td>
+                                <td>Content-heavy</td>
+                            </tr>
+                            <tr>
+                                <td>KI-Chatbot</td>
+                                <td><span class="req req--soll">WebView</span></td>
+                                <td>BB-12</td>
+                                <td>Schnelle KI-Iteration</td>
+                            </tr>
+                            <tr>
+                                <td>Fachportal-Views</td>
+                                <td><span class="req req--soll">WebView</span></td>
+                                <td>Fachteams</td>
+                                <td>Bestehende Web-UIs</td>
+                            </tr>
+                            <tr>
+                                <td>Postfach</td>
+                                <td><span class="req req--kann">API-only</span></td>
+                                <td>BB-03</td>
+                                <td>Standard-Listen</td>
+                            </tr>
+                            <tr>
+                                <td>Antragstracker</td>
+                                <td><span class="req req--kann">API-only</span></td>
+                                <td>BB-11</td>
+                                <td>Standard-Status</td>
+                            </tr>
+                            <tr>
+                                <td>Termine</td>
+                                <td><span class="req req--kann">API-only</span></td>
+                                <td>BB-15</td>
+                                <td>Kalenderansicht</td>
+                            </tr>
+                            <tr>
+                                <td>Consent-Center</td>
+                                <td><span class="req req--kann">API-only</span></td>
+                                <td>BB-09</td>
+                                <td>Liste + Toggles</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- 4  MODULE INTERFACE CONTRACT -->
+                <!-- ═══════════════════════════════════════ -->
+                <h2 id="contract">4 · Module Interface Contract</h2>
+                <p>Damit dezentrale Teams Module liefern können, braucht es einen verbindlichen Vertrag:</p>
+
+                <div class="code-contract">
+                    <code>
+<span class="kw">interface</span> <span class="tp">DeutschlandAppModule</span> {<br>
+&nbsp;&nbsp;<span class="cm">// Identifikation</span><br>
+&nbsp;&nbsp;moduleId: <span class="tp">string</span>;           <span class="cm">// z.B. "postfach", "wallet"</span><br>
+&nbsp;&nbsp;version: <span class="tp">string</span>;            <span class="cm">// SemVer</span><br>
+&nbsp;&nbsp;integrationType: <span class="st">'native'</span> | <span class="st">'webview'</span> | <span class="st">'api-only'</span>;<br><br>
+&nbsp;&nbsp;<span class="cm">// Lifecycle</span><br>
+&nbsp;&nbsp;initialize(ctx: <span class="tp">AppContext</span>): <span class="tp">Promise</span>&lt;<span class="tp">void</span>&gt;;<br>
+&nbsp;&nbsp;activate(): <span class="tp">void</span>;<br>
+&nbsp;&nbsp;deactivate(): <span class="tp">void</span>;<br><br>
+&nbsp;&nbsp;<span class="cm">// Navigation & Deep Links</span><br>
+&nbsp;&nbsp;routes: <span class="tp">RouteDefinition</span>[];<br>
+&nbsp;&nbsp;deepLinks: <span class="tp">DeepLinkPattern</span>[];  <span class="cm">// "deutschland://postfach/{id}"</span><br><br>
+&nbsp;&nbsp;<span class="cm">// Badges & Offline</span><br>
+&nbsp;&nbsp;getBadgeCount(): <span class="tp">Promise</span>&lt;<span class="tp">number</span>&gt;;<br>
+&nbsp;&nbsp;offlineCapable: <span class="tp">boolean</span>;<br>
+}<br><br>
+<span class="cm">// Die App-Shell stellt bereit:</span><br>
+<span class="kw">interface</span> <span class="tp">AppContext</span> {<br>
+&nbsp;&nbsp;authToken: <span class="tp">string</span>;        <span class="cm">// OIDC Access Token</span><br>
+&nbsp;&nbsp;theme: <span class="tp">ThemeTokens</span>;       <span class="cm">// Design-System Tokens</span><br>
+&nbsp;&nbsp;bridge: <span class="tp">AppBridge</span>;        <span class="cm">// Consent, Payment, Signatur</span><br>
+&nbsp;&nbsp;apiGateway: <span class="tp">string</span>;      <span class="cm">// API-Gateway Base URL</span><br>
+}
+        </code>
+                </div>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- 5  GOVERNANCE -->
+                <!-- ═══════════════════════════════════════ -->
+                <h2 id="governance">5 · Governance-Modell</h2>
+                <p>Damit dezentrale Entwicklung nicht in UX-Chaos mündet:</p>
+
+                <div class="gov-model">
+                    <div class="gov-model__rule"><strong>1 · Modul-Zulassung:</strong> Jedes Modul durchläuft UX-,
+                        Security-, Performance- und A11y-Review</div>
+                    <div class="gov-model__rule"><strong>2 · Design-System-Pflicht:</strong> Module MÜSSEN die zentrale
+                        Component Library nutzen – keine Custom-Designs</div>
+                    <div class="gov-model__rule"><strong>3 · Contract-First:</strong> Interface Contract wird vor der
+                        Entwicklung definiert und abgenommen</div>
+                    <div class="gov-model__rule"><strong>4 · Automatisierte Quality Gates:</strong> CI/CD prüft:
+                        Design-Conformance (Screenshot-Diff), WCAG-Scan, Ladezeit &lt; 2s, SAST</div>
+                    <div class="gov-model__rule"><strong>5 · Release-Entkopplung:</strong> WebView-Module deployen
+                        unabhängig; Native Module im 2-Wochen-Zyklus</div>
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Zentrales Team</th>
+                                <th>Verantwortung</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Shell-Team</strong></td>
+                                <td>App-Shell, CI/CD, Module-Loader, Infrastruktur</td>
+                            </tr>
+                            <tr>
+                                <td><strong>UX-Team</strong></td>
+                                <td>Design-System, Barrierefreiheit, UX-Reviews, Quality Gates</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Security-Team</strong></td>
+                                <td>Pen-Tests, Code-Reviews, Dependency-Scanning</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Modul-Teams (dezentral)</strong></td>
+                                <td>Entwickeln, testen, deployen eigenständig nach Contract</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- 6  ROLLOUT -->
+                <!-- ═══════════════════════════════════════ -->
+                <h2 id="rollout">6 · Release-Strategie</h2>
+
+                <div class="phase-timeline">
+                    <div class="phase-card">
+                        <div class="phase-card__title">MVP (v1.0)</div>
+                        <div class="phase-card__time">Monat 0–6</div>
+                        eID/PID, Wallet (Personalausweis), Postfach, 10 Top-Services, KI-Assistent (Beta)
+                    </div>
+                    <div class="phase-card">
+                        <div class="phase-card__title">v1.5</div>
+                        <div class="phase-card__time">Monat 6–9</div>
+                        Payment, E-Signatur, Consent-Center, 50 weitere Services, Terminbuchung
+                    </div>
+                    <div class="phase-card">
+                        <div class="phase-card__title">v2.0</div>
+                        <div class="phase-card__time">Monat 9–14</div>
+                        Proaktive Services (Lebenslage-Engine), Behörden-Chat, Führerschein im Wallet, Vollmachten
+                    </div>
+                    <div class="phase-card">
+                        <div class="phase-card__title">v2.5</div>
+                        <div class="phase-card__time">Monat 14–18</div>
+                        Alle OZG-Services, Fachportal-WebViews, Datenexport, Offline-Bescheide
+                    </div>
+                    <div class="phase-card">
+                        <div class="phase-card__title">v3.0</div>
+                        <div class="phase-card__time">Monat 18–24</div>
+                        Gesundheitscredentials, Bildungs-VCs, KI-Leichte-Sprache, Barrierefreiheits-Audit AAA
+                    </div>
+                </div>
+
+                <h3 id="kpis">Erfolgskennzahlen (nach 2 Jahren)</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>KPI</th>
+                                <th>Zielwert</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Downloads</td>
+                                <td><strong>30 Mio.</strong> (≈ 35% der Bevölkerung)</td>
+                            </tr>
+                            <tr>
+                                <td>Monatlich aktive Nutzer</td>
+                                <td><strong>15 Mio.</strong></td>
+                            </tr>
+                            <tr>
+                                <td>App-Store-Bewertung</td>
+                                <td><strong>≥ 4,2 Sterne</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Durchschn. Antragsdauer</td>
+                                <td><strong>&lt; 5 Minuten</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Barrierefreiheit</td>
+                                <td><strong>100% WCAG 2.2 AA</strong></td>
+                            </tr>
+                            <tr>
+                                <td>NPS</td>
+                                <td><strong>≥ 55</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- 7  ZUSAMMENFASSUNG -->
+                <!-- ═══════════════════════════════════════ -->
+                <h2 id="zusammenfassung">7 · Zusammenfassung</h2>
+
+                <div class="callout callout--info">
+                    <div class="callout__icon">📱</div>
+                    <div class="callout__content">
+                        <div class="callout__title">Die Deutschland-App in einem Satz</div>
+                        <div class="callout__body">
+                            Eine <strong>einzige, native Super-App</strong> mit zentraler Shell und dezentralen Modulen
+                            –
+                            eID, Wallet, Anträge, Postfach, Consent, Payment, Signatur, Chatbot –
+                            alles ohne App-Sprung, mit voller DSGVO-Transparenz.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="callout callout--warning">
+                    <div class="callout__icon">📄</div>
+                    <div class="callout__content">
+                        <div class="callout__title">Vollständiges Dokument</div>
+                        <div class="callout__body">
+                            Die ausführliche Fassung mit Module Interface Contract, Technologie-Stack und
+                            detailliertem Governance-Modell liegt als
+                            <a href="https://github.com/">DEUTSCHLAND_APP.md</a> im Repository.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pagination">
+                    <a class="pagination__link pagination__link--prev" href="../zielbild/index.html">
+                        <span class="pagination__dir">← Zurück</span>
+                        <span class="pagination__title">Zielbild 2031</span>
+                    </a>
+                    <a class="pagination__link pagination__link--next" href="../architecture/index.html">
+                        <span class="pagination__dir">Weiter →</span>
+                        <span class="pagination__title">Architektur</span>
+                    </a>
+                </div>
+
+                <div class="page-footer">
+                    <div class="page-footer__meta">Apache-2.0 · Version 1.0 · Februar 2026</div>
+                    <div class="page-footer__feedback">
+                        <span class="page-footer__feedback-label">War diese Seite hilfreich?</span>
+                        <div class="page-footer__feedback-btns">
+                            <button class="feedback-btn">👍 Ja</button>
+                            <button class="feedback-btn">👎 Nein</button>
+                        </div>
+                    </div>
+                </div>
+
+            </article>
+
+            <aside class="content__toc">
+                <div class="toc" id="toc">
+                    <div class="toc__title">Auf dieser Seite</div>
+                    <ul class="toc__list"></ul>
+                </div>
+            </aside>
+        </main>
+
+    </div>
+
+    <script src="../assets/js/shell.js"></script>
+    <script src="../assets/js/site.js"></script>
+</body>
+
+</html>
