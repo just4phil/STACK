@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAP-Analyse – VerwDigiStack Spezifikation</title>
+    <meta name="description"
+        content="IT-Landschaft der digitalen Verwaltung in Deutschland und GAP-Analyse zum Zielbild 2031.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/tokens.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <style>
+        /* ── GAP-Analyse – page-specific styles ──────────────── */
+        .maturity-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 8px;
+            border-radius: var(--radius-sm);
+            font-size: .75rem;
+            font-weight: 600;
+            white-space: nowrap
+        }
+
+        .maturity-badge--red {
+            background: rgba(239, 68, 68, .15);
+            color: rgb(252, 165, 165)
+        }
+
+        .maturity-badge--yellow {
+            background: rgba(245, 158, 11, .15);
+            color: rgb(251, 191, 36)
+        }
+
+        .maturity-badge--green {
+            background: rgba(16, 185, 129, .15);
+            color: rgb(52, 211, 153)
+        }
+
+        .ist-card {
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            margin: var(--space-3) 0
+        }
+
+        .ist-card__title {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: var(--space-2);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2)
+        }
+
+        .ist-card__title .icon {
+            font-size: 1.2rem
+        }
+
+        .ist-card__grid {
+            display: grid;
+            gap: 1px;
+            background: var(--color-border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin-top: var(--space-3);
+            font-size: .85rem
+        }
+
+        .ist-card__row {
+            display: grid;
+            grid-template-columns: 200px 130px 100px 1fr;
+            gap: 0;
+            background: var(--color-bg-secondary)
+        }
+
+        .ist-card__row--head {
+            background: var(--color-bg-tertiary);
+            font-weight: 600;
+            font-size: .78rem;
+            text-transform: uppercase;
+            letter-spacing: .03em;
+            color: var(--color-text-secondary)
+        }
+
+        .ist-card__cell {
+            padding: var(--space-2) var(--space-3);
+            border-right: 1px solid var(--color-border)
+        }
+
+        .ist-card__cell:last-child {
+            border-right: none
+        }
+
+        @media(max-width:768px) {
+            .ist-card__row {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .gap-summary {
+            display: grid;
+            gap: 1px;
+            background: var(--color-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin: var(--space-5) 0;
+            font-size: .85rem
+        }
+
+        .gap-summary__row {
+            display: grid;
+            grid-template-columns: 50px 1fr 100px 1fr;
+            gap: 0;
+            background: var(--color-bg-secondary);
+            align-items: center
+        }
+
+        .gap-summary__row--head {
+            background: var(--color-bg-tertiary);
+            font-weight: 600;
+            font-size: .78rem;
+            text-transform: uppercase;
+            letter-spacing: .03em;
+            color: var(--color-text-secondary)
+        }
+
+        .gap-summary__cell {
+            padding: var(--space-2) var(--space-3)
+        }
+
+        @media(max-width:640px) {
+            .gap-summary__row {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .gap-bar {
+            height: 6px;
+            border-radius: 3px;
+            background: var(--color-bg-tertiary);
+            overflow: hidden;
+            margin-top: 4px
+        }
+
+        .gap-bar__fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width .5s ease
+        }
+
+        .gap-bar__fill--5 {
+            width: 5%;
+            background: rgb(239, 68, 68)
+        }
+
+        .gap-bar__fill--10 {
+            width: 10%;
+            background: rgb(239, 68, 68)
+        }
+
+        .gap-bar__fill--20 {
+            width: 20%;
+            background: rgb(245, 158, 11)
+        }
+
+        .gap-bar__fill--25 {
+            width: 25%;
+            background: rgb(245, 158, 11)
+        }
+
+        .gap-bar__fill--30 {
+            width: 30%;
+            background: rgb(245, 158, 11)
+        }
+
+        .gap-bar__fill--40 {
+            width: 40%;
+            background: rgb(234, 179, 8)
+        }
+
+        .gap-bar__fill--0 {
+            width: 2%;
+            background: rgb(239, 68, 68)
+        }
+
+        .gap-detail {
+            padding: var(--space-5);
+            border-radius: var(--radius-lg);
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            margin: var(--space-4) 0
+        }
+
+        .gap-detail__head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-3);
+            margin-bottom: var(--space-3);
+            flex-wrap: wrap
+        }
+
+        .gap-detail__title {
+            font-weight: 700;
+            font-size: 1.05rem
+        }
+
+        .gap-detail__badges {
+            display: flex;
+            gap: var(--space-2);
+            flex-wrap: wrap
+        }
+
+        .gap-detail__compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-3);
+            margin: var(--space-3) 0;
+            font-size: .88rem
+        }
+
+        .gap-detail__col {
+            padding: var(--space-3);
+            border-radius: var(--radius-md)
+        }
+
+        .gap-detail__col--ist {
+            background: rgba(239, 68, 68, .06);
+            border: 1px solid rgba(239, 68, 68, .15)
+        }
+
+        .gap-detail__col--soll {
+            background: rgba(16, 185, 129, .06);
+            border: 1px solid rgba(16, 185, 129, .15)
+        }
+
+        .gap-detail__col-title {
+            font-weight: 600;
+            font-size: .8rem;
+            text-transform: uppercase;
+            letter-spacing: .03em;
+            margin-bottom: var(--space-2)
+        }
+
+        .gap-detail__col-title--ist {
+            color: rgb(252, 165, 165)
+        }
+
+        .gap-detail__col-title--soll {
+            color: rgb(52, 211, 153)
+        }
+
+        .gap-detail__col ul {
+            padding-left: var(--space-4);
+            margin: 0;
+            line-height: 1.7
+        }
+
+        .gap-detail__gaps {
+            margin-top: var(--space-3)
+        }
+
+        .gap-detail__gaps li {
+            padding: var(--space-1) 0;
+            font-size: .88rem
+        }
+
+        @media(max-width:640px) {
+            .gap-detail__compare {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .roadmap-phase {
+            position: relative;
+            padding: var(--space-4) var(--space-4) var(--space-4) var(--space-6);
+            border-left: 3px solid var(--color-accent);
+            margin-left: var(--space-4);
+            margin-bottom: var(--space-3)
+        }
+
+        .roadmap-phase::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: var(--space-4);
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: var(--color-accent)
+        }
+
+        .roadmap-phase__title {
+            font-weight: 700;
+            margin-bottom: var(--space-1)
+        }
+
+        .roadmap-phase__time {
+            font-size: .82rem;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-2)
+        }
+
+        .roadmap-phase__items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-1)
+        }
+
+        .roadmap-phase__item {
+            padding: 2px 8px;
+            border-radius: var(--radius-sm);
+            font-size: .78rem;
+            background: rgba(99, 102, 241, .1);
+            border: 1px solid rgba(99, 102, 241, .2);
+            color: rgb(165, 180, 252)
+        }
+
+        .risk-card {
+            display: grid;
+            grid-template-columns: 1fr 100px 100px 1fr;
+            gap: 1px;
+            background: var(--color-border);
+            font-size: .85rem
+        }
+
+        .risk-card__cell {
+            padding: var(--space-2) var(--space-3);
+            background: var(--color-bg-secondary)
+        }
+
+        .risk-card__cell--head {
+            background: var(--color-bg-tertiary);
+            font-weight: 600;
+            font-size: .78rem;
+            text-transform: uppercase;
+            letter-spacing: .03em;
+            color: var(--color-text-secondary)
+        }
+
+        .risk-card__cell--high {
+            color: rgb(252, 165, 165)
+        }
+
+        .qw-grid {
+            display: grid;
+            gap: var(--space-3);
+            margin: var(--space-4) 0
+        }
+
+        .qw-item {
+            display: grid;
+            grid-template-columns: 1fr 60px 1fr;
+            gap: var(--space-3);
+            padding: var(--space-3);
+            border-radius: var(--radius-md);
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            font-size: .88rem;
+            align-items: center
+        }
+
+        .qw-item__effort {
+            text-align: center;
+            font-weight: 600;
+            color: var(--color-accent)
+        }
+
+        .summary-verdict {
+            padding: var(--space-5);
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, rgba(99, 102, 241, .1), rgba(139, 92, 246, .05));
+            border: 1px solid rgba(99, 102, 241, .2);
+            margin: var(--space-5) 0
+        }
+
+        .summary-verdict__grid {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: var(--space-2);
+            font-size: .9rem;
+            margin-top: var(--space-3)
+        }
+
+        .summary-verdict__label {
+            font-weight: 600;
+            color: var(--color-accent)
+        }
+    </style>
+</head>
+
+<body>
+    <script>window.PAGE_META = { title: 'GAP-Analyse', section: 'GAP-Analyse' };</script>
+
+    <div class="layout">
+
+        <main class="content">
+            <article class="content__main prose">
+
+                <!-- HEADER -->
+                <div class="prose-header">
+                    <div class="prose-header__breadcrumb">
+                        <a href="../index.html">VerwDigiStack</a>
+                        <span class="prose-header__breadcrumb-sep">/</span>
+                        <span>GAP-Analyse</span>
+                    </div>
+                    <div class="prose-header__meta">
+                        <span class="prose-header__tag" style="background:rgba(239,68,68,.15);color:rgb(252,165,165)">📊
+                            GAP-Analyse</span>
+                        <span class="prose-header__version">Version 1.0 · Februar 2026</span>
+                    </div>
+                    <h1>IT-Landschaft & GAP-Analyse</h1>
+                    <p>
+                        Ist-Zustand der digitalen Verwaltungs-IT in Deutschland (Bund, Länder, Kommunen) und
+                        systematische GAP-Analyse gegenüber dem Zielbild 2031 – für alle 17 Building Blocks.
+                    </p>
+                </div>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- 1  IST-ZUSTAND -->
+                <!-- ═══════════════════════════════════════ -->
+                <h2 id="ist-zustand">1 · IT-Landschaft: Ist-Zustand 2026</h2>
+
+                <div class="callout callout--warning">
+                    <div class="callout__icon">🏗</div>
+                    <div class="callout__content">
+                        <div class="callout__title">Föderale Fragmentierung</div>
+                        <div class="callout__body">
+                            Ca. <strong>60+ IT-Dienstleister</strong>, <strong>300+ Fachverfahren</strong>,
+                            <strong>18+ Authentifizierungssysteme</strong>, <strong>hunderte Portale</strong> –
+                            keine einheitliche Plattform.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Identity -->
+                <div class="ist-card">
+                    <div class="ist-card__title"><span class="icon">🔐</span> Identität & Authentifizierung</div>
+                    <div class="ist-card__grid">
+                        <div class="ist-card__row ist-card__row--head">
+                            <div class="ist-card__cell">System</div>
+                            <div class="ist-card__cell">Betreiber</div>
+                            <div class="ist-card__cell">Status</div>
+                            <div class="ist-card__cell">Problem</div>
+                        </div>
+                        <div class="ist-card__row">
+                            <div class="ist-card__cell">eID (Online-Ausweis)</div>
+                            <div class="ist-card__cell">BSI</div>
+                            <div class="ist-card__cell"><span class="maturity-badge maturity-badge--yellow">⚠️ 15%
+                                    Nutzung</span></div>
+                            <div class="ist-card__cell">Umständlicher NFC-Prozess; geringe Aktivierung</div>
+                        </div>
+                        <div class="ist-card__row">
+                            <div class="ist-card__cell">BundID</div>
+                            <div class="ist-card__cell">ITZBund</div>
+                            <div class="ist-card__cell"><span class="maturity-badge maturity-badge--green">✅
+                                    Produktiv</span></div>
+                            <div class="ist-card__cell">Nur Bund; Länder haben eigene Konten</div>
+                        </div>
+                        <div class="ist-card__row">
+                            <div class="ist-card__cell">16 Landeskonten</div>
+                            <div class="ist-card__cell">Länder</div>
+                            <div class="ist-card__cell"><span class="maturity-badge maturity-badge--yellow">⚠️
+                                    Heterogen</span></div>
+                            <div class="ist-card__cell">BayernID, Servicekonto.NRW, etc. – kein SSO</div>
+                        </div>
+                        <div class="ist-card__row">
+                            <div class="ist-card__cell">ELSTER-Zertifikat</div>
+                            <div class="ist-card__cell">BayLfSt</div>
+                            <div class="ist-card__cell"><span class="maturity-badge maturity-badge--green">✅ 40
+                                    Mio.</span></div>
+                            <div class="ist-card__cell">Nur Steuer; nicht in SSO integriert</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portal -->
+                <div class="ist-card">
+                    <div class="ist-card__title"><span class="icon">🌐</span> Portal-Landschaft</div>
+                    <div class="ist-card__grid">
+                        <div class="ist-card__row ist-card__row--head">
+                            <div class="ist-card__cell">System</div>
+                            <div class="ist-card__cell">Betreiber</div>
+                            <div class="ist-card__cell">Status</div>
+                            <div class="ist-card__cell">Problem</div>
+                        </div>
+                        <div class="ist-card__row">
+                            <div class="ist-card__cell">verwaltung.bund.de</div>
+                            <div class="ist-card__cell">FITKO</div>
+                            <div class="ist-card__cell"><span class="maturity-badge maturity-badge--green">✅
+                                    Produktiv</span></div>
+                            <div class="ist-card__cell">Nur Infoportal; selten echte Transaktionen</div>
+                        </div>
+                        <div class="ist-card__row">
+                            <div class="ist-card__cell">16 Landesportale</div>
+                            <div class="ist-card__cell">Länder</div>
+                            <div class="ist-card__cell"><span class="maturity-badge maturity-badge--yellow">⚠️
+                                    Heterogen</span></div>
+                            <div class="ist-card__cell">Kein einheitliches Design, keine gemeinsame Suche</div>
+                        </div>
+                        <div class="ist-card__row">
+                            <div class="ist-card__cell">~11.000 Kommunalportale</div>
+                            <div class="ist-card__cell">Kommunen</div>
+                            <div class="ist-card__cell"><span class="maturity-badge maturity-badge--red">⚠️
+                                    Teilweise</span></div>
+                            <div class="ist-card__cell">Oft nur Informationsseiten</div>
+                        </div>
+                        <div class="ist-card__row">
+                            <div class="ist-card__cell">ELSTER</div>
+                            <div class="ist-card__cell">BayLfSt</div>
+                            <div class="ist-card__cell"><span class="maturity-badge maturity-badge--green">✅ 42
+                                    Mio./J.</span></div>
+                            <div class="ist-card__cell">Erfolgreichstes E-Gov-Portal; aber Silo</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Register & Postfach -->
+                <div class="ist-card">
+                    <div class="ist-card__title"><span class="icon">🗄</span> Register, Postfach & Datenaustausch</div>
+                    <div class="ist-card__grid">
+                        <div class="ist-card__row ist-card__row--head">
+                            <div class="ist-card__cell">System</div>
+                            <div class="ist-card__cell">Betreiber</div>
+                            <div class="ist-card__cell">Status</div>
+                            <div class="ist-card__cell">Problem</div>
+                        </div>
+                        <div class="ist-card__row">
+                            <div class="ist-card__cell">NOOTS</div>
+                            <div class="ist-card__cell">FITKO</div>
+                            <div class="ist-card__cell"><span class="maturity-badge maturity-badge--red">🔴
+                                    Pilotphase</span></div>
+                            <div class="ist-card__cell">Kein Produktivbetrieb; Once-Only unmöglich</div>
+                        </div>
+                        <div class="ist-card__row">
+                            <div class="ist-card__cell">Registermodernisierung</div>
+                            <div class="ist-card__cell">BMI / BVA</div>
+                            <div class="ist-card__cell"><span class="maturity-badge maturity-badge--red">🔴
+                                    Verzögert</span></div>
+                            <div class="ist-card__cell">3+ Jahre hinter Zeitplan</div>
+                        </div>
+                        <div class="ist-card__row">
+                            <div class="ist-card__cell">De-Mail</div>
+                            <div class="ist-card__cell">Diverse</div>
+                            <div class="ist-card__cell"><span class="maturity-badge maturity-badge--red">❌
+                                    Gescheitert</span></div>
+                            <div class="ist-card__cell">Abgekündigt 2024; kein Ersatz</div>
+                        </div>
+                        <div class="ist-card__row">
+                            <div class="ist-card__cell">BundID-Postfach</div>
+                            <div class="ist-card__cell">ITZBund</div>
+                            <div class="ist-card__cell"><span class="maturity-badge maturity-badge--yellow">⚠️
+                                    Rudimentär</span></div>
+                            <div class="ist-card__cell">Keine Anhänge, kein Chat, kein Bescheid-Viewer</div>
+                        </div>
+                        <div class="ist-card__row">
+                            <div class="ist-card__cell">XÖV-Standards</div>
+                            <div class="ist-card__cell">KoSIT</div>
+                            <div class="ist-card__cell"><span class="maturity-badge maturity-badge--green">✅
+                                    Standard</span></div>
+                            <div class="ist-card__cell">Heterogene Umsetzung; XML-basiert</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wallet, Signatur, KI -->
+                <div class="ist-card">
+                    <div class="ist-card__title"><span class="icon">📱</span> Wallet, Signatur, Payment, KI</div>
+                    <div class="ist-card__grid">
+                        <div class="ist-card__row ist-card__row--head">
+                            <div class="ist-card__cell">System</div>
+                            <div class="ist-card__cell">Betreiber</div>
+                            <div class="ist-card__cell">Status</div>
+                            <div class="ist-card__cell">Problem</div>
+                        </div>
+                        <div class="ist-card__row">
+                            <div class="ist-card__cell">EUDI Wallet</div>
+                            <div class="ist-card__cell">BSI</div>
+                            <div class="ist-card__cell"><span class="maturity-badge maturity-badge--red">🔴
+                                    Prototyp</span></div>
+                            <div class="ist-card__cell">Nur EU-Pilotprojekte; nicht produktiv</div>
+                        </div>
+                        <div class="ist-card__row">
+                            <div class="ist-card__cell">AusweisApp</div>
+                            <div class="ist-card__cell">Governikus</div>
+                            <div class="ist-card__cell"><span class="maturity-badge maturity-badge--green">✅ ~5 Mio.
+                                    DL</span></div>
+                            <div class="ist-card__cell">Nur eID; kein vollständiges Wallet</div>
+                        </div>
+                        <div class="ist-card__row">
+                            <div class="ist-card__cell">QES (Fernsignatur)</div>
+                            <div class="ist-card__cell">D-Trust</div>
+                            <div class="ist-card__cell"><span class="maturity-badge maturity-badge--yellow">⚠️
+                                    Wenig</span></div>
+                            <div class="ist-card__cell">Kostenpflichtig; geringe Verbreitung</div>
+                        </div>
+                        <div class="ist-card__row">
+                            <div class="ist-card__cell">ePayBL</div>
+                            <div class="ist-card__cell">Bund/Länder</div>
+                            <div class="ist-card__cell"><span class="maturity-badge maturity-badge--green">✅
+                                    Produktiv</span></div>
+                            <div class="ist-card__cell">Keine Apple Pay / Google Pay; UX-Bruch</div>
+                        </div>
+                        <div class="ist-card__row">
+                            <div class="ist-card__cell">KI-Plattform</div>
+                            <div class="ist-card__cell">–</div>
+                            <div class="ist-card__cell"><span class="maturity-badge maturity-badge--red">🔴 Fehlt</span>
+                            </div>
+                            <div class="ist-card__cell">Einzelne Chatbot-Piloten; keine zentrale Infra</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Zusammenfassung Ist -->
+                <h3 id="ist-zusammenfassung">Reifegrad-Übersicht</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Dimension</th>
+                                <th>Reifegrad</th>
+                                <th>Bewertung</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Identität</td>
+                                <td><span class="maturity-badge maturity-badge--yellow">⚠️ Fragmentiert</span></td>
+                                <td>18+ Konten; kein SSO</td>
+                            </tr>
+                            <tr>
+                                <td>Portale</td>
+                                <td><span class="maturity-badge maturity-badge--yellow">⚠️ Fragmentiert</span></td>
+                                <td>Hunderte Portale; selten transaktionsfähig</td>
+                            </tr>
+                            <tr>
+                                <td>Register (NOOTS)</td>
+                                <td><span class="maturity-badge maturity-badge--red">🔴 Kritisch</span></td>
+                                <td>Pilotphase; Registermod. verzögert</td>
+                            </tr>
+                            <tr>
+                                <td>Postfach</td>
+                                <td><span class="maturity-badge maturity-badge--red">🔴 Kritisch</span></td>
+                                <td>De-Mail gescheitert; kein Ersatz</td>
+                            </tr>
+                            <tr>
+                                <td>EUDI Wallet</td>
+                                <td><span class="maturity-badge maturity-badge--red">🔴 Kritisch</span></td>
+                                <td>Nur Prototyp</td>
+                            </tr>
+                            <tr>
+                                <td>API-Management</td>
+                                <td><span class="maturity-badge maturity-badge--red">🔴 Kritisch</span></td>
+                                <td>Kein zentrales Gateway</td>
+                            </tr>
+                            <tr>
+                                <td>Event-Architektur</td>
+                                <td><span class="maturity-badge maturity-badge--red">🔴 Fehlt</span></td>
+                                <td>Nicht vorhanden</td>
+                            </tr>
+                            <tr>
+                                <td>Consent</td>
+                                <td><span class="maturity-badge maturity-badge--red">🔴 Fehlt</span></td>
+                                <td>Dezentral, inkonsistent</td>
+                            </tr>
+                            <tr>
+                                <td>BPM</td>
+                                <td><span class="maturity-badge maturity-badge--red">🔴 Kritisch</span></td>
+                                <td>300+ Insellösungen</td>
+                            </tr>
+                            <tr>
+                                <td>KI</td>
+                                <td><span class="maturity-badge maturity-badge--red">🔴 Kritisch</span></td>
+                                <td>Einzelne Piloten</td>
+                            </tr>
+                            <tr>
+                                <td>Cloud</td>
+                                <td><span class="maturity-badge maturity-badge--yellow">⚠️ Im Aufbau</span></td>
+                                <td>DVC geplant; noch Konzept</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- 2  GAP-ANALYSE -->
+                <!-- ═══════════════════════════════════════ -->
+                <h2 id="gap-analyse">2 · GAP-Analyse: Ist → Zielbild 2031</h2>
+
+                <h3 id="gap-uebersicht">Gesamtübersicht aller 17 Building Blocks</h3>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>BB</th>
+                                <th>Ist-Reifegrad</th>
+                                <th style="width:120px">Fortschritt</th>
+                                <th>Gap</th>
+                                <th>Aufwand</th>
+                                <th>Priorität</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>BB-01</strong> Identity</td>
+                                <td>30%</td>
+                                <td>
+                                    <div class="gap-bar">
+                                        <div class="gap-bar__fill gap-bar__fill--30"></div>
+                                    </div>
+                                </td>
+                                <td>🔴 Groß</td>
+                                <td>XL</td>
+                                <td><span class="maturity-badge maturity-badge--red">Kritisch</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>BB-02</strong> Portal & Formular</td>
+                                <td>25%</td>
+                                <td>
+                                    <div class="gap-bar">
+                                        <div class="gap-bar__fill gap-bar__fill--25"></div>
+                                    </div>
+                                </td>
+                                <td>🔴 Groß</td>
+                                <td>XL</td>
+                                <td><span class="maturity-badge maturity-badge--red">Kritisch</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>BB-03</strong> Postfach</td>
+                                <td>10%</td>
+                                <td>
+                                    <div class="gap-bar">
+                                        <div class="gap-bar__fill gap-bar__fill--10"></div>
+                                    </div>
+                                </td>
+                                <td>🔴 Sehr groß</td>
+                                <td>L</td>
+                                <td><span class="maturity-badge maturity-badge--red">Kritisch</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>BB-04</strong> Payment</td>
+                                <td>40%</td>
+                                <td>
+                                    <div class="gap-bar">
+                                        <div class="gap-bar__fill gap-bar__fill--40"></div>
+                                    </div>
+                                </td>
+                                <td>⚠️ Mittel</td>
+                                <td>M</td>
+                                <td><span class="maturity-badge maturity-badge--yellow">Hoch</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>BB-05</strong> EUDI Wallet</td>
+                                <td>10%</td>
+                                <td>
+                                    <div class="gap-bar">
+                                        <div class="gap-bar__fill gap-bar__fill--10"></div>
+                                    </div>
+                                </td>
+                                <td>🔴 Sehr groß</td>
+                                <td>XL</td>
+                                <td><span class="maturity-badge maturity-badge--red">Kritisch</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>BB-06</strong> NOOTS</td>
+                                <td>5%</td>
+                                <td>
+                                    <div class="gap-bar">
+                                        <div class="gap-bar__fill gap-bar__fill--5"></div>
+                                    </div>
+                                </td>
+                                <td>🔴 Sehr groß</td>
+                                <td>XL</td>
+                                <td><span class="maturity-badge maturity-badge--red">Kritisch</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>BB-07</strong> API-Gateway</td>
+                                <td>5%</td>
+                                <td>
+                                    <div class="gap-bar">
+                                        <div class="gap-bar__fill gap-bar__fill--5"></div>
+                                    </div>
+                                </td>
+                                <td>🔴 Sehr groß</td>
+                                <td>L</td>
+                                <td><span class="maturity-badge maturity-badge--red">Kritisch</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>BB-08</strong> Event-Bus</td>
+                                <td>0%</td>
+                                <td>
+                                    <div class="gap-bar">
+                                        <div class="gap-bar__fill gap-bar__fill--0"></div>
+                                    </div>
+                                </td>
+                                <td>🔴 Neu</td>
+                                <td>L</td>
+                                <td><span class="maturity-badge maturity-badge--yellow">Hoch</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>BB-09</strong> Consent</td>
+                                <td>0%</td>
+                                <td>
+                                    <div class="gap-bar">
+                                        <div class="gap-bar__fill gap-bar__fill--0"></div>
+                                    </div>
+                                </td>
+                                <td>🔴 Neu</td>
+                                <td>L</td>
+                                <td><span class="maturity-badge maturity-badge--red">Kritisch</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>BB-10</strong> E-Signatur</td>
+                                <td>20%</td>
+                                <td>
+                                    <div class="gap-bar">
+                                        <div class="gap-bar__fill gap-bar__fill--20"></div>
+                                    </div>
+                                </td>
+                                <td>🔴 Groß</td>
+                                <td>M</td>
+                                <td><span class="maturity-badge maturity-badge--yellow">Hoch</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>BB-11</strong> BPM</td>
+                                <td>10%</td>
+                                <td>
+                                    <div class="gap-bar">
+                                        <div class="gap-bar__fill gap-bar__fill--10"></div>
+                                    </div>
+                                </td>
+                                <td>🔴 Sehr groß</td>
+                                <td>XL</td>
+                                <td><span class="maturity-badge maturity-badge--yellow">Hoch</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>BB-12</strong> KI/AI</td>
+                                <td>5%</td>
+                                <td>
+                                    <div class="gap-bar">
+                                        <div class="gap-bar__fill gap-bar__fill--5"></div>
+                                    </div>
+                                </td>
+                                <td>🔴 Sehr groß</td>
+                                <td>L</td>
+                                <td><span class="maturity-badge maturity-badge--yellow">Hoch</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>BB-13</strong> CMS</td>
+                                <td>30%</td>
+                                <td>
+                                    <div class="gap-bar">
+                                        <div class="gap-bar__fill gap-bar__fill--30"></div>
+                                    </div>
+                                </td>
+                                <td>⚠️ Mittel</td>
+                                <td>M</td>
+                                <td><span class="maturity-badge maturity-badge--yellow">Mittel</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>BB-14</strong> Notification</td>
+                                <td>10%</td>
+                                <td>
+                                    <div class="gap-bar">
+                                        <div class="gap-bar__fill gap-bar__fill--10"></div>
+                                    </div>
+                                </td>
+                                <td>🔴 Groß</td>
+                                <td>M</td>
+                                <td><span class="maturity-badge maturity-badge--yellow">Hoch</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>BB-15</strong> Scheduler</td>
+                                <td>20%</td>
+                                <td>
+                                    <div class="gap-bar">
+                                        <div class="gap-bar__fill gap-bar__fill--20"></div>
+                                    </div>
+                                </td>
+                                <td>⚠️ Mittel</td>
+                                <td>S</td>
+                                <td><span class="maturity-badge maturity-badge--yellow">Mittel</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>BB-16</strong> DMS/E-Akte</td>
+                                <td>25%</td>
+                                <td>
+                                    <div class="gap-bar">
+                                        <div class="gap-bar__fill gap-bar__fill--25"></div>
+                                    </div>
+                                </td>
+                                <td>🔴 Groß</td>
+                                <td>L</td>
+                                <td><span class="maturity-badge maturity-badge--yellow">Hoch</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>BB-17</strong> Knowledge Graph</td>
+                                <td>5%</td>
+                                <td>
+                                    <div class="gap-bar">
+                                        <div class="gap-bar__fill gap-bar__fill--5"></div>
+                                    </div>
+                                </td>
+                                <td>🔴 Sehr groß</td>
+                                <td>L</td>
+                                <td><span class="maturity-badge maturity-badge--yellow">Hoch</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Detail GAPs (Top 6 critical) -->
+                <h3 id="gap-details">Detaillierte GAPs (kritische BBs)</h3>
+
+                <div class="gap-detail">
+                    <div class="gap-detail__head">
+                        <div class="gap-detail__title">BB-01 · Identity & Authentifizierung</div>
+                        <div class="gap-detail__badges"><span
+                                class="maturity-badge maturity-badge--red">Kritisch</span><span
+                                class="maturity-badge maturity-badge--yellow">XL Aufwand</span></div>
+                    </div>
+                    <div class="gap-detail__compare">
+                        <div class="gap-detail__col gap-detail__col--ist">
+                            <div class="gap-detail__col-title gap-detail__col-title--ist">Ist-Zustand</div>
+                            <ul>
+                                <li>18+ verschiedene Konten</li>
+                                <li>eID ~15% Aktivierung</li>
+                                <li>Kein SSO über Ebenen</li>
+                                <li>Keine risikoadaptive Auth</li>
+                            </ul>
+                        </div>
+                        <div class="gap-detail__col gap-detail__col--soll">
+                            <div class="gap-detail__col-title gap-detail__col-title--soll">Soll (Zielbild)</div>
+                            <ul>
+                                <li>Ein Login für alles</li>
+                                <li>Biometrische Identifizierung in Sek.</li>
+                                <li>Risikoadaptiv (LoA low/sub/high)</li>
+                                <li>Geräteübergreifendes SSO</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gap-detail">
+                    <div class="gap-detail__head">
+                        <div class="gap-detail__title">BB-06 · NOOTS (Register / Once-Only)</div>
+                        <div class="gap-detail__badges"><span
+                                class="maturity-badge maturity-badge--red">Kritisch</span><span
+                                class="maturity-badge maturity-badge--yellow">XL Aufwand</span></div>
+                    </div>
+                    <div class="gap-detail__compare">
+                        <div class="gap-detail__col gap-detail__col--ist">
+                            <div class="gap-detail__col-title gap-detail__col-title--ist">Ist-Zustand</div>
+                            <ul>
+                                <li>NOOTS nur Pilotphase</li>
+                                <li>Registermod. 3+ Jahre verzögert</li>
+                                <li>&lt;5 Register angebunden</li>
+                                <li>Kein Consent-basierter Abruf</li>
+                            </ul>
+                        </div>
+                        <div class="gap-detail__col gap-detail__col--soll">
+                            <div class="gap-detail__col-title gap-detail__col-title--soll">Soll (Zielbild)</div>
+                            <ul>
+                                <li>Flächendeckendes Once-Only</li>
+                                <li>20+ Kernregister angebunden</li>
+                                <li>Consent-Token pro Abruf</li>
+                                <li>Automatische Vorausfüllung</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gap-detail">
+                    <div class="gap-detail__head">
+                        <div class="gap-detail__title">BB-09 · Consent-Management</div>
+                        <div class="gap-detail__badges"><span
+                                class="maturity-badge maturity-badge--red">Kritisch</span><span
+                                class="maturity-badge maturity-badge--yellow">L Aufwand</span></div>
+                    </div>
+                    <div class="gap-detail__compare">
+                        <div class="gap-detail__col gap-detail__col--ist">
+                            <div class="gap-detail__col-title gap-detail__col-title--ist">Ist-Zustand</div>
+                            <ul>
+                                <li>Komplett nicht vorhanden</li>
+                                <li>DSGVO dezentral umgesetzt</li>
+                                <li>Bürger:innen haben keinen Überblick</li>
+                                <li>Widerruf per E-Mail/Post</li>
+                            </ul>
+                        </div>
+                        <div class="gap-detail__col gap-detail__col--soll">
+                            <div class="gap-detail__col-title gap-detail__col-title--soll">Soll (Zielbild)</div>
+                            <ul>
+                                <li>Zentrales Consent-Center</li>
+                                <li>Granulare Checkboxen pro Zweck</li>
+                                <li>Maschinenlesbare Consent-Token</li>
+                                <li>Ein-Klick-Widerruf</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gap-detail">
+                    <div class="gap-detail__head">
+                        <div class="gap-detail__title">BB-03 · Postfach</div>
+                        <div class="gap-detail__badges"><span
+                                class="maturity-badge maturity-badge--red">Kritisch</span><span
+                                class="maturity-badge maturity-badge--yellow">L Aufwand</span></div>
+                    </div>
+                    <div class="gap-detail__compare">
+                        <div class="gap-detail__col gap-detail__col--ist">
+                            <div class="gap-detail__col-title gap-detail__col-title--ist">Ist-Zustand</div>
+                            <ul>
+                                <li>De-Mail gescheitert</li>
+                                <li>BundID-Postfach rudimentär</li>
+                                <li>Kein Bescheid-Viewer</li>
+                                <li>Kein Push, kein Chat</li>
+                            </ul>
+                        </div>
+                        <div class="gap-detail__col gap-detail__col--soll">
+                            <div class="gap-detail__col-title gap-detail__col-title--soll">Soll (Zielbild)</div>
+                            <ul>
+                                <li>Zentrales Bürger-Postfach</li>
+                                <li>PDF-Viewer + QES-Prüfung</li>
+                                <li>Behörden-Chat</li>
+                                <li>Multi-Kanal Push</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- 3  PRIORISIERTE HANDLUNGSFELDER -->
+                <!-- ═══════════════════════════════════════ -->
+                <h2 id="handlungsfelder">3 · Priorisierte Handlungsfelder</h2>
+
+                <h3 id="kritischer-pfad">Kritischer Pfad (Phasen-Roadmap)</h3>
+
+                <div class="roadmap-phase">
+                    <div class="roadmap-phase__title">Phase 1 · Fundamentale Infrastruktur</div>
+                    <div class="roadmap-phase__time">Monat 0–6</div>
+                    <div class="roadmap-phase__items">
+                        <span class="roadmap-phase__item">BB-01 Identity (SSO)</span>
+                        <span class="roadmap-phase__item">BB-07 API-Gateway</span>
+                        <span class="roadmap-phase__item">BB-09 Consent (Spec)</span>
+                        <span class="roadmap-phase__item">BB-05 Wallet (Prototyp)</span>
+                    </div>
+                </div>
+                <div class="roadmap-phase">
+                    <div class="roadmap-phase__title">Phase 2 · Kernerlebnis</div>
+                    <div class="roadmap-phase__time">Monat 6–12</div>
+                    <div class="roadmap-phase__items">
+                        <span class="roadmap-phase__item">BB-02 Portal MVP</span>
+                        <span class="roadmap-phase__item">BB-03 Postfach</span>
+                        <span class="roadmap-phase__item">BB-06 NOOTS (erste Register)</span>
+                        <span class="roadmap-phase__item">BB-14 Notification</span>
+                    </div>
+                </div>
+                <div class="roadmap-phase">
+                    <div class="roadmap-phase__title">Phase 3 · Erweiterung</div>
+                    <div class="roadmap-phase__time">Monat 12–18</div>
+                    <div class="roadmap-phase__items">
+                        <span class="roadmap-phase__item">BB-11 BPM</span>
+                        <span class="roadmap-phase__item">BB-10 E-Signatur</span>
+                        <span class="roadmap-phase__item">BB-08 Event-Bus</span>
+                        <span class="roadmap-phase__item">BB-04 Payment</span>
+                    </div>
+                </div>
+                <div class="roadmap-phase">
+                    <div class="roadmap-phase__title">Phase 4 · Intelligence & Proaktivität</div>
+                    <div class="roadmap-phase__time">Monat 18–24</div>
+                    <div class="roadmap-phase__items">
+                        <span class="roadmap-phase__item">BB-12 KI/AI-Gateway</span>
+                        <span class="roadmap-phase__item">BB-17 Knowledge Graph</span>
+                        <span class="roadmap-phase__item">BB-16 DMS/E-Akte</span>
+                        <span class="roadmap-phase__item">BB-13 CMS</span>
+                        <span class="roadmap-phase__item">BB-15 Scheduler</span>
+                    </div>
+                </div>
+
+                <h3 id="quick-wins">Quick Wins (sofort umsetzbar)</h3>
+                <div class="qw-grid">
+                    <div class="qw-item">
+                        <div>BundID als SSO für alle Bundesportale</div>
+                        <div class="qw-item__effort">M</div>
+                        <div>Bürger:innen brauchen nur 1 Konto (Bundesebene)</div>
+                    </div>
+                    <div class="qw-item">
+                        <div>Design-System erstellen und verpflichten</div>
+                        <div class="qw-item__effort">S</div>
+                        <div>Konsistente UX sofort sichtbar</div>
+                    </div>
+                    <div class="qw-item">
+                        <div>FIT-Connect zum API-Gateway ausbauen</div>
+                        <div class="qw-item__effort">M</div>
+                        <div>Erste standardisierte APIs</div>
+                    </div>
+                    <div class="qw-item">
+                        <div>FIM-Katalog maschinenlesbar machen</div>
+                        <div class="qw-item__effort">S</div>
+                        <div>Basis für Suche und KI</div>
+                    </div>
+                    <div class="qw-item">
+                        <div>AusweisApp um Wallet-Grundfunktionen erweitern</div>
+                        <div class="qw-item__effort">M</div>
+                        <div>Erste Credentials speichern</div>
+                    </div>
+                    <div class="qw-item">
+                        <div>ePayBL + Apple Pay / Google Pay</div>
+                        <div class="qw-item__effort">S</div>
+                        <div>Moderne Bezahlung</div>
+                    </div>
+                </div>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- 4  RISIKEN -->
+                <!-- ═══════════════════════════════════════ -->
+                <h2 id="risiken">4 · Größte Risiken</h2>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Risiko</th>
+                                <th>Wahrsch.</th>
+                                <th>Auswirkung</th>
+                                <th>Mitigation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Registermodernisierung scheitert</strong></td>
+                                <td class="risk-card__cell--high">Hoch</td>
+                                <td class="risk-card__cell--high">Katastrophal</td>
+                                <td>Paralleler Ansatz: freiwillige Datenfreigabe</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Föderale Blockade</strong></td>
+                                <td class="risk-card__cell--high">Hoch</td>
+                                <td>Hoch</td>
+                                <td>Kooperationsmodell statt Zentralisierung; Opt-in</td>
+                            </tr>
+                            <tr>
+                                <td><strong>EUDI Wallet verzögert</strong></td>
+                                <td>Mittel</td>
+                                <td>Hoch</td>
+                                <td>AusweisApp als Fallback ausbauen</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Datenschutz blockiert Consent</strong></td>
+                                <td>Mittel</td>
+                                <td>Hoch</td>
+                                <td>DSB früh einbinden; Privacy by Design</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Fehlende Fachkräfte</strong></td>
+                                <td class="risk-card__cell--high">Hoch</td>
+                                <td>Hoch</td>
+                                <td>Open Source; externe Entwickler</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Fachverfahrens-Hersteller kooperieren nicht</strong></td>
+                                <td>Mittel</td>
+                                <td>Mittel</td>
+                                <td>Standardisierung + Zertifizierungspflicht</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- 5  ZUSAMMENFASSUNG -->
+                <!-- ═══════════════════════════════════════ -->
+                <h2 id="zusammenfassung">5 · Zusammenfassung</h2>
+
+                <div class="summary-verdict">
+                    <h4 style="margin-top:0">Gesamtbewertung</h4>
+                    <div class="summary-verdict__grid">
+                        <div class="summary-verdict__label">Ist-Reifegrad</div>
+                        <div>~15% des Zielbilds</div>
+                        <div class="summary-verdict__label">Größte Gaps</div>
+                        <div>NOOTS, Postfach, Consent, Event-Bus, EUDI Wallet</div>
+                        <div class="summary-verdict__label">Stärkste Basis</div>
+                        <div>ePayBL, FIM/LeiKa, XÖV, AusweisApp, ELSTER</div>
+                        <div class="summary-verdict__label">Kritischer Pfad</div>
+                        <div>Identity → API-Gateway → Consent → NOOTS → Portal</div>
+                        <div class="summary-verdict__label">Zeithorizont</div>
+                        <div>4–5 Jahre bei konsequenter Umsetzung</div>
+                        <div class="summary-verdict__label">Investitionsvolumen</div>
+                        <div>2–4 Mrd. EUR (Bund + Länder + EU)</div>
+                    </div>
+                </div>
+
+                <div class="callout callout--info">
+                    <div class="callout__icon">💡</div>
+                    <div class="callout__content">
+                        <div class="callout__title">Fazit</div>
+                        <div class="callout__body">
+                            Deutschland hat eine Basis – ELSTER, AusweisApp, XÖV, FIM, ePayBL –
+                            aber sie ist <strong>fragmentiert, föderalisiert und nicht nutzerorientiert</strong>.
+                            Die größten Lücken sind nicht technisch, sondern
+                            <strong>organisatorisch und politisch</strong>: Registermodernisierung,
+                            Consent-Framework, behördenübergreifende Prozesse. Das Zielbild 2031 ist
+                            technisch realistisch – die Herausforderung ist Governance und politischer Wille.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pagination">
+                    <a class="pagination__link pagination__link--prev" href="../deutschland-app/index.html">
+                        <span class="pagination__dir">← Zurück</span>
+                        <span class="pagination__title">Deutschland-App</span>
+                    </a>
+                    <a class="pagination__link pagination__link--next" href="../architecture/index.html">
+                        <span class="pagination__dir">Weiter →</span>
+                        <span class="pagination__title">Architektur</span>
+                    </a>
+                </div>
+
+                <div class="page-footer">
+                    <div class="page-footer__meta">Apache-2.0 · Version 1.0 · Februar 2026</div>
+                    <div class="page-footer__feedback">
+                        <span class="page-footer__feedback-label">War diese Seite hilfreich?</span>
+                        <div class="page-footer__feedback-btns">
+                            <button class="feedback-btn">👍 Ja</button>
+                            <button class="feedback-btn">👎 Nein</button>
+                        </div>
+                    </div>
+                </div>
+
+            </article>
+
+            <aside class="content__toc">
+                <div class="toc" id="toc">
+                    <div class="toc__title">Auf dieser Seite</div>
+                    <ul class="toc__list"></ul>
+                </div>
+            </aside>
+        </main>
+
+    </div>
+
+    <script src="../assets/js/shell.js"></script>
+    <script src="../assets/js/site.js"></script>
+</body>
+
+</html>

@@ -58,6 +58,11 @@ const SHELL_HTML = `
           <span class="sidebar__nav-link-icon">📱</span> Deutschland-App
         </a>
       </li>
+      <li class="sidebar__nav-item">
+        <a class="sidebar__nav-link" href="${ROOT}gap-analyse/index.html">
+          <span class="sidebar__nav-link-icon">📊</span> GAP-Analyse
+        </a>
+      </li>
     </ul>
   </div>
 
