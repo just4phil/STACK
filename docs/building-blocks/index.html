@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Blocks – VerwDigiStack Spezifikation</title>
+    <meta name="description" content="Übersicht aller Building Blocks des Verwaltungsdigitalisierungs-Stacks.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/tokens.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+
+<body>
+    <script>window.PAGE_META = { title: 'Building Blocks', section: 'Building Blocks' };</script>
+
+    <div class="layout">
+
+        <main class="content">
+            <article class="content__main prose">
+
+                <div class="prose-header">
+                    <div class="prose-header__breadcrumb">
+                        <a href="../index.html">VerwDigiStack</a>
+                        <span class="prose-header__breadcrumb-sep">/</span>
+                        <span>Building Blocks</span>
+                    </div>
+                    <div class="prose-header__meta">
+                        <span class="prose-header__tag prose-header__tag--building-block">◈ Building Blocks</span>
+                        <span class="prose-header__tag prose-header__tag--draft">DRAFT</span>
+                        <span class="prose-header__version">12 BBs · Version 0.1</span>
+                    </div>
+                    <h1>Building Blocks</h1>
+                    <p>
+                        Building Blocks (BBs) sind austauschbare Softwarekomponenten mit verbindlichen
+                        API-Schnittstellen.
+                        Jeder BB kann unabhängig deployt werden und ist über seine normativen APIs mit anderen BBs
+                        koppelbar.
+                        Produkte sind <strong>stack-konform</strong>, wenn sie die normativen Schnittstellen eines BBs
+                        vollständig implementieren.
+                    </p>
+                </div>
+
+                <div class="callout callout--info">
+                    <div class="callout__icon">ℹ</div>
+                    <div class="callout__content">
+                        <div class="callout__title">Spezifikationsstruktur</div>
+                        <div class="callout__body">
+                            Jeder Building Block folgt demselben Aufbau:
+                            Beschreibung → Terminologie → Schlüsselfunktionalitäten → Querschnittsanforderungen →
+                            Funktionale Anforderungen → Datenmodell → Service-APIs → Workflows → Konformitätskriterien.
+                        </div>
+                    </div>
+                </div>
+
+                <h2 id="bestehende-bbs">Bestehende Building Blocks</h2>
+                <p style="color:var(--color-text-secondary);margin-bottom:var(--space-5)">
+                    Diese Komponenten sind bereits im Einsatz. Die Spezifikation normiert ihre Schnittstellen
+                    rückwirkend.
+                </p>
+
+                <div class="bb-grid">
+
+                    <a class="bb-card" href="bb-identity/index.html">
+                        <div class="bb-card__header">
+                            <div class="bb-card__icon bb-card__icon--identity">🪪</div>
+                            <span class="bb-card__status badge--done">✓ Vorhanden</span>
+                        </div>
+                        <div class="bb-card__title">BB-01 · Identity</div>
+                        <div class="bb-card__desc">Authentifizierung, Autorisierung und Identitätsmanagement für
+                            natürliche und juristische Personen. OIDC/SAML, eIDAS 2.0, BundID-Integration.</div>
+                        <div class="bb-card__footer">
+                            <span>Wave 1 · Infrastruktur</span>
+                            <span>→ Spec lesen</span>
+                        </div>
+                    </a>
+
+                    <a class="bb-card" href="bb-portal/index.html">
+                        <div class="bb-card__header">
+                            <div class="bb-card__icon bb-card__icon--portal">🖥</div>
+                            <span class="bb-card__status badge--done">✓ Vorhanden</span>
+                        </div>
+                        <div class="bb-card__title">BB-02 · Portal & Formular</div>
+                        <div class="bb-card__desc">OZG-konformes Bürgerportal mit integriertem Formularmanagement.
+                            Antragstellung, Statusverfolgung. Native App geplant.</div>
+                        <div class="bb-card__footer">
+                            <span>Wave 2 · Bürgerservices</span>
+                            <span>→ Spec lesen</span>
+                        </div>
+                    </a>
+
+                    <a class="bb-card" href="bb-postfach/index.html">
+                        <div class="bb-card__header">
+                            <div class="bb-card__icon bb-card__icon--postfach">📬</div>
+                            <span class="bb-card__status badge--done">✓ Vorhanden</span>
+                        </div>
+                        <div class="bb-card__title">BB-03 · Postfach</div>
+                        <div class="bb-card__desc">Sicheres digitales Behördenpostfach. Standardisierte
+                            Benachrichtigungs-API, Multi-Kanal, Ende-zu-Ende-Verschlüsselung.</div>
+                        <div class="bb-card__footer">
+                            <span>Wave 2 · Kommunikation</span>
+                            <span>→ Spec lesen</span>
+                        </div>
+                    </a>
+
+                    <a class="bb-card" href="bb-payment/index.html">
+                        <div class="bb-card__header">
+                            <div class="bb-card__icon bb-card__icon--payment">💳</div>
+                            <span class="bb-card__status badge--done">✓ Vorhanden</span>
+                        </div>
+                        <div class="bb-card__title">BB-04 · Payment</div>
+                        <div class="bb-card__desc">e-Payment für Verwaltungsgebühren und -leistungen. XFinanz,
+                            XRechnung, Multi-PSP-Anbindung, Belegarchivierung.</div>
+                        <div class="bb-card__footer">
+                            <span>Wave 2 · Transaktion</span>
+                            <span>→ Spec lesen</span>
+                        </div>
+                    </a>
+
+                    <a class="bb-card" href="bb-wallet/index.html">
+                        <div class="bb-card__header">
+                            <div class="bb-card__icon bb-card__icon--wallet">👛</div>
+                            <span class="bb-card__status badge--done">✓ Vorhanden</span>
+                        </div>
+                        <div class="bb-card__title">BB-05 · EUDI Wallet</div>
+                        <div class="bb-card__desc">EU Digital Identity Wallet nach eIDAS 2.0. Verifiable Credentials
+                            (SD-JWT, mdoc), Holder Binding, Selective Disclosure.</div>
+                        <div class="bb-card__footer">
+                            <span>Wave 3 · Identität</span>
+                            <span>→ Spec lesen</span>
+                        </div>
+                    </a>
+
+                    <a class="bb-card" href="bb-noots/index.html">
+                        <div class="bb-card__header">
+                            <div class="bb-card__icon bb-card__icon--register">🗂</div>
+                            <span class="bb-card__status badge--done">✓ Vorhanden</span>
+                        </div>
+                        <div class="bb-card__title">BB-06 · Register (NOOTS)</div>
+                        <div class="bb-card__desc">National Once-Only Technical System für Registerabrufe. OOTS-konform,
+                            Registermodernisierungsgesetz, Once-Only-Prinzip.</div>
+                        <div class="bb-card__footer">
+                            <span>Wave 3 · Register</span>
+                            <span>→ Spec lesen</span>
+                        </div>
+                    </a>
+
+                </div>
+
+                <h2 id="neue-bbs">Neu zu definierende Building Blocks</h2>
+                <p style="color:var(--color-text-secondary);margin-bottom:var(--space-5)">
+                    Diese Komponenten fehlen im aktuellen Stack und werden neu spezifiziert.
+                    Kritische BBs (Wave 1) sind Voraussetzung für viele andere.
+                </p>
+
+                <div class="bb-grid">
+
+                    <a class="bb-card" href="bb-api-gateway/index.html">
+                        <div class="bb-card__header">
+                            <div class="bb-card__icon bb-card__icon--gateway">⇄</div>
+                            <span class="bb-card__status badge--critical">🔴 Kritisch</span>
+                        </div>
+                        <div class="bb-card__title">BB-07 · API-Gateway</div>
+                        <div class="bb-card__desc">Zentraler Information Mediator und Service Mesh. API-Routing,
+                            Rate-Limiting, Versionierung, Policy Enforcement Point.</div>
+                        <div class="bb-card__footer">
+                            <span>Wave 1 · Infrastruktur</span>
+                            <span>→ Spec lesen</span>
+                        </div>
+                    </a>
+
+                    <a class="bb-card" href="bb-event-bus/index.html">
+                        <div class="bb-card__header">
+                            <div class="bb-card__icon bb-card__icon--events">⚡</div>
+                            <span class="bb-card__status badge--critical">🔴 Kritisch</span>
+                        </div>
+                        <div class="bb-card__title">BB-08 · Event-Bus</div>
+                        <div class="bb-card__desc">Asynchrone Entkopplung via CloudEvents-Standard. AMQP/MQTT/Kafka,
+                            Pub/Sub, Event Sourcing, At-Least-Once Delivery.</div>
+                        <div class="bb-card__footer">
+                            <span>Wave 1 · Infrastruktur</span>
+                            <span>→ Spec lesen</span>
+                        </div>
+                    </a>
+
+                    <a class="bb-card" href="bb-consent/index.html">
+                        <div class="bb-card__header">
+                            <div class="bb-card__icon bb-card__icon--consent">🔏</div>
+                            <span class="bb-card__status badge--critical">🔴 Kritisch</span>
+                        </div>
+                        <div class="bb-card__title">BB-09 · Consent Management</div>
+                        <div class="bb-card__desc">DSGVO-konforme Einwilligungsverwaltung. Granulare Zweckbindung,
+                            Widerruf, Consent-Receipt, Audit-Trail.</div>
+                        <div class="bb-card__footer">
+                            <span>Wave 2 · Datenschutz</span>
+                            <span>→ Spec lesen</span>
+                        </div>
+                    </a>
+
+                    <a class="bb-card" href="bb-esignatur/index.html">
+                        <div class="bb-card__header">
+                            <div class="bb-card__icon bb-card__icon--esig">✍</div>
+                            <span class="bb-card__status badge--high">🟡 Hoch</span>
+                        </div>
+                        <div class="bb-card__title">BB-10 · E-Signatur</div>
+                        <div class="bb-card__desc">Qualifizierte und fortgeschrittene elektronische Signaturen nach
+                            eIDAS. Integration mit EUDI Wallet, VDG, XTA.</div>
+                        <div class="bb-card__footer">
+                            <span>Wave 3 · Rechtssicherheit</span>
+                            <span>→ Spec lesen</span>
+                        </div>
+                    </a>
+
+                    <a class="bb-card" href="bb-bpm/index.html">
+                        <div class="bb-card__header">
+                            <div class="bb-card__icon bb-card__icon--bpm">⟲</div>
+                            <span class="bb-card__status badge--high">🟡 Hoch</span>
+                        </div>
+                        <div class="bb-card__title">BB-11 · BPM / Workflow</div>
+                        <div class="bb-card__desc">BPMN 2.0-basierte Prozessorchestrierung. DMN für Entscheidungslogik,
+                            Human Tasks, Prozessmonitor.</div>
+                        <div class="bb-card__footer">
+                            <span>Wave 4 · Prozesse</span>
+                            <span>→ Spec lesen</span>
+                        </div>
+                    </a>
+
+                    <a class="bb-card" href="bb-ai-gateway/index.html">
+                        <div class="bb-card__header">
+                            <div class="bb-card__icon bb-card__icon--ai">🤖</div>
+                            <span class="bb-card__status badge--high">🟡 Hoch</span>
+                        </div>
+                        <div class="bb-card__title">BB-12 · KI / AI-Gateway</div>
+                        <div class="bb-card__desc">Zentrale Inference-API und Modellregistry. Guardrails,
+                            Human-in-the-Loop, Explainability, AI-Audit-Trail.</div>
+                        <div class="bb-card__footer">
+                            <span>Wave 5 · Innovation</span>
+                            <span>→ Spec lesen</span>
+                        </div>
+                    </a>
+
+                </div>
+
+                <h2 id="bb-template">BB-Spezifikationsstruktur</h2>
+                <p>Jeder BB folgt diesem einheitlichen Aufbau:</p>
+
+                <div class="spec-nav">
+                    <div class="spec-nav__item"><span class="spec-nav__num">1</span>Versionshistorie</div>
+                    <div class="spec-nav__item"><span class="spec-nav__num">2</span>Beschreibung (Zweck,
+                        Architekturübersicht, Abgrenzung)</div>
+                    <div class="spec-nav__item"><span class="spec-nav__num">3</span>Begriffe & Definitionen</div>
+                    <div class="spec-nav__item"><span class="spec-nav__num">4</span>Schlüsselfunktionalitäten (Key
+                        Digital Functionalities)</div>
+                    <div class="spec-nav__item"><span class="spec-nav__num">5</span>Querschnittsanforderungen
+                        (Cross-Cutting Requirements)</div>
+                    <div class="spec-nav__item"><span class="spec-nav__num">6</span>Funktionale Anforderungen (MUSS /
+                        SOLL / KANN)</div>
+                    <div class="spec-nav__item"><span class="spec-nav__num">7</span>Datenmodell (JSON Schema,
+                        JSON-LD-Kontext)</div>
+                    <div class="spec-nav__item"><span class="spec-nav__num">8</span>Service-APIs (OpenAPI 3.1, AsyncAPI)
+                    </div>
+                    <div class="spec-nav__item"><span class="spec-nav__num">9</span>Interne Workflows (BPMN-Diagramme)
+                    </div>
+                    <div class="spec-nav__item"><span class="spec-nav__num">10</span>Konformitätskriterien & Test-Suite
+                    </div>
+                    <div class="spec-nav__item"><span class="spec-nav__num">11</span>Referenzen & Ressourcen</div>
+                </div>
+
+                <div class="pagination">
+                    <a class="pagination__link pagination__link--prev" href="../architecture/index.html">
+                        <span class="pagination__dir">← Zurück</span>
+                        <span class="pagination__title">Architektur</span>
+                    </a>
+                    <a class="pagination__link pagination__link--next" href="bb-api-gateway/index.html">
+                        <span class="pagination__dir">Weiter →</span>
+                        <span class="pagination__title">BB-07 · API-Gateway (Beispiel)</span>
+                    </a>
+                </div>
+
+                <div class="page-footer">
+                    <div class="page-footer__meta">Apache-2.0 · Version 0.1 DRAFT</div>
+                    <div class="page-footer__feedback">
+                        <span class="page-footer__feedback-label">Hilfreich?</span>
+                        <div class="page-footer__feedback-btns">
+                            <button class="feedback-btn">👍</button>
+                            <button class="feedback-btn">👎</button>
+                        </div>
+                    </div>
+                </div>
+
+            </article>
+
+            <aside class="content__toc">
+                <div class="toc" id="toc">
+                    <div class="toc__title">Auf dieser Seite</div>
+                    <ul class="toc__list"></ul>
+                </div>
+            </aside>
+        </main>
+
+    </div>
+
+    <script src="../assets/js/shell.js"></script>
+    <script src="../assets/js/site.js"></script>
+</body>
+
+</html>

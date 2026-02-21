@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architektur – VerwDigiStack Spezifikation</title>
+    <meta name="description"
+        content="Architektur und Querschnittsanforderungen des Verwaltungsdigitalisierungs-Stacks.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/tokens.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+
+<body>
+    <script>window.PAGE_META = { title: 'Architektur & Querschnittsanforderungen', section: 'Architektur' };</script>
+
+    <div class="layout">
+        <!-- Shell injected -->
+
+        <main class="content">
+            <article class="content__main prose">
+
+                <div class="prose-header">
+                    <div class="prose-header__breadcrumb">
+                        <a href="../index.html">VerwDigiStack</a>
+                        <span class="prose-header__breadcrumb-sep">/</span>
+                        <span>Architektur</span>
+                    </div>
+                    <div class="prose-header__meta">
+                        <span class="prose-header__tag prose-header__tag--architecture">⚙ Architektur</span>
+                        <span class="prose-header__tag prose-header__tag--draft">DRAFT</span>
+                        <span class="prose-header__version">Version 0.1 · Februar 2026</span>
+                    </div>
+                    <h1>Architektur & Querschnittsanforderungen</h1>
+                    <p>
+                        Dieses Dokument definiert die übergreifenden Architekturprinzipien, Cross-Cutting Requirements
+                        und Rahmenwerke, die für alle Building Blocks verbindlich gelten.
+                    </p>
+                </div>
+
+                <!-- Section navigation -->
+                <div class="spec-nav">
+                    <a class="spec-nav__item" href="01-hintergrund.html">
+                        <span class="spec-nav__num">01</span> Hintergrund & Ziele
+                        <span class="spec-nav__wip">IN ARBEIT</span>
+                    </a>
+                    <a class="spec-nav__item" href="02-prinzipien.html">
+                        <span class="spec-nav__num">02</span> Architekturprinzipien
+                        <span class="spec-nav__wip">IN ARBEIT</span>
+                    </a>
+                    <a class="spec-nav__item" href="03-schichtenmodell.html">
+                        <span class="spec-nav__num">03</span> Schichtenmodell
+                        <span class="spec-nav__wip">IN ARBEIT</span>
+                    </a>
+                    <a class="spec-nav__item" href="04-cross-cutting.html">
+                        <span class="spec-nav__num">04</span> Cross-Cutting Requirements
+                        <span class="spec-nav__wip">IN ARBEIT</span>
+                    </a>
+                    <a class="spec-nav__item" href="05-api-guidelines.html">
+                        <span class="spec-nav__num">05</span> API-Design-Guidelines
+                        <span class="spec-nav__wip">IN ARBEIT</span>
+                    </a>
+                    <a class="spec-nav__item" href="06-sicherheit.html">
+                        <span class="spec-nav__num">06</span> Sicherheitsarchitektur
+                        <span class="spec-nav__wip">IN ARBEIT</span>
+                    </a>
+                    <a class="spec-nav__item" href="07-semantik.html">
+                        <span class="spec-nav__num">07</span> Semantik & Datenstandards
+                        <span class="spec-nav__wip">IN ARBEIT</span>
+                    </a>
+                    <a class="spec-nav__item" href="08-ki-framework.html">
+                        <span class="spec-nav__num">08</span> KI-Framework
+                        <span class="spec-nav__wip">IN ARBEIT</span>
+                    </a>
+                    <a class="spec-nav__item" href="09-konformitaet.html">
+                        <span class="spec-nav__num">09</span> Konformitätsprogramm
+                        <span class="spec-nav__wip">IN ARBEIT</span>
+                    </a>
+                </div>
+
+                <h2 id="uebersicht">Strukturübersicht</h2>
+
+                <p>
+                    Die Architekturspezifikation definiert den gemeinsamen Rahmen, in dem alle Building Blocks
+                    operieren.
+                    Sie ist normativ für alle Komponenten des Stacks und beschreibt Mindestanforderungen für
+                    Stack-Konformität.
+                </p>
+
+                <div class="callout callout--warning">
+                    <div class="callout__icon">⚠</div>
+                    <div class="callout__content">
+                        <div class="callout__title">Normativität</div>
+                        <div class="callout__body">
+                            Alle Anforderungen folgen RFC 2119.
+                            <span class="req req--muss">MUSS</span> ist verpflichtend für Stack-Konformität.
+                            <span class="req req--soll">SOLL</span> ist empfohlen, Abweichungen erfordern Begründung.
+                            <span class="req req--kann">KANN</span> ist optional.
+                        </div>
+                    </div>
+                </div>
+
+                <h2 id="querschnittsanforderungen">Querschnittsanforderungen (Kurzfassung)</h2>
+                <p>
+                    Die folgenden Anforderungen gelten für <em>jeden</em> Building Block.
+                    Details finden sich in Kapitel <a href="04-cross-cutting.html">04 · Cross-Cutting Requirements</a>.
+                </p>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Anforderung</th>
+                                <th>Norm</th>
+                                <th>Level</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>QR-01</td>
+                                <td>OAuth 2.0 / OIDC-basierte Authentifizierung</td>
+                                <td>RFC 6749, OIDC Core 1.0</td>
+                                <td><span class="req req--muss">MUSS</span></td>
+                            </tr>
+                            <tr>
+                                <td>QR-02</td>
+                                <td>OpenAPI 3.1 Schnittstellenbeschreibung</td>
+                                <td>OpenAPI Spec 3.1</td>
+                                <td><span class="req req--muss">MUSS</span></td>
+                            </tr>
+                            <tr>
+                                <td>QR-03</td>
+                                <td>Verschlüsselung in Transit (TLS 1.2+)</td>
+                                <td>RFC 8446</td>
+                                <td><span class="req req--muss">MUSS</span></td>
+                            </tr>
+                            <tr>
+                                <td>QR-04</td>
+                                <td>Verschlüsselung at Rest (AES-256)</td>
+                                <td>NIST FIPS 197</td>
+                                <td><span class="req req--muss">MUSS</span></td>
+                            </tr>
+                            <tr>
+                                <td>QR-05</td>
+                                <td>OpenTelemetry Traces & Metrics</td>
+                                <td>OTel Spec 1.x</td>
+                                <td><span class="req req--muss">MUSS</span></td>
+                            </tr>
+                            <tr>
+                                <td>QR-06</td>
+                                <td>Health-Endpoints (/health, /ready)</td>
+                                <td>Stack-intern</td>
+                                <td><span class="req req--muss">MUSS</span></td>
+                            </tr>
+                            <tr>
+                                <td>QR-07</td>
+                                <td>DSGVO-konforme Datenhaltung</td>
+                                <td>DSGVO Art. 25</td>
+                                <td><span class="req req--muss">MUSS</span></td>
+                            </tr>
+                            <tr>
+                                <td>QR-08</td>
+                                <td>WCAG 2.2 AA für UI-Komponenten</td>
+                                <td>WCAG 2.2, BITV 2.0</td>
+                                <td><span class="req req--muss">MUSS</span></td>
+                            </tr>
+                            <tr>
+                                <td>QR-09</td>
+                                <td>Revisionssichere Auditprotokollierung</td>
+                                <td>BSI TR-ESOR</td>
+                                <td><span class="req req--muss">MUSS</span></td>
+                            </tr>
+                            <tr>
+                                <td>QR-10</td>
+                                <td>JSON-LD-Kontext für alle Entitäten</td>
+                                <td>JSON-LD 1.1</td>
+                                <td><span class="req req--soll">SOLL</span></td>
+                            </tr>
+                            <tr>
+                                <td>QR-11</td>
+                                <td>Semantic Versioning (MAJOR.MINOR.PATCH)</td>
+                                <td>SemVer 2.0</td>
+                                <td><span class="req req--muss">MUSS</span></td>
+                            </tr>
+                            <tr>
+                                <td>QR-12</td>
+                                <td>Kubernetes-Deployment (Helm Chart)</td>
+                                <td>CNCF</td>
+                                <td><span class="req req--soll">SOLL</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagination">
+                    <a class="pagination__link pagination__link--prev" href="../index.html">
+                        <span class="pagination__dir">← Zurück</span>
+                        <span class="pagination__title">Übersicht</span>
+                    </a>
+                    <a class="pagination__link pagination__link--next" href="01-hintergrund.html">
+                        <span class="pagination__dir">Weiter →</span>
+                        <span class="pagination__title">01 · Hintergrund & Ziele</span>
+                    </a>
+                </div>
+
+                <div class="page-footer">
+                    <div class="page-footer__meta">Apache-2.0 · Version 0.1 DRAFT</div>
+                    <div class="page-footer__feedback">
+                        <span class="page-footer__feedback-label">Hilfreich?</span>
+                        <div class="page-footer__feedback-btns">
+                            <button class="feedback-btn">👍</button>
+                            <button class="feedback-btn">👎</button>
+                        </div>
+                    </div>
+                </div>
+
+            </article>
+
+            <aside class="content__toc">
+                <div class="toc" id="toc">
+                    <div class="toc__title">Auf dieser Seite</div>
+                    <ul class="toc__list"></ul>
+                </div>
+            </aside>
+        </main>
+
+    </div>
+
+    <script src="../assets/js/shell.js"></script>
+    <script src="../assets/js/site.js"></script>
+</body>
+
+</html>

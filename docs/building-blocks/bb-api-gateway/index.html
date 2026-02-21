@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BB-07 API-Gateway – VerwDigiStack Spezifikation</title>
+    <meta name="description" content="Building Block Spezifikation: API-Gateway / Information Mediator.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/tokens.css">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+
+<body>
+    <script>window.PAGE_META = { title: 'BB-07 · API-Gateway', section: 'Building Blocks' };</script>
+
+    <div class="layout">
+
+        <main class="content">
+            <article class="content__main prose">
+
+                <!-- HEADER -->
+                <div class="prose-header">
+                    <div class="prose-header__breadcrumb">
+                        <a href="../../index.html">VerwDigiStack</a>
+                        <span class="prose-header__breadcrumb-sep">/</span>
+                        <a href="../index.html">Building Blocks</a>
+                        <span class="prose-header__breadcrumb-sep">/</span>
+                        <span>BB-07 · API-Gateway</span>
+                    </div>
+                    <div class="prose-header__meta">
+                        <span class="prose-header__tag prose-header__tag--building-block">◈ Building Block</span>
+                        <span class="prose-header__tag prose-header__tag--draft">DRAFT</span>
+                        <span class="prose-header__version">Version 0.1 · Februar 2026</span>
+                    </div>
+                    <h1>BB-07 · API-Gateway / Information Mediator</h1>
+                    <p>
+                        Zentraler Vermittlungsdienst für die Kommunikation zwischen Building Blocks und Fachverfahren.
+                        Realisiert Routing, Sicherheitsdurchsetzung, Versionierung und Observability für alle synchronen
+                        API-Aufrufe im Stack.
+                    </p>
+                </div>
+
+                <!-- SECTION NAV -->
+                <div class="spec-nav">
+                    <a class="spec-nav__item" href="#version-history">
+                        <span class="spec-nav__num">1</span>Versionshistorie
+                        <span class="spec-nav__check">✓</span>
+                    </a>
+                    <a class="spec-nav__item" href="#beschreibung">
+                        <span class="spec-nav__num">2</span>Beschreibung
+                        <span class="spec-nav__check">✓</span>
+                    </a>
+                    <a class="spec-nav__item" href="#terminologie">
+                        <span class="spec-nav__num">3</span>Terminologie
+                        <span class="spec-nav__check">✓</span>
+                    </a>
+                    <a class="spec-nav__item" href="#schluessel-funktionalitaeten">
+                        <span class="spec-nav__num">4</span>Schlüsselfunktionalitäten
+                        <span class="spec-nav__check">✓</span>
+                    </a>
+                    <a class="spec-nav__item" href="#querschnitt">
+                        <span class="spec-nav__num">5</span>Querschnittsanforderungen
+                        <span class="spec-nav__check">✓</span>
+                    </a>
+                    <a class="spec-nav__item" href="#funktionale-anforderungen">
+                        <span class="spec-nav__num">6</span>Funktionale Anforderungen
+                        <span class="spec-nav__check">✓</span>
+                    </a>
+                    <a class="spec-nav__item" href="#datenmodell">
+                        <span class="spec-nav__num">7</span>Datenmodell
+                        <span class="spec-nav__wip">IN ARBEIT</span>
+                    </a>
+                    <a class="spec-nav__item" href="#service-apis">
+                        <span class="spec-nav__num">8</span>Service-APIs
+                        <span class="spec-nav__wip">IN ARBEIT</span>
+                    </a>
+                    <a class="spec-nav__item" href="#workflows">
+                        <span class="spec-nav__num">9</span>Interne Workflows
+                        <span class="spec-nav__wip">IN ARBEIT</span>
+                    </a>
+                    <a class="spec-nav__item" href="#konformitaet">
+                        <span class="spec-nav__num">10</span>Konformitätskriterien
+                        <span class="spec-nav__wip">IN ARBEIT</span>
+                    </a>
+                    <a class="spec-nav__item" href="#referenzen">
+                        <span class="spec-nav__num">11</span>Referenzen & Ressourcen
+                        <span class="spec-nav__check">✓</span>
+                    </a>
+                </div>
+
+                <!-- 1 VERSION HISTORY -->
+                <h2 id="version-history">1 Versionshistorie</h2>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Version</th>
+                                <th>Datum</th>
+                                <th>Änderungen</th>
+                                <th>Autor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>0.1</code></td>
+                                <td>2026-02-21</td>
+                                <td>Initiale Entwurfsfassung</td>
+                                <td>–</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <hr>
+
+                <!-- 2 DESCRIPTION -->
+                <h2 id="beschreibung">2 Beschreibung</h2>
+
+                <h3 id="zweck">2.1 Zweck und Kontext</h3>
+                <p>
+                    Der BB-07 API-Gateway ist die zentrale Ingress- und Mediationsinstanz des Stacks.
+                    Er realisiert das <em>Information Mediator</em>-Konzept aus GovStack: Alle Aufrufe zwischen
+                    Building Blocks sowie von Fachverfahren zu BBs laufen durch den API-Gateway.
+                    Dadurch wird eine konsistente Durchsetzung von Sicherheits-, Observability- und
+                    Governance-Richtlinien gewährleistet, ohne dass jeder BB diese selbst implementieren muss.
+                </p>
+                <p>
+                    Der BB ist eine <strong>kritische Infrastrukturkomponente</strong> (Wave 1) und muss
+                    vor allen anderen BBs spezifiziert und bereitgestellt werden.
+                </p>
+
+                <h3 id="architektur-ubersicht">2.2 Architekturübersicht</h3>
+
+                <pre><code>┌─────────────────────────────────────────────────────────────────┐
+│                     FACHVERFAHREN / APPS                        │
+│           (Portal, Native App, Fachanwendungen)                 │
+└──────────────────────────┬──────────────────────────────────────┘
+                           │ HTTPS / mTLS
+                           ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                     BB-07 API-GATEWAY                           │
+│  ┌──────────────┐  ┌──────────────┐  ┌────────────────────────┐ │
+│  │ Authentifi-  │  │  Routing &   │  │  Rate Limiting &       │ │
+│  │ zierung /    │  │  Versionie-  │  │  Throttling            │ │
+│  │ Autorisierung│  │  rung        │  │                        │ │
+│  └──────────────┘  └──────────────┘  └────────────────────────┘ │
+│  ┌──────────────┐  ┌──────────────┐  ┌────────────────────────┐ │
+│  │ Audit &      │  │  Policy      │  │  Transformation &      │ │
+│  │ Logging      │  │  Enforcement │  │  Protocol Mediation    │ │
+│  └──────────────┘  └──────────────┘  └────────────────────────┘ │
+└──────┬─────────────────┬────────────────────┬────────────────────┘
+       │                 │                    │
+       ▼                 ▼                    ▼
+  BB-01 Identity   BB-06 NOOTS         andere BBs
+</code></pre>
+
+                <h3 id="abgrenzung">2.3 Abgrenzung</h3>
+                <p><strong>In-Scope</strong> (dieser BB):</p>
+                <ul>
+                    <li>Synchrone REST/HTTP-Kommunikation zwischen Clients und BBs</li>
+                    <li>Synchrone BB-zu-BB-Kommunikation</li>
+                    <li>Policy-Enforcement für API-Aufrufe</li>
+                    <li>API-Katalog und Developer Portal</li>
+                </ul>
+                <p><strong>Out-of-Scope</strong> (andere BBs):</p>
+                <ul>
+                    <li>Asynchrone Event-Kommunikation → <a href="../bb-event-bus/index.html">BB-08 Event-Bus</a></li>
+                    <li>Identitäts- und Zugriffsverwaltung → <a href="../bb-identity/index.html">BB-01 Identity</a></li>
+                    <li>Einwilligungsverwaltung → <a href="../bb-consent/index.html">BB-09 Consent</a></li>
+                </ul>
+
+                <hr>
+
+                <!-- 3 TERMINOLOGIE -->
+                <h2 id="terminologie">3 Terminologie</h2>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Begriff</th>
+                                <th>Definition</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>API-Gateway</strong></td>
+                                <td>Ingress-Punkt für alle HTTP-Anfragen; routet, authentifiziert, transformiert</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Information Mediator</strong></td>
+                                <td>GovStack-Konzept: Vermittler für BB-zu-BB-Kommunikation mit Governance-Enforcement
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Policy Enforcement Point (PEP)</strong></td>
+                                <td>Stelle im Gateway, die Sicherheits- und Governance-Richtlinien durchsetzt</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Upstream-Service</strong></td>
+                                <td>Der Backend-BB oder Fachservice, zu dem der Gateway routet</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Rate Limiting</strong></td>
+                                <td>Begrenzung der Anfragerate pro Client / API / BB</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Service Mesh</strong></td>
+                                <td>Infrastrukturschicht für Ost-West-Kommunikation zwischen Services (mTLS, Retries)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Developer Portal</strong></td>
+                                <td>Self-Service-Portal für API-Dokumentation, Testing und Key-Management</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <hr>
+
+                <!-- 4 KEY FUNCTIONALITIES -->
+                <h2 id="schluessel-funktionalitaeten">4 Schlüsselfunktionalitäten</h2>
+
+                <ul>
+                    <li><strong>KF-01 · API-Routing</strong>: Intelligentes Routing zu Upstream-Services inkl.
+                        Lastverteilung</li>
+                    <li><strong>KF-02 · Authentifizierung</strong>: Token-Validation (JWT/OIDC), mTLS-Prüfung</li>
+                    <li><strong>KF-03 · Autorisierung</strong>: Policy-basierte Zugriffskontrolle (OPA/Rego)</li>
+                    <li><strong>KF-04 · Rate Limiting</strong>: Anfragebegrenzung auf Client-, API- und BB-Ebene</li>
+                    <li><strong>KF-05 · Versionierung</strong>: Parallelbetrieb mehrerer API-Versionen; automatisches
+                        Routing</li>
+                    <li><strong>KF-06 · Observability</strong>: Distributed Tracing, Metrics, strukturiertes Access-Log
+                    </li>
+                    <li><strong>KF-07 · Transformation</strong>: Protokoll- und Format-Konvertierung (REST↔SOAP,
+                        Header-Manipulation)</li>
+                    <li><strong>KF-08 · API-Katalog</strong>: Maschinenlesbare API-Übersicht; Developer Portal mit
+                        OpenAPI-UI</li>
+                    <li><strong>KF-09 · Circuit Breaker</strong>: Automatisches Abschalten fehlerhafter
+                        Upstream-Services</li>
+                    <li><strong>KF-10 · Audit-Log</strong>: Revisionssichere Protokollierung aller Anfragen und
+                        Policy-Entscheidungen</li>
+                </ul>
+
+                <hr>
+
+                <!-- 5 CROSS-CUTTING -->
+                <h2 id="querschnitt">5 Querschnittsanforderungen</h2>
+
+                <h3>5.1 Sicherheit</h3>
+                <ul>
+                    <li>Der Gateway <span class="req req--muss">MUSS</span> alle eingehenden Anfragen auf gültige
+                        OIDC-Tokens prüfen.</li>
+                    <li>Die Kommunikation zwischen Gateway und Upstream <span class="req req--muss">MUSS</span> via mTLS
+                        abgesichert sein.</li>
+                    <li>Secrets <span class="req req--muss">MUSS</span> extern verwaltet werden (z.B. HashiCorp Vault,
+                        Kubernetes Secrets Store).</li>
+                    <li>Der Gateway <span class="req req--soll">SOLL</span> OWASP-API-Security-Top-10-Schutzmaßnahmen
+                        implementieren.</li>
+                </ul>
+
+                <h3>5.2 Verfügbarkeit</h3>
+                <ul>
+                    <li>SLA: <span class="req req--muss">MUSS</span> 99,9 % Verfügbarkeit (monatlich) erreichen.</li>
+                    <li>Der Gateway <span class="req req--muss">MUSS</span> horizontal skalierbar sein (stateless).</li>
+                    <li>Health-Endpoints: <code>GET /health/live</code> und <code>GET /health/ready</code> <span
+                            class="req req--muss">MUSS</span> bereitgestellt werden.</li>
+                </ul>
+
+                <h3>5.3 Observability</h3>
+                <ul>
+                    <li>Alle Anfragen <span class="req req--muss">MUSS</span>en mit OpenTelemetry instrumentiert werden
+                        (Trace-ID, Span-ID).</li>
+                    <li>Access-Logs <span class="req req--muss">MUSS</span>en strukturiert (JSON) ausgegeben werden.
+                    </li>
+                    <li>Metriken <span class="req req--muss">MUSS</span>en im Prometheus-Format exportiert werden.</li>
+                </ul>
+
+                <hr>
+
+                <!-- 6 FUNCTIONAL REQUIREMENTS -->
+                <h2 id="funktionale-anforderungen">6 Funktionale Anforderungen</h2>
+
+                <h3 id="fr-routing">6.1 Routing</h3>
+
+                <div class="callout callout--info">
+                    <div class="callout__icon">ℹ</div>
+                    <div class="callout__content">
+                        <div class="callout__body">
+                            Anforderungen sind nach RFC 2119 formuliert:
+                            <span class="req req--muss">MUSS</span> = verpflichtend,
+                            <span class="req req--soll">SOLL</span> = empfohlen,
+                            <span class="req req--kann">KANN</span> = optional.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Anforderung</th>
+                                <th>Level</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>FR-01</td>
+                                <td>Der Gateway MUSS HTTP/1.1 und HTTP/2 unterstützen.</td>
+                                <td><span class="req req--muss">MUSS</span></td>
+                            </tr>
+                            <tr>
+                                <td>FR-02</td>
+                                <td>Der Gateway MUSS path-basiertes und host-basiertes Routing unterstützen.</td>
+                                <td><span class="req req--muss">MUSS</span></td>
+                            </tr>
+                            <tr>
+                                <td>FR-03</td>
+                                <td>Der Gateway MUSS API-Versionen gleichzeitig bedienen können (z.B. /v1/, /v2/).</td>
+                                <td><span class="req req--muss">MUSS</span></td>
+                            </tr>
+                            <tr>
+                                <td>FR-04</td>
+                                <td>Der Gateway SOLL weighted Round-Robin Load Balancing unterstützen.</td>
+                                <td><span class="req req--soll">SOLL</span></td>
+                            </tr>
+                            <tr>
+                                <td>FR-05</td>
+                                <td>Der Gateway SOLL canary Deployments (Traffic-Split) ermöglichen.</td>
+                                <td><span class="req req--soll">SOLL</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 id="fr-security">6.2 Sicherheit & Autorisierung</h3>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Anforderung</th>
+                                <th>Level</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>FR-10</td>
+                                <td>Der Gateway MUSS JWT-Tokens nach OIDC validieren (Signatur, Ablauf, Aussteller).
+                                </td>
+                                <td><span class="req req--muss">MUSS</span></td>
+                            </tr>
+                            <tr>
+                                <td>FR-11</td>
+                                <td>Der Gateway MUSS ungültige Token mit HTTP 401 ablehnen.</td>
+                                <td><span class="req req--muss">MUSS</span></td>
+                            </tr>
+                            <tr>
+                                <td>FR-12</td>
+                                <td>Der Gateway MUSS Policy-Entscheidungen an einen externen Policy Decision Point
+                                    delegieren können (OPA).</td>
+                                <td><span class="req req--muss">MUSS</span></td>
+                            </tr>
+                            <tr>
+                                <td>FR-13</td>
+                                <td>Der Gateway SOLL API-Keys als alternative Authentifizierungsmethode unterstützen
+                                    (nur für M2M).</td>
+                                <td><span class="req req--soll">SOLL</span></td>
+                            </tr>
+                            <tr>
+                                <td>FR-14</td>
+                                <td>Der Gateway MUSS Request-Signierung via HTTP Signatures unterstützen.</td>
+                                <td><span class="req req--muss">MUSS</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 id="fr-rate">6.3 Rate Limiting & Throttling</h3>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Anforderung</th>
+                                <th>Level</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>FR-20</td>
+                                <td>Der Gateway MUSS Rate-Limits pro Client-ID, API-Path und BB konfigurierbar machen.
+                                </td>
+                                <td><span class="req req--muss">MUSS</span></td>
+                            </tr>
+                            <tr>
+                                <td>FR-21</td>
+                                <td>Überschrittene Rate-Limits MÜSSEN mit HTTP 429 und <code>Retry-After</code>-Header
+                                    beantwortet werden.</td>
+                                <td><span class="req req--muss">MUSS</span></td>
+                            </tr>
+                            <tr>
+                                <td>FR-22</td>
+                                <td>Der Gateway SOLL Quota-Management (täglich/monatlich) unterstützen.</td>
+                                <td><span class="req req--soll">SOLL</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 id="fr-catalog">6.4 API-Katalog & Developer Portal</h3>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Anforderung</th>
+                                <th>Level</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>FR-30</td>
+                                <td>Der Gateway MUSS einen maschinenlesbaren API-Katalog (OpenAPI 3.1) bereitstellen.
+                                </td>
+                                <td><span class="req req--muss">MUSS</span></td>
+                            </tr>
+                            <tr>
+                                <td>FR-31</td>
+                                <td>Der Gateway MUSS ein Self-Service Developer Portal anbieten.</td>
+                                <td><span class="req req--muss">MUSS</span></td>
+                            </tr>
+                            <tr>
+                                <td>FR-32</td>
+                                <td>Das Developer Portal SOLL interaktives API-Testing ermöglichen (Try-It-Out).</td>
+                                <td><span class="req req--soll">SOLL</span></td>
+                            </tr>
+                            <tr>
+                                <td>FR-33</td>
+                                <td>Der API-Katalog SOLL maschinenlesbare JSON-LD-Metadaten zu jeder API bereitstellen.
+                                </td>
+                                <td><span class="req req--soll">SOLL</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <hr>
+
+                <!-- 7 DATA MODEL -->
+                <h2 id="datenmodell">7 Datenmodell</h2>
+
+                <div class="callout callout--warning">
+                    <div class="callout__icon">⚠</div>
+                    <div class="callout__content">
+                        <div class="callout__title">In Arbeit</div>
+                        <div class="callout__body">Dieses Kapitel wird in Version 0.2 ergänzt. Geplant:
+                            Route-Registry-Schema, Policy-Objekte, Audit-Log-Format.</div>
+                    </div>
+                </div>
+
+                <h3>7.1 Vorläufige Hauptentitäten</h3>
+                <ul>
+                    <li><strong>Route</strong>: Source-Path, Upstream-URL, Version, Auth-Profil, Rate-Limit-Profil</li>
+                    <li><strong>AuthProfile</strong>: Typ (OIDC / API-Key / mTLS), Konfiguration, Issuer-URL</li>
+                    <li><strong>RateLimitPolicy</strong>: Fenster, Limit, Scope (Client / Path / BB)</li>
+                    <li><strong>AuditEvent</strong>: Request-ID, Trace-ID, Timestamp, Method, Path, Status, Client-ID,
+                        Policy-Decision</li>
+                </ul>
+
+                <hr>
+
+                <!-- 8 SERVICE APIs -->
+                <h2 id="service-apis">8 Service-APIs</h2>
+
+                <div class="callout callout--warning">
+                    <div class="callout__icon">⚠</div>
+                    <div class="callout__content">
+                        <div class="callout__title">In Arbeit</div>
+                        <div class="callout__body">Die vollständige OpenAPI 3.1 Spezifikation wird in Version 0.2
+                            ergänzt.</div>
+                    </div>
+                </div>
+
+                <h3>8.1 Management-API (Übersicht)</h3>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Methode</th>
+                                <th>Pfad</th>
+                                <th>Beschreibung</th>
+                                <th>Auth</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>GET</code></td>
+                                <td><code>/admin/routes</code></td>
+                                <td>Alle konfigurierten Routen abrufen</td>
+                                <td>Admin-Token</td>
+                            </tr>
+                            <tr>
+                                <td><code>POST</code></td>
+                                <td><code>/admin/routes</code></td>
+                                <td>Neue Route registrieren</td>
+                                <td>Admin-Token</td>
+                            </tr>
+                            <tr>
+                                <td><code>PUT</code></td>
+                                <td><code>/admin/routes/{id}</code></td>
+                                <td>Route aktualisieren</td>
+                                <td>Admin-Token</td>
+                            </tr>
+                            <tr>
+                                <td><code>DELETE</code></td>
+                                <td><code>/admin/routes/{id}</code></td>
+                                <td>Route deregistrieren</td>
+                                <td>Admin-Token</td>
+                            </tr>
+                            <tr>
+                                <td><code>GET</code></td>
+                                <td><code>/catalog</code></td>
+                                <td>API-Katalog (OpenAPI-Liste)</td>
+                                <td>Public</td>
+                            </tr>
+                            <tr>
+                                <td><code>GET</code></td>
+                                <td><code>/health/live</code></td>
+                                <td>Liveness-Check</td>
+                                <td>Public</td>
+                            </tr>
+                            <tr>
+                                <td><code>GET</code></td>
+                                <td><code>/health/ready</code></td>
+                                <td>Readiness-Check</td>
+                                <td>Public</td>
+                            </tr>
+                            <tr>
+                                <td><code>GET</code></td>
+                                <td><code>/metrics</code></td>
+                                <td>Prometheus-Metriken</td>
+                                <td>Intern</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>8.2 Standardisiertes Fehlerformat</h3>
+                <p>Alle Fehlercodes folgen RFC 7807 (Problem Details for HTTP APIs):</p>
+
+                <pre><code>{
+  "type":     "https://verwdigistack.de/errors/rate-limit-exceeded",
+  "title":    "Rate Limit Exceeded",
+  "status":   429,
+  "detail":   "Client überschreitet das Limit von 100 Anfragen/Minute.",
+  "instance": "/api/v1/bb-identity/users",
+  "traceId":  "4bf92f3577b34da6a3ce929d0e0e4736"
+}</code></pre>
+
+                <hr>
+
+                <!-- 9 WORKFLOWS -->
+                <h2 id="workflows">9 Interne Workflows</h2>
+                <div class="callout callout--warning">
+                    <div class="callout__icon">⚠</div>
+                    <div class="callout__content">
+                        <div class="callout__title">In Arbeit</div>
+                        <div class="callout__body">BPMN 2.0-Sequenzdiagramme werden in Version 0.2 ergänzt. Geplant:
+                            Authenticated-Request-Flow, Rate-Limiting-Flow, Circuit-Breaker-Flow.</div>
+                    </div>
+                </div>
+
+                <h3>9.1 Authentifizierter Request-Flow (Textbeschreibung)</h3>
+                <ol>
+                    <li>Client sendet HTTP-Anfrage mit Bearer-Token an Gateway</li>
+                    <li>Gateway prüft Token-Signatur via OIDC-Discovery (BB-01 Identity)</li>
+                    <li>Gateway fragt Policy Decision Point (OPA) mit Subject, Action, Resource</li>
+                    <li>PDP antwortet mit Allow/Deny + optionalen Kontextdaten</li>
+                    <li>Bei Allow: Gateway leitet Anfrage an Upstream-BB weiter (mTLS)</li>
+                    <li>Gateway fügt Trace-ID-Header ein, schreibt Audit-Log-Eintrag</li>
+                    <li>Antwort wird an Client zurückgegeben</li>
+                </ol>
+
+                <hr>
+
+                <!-- 10 CONFORMANCE -->
+                <h2 id="konformitaet">10 Konformitätskriterien</h2>
+
+                <div class="callout callout--warning">
+                    <div class="callout__icon">⚠</div>
+                    <div class="callout__content">
+                        <div class="callout__title">In Arbeit</div>
+                        <div class="callout__body">Die automatisierte Conformance Test Suite wird in Version 0.2
+                            ergänzt.</div>
+                    </div>
+                </div>
+
+                <h3>10.1 Level 1 – API-Compliant (MUSS-Kriterien)</h3>
+                <ul>
+                    <li>CT-01: Gateway akzeptiert OIDC-Token vom konfigurierten Issuer</li>
+                    <li>CT-02: Gateway antwortet ungültigen Token mit HTTP 401</li>
+                    <li>CT-03: Gateway antwortet Rate-limitierten Anfragen mit HTTP 429 + Retry-After</li>
+                    <li>CT-04: <code>/health/live</code> und <code>/health/ready</code> antworten HTTP 200</li>
+                    <li>CT-05: Alle Anfragen enthalten Trace-ID in Response-Headern</li>
+                    <li>CT-06: Fehlerformat entspricht RFC 7807</li>
+                </ul>
+
+                <h3>10.2 Level 2 – Feature-Complete (SOLL-Kriterien)</h3>
+                <ul>
+                    <li>CT-10: API-Katalog unter <code>/catalog</code> liefert valide OpenAPI-3.1-Dokumente</li>
+                    <li>CT-11: OPA-Policy-Integration funktioniert mit Referenz-Policy</li>
+                    <li>CT-12: Rate-Limit-Policies sind zur Laufzeit konfigurierbar</li>
+                    <li>CT-13: Canary-Routing mit konfigurierbarem Traffic-Split</li>
+                </ul>
+
+                <hr>
+
+                <!-- 11 REFERENCES -->
+                <h2 id="referenzen">11 Referenzen & Ressourcen</h2>
+
+                <h3>11.1 Relevante Standards</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Standard</th>
+                                <th>Verwendung</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://openid.net/specs/openid-connect-core-1_0.html" target="_blank"
+                                        rel="noopener">OIDC Core 1.0</a></td>
+                                <td>Token-Validierung</td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://www.rfc-editor.org/rfc/rfc6749" target="_blank" rel="noopener">RFC
+                                        6749 – OAuth 2.0</a></td>
+                                <td>Autorisierungsframework</td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://www.rfc-editor.org/rfc/rfc7807" target="_blank" rel="noopener">RFC
+                                        7807 – Problem Details</a></td>
+                                <td>Fehlerformat</td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://www.rfc-editor.org/rfc/rfc8446" target="_blank" rel="noopener">RFC
+                                        8446 – TLS 1.3</a></td>
+                                <td>Transportverschlüsselung</td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://cloudevents.io/" target="_blank" rel="noopener">CloudEvents
+                                        Spec</a></td>
+                                <td>Event-Envelope (für BB-08)</td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://opentelemetry.io/docs/specs/otel/" target="_blank"
+                                        rel="noopener">OpenTelemetry Spec</a></td>
+                                <td>Distributed Tracing & Metrics</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>11.2 Referenzimplementierungen (Buy-Kandidaten)</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Produkt</th>
+                                <th>Lizenz</th>
+                                <th>Anmerkung</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Kong Gateway</td>
+                                <td>Apache-2.0 (Community)</td>
+                                <td>Weit verbreitet, Plugin-Ökosystem</td>
+                            </tr>
+                            <tr>
+                                <td>APISIX</td>
+                                <td>Apache-2.0</td>
+                                <td>Cloud-native, starke OPA-Integration</td>
+                            </tr>
+                            <tr>
+                                <td>Traefik</td>
+                                <td>MIT</td>
+                                <td>Kubernetes-nativ, einfaches Deployment</td>
+                            </tr>
+                            <tr>
+                                <td>Gravitee.io</td>
+                                <td>Apache-2.0</td>
+                                <td>Vollständiges API-Management inkl. Developer Portal</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>11.3 Mapping zu GovStack BB</h3>
+                <p>Entspricht dem <a href="https://specs.govstack.global/information-mediator" target="_blank"
+                        rel="noopener">GovStack Information Mediator Building Block</a> mit Erweiterungen für den
+                    deutschen Rechtsrahmen.</p>
+
+                <div class="pagination">
+                    <a class="pagination__link pagination__link--prev" href="../index.html">
+                        <span class="pagination__dir">← Zurück</span>
+                        <span class="pagination__title">Building Blocks Übersicht</span>
+                    </a>
+                    <a class="pagination__link pagination__link--next" href="../bb-event-bus/index.html">
+                        <span class="pagination__dir">Weiter →</span>
+                        <span class="pagination__title">BB-08 · Event-Bus</span>
+                    </a>
+                </div>
+
+                <div class="page-footer">
+                    <div class="page-footer__meta">Apache-2.0 · Version 0.1 DRAFT · Zuletzt geändert: Feb 2026</div>
+                    <div class="page-footer__feedback">
+                        <span class="page-footer__feedback-label">War diese Seite hilfreich?</span>
+                        <div class="page-footer__feedback-btns">
+                            <button class="feedback-btn">👍 Ja</button>
+                            <button class="feedback-btn">👎 Nein</button>
+                        </div>
+                    </div>
+                </div>
+
+            </article>
+
+            <aside class="content__toc">
+                <div class="toc" id="toc">
+                    <div class="toc__title">Auf dieser Seite</div>
+                    <ul class="toc__list"></ul>
+                </div>
+            </aside>
+        </main>
+
+    </div>
+
+    <script src="../../assets/js/shell.js"></script>
+    <script src="../../assets/js/site.js"></script>
+</body>
+
+</html>
