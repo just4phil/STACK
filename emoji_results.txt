@@ -1,0 +1,985 @@
+﻿E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\index.html:29: <div class="hero__kicker">? Building-Block-Spezifikation · v0.3 DRAFT · Stand Feb 2026</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\index.html:83: style="background:rgba(37,99,235,.07);color:rgb(29,78,216);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:3px 10px;border-radius:20px;border:1px solid rgba(37,99,235,.18)">?
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\index.html:209: <div class="bb-card__icon bb-card__icon--gateway">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\index.html:223: <div class="bb-card__icon bb-card__icon--generic">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\index.html:237: <div class="bb-card__icon bb-card__icon--portal">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\index.html:263: <span class="bb-card__status badge--done">? Spec v0.2</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\index.html:274: <span class="bb-card__status badge--done">V Vorhanden</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\index.html:285: <span class="bb-card__status badge--done">? Spec v0.3</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\index.html:295: <span class="bb-card__status badge--done">V Vorhanden</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\index.html:305: <span class="bb-card__status badge--done">? Spec v0.3</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\index.html:316: <span class="bb-card__status badge--done">? Spec v0.3</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\index.html:326: <span class="bb-card__status badge--critical">?? Kritisch</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\index.html:337: <span class="bb-card__status badge--critical">?? Kritisch</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\index.html:348: <span class="bb-card__status badge--critical">?? Kritisch</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\index.html:359: <span class="bb-card__status badge--high">?? Hoch</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\index.html:369: <span class="bb-card__status badge--high">?? Hoch</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\index.html:379: <span class="bb-card__status badge--high">?? Hoch</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\index.html:447: <div style="font-size:2rem;margin-bottom:var(--space-2)">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\index.html:455: <div style="font-size:2rem;margin-bottom:var(--space-2)">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\index.html:463: <div style="font-size:2rem;margin-bottom:var(--space-2)">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\index.html:479: <button class="feedback-btn">?? Ja</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\index.html:480: <button class="feedback-btn">?? Nein</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\01-hintergrund.html:27: <span class="prose-header__tag prose-header__tag--architecture">? Architektur</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\01-hintergrund.html:35: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\01-hintergrund.html:66: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\01-hintergrund.html:67: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\02-prinzipien.html:27: <span class="prose-header__tag prose-header__tag--architecture">? Architektur</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\02-prinzipien.html:35: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\02-prinzipien.html:66: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\02-prinzipien.html:67: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\03-schichtenmodell.html:27: <span class="prose-header__tag prose-header__tag--architecture">? Architektur</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\03-schichtenmodell.html:35: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\03-schichtenmodell.html:66: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\03-schichtenmodell.html:67: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\04-cross-cutting.html:27: <span class="prose-header__tag prose-header__tag--architecture">? Architektur</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\04-cross-cutting.html:35: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\04-cross-cutting.html:66: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\04-cross-cutting.html:67: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\05-api-guidelines.html:27: <span class="prose-header__tag prose-header__tag--architecture">? Architektur</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\05-api-guidelines.html:35: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\05-api-guidelines.html:66: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\05-api-guidelines.html:67: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\06-sicherheit.html:27: <span class="prose-header__tag prose-header__tag--architecture">? Architektur</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\06-sicherheit.html:35: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\06-sicherheit.html:66: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\06-sicherheit.html:67: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\07-semantik.html:27: <span class="prose-header__tag prose-header__tag--architecture">? Architektur</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\07-semantik.html:35: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\07-semantik.html:66: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\07-semantik.html:67: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\08-ki-framework.html:27: <span class="prose-header__tag prose-header__tag--architecture">? Architektur</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\08-ki-framework.html:35: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\08-ki-framework.html:66: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\08-ki-framework.html:67: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\09-konformitaet.html:27: <span class="prose-header__tag prose-header__tag--architecture">? Architektur</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\09-konformitaet.html:35: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\09-konformitaet.html:66: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\09-konformitaet.html:67: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\index.html:35: <span class="prose-header__tag prose-header__tag--architecture">? Architektur</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\index.html:96: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\index.html:217: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\architecture\index.html:218: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\index.html:33: <span class="prose-header__tag prose-header__tag--building-block">? Building Blocks</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\index.html:71: <span class="bb-card__status badge--done">? Spec v0.2</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\index.html:86: <span class="bb-card__status badge--done">V Vorhanden</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\index.html:100: <span class="bb-card__status badge--done">? Spec v0.3</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\index.html:115: <span class="bb-card__status badge--done">V Vorhanden</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\index.html:129: <span class="bb-card__status badge--done">? Spec v0.3</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\index.html:144: <span class="bb-card__status badge--done">? Spec v0.3</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\index.html:169: <span class="bb-card__status badge--critical">?? Kritisch</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\index.html:183: <span class="bb-card__status badge--critical">?? Kritisch</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\index.html:197: <span class="bb-card__status badge--critical">?? Kritisch</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\index.html:211: <span class="bb-card__status badge--high">?? Hoch</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\index.html:225: <span class="bb-card__status badge--high">?? Hoch</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\index.html:239: <span class="bb-card__status badge--high">?? Hoch</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\index.html:293: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\index.html:294: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-ai-gateway\index.html:27: <span class="prose-header__tag prose-header__tag--building-block">? Building Block</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-ai-gateway\index.html:35: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-ai-gateway\index.html:75: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-ai-gateway\index.html:76: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:36: <span class="prose-header__tag prose-header__tag--building-block">? Building Block</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:52: <span class="spec-nav__check">V</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:56: <span class="spec-nav__check">V</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:60: <span class="spec-nav__check">V</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:64: <span class="spec-nav__check">V</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:68: <span class="spec-nav__check">V</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:72: <span class="spec-nav__check">V</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:92: <span class="spec-nav__check">V</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:140: <pre><code>┌─────────────────────────────────────────────────────────────────┐
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:141: │                     FACHVERFAHREN / APPS                        │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:142: │           (Portal, Native App, Fachanwendungen)                 │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:143: └──────────────────────────┬──────────────────────────────────────┘
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:144: │ HTTPS / mTLS
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:145: 
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:146: ┌─────────────────────────────────────────────────────────────────┐
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:147: │                     BB-07 API-GATEWAY                           │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:148: │  ┌──────────────┐  ┌──────────────┐  ┌────────────────────────┐ │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:149: │  │ Authentifi-  │  │  Routing &   │  │  Rate Limiting &       │ │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:150: │  │ zierung /    │  │  Versionie-  │  │  Throttling            │ │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:151: │  │ Autorisierung│  │  rung        │  │                        │ │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:152: │  └──────────────┘  └──────────────┘  └────────────────────────┘ │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:153: │  ┌──────────────┐  ┌──────────────┐  ┌────────────────────────┐ │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:154: │  │ Audit &      │  │  Policy      │  │  Transformation &      │ │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:155: │  │ Logging      │  │  Enforcement │  │  Protocol Mediation    │ │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:156: │  └──────────────┘  └──────────────┘  └────────────────────────┘ │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:157: └──────┬─────────────────┬────────────────────┬────────────────────┘
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:158: │                 │                    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:159:                                      
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:464: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:487: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:577: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:602: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:733: <button class="feedback-btn">?? Ja</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-api-gateway\index.html:734: <button class="feedback-btn">?? Nein</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-bpm\index.html:27: <span class="prose-header__tag prose-header__tag--building-block">? Building Block</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-bpm\index.html:35: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-bpm\index.html:75: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-bpm\index.html:76: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-consent\index.html:27: <span class="prose-header__tag prose-header__tag--building-block">? Building Block</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-consent\index.html:35: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-consent\index.html:75: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-consent\index.html:76: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-esignatur\index.html:27: <span class="prose-header__tag prose-header__tag--building-block">? Building Block</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-esignatur\index.html:35: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-esignatur\index.html:75: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-esignatur\index.html:76: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-event-bus\index.html:27: <span class="prose-header__tag prose-header__tag--building-block">? Building Block</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-event-bus\index.html:35: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-event-bus\index.html:75: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-event-bus\index.html:76: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:26: <!-- ═══════════════════════════════════════════════════════════ HEADER -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:34: <span class="prose-header__tag prose-header__tag--building-block">? Building Block</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:43: <!-- ═══════════════════════════════════════════════════════ 1 VERSION -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:71: <!-- ══════════════════════════════════════════════════════ 2 BESCHREIBUNG -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:86: │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:87: │  Browser / App
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:88: 
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:89: ┌──────────────────────────────────────────────┐
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:90: │           BB-01 · Identity Provider          │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:91: │  ┌────────────────┐  ┌──────────────────────┐│
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:92: │  │ Authentifizier-│  │  Attribut-Service    ││
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:93: │  │ ungs-Engine    │  │  (Claims/UserInfo)   ││
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:94: │  └────────────────┘  └──────────────────────┘│
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:95: │  ┌────────────────┐  ┌──────────────────────┐│
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:96: │  │ Session-Mgmt   │  │  LoA-Broker          ││
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:97: │  │ (SSO/SLO)      │  │  (niedrig/substanz./ ││
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:98: │  └────────────────┘  │   hoch)              ││
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:99: │                      └──────────────────────┘│
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:100: │  Protokolle: OIDC Core 1.0 · OAuth 2.1       │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:101: │              SAML 2.0 (Legacy-Anbindung)      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:102: └───────────────────────┬──────────────────────┘
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:103: │  OIDC / SAML Federation
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:104: ┌──────────────┼──────────────┐
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:105:                             
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:110: ┌───────────┬──────────────┬────────────────────┐
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:111: │ eID (nPA) │ ELSTER-Zert. │ Benutzername+Passwort│
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:112: │  LoA hoch │ LoA substanz.│ + MFA: LoA substanz. │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:113: └───────────┴──────────────┴────────────────────┘</code></pre>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:147: <!-- ══════════════════════════════════════════════════ 3 BEGRIFFE -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:196: <!-- ════════════════════════════════════════ 4 SCHLÜSSELFUNKTIONALITÄTEN -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:222: <td>? Identity Registration</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:229: <td>? Authentication</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:236: <td>? SSO</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:243: <td>? SLO</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:250: <td>? User Claims</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:257: <td>?? Partial</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:264: <td>? LoA Management</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:271: <td>? Nicht in GovStack</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:277: <!-- ════════════════════════════════════ 5 QUERSCHNITTSANFORDERUNGEN -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:400: <!-- ══════════════════════════════════════ 6 FUNKTIONALE ANFORDERUNGEN -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:573: <!-- ══════════════════════════════════════════════════ 7 DATENMODELL -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:757: <!-- ════════════════════════════════════════════════ 8 API -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:977: <!-- ════════════════════════════════════════════ 9 WORKFLOWS -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:1005: <!-- ════════════════════════════════════════ 10 KONFORMITÄT -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:1104: <!-- ════════════════════════════════════════════ 11 REFERENZEN -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:1277: <!-- ════════════════════════ FOOTER PAGINATION -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:1294: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-identity\index.html:1295: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:34: <span class="prose-header__tag prose-header__tag--building-block">? Building Block</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:48: <!-- ═══════════════════════ §1 VERSIONSHISTORIE ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:78: <!-- ═══════════════════════ §2 BESCHREIBUNG ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:98: ┌──────────────────────────────────────────────────────────────────────────┐
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:99: │                     NOOTS - Architektur                                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:100: │                                                                          │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:101: │  ┌──────────────┐                          ┌──────────────────────────┐  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:102: │  │  Online-Dienst│                          │  Fachverfahren (Behörde) │  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:103: │  │  (Antrag)     │                          │  (Data Consumer)         │  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:104: │  └──────┬───────┘                          └──────────┬───────────────┘  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:105: │         │                                              │                 │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:106: │         │  Bürger:in stellt Antrag                     │  Behörde benötigt│
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:107: │         │   kein manueller Nachweis nötig             │  Nachweisdaten   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:108: │         │                                              │                 │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:109: │                                                                        │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:110: │  ┌─────────────────────────────────────────────────────────────────┐     │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:111: │  │                    SAK (Sicherer Anschlussknoten)                │     │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:112: │  │         Consumer-SAK ──────────────── Provider-SAK             │     │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:113: │  │         REST-API             NOOTS-Backbone           REST-API  │     │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:114: │  └─────────────────────────┬───────────────────────────────────────┘     │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:115: │                            │                                             │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:116: │         ┌──────────────────┼──────────────────┐                         │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:117: │                                                                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:118: │  ┌─────────────┐  ┌───────────────┐  ┌──────────────────┐              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:119: │  │ Registerdaten│  │ IAM Behörden  │  │ Intermediäre     │              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:120: │  │ navigation   │  │ (Zugangs-     │  │ Plattform        │              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:121: │  │ (Discovery   │  │  steuerung)   │  │ (EU-OOTS-        │              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:122: │  │  & Routing)  │  │               │  │  Gateway)        │              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:123: │  └─────────────┘  └───────────────┘  └──────────────────┘              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:124: │                                                                          │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:125: │  ┌────────────────────────────────────────────────────────────────┐      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:126: │  │              Datenschutzcockpit (DSC)                           │      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:127: │  │  Bürger:innen sehen: Wer hat wann welche Daten abgerufen?     │      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:128: │  └────────────────────────────────────────────────────────────────┘      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:129: │                                                                          │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:130: │  ┌───────────────┐ ┌───────────────┐ ┌──────────────┐ ┌──────────────┐ │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:131: │  │ Melderegister  │ │ Fahrzeug-     │ │ Handels-     │ │ Waffenregister│ │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:132: │  │               │ │ register      │ │ register     │ │              │ │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:133: │  └───────────────┘ └───────────────┘ └──────────────┘ └──────────────┘ │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:134: │  Data Provider (registerführende Stellen)                                │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:135: └──────────────────────────────────────────────────────────────────────────┘
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:174: <!-- ═══════════════════════ §3 BEGRIFFE ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:253: <!-- ═══════════════════════ §4 SCHLÜSSELFUNKTIONALITÄTEN ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:337: <!-- ═══════════════════════ §5 QUERSCHNITTSANFORDERUNGEN ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:474: <!-- ═══════════════════════ §6 FUNKTIONALE ANFORDERUNGEN ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:671: <!-- ═══════════════════════ §7 DATENMODELL ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:770: <!-- ═══════════════════════ §8 SERVICE-APIs ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:868: │                  │                  │                  │                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:869: │ POST /evidence/  │                  │                  │                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:870: │ request ────────│                  │                  │                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:871: │                  │                  │                  │                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:872: │                  │ Authentifizierung │                  │                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:873: │                  │ (mTLS + OAuth2)  │                  │                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:874: │                  │─────────────────│                  │                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:875: │                  │                  │                  │                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:876: │                  │                  │ GET /providers?   │                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:877: │                  │                  │ type=...&region= │                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:878: │                  │                  │─────────────────│                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:879: │                  │                  │                  │                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:880: │                  │                  │ Provider-SAK-URL │                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:881: │                  │                  │                  │                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:882: │                  │                  │ Route Request    │                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:883: │                  │                  │──────────────────────────────────│                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:884: │                  │                  │                  │                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:885: │                  │                  │                  │                  │ Query Register   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:886: │                  │                  │                  │                  │─────────────────│
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:887: │                  │                  │                  │                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:888: │                  │                  │                  │                  │ Register Data  ─│
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:889: │                  │                  │                  │                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:890: │                  │                  │                  │                  │ Transform       │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:891: │                  │                  │                  │                  │ XNachweis        │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:892: │                  │                  │                  │                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:893: │                  │                  │ Evidence Response│                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:894: │                  │                  │────────────────────────────────── │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:895: │                  │                  │                  │                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:896: │                  │                  │ Audit-Trail +    │                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:897: │                  │                  │ DSC-Notification │                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:898: │                  │                  │                  │                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:899: │                  │ Evidence Response│                  │                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:900: │                  │─────────────── │                  │                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:901: │                  │                  │                  │                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:902: │ Response ───────│                  │                  │                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:903: │ (XNachweis)      │                  │                  │                  │                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:906: <!-- ═══════════════════════ §9 INTERNE WORKFLOWS ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:911: ┌──────────────────────────────────────────────────────────────────────────────┐
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:912: │  Registerführende Stelle schließt sich an NOOTS an                           │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:913: ├──────────────────────────────────────────────────────────────────────────────┤
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:914: │                                                                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:915: │  1. Antrag über Self-Service-Portal:                                         │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:916: │      Organisation, Register, Nachweistypen, SAK-Infrastruktur              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:917: │                                                                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:918: │  2. Automatisierte Prüfung der Anschlussbedingungen:                        │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:919: │      Netzwerkanbindung, Zertifikate (föderale PKI), Rechtsgrundlage        │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:920: │                                                                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:921: │  3. SAK-Bereitstellung:                                                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:922: │      Container-Image von zentraler Registry herunterladen                   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:923: │      In eigener Infrastruktur deployen                                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:924: │      Konfiguration über Self-Service-Portal                                │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:925: │                                                                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:926: │  4. Registeranbindung:                                                       │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:927: │      Provider-SAK-Adapter für registerinternes API konfigurieren           │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:928: │      Datenmapping: Register-Schema  XNachweis definieren                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:929: │                                                                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:930: │  5. Integration-Test:                                                        │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:931: │      Automatisierter Smoke-Test über NOOTS-Testumgebung                    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:932: │      Nachweisanfrage mit Testdaten senden/empfangen                        │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:933: │                                                                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:934: │  6. Eintrag in Registerdatennavigation:                                     │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:935: │      Data Provider wird im Katalog veröffentlicht                          │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:936: │      Nachweistypen mit Zuständigkeitsgebiet verknüpft                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:937: │                                                                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:938: │  7. Produktivbetrieb:                                                        │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:939: │      SAK-Monitoring aktiv                                                   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:940: │      Health-Checks an NOOTS-Backbone                                       │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:941: │      Audit-Trail-Logging aktiv                                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:942: └──────────────────────────────────────────────────────────────────────────────┘
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:948: │                                          │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:949: │  Evidence Request                        │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:950: │  (SDG-VO, EU-OOTS) ────────────────────│
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:951: │                                          │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:952: │                              Intermediäre Plattform
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:953: │                              empfängt Request
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:954: │                                          │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:955: │                              Mapping: EU-EDM  XNachweis
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:956: │                                          │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:957: │                              Routing über Registerdaten-
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:958: │                              navigation  Provider-SAK
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:959: │                                          │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:960: │                              Data Provider liefert Nachweis
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:961: │                                          │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:962: │                              Rückübersetzung: XNachweis  EU-EDM
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:963: │                                          │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:964: │  Evidence Response                       │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:965: │  ──────────────────────────────────────│
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:966: │                                          │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:967: │                              DSC-Eintrag für Bürger:in
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:968: │                              (grenzüberschreitender Abruf)
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:971: <!-- ═══════════════════════ §10 KONFORMITÄTSKRITERIEN ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:1070: <!-- ═══════════════════════ §11 REFERENZEN ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:1238: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-noots\index.html:1239: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-payment\index.html:27: <span class="prose-header__tag prose-header__tag--building-block">? Building Block</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-payment\index.html:35: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-payment\index.html:75: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-payment\index.html:76: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-portal\index.html:27: <span class="prose-header__tag prose-header__tag--building-block">? Building Block</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-portal\index.html:35: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-portal\index.html:75: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-portal\index.html:76: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:34: <span class="prose-header__tag prose-header__tag--building-block">? Building Block</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:47: <!-- ═══════════════════════ §1 VERSIONSHISTORIE ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:77: <!-- ═══════════════════════ §2 BESCHREIBUNG ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:91: ┌─────────────────────────────────────────────────────────────────────┐
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:92: │                    ZAPUK Kommunikationsinfrastruktur                │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:93: │                                                                     │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:94: │  ┌──────────────┐   ┌──────────────┐   ┌──────────────────────┐    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:95: │  │  Bürger:in   │   │  Unternehmen │   │  Öffentliche Stelle  │    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:96: │  │  (App/Web)   │   │  (Fachverf.) │   │  (Desktop/Fachverf.) │    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:97: │  └──────┬───────┘   └──────┬───────┘   └──────────┬───────────┘    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:98: │         │                  │                       │                │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:99: │                                                                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:100: │  ┌─────────────────────────────────────────────────────────────┐    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:101: │  │              Postfachzugänge (Matrix Clients)               │    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:102: │  │   Zentraler Zugang · Dritt-Clients · Fachverfahren-SDK     │    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:103: │  │              ┌─────────────────────────┐                    │    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:104: │  │              │   MLS E2E-Verschlüsselung                   │    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:105: │  │              │   (RFC 9420 / Olm transitional)              │    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:106: │  │              └─────────────────────────┘                    │    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:107: │  └────────────────────────┬────────────────────────────────────┘    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:108: │                           │  Matrix Client-Server API              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:109: │                                                                   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:110: │  ┌─────────────────────────────────────────────────────────────┐    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:111: │  │            Postfach-Backends (Matrix Homeserver)             │    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:112: │  │                                                             │    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:113: │  │   ┌───────────────┐          ┌───────────────┐              │    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:114: │  │   │ Zentrales     │────────│ Dezentrales   │              │    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:115: │  │   │ Backend       │ Matrix   │ Backend       │              │    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:116: │  │   │ (FITKO)       │ S2S-API  │ (Land/Beh.)   │              │    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:117: │  │   └───────────────┘          └───────────────┘              │    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:118: │  │                                                           │    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:119: │  │         │ Registrierung            │ Anschlussbedingungen   │    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:120: │  │                                                           │    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:121: │  │   ┌─────────────────────────────────────────┐               │    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:122: │  │   │        Self-Service-Portal (ADR-0008)   │               │    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:123: │  │   └─────────────────────────────────────────┘               │    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:124: │  └─────────────────────────────────────────────────────────────┘    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:125: │                                                                     │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:126: │  ┌───────────────────────┐  ┌──────────────────────────────────┐   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:127: │  │ BB-01 Identity (OIDC) │  │ BB-09 Consent · BB-10 E-Signatur │   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:128: │  └───────────────────────┘  └──────────────────────────────────┘   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:129: └─────────────────────────────────────────────────────────────────────┘
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:176: <!-- ═══════════════════════ §3 BEGRIFFE ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:252: <!-- ═══════════════════════ §4 SCHLÜSSELFUNKTIONALITÄTEN ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:349: <!-- ═══════════════════════ §5 QUERSCHNITTSANFORDERUNGEN ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:477: <!-- ═══════════════════════ §6 FUNKTIONALE ANFORDERUNGEN ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:655: <!-- ═══════════════════════ §7 DATENMODELL ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:748: <!-- ═══════════════════════ §8 SERVICE-APIs ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:804: │                   │                   │                    │                   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:805: │  Nachricht        │                   │                    │                   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:806: │  verfassen ──────│                   │                    │                   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:807: │                   │                   │                    │                   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:808: │                   │ MLS Encrypt       │                    │                   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:809: │                   │ (RFC 9420)        │                    │                   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:810: │                   │──────────────────│                    │                   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:811: │                   │ PUT /_matrix/     │                    │                   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:812: │                   │  client/v3/rooms/ │                    │                   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:813: │                   │  {roomId}/send    │                    │                   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:814: │                   │                   │                    │                   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:815: │                   │                   │ Federation S2S     │                   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:816: │                   │                   │ PUT /_matrix/      │                   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:817: │                   │                   │  federation/v1/    │                   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:818: │                   │                   │  send/{txnId} ────│                   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:819: │                   │                   │                    │                   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:820: │                   │                   │                    │ /sync ───────────│
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:821: │                   │                   │                    │                   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:822: │                   │                   │                    │ MLS Decrypt ─────│
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:823: │                   │                   │                    │                   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:824: │                   │                   │                    │ m.receipt ────────│
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:825: │                   │                   │                    │ (Zustellquittung) │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:826: │                   │                   │                    │                   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:827: │                   │ m.receipt         │                    │                   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:828: │                   │─────────────────────────────────────────────────────────  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:829: │  V Zugestellt     │                   │                    │                   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:830: │──────────────────│                   │                    │                   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:871: <!-- ═══════════════════════ §9 INTERNE WORKFLOWS ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:876: ┌──────────────────────────────────────────────────────────────────────────────┐
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:877: │  Fachverfahren (Behörde) sendet Bescheid an Bürger:in                       │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:878: ├──────────────────────────────────────────────────────────────────────────────┤
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:879: │                                                                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:880: │  1. Fachverfahren ruft SDK auf:                                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:881: │     sdk.sendBescheid(empfänger_id, bescheid_payload, aktenzeichen)           │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:882: │                                                                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:883: │  2. SDK löst Matrix User-ID des Empfängers über Verzeichnisdienst auf       │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:884: │      @buerger:homeserver.bund.de                                            │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:885: │                                                                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:886: │  3. SDK prüft/erstellt Matrix Room (1:1 mit Behörden-Account)               │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:887: │      Falls Room existiert: bestehenden Room nutzen                          │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:888: │      Falls nicht: Room erstellen + MLS Group initialisieren                 │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:889: │                                                                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:890: │  4. SDK verschlüsselt Bescheid-Payload mit MLS:                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:891: │      KeyPackages des Empfängers vom Homeserver abrufen                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:892: │      MLS Commit + Application Message                                       │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:893: │                                                                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:894: │  5. SDK sendet verschlüsseltes Event an Homeserver:                          │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:895: │      PUT /_matrix/client/v3/rooms/{roomId}/send/m.room.encrypted            │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:896: │                                                                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:897: │  6. Homeserver föderiert an Empfänger-Homeserver (falls nötig)              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:898: │                                                                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:899: │  7. Empfänger-Homeserver löst Push-Benachrichtigung aus                     │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:900: │      Push Gateway API  FCM/APNs                                           │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:901: │      Inhalt der Benachrichtigung: "Neue Nachricht von [Behörde]"           │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:902: │       (KEIN Klartext-Inhalt in Push!)                                        │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:903: │                                                                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:904: │  8. Client empfängt Event via /sync, entschlüsselt mit MLS                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:905: │                                                                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:906: │  9. Client sendet automatisch Zustellquittung:                               │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:907: │      de.bund.postfach.quittung Event                                        │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:908: │                                                                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:909: │  10. Fachverfahren erhält Quittung via SDK-Callback                          │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:910: │       Aktenzeichen + Zeitstempel  Zustellnachweis                          │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:911: └──────────────────────────────────────────────────────────────────────────────┘
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:916: Organisation ── Self-Service-Portal ── Anschlussbedingungen    ── Registrierung
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:917: │                       │                           │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:918: │  1. Antrag stellen     │  2. Digital akzeptieren   │  3. DNS-Eintrag
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:919: │  (Organisation,        │  (Rechtsverbindlich)      │  konfigurieren
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:920: │   Homeserver-Domain)   │                           │  (.well-known)
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:921: │                       │                           │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:922: │                       │                           
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:923: │                       │                    4. Federation-Test
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:924: │                       │                    (Automatisiert)
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:925: │                       │                           │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:926: │                       │                           
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:927: │                       │                    5. Aufnahme in
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:928: │                       │                    Federation-Whitelist
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:929: │                       │                           │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:930: │                       │                           
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:931: │                       │                    6. Monitoring &amp;
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:932: │                       │                    Compliance-Checks
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:937: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:950: <!-- ═══════════════════════ §10 KONFORMITÄTSKRITERIEN ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:1054: <!-- ═══════════════════════ §11 REFERENZEN ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:1236: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-postfach\index.html:1237: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:34: <span class="prose-header__tag prose-header__tag--building-block">? Building Block</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:50: <!-- ═══════════════════════ §1 VERSIONSHISTORIE ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:80: <!-- ═══════════════════════ §2 BESCHREIBUNG ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:103: ┌──────────────────────────────────────────────────────────────────────────┐
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:104: │                    EUDI Wallet Ökosystem                                 │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:105: │                                                                          │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:106: │                        ┌──────────────────┐                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:107: │                        │  Wallet Unit     │                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:108: │                        │  (Endgerät)      │                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:109: │                        │                  │                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:110: │                        │  ┌────────────┐  │                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:111: │                        │  │  WSCA      │  │  Wallet Secure               │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:112: │                        │  │  (App)     │  │  Cryptographic Application   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:113: │                        │  └─────┬──────┘  │                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:114: │                        │        │         │                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:115: │                        │  ┌───────────┐  │                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:116: │                        │  │  WSCD      │  │  Wallet Secure               │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:117: │                        │  │  (SE/TEE)  │  │  Cryptographic Device        │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:118: │                        │  └────────────┘  │                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:119: │                        │                  │                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:120: │                        │  Credentials:    │                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:121: │                        │   PID (SD-JWT)  │                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:122: │                        │   mDL (mdoc)    │                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:123: │                        │   Diplome       │                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:124: │                        │   Führerschein  │                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:125: │                        └────────┬─────────┘                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:126: │                                 │                                        │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:127: │              ┌──────────────────┼──────────────────┐                    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:128: │              │                  │                  │                    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:129: │                                                                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:130: │   ┌──────────────────┐ ┌───────────────┐ ┌──────────────────┐          │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:131: │   │ PID Provider     │ │ Attestation   │ │ Relying Party    │          │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:132: │   │ (Staat / eID)    │ │ Provider      │ │ (Behörde, Bank,  │          │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:133: │   │                  │ │ (Uni, Firma,  │ │  Telko, ...)     │          │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:134: │   │ OpenID4VCI       │ │  Behörde)     │ │                  │          │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:135: │   │  PID issuance   │ │ OpenID4VCI    │ │ OpenID4VP        │          │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:136: │   └──────────────────┘ └───────────────┘ │  Presentation   │          │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:137: │                                           └──────────────────┘          │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:138: │                                                                          │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:139: │   ┌──────────────────────────────────────────────────────────────┐      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:140: │   │               EU Trust Framework                              │      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:141: │   │  ┌──────────┐  ┌──────────────┐  ┌────────────────────────┐  │      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:142: │   │  │ Trusted   │  │ Wallet       │  │ Attestation Status/    │  │      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:143: │   │  │ Lists     │  │ Provider     │  │ Revocation Lists       │  │      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:144: │   │  │ (LOTL)    │  │ Zertifiz.    │  │ (ASL / ARL)            │  │      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:145: │   │  └──────────┘  └──────────────┘  └────────────────────────┘  │      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:146: │   └──────────────────────────────────────────────────────────────┘      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:147: └──────────────────────────────────────────────────────────────────────────┘
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:190: <!-- ═══════════════════════ §3 BEGRIFFE ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:289: <!-- ═══════════════════════ §4 SCHLÜSSELFUNKTIONALITÄTEN ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:370: <!-- ═══════════════════════ §5 QUERSCHNITTSANFORDERUNGEN ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:511: <!-- ═══════════════════════ §6 FUNKTIONALE ANFORDERUNGEN ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:718: <!-- ═══════════════════════ §7 DATENMODELL ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:825: <!-- ═══════════════════════ §8 SERVICE-APIs ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:918: │                │                  │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:919: │ "PID holen"    │                  │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:920: │───────────────│                  │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:921: │                │                  │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:922: │                │ GET /.well-known/ │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:923: │                │ openid-credential-│                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:924: │                │ issuer ──────────│                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:925: │                │                  │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:926: │                │ Metadata ────── │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:927: │                │                  │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:928: │                │ Validate Issuer  │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:929: │                │ ─────────────────────────────────────  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:930: │                │ ──────────────── Trust confirmed ───── │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:931: │                │                  │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:932: │                │ POST /authorize  │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:933: │                │ (+ PKCE) ───────│                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:934: │                │                  │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:935: │  eID-Auth      │                  │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:936: │───────────────│────────────────│                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:937: │  PIN + NFC     │                  │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:938: │───────────────│─────────────────│                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:939: │                │                  │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:940: │                │ POST /token      │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:941: │                │ ────────────────│                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:942: │                │ Access Token ── │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:943: │                │                  │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:944: │                │ POST /credential │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:945: │                │ (proof: WSCD-    │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:946: │                │  signed nonce)──│                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:947: │                │                  │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:948: │                │ SD-JWT VC ───── │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:949: │                │                  │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:950: │                │ Store in WSCD    │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:951: │                │ ──────────────   │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:952: │                │                  │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:953: │ "PID gespeichert" │               │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:954: │───────────────│                  │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:957: <!-- ═══════════════════════ §9 INTERNE WORKFLOWS ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:962: ┌──────────────────────────────────────────────────────────────────────────────┐
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:963: │  Ersteinrichtung der EUDI Wallet                                             │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:964: ├──────────────────────────────────────────────────────────────────────────────┤
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:965: │                                                                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:966: │  1. Download der zertifizierten Wallet-App                                   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:967: │      App Store / Play Store                                                │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:968: │      Trust Mark, Wallet Provider in Trusted List                           │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:969: │                                                                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:970: │  2. Wallet-Aktivierung:                                                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:971: │      WSCD-Initialisierung (SE/TEE Schlüsselgenerierung)                   │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:972: │      Wallet Instance Attestation (WIA) vom Wallet Provider                │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:973: │      Biometrie-/PIN-Setup                                                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:974: │                                                                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:975: │  3. PID-Erstausstellung:                                                     │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:976: │      Nutzer wählt "PID holen"                                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:977: │      eID-Authentifizierung (Personalausweis + PIN / Smart-eID)            │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:978: │      PID Provider stellt SD-JWT VC via OpenID4VCI aus                     │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:979: │      PID wird lokal gespeichert (WSCD-gebunden)                           │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:980: │                                                                              │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:981: │  4. Wallet ist einsatzbereit:                                                │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:982: │      Online-Presentation (OpenID4VP)                                       │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:983: │      Proximity-Presentation (ISO 18013-5)                                  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:984: │      Weitere Credentials hinzufügen                                        │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:985: └──────────────────────────────────────────────────────────────────────────────┘
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:991: │                    │                    │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:992: │  Antrag starten    │                    │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:993: │────────────────────────────────────────│                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:994: │                    │                    │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:995: │                    │  OpenID4VP Request │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:996: │                    │  (QR-Code oder    │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:997: │                    │   Deep Link)       │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:998: │  QR scannen /      │───────────────── │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:999: │  Deep Link klicken │                    │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1000: │───────────────────│                    │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1001: │                    │                    │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1002: │                    │ Validate RP ───────────────────────────  │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1003: │                    │ ────────────────── OK ──────────────── │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1004: │                    │                    │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1005: │  "Behörde X        │                    │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1006: │   möchte sehen:    │                    │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1007: │   Name, Adresse"   │                    │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1008: │───────────────────│                    │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1009: │                    │                    │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1010: │  Bestätigen (Bio)  │                    │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1011: │───────────────────│                    │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1012: │                    │                    │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1013: │                    │ VP Token (SD-JWT   │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1014: │                    │ + Disclosures      │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1015: │                    │ + Key Binding JWT) │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1016: │                    │ ──────────────────│                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1017: │                    │                    │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1018: │                    │                    │  Verify Signature    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1019: │                    │                    │  Check Revocation    │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1020: │                    │                    │  Validate Holder     │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1021: │                    │                    │  Binding             │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1022: │                    │                    │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1023: │  Antrag fortsetzen │                    │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1024: │────────────────────────────────────── │                      │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1027: <!-- ═══════════════════════ §10 KONFORMITÄTSKRITERIEN ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1136: <!-- ═══════════════════════ §11 REFERENZEN ═══════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1307: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\building-blocks\bb-wallet\index.html:1308: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:18: /* ── Deutschland-App - page-specific styles ──────────── */
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:445: style="background:rgba(139,92,246,.15);color:rgb(196,181,253)">?? Super-App</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:456: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:458: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:462: <div class="verdict__label">V Bewertung</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:503: <div class="ref-flag"><span class="ref-flag__emoji">????</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:506: <div class="ref-flag"><span class="ref-flag__emoji">????</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:509: <div class="ref-flag"><span class="ref-flag__emoji">????</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:512: <div class="ref-flag"><span class="ref-flag__emoji">????</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:515: <div class="ref-flag"><span class="ref-flag__emoji">????</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:520: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:522: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:530: <div class="tab-card__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:556: <div class="tab-card__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:579: <div class="tab-card__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:602: <div class="tab-card__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:625: <div class="tab-card__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:650: <div class="cross-feature__title">?? KI-Chatbot</div>Floating Button auf jeder Seite: Fragen,
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:654: <div class="cross-feature__title">?? Formular-Engine</div>Adaptive Formulare, Vorausfüllung,
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:658: <div class="cross-feature__title">?? Biometrie-Auth</div>Face ID / Fingerabdruck + PIN-Fallback
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:661: <div class="cross-feature__title">?? In-App Payment</div>Apple Pay / Google Pay / SEPA, kein
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:665: <div class="cross-feature__title">? E-Signatur (QES)</div>Qualifiziert signieren direkt in der
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:669: <div class="cross-feature__title">?? Terminbuchung</div>Behördentermine buchen +
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:673: <div class="cross-feature__title">?? Deep Links</div>Jeder Antrag hat eine URL: teilbar,
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:677: <div class="cross-feature__title">?? Offline-Modus</div>Wallet, Bescheide, Entwürfe offline
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:682: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:684: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:688: <div class="callout__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:709: <div class="arch-layer__title">?? App-Shell (zentral gepflegt)</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:721: <div class="arch-layer__title">?? Funktionsmodule (dezentral gepflegt)</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:736: <div class="arch-layer__title">?? On-Device Plattform</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:887: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:889: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:921: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:923: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:969: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:971: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:1040: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:1042: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:1046: <div class="callout__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:1059: <div class="callout__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:1086: <button class="feedback-btn">?? Ja</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\deutschland-app\index.html:1087: <button class="feedback-btn">?? Nein</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:17: /* ── Fachverfahren-Strategie - page-specific styles ──── */
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:424: <span class="prose-header__tag" style="background:rgba(245,158,11,.15);color:rgb(251,191,36)">??
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:435: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:437: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:441: <div class="callout__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:457: <div class="compare-col__title compare-col__title--old">? Heute (Medienbruch)</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:463: <li>Brief per Post  Bürger:in ??</li>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:468: <div class="compare-col__title compare-col__title--new">? Zielbild (Ende-zu-Ende)</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:474: <li>Push-Notification  Bürger:in ??</li>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:514: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:516: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:520: <div class="callout__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:535: <div class="stufe-card__medal">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:543: <li>?? Rückmeldung ggf. verzögert</li>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:547: <div class="stufe-card__medal">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:555: <li>? Echtzeit-Status für Bürger:innen</li>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:559: <div class="stufe-card__medal">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:567: <li>? Optimale UX + Proaktive Features</li>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:572: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:574: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:718: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:728: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:730: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:735: <div class="hebel-card__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:750: <div class="hebel-card__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:766: <div class="hebel-card__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:781: <div class="hebel-card__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:795: <div class="hebel-card__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:809: <div class="hebel-card__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:823: <div class="hebel-card__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:865: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:867: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:882: <td><span class="prio-badge prio-badge--1">?? 1</span></td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:885: <td>?</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:888: <td><span class="prio-badge prio-badge--1">?? 2</span></td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:891: <td>?</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:894: <td><span class="prio-badge prio-badge--1">?? 3</span></td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:897: <td>??</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:900: <td><span class="prio-badge prio-badge--1">?? 4</span></td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:903: <td>?</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:906: <td><span class="prio-badge prio-badge--1">?? 5</span></td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:909: <td>??</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:912: <td><span class="prio-badge prio-badge--2">?? 6</span></td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:915: <td>??</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:918: <td><span class="prio-badge prio-badge--2">?? 7</span></td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:921: <td>??</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:924: <td><span class="prio-badge prio-badge--2">?? 8</span></td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:927: <td>??</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:930: <td><span class="prio-badge prio-badge--2">?? 9</span></td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:933: <td>??</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:936: <td><span class="prio-badge prio-badge--2">?? 10</span></td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:939: <td>??</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:949: <div class="roadmap-bar__items">Meldewesen · KfZ · Gewerbe · ELSTER ?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:963: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:965: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1030: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1032: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1036: │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1038: │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1039: ┌───┴──────────────────────────────────────────┐
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1040: │ VERWDIGISTACK PLATTFORM │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1041: │ Identity · Portal · Postfach · Wallet · BPM │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1042: │ API-Gateway · Event-Bus · Consent · Payment │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1043: └───┬──────────────────────────────────────────┘
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1044: │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1046: │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1047: ┌───┴──────────────────────────────────────────┐
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1048: │ FACHVERFAHREN │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1049: │ │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1050: │ ?? Cloud-Native ?? Stack-Native ??+Adapter│
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1051: │ (SaaS, API-1st) (eigene APIs) (Legacy+SDK)│
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1052: │ │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1053: │ ┌──────────────────────────────────────┐ │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1054: │ │ STACK-MARKTPLATZ │ │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1055: │ │ Zertifiziert · Bewertet · Offen │ │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1056: │ └──────────────────────────────────────┘ │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1057: └──────────────────────────────────────────────┘</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1060: <div class="callout__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1064: <strong>1.</strong> ?? Marktplatz (Pull) ·
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1065: <strong>2.</strong> ?? Vergaberecht (Push) ·
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1066: <strong>3.</strong> ?? Test-Suite (Enabler) ·
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1067: <strong>4.</strong> ?? Adapter-SDK (Enabler) ·
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1068: <strong>5.</strong> ?? Wirtschaftsmodell (Pull) ·
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1069: <strong>6.</strong> ?? Zertifizierung (Signal) ·
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1070: <strong>7.</strong> ?? Open-Source-Referenzen (Druck)
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1091: <button class="feedback-btn">?? Ja</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren\index.html:1092: <button class="feedback-btn">?? Nein</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:18: /* ── Page-specific styles ──── */
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:362: <span class="prose-header__tag" style="background:rgba(37,99,235,.12);color:#2563eb">??
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:375: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:377: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:427: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:429: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:433: <div class="callout__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:444: <div class="flow-diagram">┌──────────────────────────────────────────────────────────────────┐
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:445: │ BÜRGER:INNEN │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:446: │ Deutschland-App · Portal · Chatbot │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:447: └───────────────────────────┬──────────────────────────────────────┘
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:448: │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:449: 
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:450: ┌──────────────────────────────────────────────────────────────────┐
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:451: │ DIGITALE INFRASTRUKTUR │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:452: │ ┌──────────┬───────────┬────────┬────────┬────────┬─────────┐ │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:453: │ │ Identity │ Formulare │Postfach│Register│Consent │ Payment │ │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:454: │ │ (BundID) │ (BB-02) │(BB-03) │(NOOTS) │(BB-09) │ (BB-04) │ │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:455: │ └──────────┴───────────┴────────┴────────┴────────┴─────────┘ │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:456: │ │ │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:457: │ ┌───────┴────────┐ │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:458: │ │ API-GATEWAY │  Routing, Auth, Consent │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:459: │ │ (BB-07) │ Rate-Limiting, Audit │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:460: │ └───────┬────────┘ Protokoll-Translation │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:461: │ │ │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:462: └────────────────────────────┼─────────────────────────────────────┘
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:463: │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:464: ┌──────────────┼──────────────┐
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:465:   
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:466: ┌──────────────┐ ┌────────────┐ ┌────────────┐
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:467: │ FV A (nativ) │ │ FV B │ │ FV C │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:468: │ Stack-Native │ │ + Adapter │ │ Legacy │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:469: │ ?? │ │ ?? │ │ + Adapter │
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:470: └──────────────┘ └────────────┘ └────────────┘</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:472: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:474: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:484: <div class="bp-card__flag">????</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:501: <div class="bp-card__flag">????</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:516: <div class="bp-card__flag">????</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:530: <div class="bp-card__flag">????</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:544: <div class="bp-card__flag">????</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:558: <div class="bp-card__flag">????</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:572: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:574: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:584: <div class="iface-card__num">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:595: <div class="iface-card__num">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:605: <div class="iface-card__num">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:615: <div class="iface-card__num">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:625: <div class="iface-card__num">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:634: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:636: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:689: <td>?</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:695: <td>?</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:706: <td>Sachbearbeitung (ggf. Rückfragen über ?)</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:713: <td>?, BB-08</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:726: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:738: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:740: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:750: <div class="gw-func-item__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:755: <div class="gw-func-item__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:760: <div class="gw-func-item__icon">???</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:765: <div class="gw-func-item__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:770: <div class="gw-func-item__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:775: <div class="gw-func-item__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:780: <div class="gw-func-item__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:785: <div class="gw-func-item__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:792: <div class="callout__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:806: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:808: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:871: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:873: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:877: <div class="callout__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:891: <div class="hebel-card__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:905: <div class="hebel-card__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:920: <div class="hebel-card__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:933: <div class="hebel-card__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:946: <div class="hebel-card__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:960: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:962: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:967: <div class="stufe-card__medal">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:974: <li>?? Status ggf. verzögert</li>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:978: <div class="stufe-card__medal">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:985: <li>? Echtzeit-Status</li>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:989: <div class="stufe-card__medal">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:996: <li>? Optimale UX</li>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:1001: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:1003: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:1070: <button class="feedback-btn">?? Ja</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\fachverfahren-schnittstellen\index.html:1071: <button class="feedback-btn">?? Nein</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:18: /* ── GAP-Analyse - page-specific styles ──────────────── */
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:415: <span class="prose-header__tag" style="background:rgba(239,68,68,.15);color:rgb(252,165,165)">??
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:426: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:428: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:432: <div class="callout__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:445: <div class="ist-card__title"><span class="icon">??</span> Identität & Authentifizierung</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:456: <div class="ist-card__cell"><span class="maturity-badge maturity-badge--yellow">?? 15%
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:463: <div class="ist-card__cell"><span class="maturity-badge maturity-badge--green">?
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:470: <div class="ist-card__cell"><span class="maturity-badge maturity-badge--yellow">??
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:477: <div class="ist-card__cell"><span class="maturity-badge maturity-badge--green">? 40
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:486: <div class="ist-card__title"><span class="icon">??</span> Portal-Landschaft</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:497: <div class="ist-card__cell"><span class="maturity-badge maturity-badge--green">?
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:505: <div class="ist-card__cell"><span class="maturity-badge maturity-badge--yellow">??
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:512: <div class="ist-card__cell"><span class="maturity-badge maturity-badge--red">??
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:519: <div class="ist-card__cell"><span class="maturity-badge maturity-badge--green">? 42
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:528: <div class="ist-card__title"><span class="icon">??</span> Register, Postfach & Datenaustausch</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:539: <div class="ist-card__cell"><span class="maturity-badge maturity-badge--red">??
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:546: <div class="ist-card__cell"><span class="maturity-badge maturity-badge--red">??
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:553: <div class="ist-card__cell"><span class="maturity-badge maturity-badge--red">?
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:560: <div class="ist-card__cell"><span class="maturity-badge maturity-badge--yellow">??
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:567: <div class="ist-card__cell"><span class="maturity-badge maturity-badge--green">?
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:576: <div class="ist-card__title"><span class="icon">??</span> Wallet, Signatur, Payment, KI</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:587: <div class="ist-card__cell"><span class="maturity-badge maturity-badge--red">??
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:594: <div class="ist-card__cell"><span class="maturity-badge maturity-badge--green">? ~5 Mio.
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:601: <div class="ist-card__cell"><span class="maturity-badge maturity-badge--yellow">??
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:608: <div class="ist-card__cell"><span class="maturity-badge maturity-badge--green">?
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:615: <div class="ist-card__cell"><span class="maturity-badge maturity-badge--red">?? Fehlt</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:636: <td><span class="maturity-badge maturity-badge--yellow">?? Fragmentiert</span></td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:641: <td><span class="maturity-badge maturity-badge--yellow">?? Fragmentiert</span></td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:646: <td><span class="maturity-badge maturity-badge--red">?? Kritisch</span></td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:651: <td><span class="maturity-badge maturity-badge--red">?? Kritisch</span></td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:656: <td><span class="maturity-badge maturity-badge--red">?? Kritisch</span></td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:661: <td><span class="maturity-badge maturity-badge--red">?? Kritisch</span></td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:666: <td><span class="maturity-badge maturity-badge--red">?? Fehlt</span></td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:671: <td><span class="maturity-badge maturity-badge--red">?? Fehlt</span></td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:676: <td><span class="maturity-badge maturity-badge--red">?? Kritisch</span></td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:681: <td><span class="maturity-badge maturity-badge--red">?? Kritisch</span></td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:686: <td><span class="maturity-badge maturity-badge--yellow">?? Im Aufbau</span></td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:693: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:695: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:721: <td>?? Groß</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:733: <td>?? Groß</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:745: <td>?? Sehr groß</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:757: <td>?? Mittel</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:769: <td>?? Sehr groß</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:781: <td>?? Sehr groß</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:793: <td>?? Sehr groß</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:805: <td>?? Neu</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:817: <td>?? Neu</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:829: <td>?? Groß</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:841: <td>?? Sehr groß</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:853: <td>?? Sehr groß</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:865: <td>?? Mittel</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:877: <td>?? Groß</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:889: <td>?? Mittel</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:901: <td>?? Groß</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:913: <td>?? Sehr groß</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:1040: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:1042: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:1123: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:1125: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:1179: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:1181: <!-- ═══════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:1203: <div class="callout__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:1233: <button class="feedback-btn">?? Ja</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\gap-analyse\index.html:1234: <button class="feedback-btn">?? Nein</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\implementation-playbook\index.html:26: <span class="prose-header__tag prose-header__tag--architecture">? Playbook</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\implementation-playbook\index.html:62: <button class="feedback-btn">??</button><button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\implementation-playbook\phase1.html:27: <span class="prose-header__tag prose-header__tag--architecture">? Playbook</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\implementation-playbook\phase1.html:35: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\implementation-playbook\phase1.html:66: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\implementation-playbook\phase1.html:67: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\implementation-playbook\phase2.html:27: <span class="prose-header__tag prose-header__tag--architecture">? Playbook</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\implementation-playbook\phase2.html:35: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\implementation-playbook\phase2.html:66: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\implementation-playbook\phase2.html:67: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\implementation-playbook\phase3.html:27: <span class="prose-header__tag prose-header__tag--architecture">? Playbook</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\implementation-playbook\phase3.html:35: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\implementation-playbook\phase3.html:66: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\implementation-playbook\phase3.html:67: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\implementation-playbook\phase4.html:27: <span class="prose-header__tag prose-header__tag--architecture">? Playbook</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\implementation-playbook\phase4.html:35: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\implementation-playbook\phase4.html:66: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\implementation-playbook\phase4.html:67: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\implementation-playbook\phase5.html:27: <span class="prose-header__tag prose-header__tag--architecture">? Playbook</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\implementation-playbook\phase5.html:35: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\implementation-playbook\phase5.html:66: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\implementation-playbook\phase5.html:67: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\implementation-playbook\phase6.html:27: <span class="prose-header__tag prose-header__tag--architecture">? Playbook</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\implementation-playbook\phase6.html:35: <div class="callout__icon">?</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\implementation-playbook\phase6.html:66: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\implementation-playbook\phase6.html:67: <button class="feedback-btn">??</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:18: /* ── Zielbild-specific styles ───────────────────────────── */
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:349: style="background:rgba(99,102,241,.15);color:rgb(165,180,252)">?? Zielbild</span>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:360: <!-- ═══════════════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:362: <!-- ═══════════════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:386: <!-- ═══════════════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:388: <!-- ═══════════════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:394: <div class="scenario-box__title"><span class="icon">??</span> Lebensereignis "Geburt"</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:410: <p style="margin-top:var(--space-3);font-weight:600;color:var(--color-accent)">? Gesamtdauer
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:416: <div class="scenario-box__title"><span class="icon">??</span> Lebensereignis "Gewerbe anmelden"
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:432: <div class="scenario-box__title"><span class="icon">??</span> Lebensereignis "Umzug"</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:444: <!-- ═══════════════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:446: <!-- ═══════════════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:451: <div class="channel-card__title"><span class="icon">??</span> Deutschland-Portal (Web)</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:459: <div class="channel-card__title"><span class="icon">??</span> Deutschland-App (iOS/Android)
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:468: <div class="channel-card__title"><span class="icon">??</span> Spezialisierte Fachportale (5-8)
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:477: <div class="channel-card__title"><span class="icon">??</span> Assistenzsysteme</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:486: <!-- ═══════════════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:488: <!-- ═══════════════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:494: <div class="konto-feature__title"><span class="icon">??</span> Dashboard</div>Übersicht
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:498: <div class="konto-feature__title"><span class="icon">??</span> Postfach</div>Alle
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:502: <div class="konto-feature__title"><span class="icon">??</span> Wallet</div>EUDI Wallet:
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:506: <div class="konto-feature__title"><span class="icon">??</span> Datenübersicht</div>Welche
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:510: <div class="konto-feature__title"><span class="icon">??</span> Consent-Center</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:514: <div class="konto-feature__title"><span class="icon">??</span> Dokumente</div>Eigene Dokumente
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:518: <div class="konto-feature__title"><span class="icon">??</span> Vollmachten</div>Digitale
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:522: <div class="konto-feature__title"><span class="icon">??</span> Lebenslage-Finder</div>"Was steht
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:527: <!-- ═══════════════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:529: <!-- ═══════════════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:600: <!-- ═══════════════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:602: <!-- ═══════════════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:616: <td>?? Geburt</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:620: <td>?? 18. Geburtstag</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:624: <td>?? Umzug</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:628: <td>?? Studium</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:632: <td>?? Gründung</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:636: <td>?? Renteneintritt</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:640: <td>? Ablaufende Dokumente</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:647: <!-- ═══════════════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:649: <!-- ═══════════════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:656: <div class="layer__title">?? Nutzer-Layer</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:667: <div class="layer__title">? Erlebnis-Layer</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:676: <div class="layer__title">? Building-Block-Layer (17 BBs)</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:706: <div class="layer__title">? Plattform & Infrastruktur</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:791: <td style="color:rgb(52,211,153)"><strong>BB-13 CMS</strong> ?</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:796: <td style="color:rgb(52,211,153)"><strong>BB-14 Notification</strong> ?</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:801: <td style="color:rgb(52,211,153)"><strong>BB-15 Scheduler</strong> ?</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:806: <td style="color:rgb(52,211,153)"><strong>BB-16 DMS/E-Akte</strong> ?</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:811: <td style="color:rgb(52,211,153)"><strong>BB-17 Knowledge Graph</strong> ?</td>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:818: <p style="font-size:.85rem;color:var(--color-text-secondary)">? = Neu im Zielbild 2031 (bisher nicht im
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:821: <!-- ═══════════════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:823: <!-- ═══════════════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:849: <!-- ═══════════════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:851: <!-- ═══════════════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:918: <!-- ═══════════════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:920: <!-- ═══════════════════════════════════════════════ -->
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:933: <div class="callout__icon">??</div>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:960: <button class="feedback-btn">?? Ja</button>
+E:\00_DATEN\_DEVELOPMENT\google_Antigravity\STACK\docs\zielbild\index.html:961: <button class="feedback-btn">?? Nein</button>
