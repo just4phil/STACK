@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schnittstellen zu Fachverfahren – VerwDigiStack Spezifikation</title>
+    <meta name="description"
+        content="Vollständige Integrationsstrategie für Fachverfahren über ein zentrales API-Gateway – mit europäischen Best Practices, technischer Spezifikation und Herstellermotivation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/tokens.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <style>
+        /* ── Page-specific styles ──── */
+        .flow-diagram {
+            padding: var(--space-5);
+            border-radius: var(--radius-lg);
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            margin: var(--space-4) 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .78rem;
+            line-height: 1.6;
+            overflow-x: auto;
+            white-space: pre
+        }
+
+        .iface-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-3);
+            margin: var(--space-4) 0
+        }
+
+        .iface-card {
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border);
+            position: relative;
+            overflow: hidden;
+            background: var(--color-surface-1)
+        }
+
+        .iface-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px
+        }
+
+        .iface-card--antrag::before {
+            background: #2563eb
+        }
+
+        .iface-card--register::before {
+            background: #7c3aed
+        }
+
+        .iface-card--status::before {
+            background: #059669
+        }
+
+        .iface-card--komm::before {
+            background: #d97706
+        }
+
+        .iface-card--verwaltung::before {
+            background: #6366f1
+        }
+
+        .iface-card__num {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: var(--space-1);
+            color: var(--color-text-muted)
+        }
+
+        .iface-card__title {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: var(--space-2)
+        }
+
+        .iface-card__endpoints {
+            font-size: .82rem;
+            line-height: 1.8
+        }
+
+        .iface-card__endpoints code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .78rem;
+            background: rgba(37, 99, 235, .08);
+            padding: 1px 5px;
+            border-radius: 3px
+        }
+
+        .bp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-3);
+            margin: var(--space-4) 0
+        }
+
+        .bp-card {
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            background: var(--color-surface-1);
+            border: 1px solid var(--color-border)
+        }
+
+        .bp-card__flag {
+            font-size: 2rem;
+            margin-bottom: var(--space-2)
+        }
+
+        .bp-card__country {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: var(--space-1)
+        }
+
+        .bp-card__system {
+            font-size: .82rem;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-2);
+            font-weight: 600
+        }
+
+        .bp-card__lessons {
+            font-size: .85rem;
+            line-height: 1.7
+        }
+
+        .bp-card__lessons li {
+            padding: 2px 0
+        }
+
+        .bp-card__takeaway {
+            margin-top: var(--space-3);
+            padding: var(--space-3);
+            border-radius: var(--radius-md);
+            background: rgba(37, 99, 235, .06);
+            border: 1px solid rgba(37, 99, 235, .15);
+            font-size: .82rem;
+            font-weight: 500
+        }
+
+        .hebel-grid {
+            display: grid;
+            gap: var(--space-3);
+            margin: var(--space-4) 0
+        }
+
+        .hebel-card {
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: var(--space-3);
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            background: var(--color-surface-1);
+            border: 1px solid var(--color-border);
+            align-items: start
+        }
+
+        .hebel-card__icon {
+            font-size: 2rem;
+            text-align: center;
+            padding-top: var(--space-1)
+        }
+
+        .hebel-card__title {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: var(--space-1)
+        }
+
+        .hebel-card__quote {
+            font-style: italic;
+            color: var(--color-brand-500);
+            margin-bottom: var(--space-2);
+            font-size: .9rem
+        }
+
+        .hebel-card__desc {
+            font-size: .88rem;
+            line-height: 1.6;
+            color: var(--color-text-secondary)
+        }
+
+        .stufe-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-3);
+            margin: var(--space-4) 0
+        }
+
+        .stufe-card {
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border);
+            text-align: center;
+            position: relative;
+            overflow: hidden
+        }
+
+        .stufe-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px
+        }
+
+        .stufe-card--bronze {
+            background: rgba(180, 83, 9, .06)
+        }
+
+        .stufe-card--bronze::before {
+            background: rgb(180, 83, 9)
+        }
+
+        .stufe-card--silver {
+            background: rgba(148, 163, 184, .06)
+        }
+
+        .stufe-card--silver::before {
+            background: rgb(148, 163, 184)
+        }
+
+        .stufe-card--gold {
+            background: rgba(234, 179, 8, .06)
+        }
+
+        .stufe-card--gold::before {
+            background: rgb(234, 179, 8)
+        }
+
+        .stufe-card__medal {
+            font-size: 2.2rem;
+            margin-bottom: var(--space-2)
+        }
+
+        .stufe-card__title {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: var(--space-1)
+        }
+
+        .stufe-card__sub {
+            font-size: .82rem;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-3)
+        }
+
+        .stufe-card__features {
+            text-align: left;
+            font-size: .82rem;
+            line-height: 1.7
+        }
+
+        .stufe-card__features li {
+            padding: 2px 0
+        }
+
+        .gw-func-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-2);
+            margin: var(--space-4) 0
+        }
+
+        .gw-func-item {
+            padding: var(--space-3);
+            border-radius: var(--radius-md);
+            background: var(--color-surface-1);
+            border: 1px solid var(--color-border);
+            text-align: center;
+            font-size: .85rem
+        }
+
+        .gw-func-item__icon {
+            font-size: 1.6rem;
+            margin-bottom: var(--space-1)
+        }
+
+        .gw-func-item__title {
+            font-weight: 700;
+            margin-bottom: var(--space-1)
+        }
+
+        .gw-func-item__desc {
+            font-size: .78rem;
+            color: var(--color-text-secondary)
+        }
+
+        .req-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-2);
+            margin: var(--space-4) 0
+        }
+
+        .req-item {
+            padding: var(--space-3);
+            border-radius: var(--radius-md);
+            background: var(--color-surface-1);
+            border: 1px solid var(--color-border);
+            font-size: .85rem
+        }
+
+        .req-item__title {
+            font-weight: 700;
+            margin-bottom: 2px
+        }
+
+        .req-item__standard {
+            font-size: .75rem;
+            color: var(--color-brand-500);
+            font-weight: 600;
+            margin-bottom: var(--space-1)
+        }
+
+        .req-item__desc {
+            font-size: .8rem;
+            color: var(--color-text-secondary);
+            line-height: 1.5
+        }
+
+        @media(max-width:768px) {
+
+            .stufe-grid,
+            .iface-grid {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <script>window.PAGE_META = { title: 'Schnittstellen zu Fachverfahren', section: 'FV-Schnittstellen' };</script>
+
+    <div class="layout">
+
+        <main class="content">
+            <article class="content__main prose">
+
+                <!-- HEADER -->
+                <div class="prose-header">
+                    <div class="prose-header__breadcrumb">
+                        <a href="../index.html">VerwDigiStack</a>
+                        <span class="prose-header__breadcrumb-sep">/</span>
+                        <span>Schnittstellen zu Fachverfahren</span>
+                    </div>
+                    <div class="prose-header__meta">
+                        <span class="prose-header__tag" style="background:rgba(37,99,235,.12);color:#2563eb">🔌
+                            Schnittstellen</span>
+                        <span class="prose-header__version">Version 1.0 · Februar 2026</span>
+                    </div>
+                    <h1>Schnittstellen zu Fachverfahren</h1>
+                    <p>
+                        Vollständige Integrationsstrategie: Wie werden Fachverfahren über ein zentrales
+                        <strong>API-Gateway</strong> in die digitale Verwaltungsinfrastruktur eingebunden?
+                        Europäische Best Practices, technische Spezifikation und Motivationsstrategie
+                        für Fachverfahrenshersteller.
+                    </p>
+                </div>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- 1  AUSGANGSLAGE -->
+                <!-- ═══════════════════════════════════════ -->
+                <h2 id="ausgangslage">1 · Ausgangslage</h2>
+
+                <p>
+                    Fachverfahren sind die <strong>operative Kernschicht</strong> der deutschen Verwaltung.
+                    In ihnen werden Bürgeranträge bearbeitet, Bescheide erstellt und Verwaltungsentscheidungen
+                    getroffen. Aktuell arbeiten die meisten der 300+ Fachverfahren <strong>isoliert</strong>:
+                </p>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Problem</th>
+                                <th>Auswirkung</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Keine standardisierten Schnittstellen</strong></td>
+                                <td>Proprietäre Import-/Export-Mechanismen (CSV, XML, OSCI, Dateisystem)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Kein Echtzeit-Status</strong></td>
+                                <td>Bürger:innen können den Bearbeitungsstand nicht abfragen</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Kein digitaler Kommunikationskanal</strong></td>
+                                <td>Rückfragen erfolgen per Brief oder Telefon</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Keine Registeranbindung</strong></td>
+                                <td>Nachweise müssen manuell beigebracht werden (kein Once-Only)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Kein zentrales Routing</strong></td>
+                                <td>Anträge per E-Mail, Fax oder Post an die Behörde</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Kein Consent-Management</strong></td>
+                                <td>Registerabfragen ohne nachvollziehbare Einwilligung</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Keine digitale Signatur</strong></td>
+                                <td>Bescheide nur per Papier rechtsverbindlich</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- 2  ZIELBILD -->
+                <!-- ═══════════════════════════════════════ -->
+                <h2 id="zielbild">2 · Zielbild: API-Gateway als Vermittlungsschicht</h2>
+
+                <div class="callout callout--info">
+                    <div class="callout__icon">💡</div>
+                    <div class="callout__content">
+                        <div class="callout__title">Kernprinzip</div>
+                        <div class="callout__body">
+                            Fachverfahren kommunizieren <strong>ausschließlich</strong> über das API-Gateway (BB-07) mit
+                            der digitalen Infrastruktur. Kein Fachverfahren spricht je direkt mit Registern,
+                            dem Postfach oder anderen Building Blocks.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flow-diagram">┌──────────────────────────────────────────────────────────────────┐
+                    │ BÜRGER:INNEN │
+                    │ Deutschland-App · Portal · Chatbot │
+                    └───────────────────────────┬──────────────────────────────────────┘
+                    │
+                    ▼
+                    ┌──────────────────────────────────────────────────────────────────┐
+                    │ DIGITALE INFRASTRUKTUR │
+                    │ ┌──────────┬───────────┬────────┬────────┬────────┬─────────┐ │
+                    │ │ Identity │ Formulare │Postfach│Register│Consent │ Payment │ │
+                    │ │ (BundID) │ (BB-02) │(BB-03) │(NOOTS) │(BB-09) │ (BB-04) │ │
+                    │ └──────────┴───────────┴────────┴────────┴────────┴─────────┘ │
+                    │ │ │
+                    │ ┌───────┴────────┐ │
+                    │ │ API-GATEWAY │ ← Routing, Auth, Consent │
+                    │ │ (BB-07) │ Rate-Limiting, Audit │
+                    │ └───────┬────────┘ Protokoll-Translation │
+                    │ │ │
+                    └────────────────────────────┼─────────────────────────────────────┘
+                    │
+                    ┌──────────────┼──────────────┐
+                    ▼ ▼ ▼
+                    ┌──────────────┐ ┌────────────┐ ┌────────────┐
+                    │ FV A (nativ) │ │ FV B │ │ FV C │
+                    │ Stack-Native │ │ + Adapter │ │ Legacy │
+                    │ 🥈 │ │ 🥉 │ │ + Adapter │
+                    └──────────────┘ └────────────┘ └────────────┘</div>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- 3  BEST PRACTICES -->
+                <!-- ═══════════════════════════════════════ -->
+                <h2 id="best-practices">3 · Europäische Best Practices</h2>
+
+                <p>
+                    Wie lösen andere europäische Staaten die Integration von Fachverfahren?
+                    Sechs Beispiele mit übertragbaren Konzepten für Deutschland:
+                </p>
+
+                <div class="bp-grid">
+                    <div class="bp-card">
+                        <div class="bp-card__flag">🇪🇪</div>
+                        <div class="bp-card__country">Estland</div>
+                        <div class="bp-card__system">X-Road · Data Exchange Layer</div>
+                        <ul class="bp-card__lessons">
+                            <li><strong>Dezentral:</strong> Kein zentraler Datenspeicher – X-Road vermittelt nur
+                                Abfragen</li>
+                            <li><strong>mTLS:</strong> Jede Nachricht bilateral verschlüsselt und signiert</li>
+                            <li><strong>Audit-Trail:</strong> Unveränderliches Log mit Zeitstempel</li>
+                            <li><strong>Open Source:</strong> Vollständig OSS (MIT-Lizenz)</li>
+                            <li><strong>Föderierbar:</strong> Trust Federation mit Finnland</li>
+                        </ul>
+                        <div class="bp-card__takeaway">
+                            → Vorbild für dezentrale API-Gateway-Architektur + Audit-Trail
+                        </div>
+                    </div>
+
+                    <div class="bp-card">
+                        <div class="bp-card__flag">🇫🇮</div>
+                        <div class="bp-card__country">Finnland</div>
+                        <div class="bp-card__system">Suomi.fi · API-First per Gesetz</div>
+                        <ul class="bp-card__lessons">
+                            <li><strong>REST-API-Pflicht ab 2025:</strong> Keine Alt-Protokolle mehr</li>
+                            <li><strong>Deadline 2027:</strong> Alle Systeme müssen migrieren</li>
+                            <li><strong>API-Manifesto:</strong> Strategisches Signal an Hersteller</li>
+                            <li><strong>EU-Förderung:</strong> Recovery and Resilience Facility</li>
+                        </ul>
+                        <div class="bp-card__takeaway">
+                            → Harte Deadline + API-Manifesto als Motivationsinstrument
+                        </div>
+                    </div>
+
+                    <div class="bp-card">
+                        <div class="bp-card__flag">🇩🇰</div>
+                        <div class="bp-card__country">Dänemark</div>
+                        <div class="bp-card__system">NemLog-in · Auth-Broker</div>
+                        <ul class="bp-card__lessons">
+                            <li><strong>Zentraler Broker:</strong> Ein Identity-Provider für alle Dienste</li>
+                            <li><strong>NSIS-Compliance:</strong> Nationaler Sicherheitsstandard als Pflicht</li>
+                            <li><strong>Zwei Pfade:</strong> Standard oder Advanced Integration</li>
+                        </ul>
+                        <div class="bp-card__takeaway">
+                            → BundID als zentraler Auth-Broker (bereits vorhanden – nutzen!)
+                        </div>
+                    </div>
+
+                    <div class="bp-card">
+                        <div class="bp-card__flag">🇦🇹</div>
+                        <div class="bp-card__country">Österreich</div>
+                        <div class="bp-card__system">USP.gv.at · Digital Austria Act</div>
+                        <ul class="bp-card__lessons">
+                            <li><strong>Gesetzliche Grundlage:</strong> Digital Austria Act (2023)</li>
+                            <li><strong>USP als Identity Provider:</strong> Einheitliche Identität</li>
+                            <li><strong>100% eID-Verfügbarkeit:</strong> Flächendeckend erreicht</li>
+                        </ul>
+                        <div class="bp-card__takeaway">
+                            → Gesetzliche API-Pflicht schaffen (analog Digital Austria Act)
+                        </div>
+                    </div>
+
+                    <div class="bp-card">
+                        <div class="bp-card__flag">🇪🇸</div>
+                        <div class="bp-card__country">Spanien</div>
+                        <div class="bp-card__system">cl@ve · Identity Federation seit 2015</div>
+                        <ul class="bp-card__lessons">
+                            <li><strong>Pflicht seit 2015:</strong> Alle Online-Dienste nutzen cl@ve</li>
+                            <li><strong>Cloud-Signing:</strong> QES ohne Kartenleser</li>
+                            <li><strong>eIDAS-Integration:</strong> Grenzüberschreitende Erkennung</li>
+                        </ul>
+                        <div class="bp-card__takeaway">
+                            → Verpflichtende zentrale Identity-Nutzung + Cloud-based QES
+                        </div>
+                    </div>
+
+                    <div class="bp-card">
+                        <div class="bp-card__flag">🇪🇺</div>
+                        <div class="bp-card__country">Europäische Union</div>
+                        <div class="bp-card__system">Interoperable Europe Act · seit Jan. 2025</div>
+                        <ul class="bp-card__lessons">
+                            <li><strong>Pflicht:</strong> Interoperabilitätsbewertung bei neuen Diensten</li>
+                            <li><strong>„Interoperable-by-design":</strong> Kein Opt-out möglich</li>
+                            <li><strong>SDG-APIs:</strong> Standardisierte APIs für EU-Dienste</li>
+                        </ul>
+                        <div class="bp-card__takeaway">
+                            → Stärkster Hebel: EU-Recht macht API-Interoperabilität zur Pflicht!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- 4  SCHNITTSTELLEN -->
+                <!-- ═══════════════════════════════════════ -->
+                <h2 id="schnittstellen">4 · Die 5 Schnittstellengruppen</h2>
+
+                <p>
+                    Jedes Fachverfahren, das über das API-Gateway angebunden wird,
+                    muss folgende <strong>5 Schnittstellengruppen</strong> implementieren:
+                </p>
+
+                <div class="iface-grid">
+                    <div class="iface-card iface-card--antrag">
+                        <div class="iface-card__num">①</div>
+                        <div class="iface-card__title">Antrags-Schnittstelle</div>
+                        <ul class="iface-card__endpoints">
+                            <li><code>POST /antraege</code> → Antrag einreichen (JSON-LD, QES-signiert)</li>
+                            <li><code>GET /antraege/{id}</code> → Status abfragen</li>
+                            <li><code>POST /antraege/{id}/docs</code> → Dokumente nachreichen</li>
+                            <li><code>GET /antraege/{id}/bescheid</code> → Bescheid abrufen (QES + VC)</li>
+                        </ul>
+                    </div>
+
+                    <div class="iface-card iface-card--register">
+                        <div class="iface-card__num">②</div>
+                        <div class="iface-card__title">Register-Schnittstelle</div>
+                        <ul class="iface-card__endpoints">
+                            <li><code>POST /register/abfrage</code> → Registerabfrage (Once-Only)</li>
+                            <li><code>POST /register/antwort</code> → Register-Antwort empfangen</li>
+                            <li><code>POST /consent/validate</code> → Consent-Token prüfen</li>
+                        </ul>
+                    </div>
+
+                    <div class="iface-card iface-card--status">
+                        <div class="iface-card__num">③</div>
+                        <div class="iface-card__title">Status- & Event-Schnittstelle</div>
+                        <ul class="iface-card__endpoints">
+                            <li><code>POST /callbacks</code> → Webhook für Statusänderungen</li>
+                            <li><code>POST /events</code> → CloudEvents publizieren</li>
+                            <li><code>GET /health</code> → Verfügbarkeit prüfen</li>
+                        </ul>
+                    </div>
+
+                    <div class="iface-card iface-card--komm">
+                        <div class="iface-card__num">④</div>
+                        <div class="iface-card__title">Kommunikations-Schnittstelle</div>
+                        <ul class="iface-card__endpoints">
+                            <li><code>POST /nachrichten</code> → Nachricht empfangen</li>
+                            <li><code>POST /nachrichten/{id}/antwort</code> → Antwort senden</li>
+                            <li><code>GET /nachrichten/{antragsId}</code> → Verlauf abrufen</li>
+                        </ul>
+                    </div>
+
+                    <div class="iface-card iface-card--verwaltung">
+                        <div class="iface-card__num">⑤</div>
+                        <div class="iface-card__title">Verwaltungs-Schnittstelle</div>
+                        <ul class="iface-card__endpoints">
+                            <li><code>GET /leistungen</code> → Leistungskatalog (FIM-IDs)</li>
+                            <li><code>GET /statistiken</code> → Bearbeitungszeiten</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- 5  DATENFLUSS -->
+                <!-- ═══════════════════════════════════════ -->
+                <h2 id="datenfluss">5 · Ende-zu-Ende-Datenfluss</h2>
+
+                <p>
+                    Vom Antragseingang bis zum Bescheid im Wallet – ein vollständig digitaler Prozess
+                    ohne Medienbruch:
+                </p>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Schritt</th>
+                                <th>Akteur</th>
+                                <th>Aktion</th>
+                                <th>Building Block</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Bürger:in</td>
+                                <td>Antrag ausfüllen (adaptives Formular)</td>
+                                <td>BB-02</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Bürger:in</td>
+                                <td>Consent erteilen (Registerabfrage)</td>
+                                <td>BB-09</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Bürger:in</td>
+                                <td>Antrag qualifiziert signieren (QES via EUDI Wallet)</td>
+                                <td>BB-10, BB-05</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>API-Gateway</td>
+                                <td>Authentifizierung (mTLS + OAuth 2.0)</td>
+                                <td>BB-07</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>API-Gateway</td>
+                                <td>Routing: FIM-ID + DVDV → zuständiges Fachverfahren</td>
+                                <td>BB-07</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Gateway → FV</td>
+                                <td><code>POST /antraege</code> – Antrag übermitteln</td>
+                                <td>①</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>FV → Gateway</td>
+                                <td><code>POST /register/abfrage</code> – Registerabfrage</td>
+                                <td>②</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Gateway → Register</td>
+                                <td>Consent prüfen → NOOTS-Daten abrufen → an FV</td>
+                                <td>BB-06, BB-09</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Fachverfahren</td>
+                                <td>Sachbearbeitung (ggf. Rückfragen über ④)</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>FV → Gateway</td>
+                                <td><code>POST /events</code> – CloudEvent: Status geändert</td>
+                                <td>③, BB-08</td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>System</td>
+                                <td>Bescheid ins Postfach + VC ins Wallet + Push-Notification</td>
+                                <td>BB-03, BB-05</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="callout callout--success">
+                    <div class="callout__icon">✅</div>
+                    <div class="callout__content">
+                        <div class="callout__title">Ergebnis</div>
+                        <div class="callout__body">
+                            Bürger:in macht <strong>5 Min. aktive Interaktion</strong>. Das Fachverfahren bekommt
+                            einen <strong>strukturierten Antrag via API</strong>. Registerabfragen erfolgen
+                            <strong>automatisch</strong> (Once-Only). Bescheid digital signiert ins Postfach und
+                            als Verifiable Credential ins EUDI Wallet. Gebühren über e-Payment (BB-04) abgewickelt.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- 6  API-GATEWAY -->
+                <!-- ═══════════════════════════════════════ -->
+                <h2 id="api-gateway">6 · Das API-Gateway als Orchestrator</h2>
+
+                <p>
+                    Das API-Gateway (BB-07) ist die zentrale Vermittlungsschicht zwischen
+                    digitaler Infrastruktur und Fachverfahren:
+                </p>
+
+                <div class="gw-func-grid">
+                    <div class="gw-func-item">
+                        <div class="gw-func-item__icon">🔀</div>
+                        <div class="gw-func-item__title">Routing</div>
+                        <div class="gw-func-item__desc">FIM-ID + DVDV → zuständiges Fachverfahren</div>
+                    </div>
+                    <div class="gw-func-item">
+                        <div class="gw-func-item__icon">🔐</div>
+                        <div class="gw-func-item__title">Authentifizierung</div>
+                        <div class="gw-func-item__desc">mTLS + OAuth 2.0 Token-Validierung</div>
+                    </div>
+                    <div class="gw-func-item">
+                        <div class="gw-func-item__icon">🛡️</div>
+                        <div class="gw-func-item__title">Consent-Enforcement</div>
+                        <div class="gw-func-item__desc">Consent-Token vor jeder Registerabfrage prüfen</div>
+                    </div>
+                    <div class="gw-func-item">
+                        <div class="gw-func-item__icon">🔄</div>
+                        <div class="gw-func-item__title">Protokoll-Translation</div>
+                        <div class="gw-func-item__desc">XÖV/OSCI → REST/JSON-LD für Legacy</div>
+                    </div>
+                    <div class="gw-func-item">
+                        <div class="gw-func-item__icon">⚡</div>
+                        <div class="gw-func-item__title">Rate-Limiting</div>
+                        <div class="gw-func-item__desc">Schutz vor Überlastung</div>
+                    </div>
+                    <div class="gw-func-item">
+                        <div class="gw-func-item__icon">🔁</div>
+                        <div class="gw-func-item__title">Retry & Circuit-Breaker</div>
+                        <div class="gw-func-item__desc">Automatische Wiederholung + Dead-Letter-Queue</div>
+                    </div>
+                    <div class="gw-func-item">
+                        <div class="gw-func-item__icon">📋</div>
+                        <div class="gw-func-item__title">Audit-Logging</div>
+                        <div class="gw-func-item__desc">Revisionssicher (BSI TR-ESOR)</div>
+                    </div>
+                    <div class="gw-func-item">
+                        <div class="gw-func-item__icon">📊</div>
+                        <div class="gw-func-item__title">Monitoring</div>
+                        <div class="gw-func-item__desc">OpenTelemetry-Traces + Echtzeit-Dashboard</div>
+                    </div>
+                </div>
+
+                <div class="callout callout--warning">
+                    <div class="callout__icon">🔒</div>
+                    <div class="callout__content">
+                        <div class="callout__title">Sicherheitsregeln</div>
+                        <div class="callout__body">
+                            <strong>1.</strong> Kein Fachverfahren darf direkt auf Register zugreifen – nur über das
+                            API-Gateway.<br>
+                            <strong>2.</strong> Jede Registerabfrage erfordert einen validen Consent-Token.<br>
+                            <strong>3.</strong> Alle Kommunikation ist mTLS-verschlüsselt – kein Klartext.<br>
+                            <strong>4.</strong> Jede Transaktion wird revisionssicher auditiert.<br>
+                            <strong>5.</strong> Fehlende Autorisierung = HTTP 403, kein Silent Fail.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- 7  QUERSCHNITTSANFORDERUNGEN -->
+                <!-- ═══════════════════════════════════════ -->
+                <h2 id="querschnitt">7 · Querschnittsanforderungen</h2>
+
+                <p>
+                    Neben den 5 Schnittstellengruppen gelten folgende übergreifende Anforderungen
+                    für jede Fachverfahren-Anbindung:
+                </p>
+
+                <div class="req-grid">
+                    <div class="req-item">
+                        <div class="req-item__title">Once-Only-Prinzip</div>
+                        <div class="req-item__standard">OZG 2.0, SDG-VO</div>
+                        <div class="req-item__desc">Daten aus Registern automatisch vorausfüllen, nie erneut vom Bürger
+                            abfragen.</div>
+                    </div>
+                    <div class="req-item">
+                        <div class="req-item__title">Qualifizierte E-Signatur (QES)</div>
+                        <div class="req-item__standard">eIDAS 2.0, VDG</div>
+                        <div class="req-item__desc">Bescheide als QES-signierte PDFs. Cloud-QES über EUDI Wallet.</div>
+                    </div>
+                    <div class="req-item">
+                        <div class="req-item__title">Verifiable Credentials</div>
+                        <div class="req-item__standard">W3C VC, eIDAS 2.0</div>
+                        <div class="req-item__desc">Bescheide/Nachweise als VC ins EUDI-Wallet ausstellen.</div>
+                    </div>
+                    <div class="req-item">
+                        <div class="req-item__title">e-Payment-Integration</div>
+                        <div class="req-item__standard">XFinanz, ePayBL</div>
+                        <div class="req-item__desc">Gebührenpflichtige Leistungen über Payment-BB abrechnen.</div>
+                    </div>
+                    <div class="req-item">
+                        <div class="req-item__title">Privacy by Design</div>
+                        <div class="req-item__standard">DSGVO</div>
+                        <div class="req-item__desc">Datensparsamkeit, Zweckbindung, Löschfristen in der API verankert.
+                        </div>
+                    </div>
+                    <div class="req-item">
+                        <div class="req-item__title">Barrierefreiheit</div>
+                        <div class="req-item__standard">WCAG 2.2 AA, BFSG</div>
+                        <div class="req-item__desc">Alle UI-Anteile der Kommunikation barrierefrei gestalten.</div>
+                    </div>
+                    <div class="req-item">
+                        <div class="req-item__title">Multi-Kanal-Benachrichtigungen</div>
+                        <div class="req-item__standard">—</div>
+                        <div class="req-item__desc">Push, E-Mail, SMS, Postfach – proaktive Benachrichtigung.</div>
+                    </div>
+                    <div class="req-item">
+                        <div class="req-item__title">JSON-LD + Ontologie</div>
+                        <div class="req-item__standard">FIM, XÖV</div>
+                        <div class="req-item__desc">Maschinenlesbare Datenformate mit Verwaltungs-Ontologie.</div>
+                    </div>
+                    <div class="req-item">
+                        <div class="req-item__title">Event-Driven Architecture</div>
+                        <div class="req-item__standard">CloudEvents 1.0</div>
+                        <div class="req-item__desc">Statusänderungen als Events statt Polling.</div>
+                    </div>
+                    <div class="req-item">
+                        <div class="req-item__title">Interoperabilitätsbewertung</div>
+                        <div class="req-item__standard">Interoperable Europe Act</div>
+                        <div class="req-item__desc">Ab 2025 Pflicht bei neuen/geänderten digitalen Diensten.</div>
+                    </div>
+                </div>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- 8  HERSTELLERMOTIVATION -->
+                <!-- ═══════════════════════════════════════ -->
+                <h2 id="motivation">8 · Herstellermotivation: 5 strategische Hebel</h2>
+
+                <div class="callout callout--info">
+                    <div class="callout__icon">🎯</div>
+                    <div class="callout__content">
+                        <div class="callout__title">Europäische Erfolgsformel</div>
+                        <div class="callout__body">
+                            <strong>Erfolg = Gesetzliche Pflicht + Harte Deadline + Kostenlose Tools + Marktplatz +
+                                Open-Source-Alternativen.</strong>
+                            Regulierung allein ohne Enabler-Tools bleibt auf dem Papier
+                            (Erfahrung aus diversen EU-Initiativen).
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hebel-grid">
+                    <div class="hebel-card">
+                        <div class="hebel-card__icon">📜</div>
+                        <div>
+                            <div class="hebel-card__title">Hebel 1: Rechtliche Basis</div>
+                            <div class="hebel-card__quote">„EU-Recht + Vergaberecht = keine Ausrede mehr."</div>
+                            <div class="hebel-card__desc">
+                                <strong>Interoperable Europe Act</strong> (seit Jan. 2025): Alle neuen digitalen Dienste
+                                müssen interoperabel sein – EU-Recht, nicht optional. Stack-Konformität als
+                                <strong>MUSS-Kriterium im Vergaberecht</strong> bei Neubeschaffungen. Übergangsfrist:
+                                3 Jahre für Stufe 1, 5 Jahre für Stufe 2.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hebel-card">
+                        <div class="hebel-card__icon">🔧</div>
+                        <div>
+                            <div class="hebel-card__title">Hebel 2: Kostenlose Enabler-Tools</div>
+                            <div class="hebel-card__quote">„Wir machen es so einfach wie möglich."</div>
+                            <div class="hebel-card__desc">
+                                <strong>Stack-Connect-Adapter-SDK</strong> (Open Source): Legacy per YAML anbinden.
+                                <strong>Conformance-Test-Suite</strong>: Konformität in 5 Min. testen.
+                                <strong>Sandbox</strong>: Mock-APIs aller BBs.
+                                <strong>Developer-Portal</strong>: Docs, Tutorials, API-Explorer.
+                                Alles <strong>kostenlos</strong>.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hebel-card">
+                        <div class="hebel-card__icon">🏪</div>
+                        <div>
+                            <div class="hebel-card__title">Hebel 3: Stack-Marktplatz</div>
+                            <div class="hebel-card__quote">„Stack-konform = Zugang zu 11.000 Behörden."</div>
+                            <div class="hebel-card__desc">
+                                Nur zertifizierte Fachverfahren werden gelistet. Behörden können erstmals
+                                <strong>Alternativen vergleichen</strong> (Bewertungen, Preise, Konformitätsstufe).
+                                Einmal konform → 11.000 potenzielle Kunden.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hebel-card">
+                        <div class="hebel-card__icon">💰</div>
+                        <div>
+                            <div class="hebel-card__title">Hebel 4: Wirtschaftliche Anreize</div>
+                            <div class="hebel-card__quote">„SaaS-Marge: 70–80% vs. On-Prem: 50–60%."</div>
+                            <div class="hebel-card__desc">
+                                Neues Geschäftsmodell: SaaS + Pay-per-Transaction statt Lizenz + individuelle Anbindung.
+                                <strong>Migrationszuschüsse</strong>: 50% der Kosten für 3 Jahre (Bund + Länder).
+                                EU-Förderung über <strong>Digital Europe Programme</strong>.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hebel-card">
+                        <div class="hebel-card__icon">🌱</div>
+                        <div>
+                            <div class="hebel-card__title">Hebel 5: Open-Source-Referenzimplementierungen</div>
+                            <div class="hebel-card__quote">„Wir bauen Alternativen – Hersteller müssen besser sein."
+                            </div>
+                            <div class="hebel-card__desc">
+                                Für die 10 häufigsten Domänen (Meldewesen, KfZ, Gewerbe, …) werden
+                                <strong>vollständig funktionsfähige</strong> Open-Source-Fachverfahren bereitgestellt.
+                                Behörden können diese direkt einsetzen → Wettbewerbsdruck.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- 9  MIGRATION -->
+                <!-- ═══════════════════════════════════════ -->
+                <h2 id="migration">9 · Migrationspfad: 3 Konformitätsstufen</h2>
+
+                <div class="stufe-grid">
+                    <div class="stufe-card stufe-card--bronze">
+                        <div class="stufe-card__medal">🥉</div>
+                        <div class="stufe-card__title">Stack-Connected</div>
+                        <div class="stufe-card__sub">2026–2027 · Übergangslösung</div>
+                        <ul class="stufe-card__features">
+                            <li>Adapter-Layer (SDK-basiert)</li>
+                            <li>5 Kern-Endpunkte via Adapter</li>
+                            <li>YAML-Konfiguration, kein Code</li>
+                            <li>⚠️ Status ggf. verzögert</li>
+                        </ul>
+                    </div>
+                    <div class="stufe-card stufe-card--silver">
+                        <div class="stufe-card__medal">🥈</div>
+                        <div class="stufe-card__title">Stack-Native</div>
+                        <div class="stufe-card__sub">2027–2029 · Zielzustand</div>
+                        <ul class="stufe-card__features">
+                            <li>APIs nativ implementiert</li>
+                            <li>CloudEvents + Consent</li>
+                            <li>Kommunikationskanal integriert</li>
+                            <li>✅ Echtzeit-Status</li>
+                        </ul>
+                    </div>
+                    <div class="stufe-card stufe-card--gold">
+                        <div class="stufe-card__medal">🥇</div>
+                        <div class="stufe-card__title">Stack-Cloud-Native</div>
+                        <div class="stufe-card__sub">2029–2031 · Optimal</div>
+                        <ul class="stufe-card__features">
+                            <li>SaaS, Multi-Tenant, API-First</li>
+                            <li>Container-basiert (K8s)</li>
+                            <li>Auto-Scaling, SLA 99,9%</li>
+                            <li>✅ Optimale UX</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- 10  ZUSAMMENFASSUNG -->
+                <!-- ═══════════════════════════════════════ -->
+                <h2 id="zusammenfassung">10 · Zusammenfassung</h2>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Dimension</th>
+                                <th>Ergebnis</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Architektur</strong></td>
+                                <td>API-Gateway als einziger Kommunikationsweg. Kein direkter Register-Zugriff.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sicherheit</strong></td>
+                                <td>mTLS + OAuth 2.0 + Consent-Enforcement + QES + Audit-Logging (BSI TR-ESOR)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Schnittstellen</strong></td>
+                                <td>5 Gruppen: Antrag, Register, Status/Events, Kommunikation, Verwaltung</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Datenformate</strong></td>
+                                <td>JSON-LD mit FIM-Ontologie, CloudEvents für Status, XÖV-kompatibel</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Querschnitt</strong></td>
+                                <td>Once-Only, e-Payment, VCs, Barrierefreiheit, Privacy by Design,
+                                    EU-Interoperabilitätspflicht</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Europa zeigt</strong></td>
+                                <td>Erfolgsformel: Gesetzliche Pflicht + kostenlose Tools + Marktplatz + Open Source
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Motivation</strong></td>
+                                <td>5 Hebel: Recht, Enabler-Tools, Marktplatz, Wirtschaft, Open-Source-Alternativen</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Migration</strong></td>
+                                <td>3 Stufen: Connected → Native → Cloud-Native (2026–2031)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- PAGINATION -->
+                <div class="pagination">
+                    <a class="pagination__link pagination__link--prev" href="../fachverfahren/index.html">
+                        <span class="pagination__dir">← Zurück</span>
+                        <span class="pagination__title">Fachverfahren-Strategie</span>
+                    </a>
+                    <a class="pagination__link pagination__link--next" href="../architecture/index.html">
+                        <span class="pagination__dir">Weiter →</span>
+                        <span class="pagination__title">Architektur</span>
+                    </a>
+                </div>
+
+                <div class="page-footer">
+                    <div class="page-footer__meta">Apache-2.0 · Version 1.0 · Februar 2026</div>
+                    <div class="page-footer__feedback">
+                        <span class="page-footer__feedback-label">War diese Seite hilfreich?</span>
+                        <div class="page-footer__feedback-btns">
+                            <button class="feedback-btn">👍 Ja</button>
+                            <button class="feedback-btn">👎 Nein</button>
+                        </div>
+                    </div>
+                </div>
+
+            </article>
+
+            <aside class="content__toc">
+                <div class="toc" id="toc">
+                    <div class="toc__title">Auf dieser Seite</div>
+                    <ul class="toc__list"></ul>
+                </div>
+            </aside>
+        </main>
+
+    </div>
+
+    <script src="../assets/js/shell.js"></script>
+    <script src="../assets/js/site.js"></script>
+</body>
+
+</html>

@@ -68,6 +68,11 @@ const SHELL_HTML = `
           <span class="sidebar__nav-link-icon">⚙️</span> Fachverfahren
         </a>
       </li>
+      <li class="sidebar__nav-item">
+        <a class="sidebar__nav-link" href="${ROOT}fachverfahren-schnittstellen/index.html">
+          <span class="sidebar__nav-link-icon">🔌</span> FV-Schnittstellen
+        </a>
+      </li>
     </ul>
   </div>
 
