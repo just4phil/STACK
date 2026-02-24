@@ -1,95 +1,1315 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BB-01 · Identity – VerwDigiStack Spezifikation</title>
-  <meta name="description" content="Authentifizierung, Autorisierung, Identitätsmanagement. OIDC/SAML, eIDAS 2.0, BundID.">
+  <meta name="description"
+    content="Vollständige Spezifikation des Identity Building Block (BB-01): BundID, OIDC/SAML, eIDAS 2.0, Vertrauensniveaus, Unternehmensidentität.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="../../assets/css/tokens.css">
   <link rel="stylesheet" href="../../assets/css/main.css">
 </head>
+
 <body>
-<script>window.PAGE_META = { title: 'BB-01 · Identity', section: 'Building Block' };</script>
+  <script>window.PAGE_META = { title: 'BB-01 · Identity', section: 'Building Block' };</script>
 
-<div class="layout">
+  <div class="layout">
+    <main class="content">
+      <article class="content__main prose">
 
-  <main class="content">
-    <article class="content__main prose">
-
-      <div class="prose-header">
-        <div class="prose-header__breadcrumb">
-          <a href="../../index.html">VerwDigiStack</a><span class="prose-header__breadcrumb-sep">/</span><a href="../index.html">Building Blocks</a><span class="prose-header__breadcrumb-sep">/</span><span>BB-01 · Identity</span>
+        <!-- ═══════════════════════════════════════════════════════════ HEADER -->
+        <div class="prose-header">
+          <div class="prose-header__breadcrumb">
+            <a href="../../index.html">VerwDigiStack</a><span class="prose-header__breadcrumb-sep">/</span><a
+              href="../index.html">Building Blocks</a><span class="prose-header__breadcrumb-sep">/</span><span>BB-01 ·
+              Identity</span>
+          </div>
+          <div class="prose-header__meta">
+            <span class="prose-header__tag prose-header__tag--building-block">◈ Building Block</span>
+            <span class="prose-header__tag prose-header__tag--draft">DRAFT 0.2</span>
+          </div>
+          <h1>BB-01 · Identity &amp; Authentifizierung</h1>
+          <p>Zentrales Identitäts- und Authentifizierungsmanagement für die digitale Verwaltung.
+            Referenzimplementierung: <strong>BundID</strong> (ITZBund/BMI). Kompatibel zu GovStack Identity BB v1.0,
+            eIDAS 2.0 und BSI TR-03107.</p>
         </div>
-        <div class="prose-header__meta">
-          <span class="prose-header__tag prose-header__tag--building-block">◈ Building Block</span>
-          <span class="prose-header__tag prose-header__tag--draft">DRAFT</span>
-        </div>
-        <h1>BB-01 · Identity</h1>
-        <p>Authentifizierung, Autorisierung, Identitätsmanagement. OIDC/SAML, eIDAS 2.0, BundID.</p>
-      </div>
 
-      <div class="callout callout--warning">
-        <div class="callout__icon">✏</div>
-        <div class="callout__content">
-          <div class="callout__title">Seite wird ausgefüllt</div>
-          <div class="callout__body">
-            Dieser Abschnitt ist als Platzhalter angelegt und wird sukzessive befüllt.
-            Die Struktur folgt dem einheitlichen BB-Template (11 Abschnitte).
+        <!-- ═══════════════════════════════════════════════════════ 1 VERSION -->
+        <h2 id="versionshistorie">1 &nbsp;Versionshistorie</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Version</th>
+              <th>Datum</th>
+              <th>Änderung</th>
+              <th>Autor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>0.1</code></td>
+              <td>2026-02-21</td>
+              <td>Initiale Stub-Struktur</td>
+              <td>Stack-Team</td>
+            </tr>
+            <tr>
+              <td><code>0.2</code></td>
+              <td>2026-02-24</td>
+              <td>Vollständige Erstfassung: Funktionalitäten, Anforderungen, Datenmodell, API-Spezifikation,
+                Konformitätskriterien</td>
+              <td>Stack-Team</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ══════════════════════════════════════════════════════ 2 BESCHREIBUNG -->
+        <h2 id="beschreibung">2 &nbsp;Beschreibung</h2>
+
+        <h3 id="zweck">2.1 &nbsp;Zweck und Kontext</h3>
+        <p>Der <strong>Identity Building Block (BB-01)</strong> ist die Basis aller digitalen Verwaltungsinteraktionen.
+          Er stellt sicher, dass natürliche Personen, juristische Personen und Behörden sich gegenüber Online-Diensten
+          sicher und rechtskonform ausweisen können. BB-01 ist eine <em>Voraussetzung</em> für alle anderen Building
+          Blocks – kein Dienst darf ohne eine durch BB-01 definierte Authentifizierung erreichbar sein.</p>
+        <p>In Deutschland ist die <strong>BundID</strong> (betrieben von ITZBund im Auftrag des BMI) die designierte
+          Referenzimplementierung. Ab OZG 2.0 (in Kraft seit 24. Juli 2024) ist die BundID zum zentralen Bürgerkonto für
+          alle föderalen Ebenen ausgebaut worden. Die BundID wird mittelfristig zur <strong>DeutschlandID</strong>
+          weiterentwickelt und löst die heterogene Landschaft der 16 Landeskonten durch ein einheitliches SSO ab.</p>
+
+        <h3 id="architektur">2.2 &nbsp;Architekturübersicht</h3>
+        <pre><code>  Bürger:in / Unternehmen
+         │
+         │  Browser / App
+         ▼
+  ┌──────────────────────────────────────────────┐
+  │           BB-01 · Identity Provider          │
+  │  ┌────────────────┐  ┌──────────────────────┐│
+  │  │ Authentifizier-│  │  Attribut-Service    ││
+  │  │ ungs-Engine    │  │  (Claims/UserInfo)   ││
+  │  └────────────────┘  └──────────────────────┘│
+  │  ┌────────────────┐  ┌──────────────────────┐│
+  │  │ Session-Mgmt   │  │  LoA-Broker          ││
+  │  │ (SSO/SLO)      │  │  (niedrig/substanz./ ││
+  │  └────────────────┘  │   hoch)              ││
+  │                      └──────────────────────┘│
+  │  Protokolle: OIDC Core 1.0 · OAuth 2.1       │
+  │              SAML 2.0 (Legacy-Anbindung)      │
+  └───────────────────────┬──────────────────────┘
+                          │  OIDC / SAML Federation
+           ┌──────────────┼──────────────┐
+           ▼              ▼              ▼
+     Fachverfahren    Portal &amp;       Weitere BBs
+     (Relying Party)  Formular-BB    (Postfach, etc.)
+
+  Identifizierungsmittel (extern angebunden):
+  ┌───────────┬──────────────┬────────────────────┐
+  │ eID (nPA) │ ELSTER-Zert. │ Benutzername+Passwort│
+  │  LoA hoch │ LoA substanz.│ + MFA: LoA substanz. │
+  └───────────┴──────────────┴────────────────────┘</code></pre>
+
+        <h3 id="abgrenzung">2.3 &nbsp;Abgrenzung</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>In Scope</th>
+              <th>Out of Scope</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Authentifizierung natürlicher Personen (Bürger:innen)</td>
+              <td>Behörden-interne Identitäten (IAM für Beschäftigte → separater BB)</td>
+            </tr>
+            <tr>
+              <td>Authentifizierung juristischer Personen (Unternehmensidentität)</td>
+              <td>Signaturdienste (→ BB-10 E-Signatur)</td>
+            </tr>
+            <tr>
+              <td>SSO/SLO über alle angebundenen Dienste</td>
+              <td>Wallet-basierte Credential-Verwaltung (→ BB-05 EUDI Wallet)</td>
+            </tr>
+            <tr>
+              <td>Vertrauensniveau-Broker (LoA-Mapping)</td>
+              <td>Consent-Verwaltung für Datenzugriffe (→ BB-09 Consent)</td>
+            </tr>
+            <tr>
+              <td>Attribut-/Claims-Bereitstellung nach Authentifizierung</td>
+              <td>Proaktive Abrufe aus Registern (→ BB-06 NOOTS)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ══════════════════════════════════════════════════ 3 BEGRIFFE -->
+        <h2 id="begriffe">3 &nbsp;Begriffe &amp; Definitionen</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Begriff</th>
+              <th>Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>IdP</strong></td>
+              <td>Identity Provider – Dienst, der Identitäten verwaltet und Authentifizierungsaussagen ausstellt (hier:
+                BundID)</td>
+            </tr>
+            <tr>
+              <td><strong>RP / SP</strong></td>
+              <td>Relying Party / Service Provider – Fachverfahren oder Dienst, der eine Identitätsaussage konsumiert
+              </td>
+            </tr>
+            <tr>
+              <td><strong>LoA</strong></td>
+              <td>Level of Assurance – Vertrauensniveau gem. eIDAS Art. 8: <em>niedrig / substanziell / hoch</em></td>
+            </tr>
+            <tr>
+              <td><strong>PPID</strong></td>
+              <td>Pairwise Pseudonymous Identifier – dienstspezifischer, nicht korrelierbarer Nutzerbezeichner
+                (<code>sub</code>-Claim)</td>
+            </tr>
+            <tr>
+              <td><strong>DKK</strong></td>
+              <td>Dienste- und Kartenspezifisches Kennzeichen – eID-internes Pseudonym, das als PPID in <code>sub</code>
+                eingeht</td>
+            </tr>
+            <tr>
+              <td><strong>nPA</strong></td>
+              <td>Neuer Personalausweis mit Online-Ausweisfunktion (eID-Funktion, LoA hoch)</td>
+            </tr>
+            <tr>
+              <td><strong>SSO / SLO</strong></td>
+              <td>Single Sign-On / Single Log-Out – einmalige Anmeldung für alle angebundenen Dienste</td>
+            </tr>
+            <tr>
+              <td><strong>IDNr</strong></td>
+              <td>Steuerliche Identifikationsnummer – künftige registerübergreifende Kennung gem. RegMoG</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ════════════════════════════════════════ 4 SCHLÜSSELFUNKTIONALITÄTEN -->
+        <h2 id="schluessel-funktionalitaeten">4 &nbsp;Schlüsselfunktionalitäten</h2>
+
+        <div class="callout callout--info">
+          <div class="callout__icon">ℹ</div>
+          <div class="callout__content">
+            <div class="callout__title">GovStack-Mapping</div>
+            <div class="callout__body">Die folgenden Key Digital Functionalities (KDF) entsprechen dem GovStack Identity
+              BB v1.0 und sind um deutsche Spezifika (BundID, eID, ELSTER, Unternehmenskonto) ergänzt.</div>
           </div>
         </div>
-      </div>
 
-      
-      <h2 id="beschreibung">2  Beschreibung</h2>
-      <p style="color:var(--color-text-secondary)">Inhalte werden ergänzt.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Funktionalität</th>
+              <th>GovStack KDF</th>
+              <th>DE-Spezifikum</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>KDF-01</td>
+              <td><strong>Benutzerregistrierung</strong> – Selbstregistrierung mit E-Mail-Verifikation (LoA niedrig).
+                Hochstufung auf substanziell/hoch über ELSTER-Zertifikat oder eID.</td>
+              <td>✅ Identity Registration</td>
+              <td>Stufenweise Hochstufung (Step-Up Auth)</td>
+            </tr>
+            <tr>
+              <td>KDF-02</td>
+              <td><strong>Authentifizierung</strong> – LoA-adaptive Anmeldung. Benutzername+Passwort+MFA (substanziell),
+                eID via AusweisApp/EUDI Wallet (hoch).</td>
+              <td>✅ Authentication</td>
+              <td>eID-Anbindung via BSI TR-03124 / eID-Server</td>
+            </tr>
+            <tr>
+              <td>KDF-03</td>
+              <td><strong>Single Sign-On (SSO)</strong> – Nach einmaliger Anmeldung Zugriff auf alle angebundenen
+                Dienste ohne erneute Authentifizierung für die Dauer der Session.</td>
+              <td>✅ SSO</td>
+              <td>Föderations-Gateway für 16 Landeskonten (SDG-Interop)</td>
+            </tr>
+            <tr>
+              <td>KDF-04</td>
+              <td><strong>Single Log-Out (SLO)</strong> – Abmeldung beendet alle Sessions bei allen aktiven RPs
+                (Front-Channel und Back-Channel SLO).</td>
+              <td>✅ SLO</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>KDF-05</td>
+              <td><strong>Attribut-Bereitstellung</strong> – Claims über UserInfo-Endpoint; datensparsamkeitskonforme
+                Attribut-Sets je LoA-Stufe.</td>
+              <td>✅ User Claims</td>
+              <td>Basisregister-Abgleich optional via NOOTS (BB-06)</td>
+            </tr>
+            <tr>
+              <td>KDF-06</td>
+              <td><strong>Unternehmensidentität</strong> – ELSTER-basiertes Unternehmenskonto mit Rollenverwaltung
+                (Vollmacht, Prokura, Vertretung).</td>
+              <td>⚠️ Partial</td>
+              <td>ELSTER-Anbindung; Handelsregister-Verknüpfung geplant</td>
+            </tr>
+            <tr>
+              <td>KDF-07</td>
+              <td><strong>Vertrauensniveau-Broker</strong> – Abbildung verschiedener Identifizierungsmittel auf
+                eIDAS-LoA; Step-up bei erhöhtem Schutzbedarf.</td>
+              <td>✅ LoA Management</td>
+              <td>Gemäß IT-Planungsrat-Beschluss 2022/27 und BSI TR-03107</td>
+            </tr>
+            <tr>
+              <td>KDF-08</td>
+              <td><strong>Vollmachten / Vertretung</strong> – Natürliche Personen können im Namen anderer handeln
+                (Vollmachtsdatenbank).</td>
+              <td>❌ Nicht in GovStack</td>
+              <td>Vollmachtsdatenbank Bund (FITKO); Anbindung in Planung</td>
+            </tr>
+          </tbody>
+        </table>
 
-      <h2 id="schluessel-funktionalitaeten">4  Schlüsselfunktionalitäten</h2>
-      <p style="color:var(--color-text-secondary)">Inhalte werden ergänzt.</p>
+        <!-- ════════════════════════════════════ 5 QUERSCHNITTSANFORDERUNGEN -->
+        <h2 id="querschnittsanforderungen">5 &nbsp;Querschnittsanforderungen</h2>
 
-      <h2 id="funktionale-anforderungen">6  Funktionale Anforderungen</h2>
-      <p style="color:var(--color-text-secondary)">Inhalte werden ergänzt.</p>
+        <h3 id="sicherheit">5.1 &nbsp;Sicherheitsanforderungen</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Anforderung</th>
+              <th>Norm / Referenz</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>SEC-01</td>
+              <td>Alle Kommunikation <strong>MUSS</strong> TLS 1.3 verwenden (Fallback TLS 1.2 mit BSI-konformen Cipher
+                Suites)</td>
+              <td>BSI TR-02102-2</td>
+            </tr>
+            <tr>
+              <td>SEC-02</td>
+              <td>Token <strong>MÜSSEN</strong> als JWTs signiert sein (RS256 oder ES256; kein HS256); Schlüsselrotation
+                alle 90 Tage</td>
+              <td>RFC 7519, OIDC Core §10</td>
+            </tr>
+            <tr>
+              <td>SEC-03</td>
+              <td>Access Tokens <strong>MÜSSEN</strong> kurzlebig sein (max. 300 s); Refresh Tokens
+                <strong>MÜSSEN</strong> rotieren (RFC 6749 §10)</td>
+              <td>OAuth 2.1 Draft</td>
+            </tr>
+            <tr>
+              <td>SEC-04</td>
+              <td>PKCE (Proof Key for Code Exchange) <strong>MUSS</strong> für alle öffentlichen Clients erzwungen
+                werden (S256)</td>
+              <td>RFC 7636</td>
+            </tr>
+            <tr>
+              <td>SEC-05</td>
+              <td>Brute-Force-Schutz: Nach 5 Fehlversuchen <strong>MUSS</strong> ein Account temporär gesperrt und
+                CAPTCHA aktiviert werden</td>
+              <td>OWASP ASVS 4.0 §2.2</td>
+            </tr>
+            <tr>
+              <td>SEC-06</td>
+              <td>MFA <strong>MUSS</strong> für LoA substanziell erzwungen werden (TOTP, FIDO2/WebAuthn oder SMS-OTP)
+              </td>
+              <td>BSI TR-03107-1 §4.2</td>
+            </tr>
+            <tr>
+              <td>SEC-07</td>
+              <td>eID-Anbindung <strong>MUSS</strong> über einen zertifizierten eID-Server gem. BSI TR-03124 erfolgen
+              </td>
+              <td>BSI TR-03124</td>
+            </tr>
+          </tbody>
+        </table>
 
-      <h2 id="service-apis">8  Service-APIs</h2>
-      <p style="color:var(--color-text-secondary)">OpenAPI-Spezifikation wird ergänzt.</p>
+        <h3 id="datenschutz">5.2 &nbsp;Datenschutzanforderungen</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Anforderung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>DS-01</td>
+              <td>Pairwise Pseudonymous Identifiers (<code>sub</code>) <strong>MÜSSEN</strong> verwendet werden; kein
+                diensteübergreifender natürlicher Bezeichner ohne expliziten Consent</td>
+            </tr>
+            <tr>
+              <td>DS-02</td>
+              <td>Nur die für den Dienst minimal notwendigen Attribute <strong>DÜRFEN</strong> übermittelt werden
+                (Datensparsamkeit gem. DSGVO Art. 5 Abs. 1 lit. c)</td>
+            </tr>
+            <tr>
+              <td>DS-03</td>
+              <td>Authentifizierungsprotokolle <strong>MÜSSEN</strong> revisionssicher gespeichert werden (min. 3
+                Monate, max. 12 Monate, gem. Telekommunikationsrecht)</td>
+            </tr>
+            <tr>
+              <td>DS-04</td>
+              <td>Nutzer:innen <strong>MÜSSEN</strong> eine Übersicht aller aktiven Sessions und aller in den letzten 90
+                Tagen angemeldeten Dienste abrufen können</td>
+            </tr>
+          </tbody>
+        </table>
 
+        <h3 id="sla">5.5 &nbsp;SLA-Anforderungen</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Metrik</th>
+              <th>Anforderung</th>
+              <th>Begründung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Verfügbarkeit</td>
+              <td><strong>99,9 %</strong> / Monat (≤ 44 min Downtime/Monat)</td>
+              <td>Kritische Infrastruktur; alle anderen BBs abhängig</td>
+            </tr>
+            <tr>
+              <td>Latenz (p99)</td>
+              <td><strong>&lt; 500 ms</strong> für Token-Endpunkte</td>
+              <td>Nutzer:innen-Experience; Login-Timeout</td>
+            </tr>
+            <tr>
+              <td>Durchsatz</td>
+              <td><strong>min. 1.000 Auth-Requests/Sekunde</strong></td>
+              <td>Peaks bei großflächigen Kampagnen (Steuererklärung etc.)</td>
+            </tr>
+            <tr>
+              <td>RTO</td>
+              <td><strong>&lt; 15 min</strong> bei Ausfall einer Availability Zone</td>
+              <td>Multi-AZ Deployment erforderlich</td>
+            </tr>
+          </tbody>
+        </table>
 
-      <div class="pagination">
-        <a class="pagination__link pagination__link--prev" href="bb-noots/index.html">
-          <span class="pagination__dir">← Zurück</span>
-          <span class="pagination__title">BB-06 · Register (NOOTS)</span>
-        </a>
-        <a class="pagination__link pagination__link--next" href="bb-portal/index.html">
-          <span class="pagination__dir">Weiter →</span>
-          <span class="pagination__title">BB-02 · Portal & Formular</span>
-        </a>
-      </div>
+        <!-- ══════════════════════════════════════ 6 FUNKTIONALE ANFORDERUNGEN -->
+        <h2 id="funktionale-anforderungen">6 &nbsp;Funktionale Anforderungen</h2>
 
-      <div class="page-footer">
-        <div class="page-footer__meta">Apache-2.0 · Version 0.1 DRAFT</div>
-        <div class="page-footer__feedback">
-          <span class="page-footer__feedback-label">Hilfreich?</span>
-          <div class="page-footer__feedback-btns">
-            <button class="feedback-btn">👍</button>
-            <button class="feedback-btn">👎</button>
+        <h3 id="fa-registrierung">6.1 &nbsp;Registrierung &amp; Kontoführung</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Anforderung</th>
+              <th>Prio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>FA-REG-01</td>
+              <td>Der BB <strong>MUSS</strong> eine Self-Service-Registrierung mit E-Mail-Verifikation unterstützen (LoA
+                niedrig)</td>
+              <td>MUSS</td>
+            </tr>
+            <tr>
+              <td>FA-REG-02</td>
+              <td>Der BB <strong>MUSS</strong> die Hochstufung (Step-Up) von LoA niedrig auf substanziell durch
+                ELSTER-Zertifikat oder TOTP ermöglichen</td>
+              <td>MUSS</td>
+            </tr>
+            <tr>
+              <td>FA-REG-03</td>
+              <td>Der BB <strong>MUSS</strong> die Hochstufung auf LoA hoch über Online-Ausweisfunktion (nPA, eID via
+                AusweisApp oder EUDI Wallet) unterstützen</td>
+              <td>MUSS</td>
+            </tr>
+            <tr>
+              <td>FA-REG-04</td>
+              <td>Der BB <strong>MUSS</strong> FIDO2/WebAuthn als Authenticator für passwortlose Anmeldung unterstützen
+              </td>
+              <td>MUSS</td>
+            </tr>
+            <tr>
+              <td>FA-REG-05</td>
+              <td>Der BB <strong>SOLL</strong> ein Unternehmenskonto auf Basis des ELSTER-Unternehmenskontos mit
+                Rollenverwaltung anbieten</td>
+              <td>SOLL</td>
+            </tr>
+            <tr>
+              <td>FA-REG-06</td>
+              <td>Der BB <strong>KANN</strong> eine Vollmachtsdatenbank (natürliche Person im Namen anderer) anbinden
+              </td>
+              <td>KANN</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 id="fa-sso">6.2 &nbsp;SSO / Föderations-Gateway</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Anforderung</th>
+              <th>Prio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>FA-SSO-01</td>
+              <td>Der BB <strong>MUSS</strong> als OIDC-Provider (OpenID Connect Core 1.0) agieren</td>
+              <td>MUSS</td>
+            </tr>
+            <tr>
+              <td>FA-SSO-02</td>
+              <td>Der BB <strong>MUSS</strong> als SAML 2.0 Identity Provider für Legacy-Systeme agieren (SAML Web
+                Browser SSO Profile)</td>
+              <td>MUSS</td>
+            </tr>
+            <tr>
+              <td>FA-SSO-03</td>
+              <td>Der BB <strong>MUSS</strong> ein OpenID Connect Discovery-Dokument
+                (<code>/.well-known/openid-configuration</code>) exponieren</td>
+              <td>MUSS</td>
+            </tr>
+            <tr>
+              <td>FA-SSO-04</td>
+              <td>Der BB <strong>MUSS</strong> Front-Channel und Back-Channel SLO gem. OIDC Session Management
+                implementieren</td>
+              <td>MUSS</td>
+            </tr>
+            <tr>
+              <td>FA-SSO-05</td>
+              <td>Der BB <strong>MUSS</strong> als Föderations-Gateway für konforme Landeskonten (BayernID,
+                Servicekonto.NRW etc.) agieren (OIDC Federation 1.0)</td>
+              <td>MUSS</td>
+            </tr>
+            <tr>
+              <td>FA-SSO-06</td>
+              <td>Der BB <strong>MUSS</strong> das SDG-Interoperabilitätsprofil für grenzüberschreitenden Zugang
+                (eIDAS-Knoten) implementieren</td>
+              <td>MUSS</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 id="fa-loa">6.3 &nbsp;Vertrauensniveaus (LoA)</h3>
+
+        <div class="callout callout--info">
+          <div class="callout__icon">ℹ</div>
+          <div class="callout__content">
+            <div class="callout__title">Rechtliche Basis</div>
+            <div class="callout__body">Die Vertrauensniveaus basieren auf eIDAS Art. 8 (VO EU 910/2014, geändert durch
+              EU 2024/1183) und BSI TR-03107-1. Der IT-Planungsrat-Beschluss 2022/27 regelt, welche
+              Identifizierungsmittel auf Bundesebene anerkannt sind.</div>
           </div>
         </div>
-      </div>
 
-    </article>
-    <aside class="content__toc">
-      <div class="toc" id="toc">
-        <div class="toc__title">Auf dieser Seite</div>
-        <ul class="toc__list"></ul>
-      </div>
-    </aside>
-  </main>
+        <table>
+          <thead>
+            <tr>
+              <th>LoA</th>
+              <th>eIDAS</th>
+              <th>Identifizierungsmittel (DE)</th>
+              <th>Typische Dienste</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Niedrig</strong></td>
+              <td>low</td>
+              <td>Benutzername + Passwort (ohne MFA), E-Mail-verifikation</td>
+              <td>Informationsabruf, Newsletter, nicht-personenbezogene Dienste</td>
+            </tr>
+            <tr>
+              <td><strong>Substanziell</strong></td>
+              <td>substantial</td>
+              <td>Benutzername + Passwort + TOTP/FIDO2; ELSTER-Zertifikat; BankID (geplant)</td>
+              <td>Antragsstellung ohne Rechtswirkung, KFZ-Ummeldung, Ummeldung Wohnsitz</td>
+            </tr>
+            <tr>
+              <td><strong>Hoch</strong></td>
+              <td>high</td>
+              <td>eID (nPA / eAT) via AusweisApp2 oder EUDI Wallet; Smart-eID (BSI TR-03108)</td>
+              <td>Bafög-Antrag, Führerszeugnis, Gewerbeanmeldung, Registerauszüge mit Rechtswirkung</td>
+            </tr>
+          </tbody>
+        </table>
 
-</div>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Anforderung</th>
+              <th>Prio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>FA-LOA-01</td>
+              <td>Fachverfahren <strong>MÜSSEN</strong> das erforderliche Mindest-LoA im OIDC-Request über den Parameter
+                <code>acr_values</code> (Authentication Context Class Reference) signalisieren können</td>
+              <td>MUSS</td>
+            </tr>
+            <tr>
+              <td>FA-LOA-02</td>
+              <td>Der BB <strong>MUSS</strong> Step-Up-Authentication auslösen, wenn das verfügbare Session-LoA unter
+                dem angeforderten LoA liegt</td>
+              <td>MUSS</td>
+            </tr>
+            <tr>
+              <td>FA-LOA-03</td>
+              <td>Das erreichte LoA <strong>MUSS</strong> im <code>acr</code>-Claim des ID-Tokens zurückgegeben werden
+                (URI-Format gem. eIDAS-Durchführungsverordnung)</td>
+              <td>MUSS</td>
+            </tr>
+          </tbody>
+        </table>
 
-<script src="../../assets/js/shell.js"></script>
-<script src="../../assets/js/site.js"></script>
+        <!-- ══════════════════════════════════════════════════ 7 DATENMODELL -->
+        <h2 id="datenmodell">7 &nbsp;Datenmodell</h2>
+
+        <h3 id="claims">7.1 &nbsp;OIDC-Claims / Attribut-Set</h3>
+        <p>Die folgende Tabelle definiert alle Claims, die der BB-01 Identity Provider bereitstellen MUSS (M) bzw. SOLL
+          (S) oder KANN (K). Claims sind nach LoA-Mindestanforderung gruppiert.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Claim</th>
+              <th>Typ</th>
+              <th>Scope</th>
+              <th>LoA min.</th>
+              <th>Prio</th>
+              <th>Beschreibung / DE-Spezifikum</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>sub</code></td>
+              <td>string</td>
+              <td>openid</td>
+              <td>niedrig</td>
+              <td><strong>M</strong></td>
+              <td>Pairwise Pseudonymous Identifier (PPID); eindeutig je RP; nicht über Dienste korrelierbar</td>
+            </tr>
+            <tr>
+              <td><code>iss</code></td>
+              <td>string (URI)</td>
+              <td>openid</td>
+              <td>niedrig</td>
+              <td><strong>M</strong></td>
+              <td>Issuer URL des IdP (z. B. <code>https://id.bund.de</code>)</td>
+            </tr>
+            <tr>
+              <td><code>acr</code></td>
+              <td>string (URI)</td>
+              <td>openid</td>
+              <td>niedrig</td>
+              <td><strong>M</strong></td>
+              <td>Erreichtes Vertrauensniveau; URI gem. eIDAS-DVO:
+                <code>http://eidas.europa.eu/LoA/low|substantial|high</code></td>
+            </tr>
+            <tr>
+              <td><code>amr</code></td>
+              <td>array</td>
+              <td>openid</td>
+              <td>niedrig</td>
+              <td><strong>M</strong></td>
+              <td>Authentication Method Reference (z. B. <code>["pwd","otp"]</code>, <code>["eid"]</code>)</td>
+            </tr>
+            <tr>
+              <td><code>auth_time</code></td>
+              <td>integer (epoch)</td>
+              <td>openid</td>
+              <td>niedrig</td>
+              <td><strong>M</strong></td>
+              <td>Zeitstempel der letzten Authentifizierung</td>
+            </tr>
+            <tr>
+              <td><code>given_name</code></td>
+              <td>string</td>
+              <td>profile</td>
+              <td>substanziell</td>
+              <td><strong>M</strong></td>
+              <td>Vorname(n) gem. Personalausweis; bei LoA niedrig nur nach explizitem Nutzerkonsent</td>
+            </tr>
+            <tr>
+              <td><code>family_name</code></td>
+              <td>string</td>
+              <td>profile</td>
+              <td>substanziell</td>
+              <td><strong>M</strong></td>
+              <td>Nachname gem. Personalausweis</td>
+            </tr>
+            <tr>
+              <td><code>birthdate</code></td>
+              <td>string (ISO 8601)</td>
+              <td>profile</td>
+              <td>substanziell</td>
+              <td><strong>M</strong></td>
+              <td>Geburtsdatum; bei LoA substanziell nur ELSTER-verifiziert</td>
+            </tr>
+            <tr>
+              <td><code>email</code></td>
+              <td>string</td>
+              <td>email</td>
+              <td>niedrig</td>
+              <td><strong>M</strong></td>
+              <td>E-Mail-Adresse; <code>email_verified</code> MUSS mitgeliefert werden</td>
+            </tr>
+            <tr>
+              <td><code>email_verified</code></td>
+              <td>boolean</td>
+              <td>email</td>
+              <td>niedrig</td>
+              <td><strong>M</strong></td>
+              <td>true wenn E-Mail durch IdP verifiziert</td>
+            </tr>
+            <tr>
+              <td><code>address</code></td>
+              <td>object</td>
+              <td>address</td>
+              <td>hoch</td>
+              <td><strong>S</strong></td>
+              <td>Meldeadresse gem. Meldewesen; nur bei eID-Authentifizierung aus nPA auslesbar (BSI TR-03127)</td>
+            </tr>
+            <tr>
+              <td><code>place_of_birth</code></td>
+              <td>string</td>
+              <td>profile</td>
+              <td>hoch</td>
+              <td><strong>S</strong></td>
+              <td>Geburtsort; nur aus eID verfügbar</td>
+            </tr>
+            <tr>
+              <td><code>nationality</code></td>
+              <td>string (ISO 3166-1 α-2)</td>
+              <td>profile</td>
+              <td>hoch</td>
+              <td><strong>S</strong></td>
+              <td>Staatsangehörigkeit; nur aus eID verfügbar</td>
+            </tr>
+            <tr>
+              <td><code>document_validity</code></td>
+              <td>string (ISO 8601)</td>
+              <td>de_eid</td>
+              <td>hoch</td>
+              <td><strong>S</strong></td>
+              <td><strong>DE-Erweiterung:</strong> Gültigkeitsdatum des Ausweisdokuments</td>
+            </tr>
+            <tr>
+              <td><code>de_restricted_id</code></td>
+              <td>string</td>
+              <td>de_eid</td>
+              <td>hoch</td>
+              <td><strong>K</strong></td>
+              <td><strong>DE-Erweiterung:</strong> Dienste-spezifisches Kennzeichen (DKK / restricted ID) aus eID; nur
+                auf expliziten Antrag des RP (§ 19a PAuswG)</td>
+            </tr>
+            <tr>
+              <td><code>legal_entity_id</code></td>
+              <td>string</td>
+              <td>de_org</td>
+              <td>substanziell</td>
+              <td><strong>S</strong></td>
+              <td><strong>DE-Erweiterung (Unternehmen):</strong> ELSTER-Steuernummer oder Handelsregisternummer</td>
+            </tr>
+            <tr>
+              <td><code>legal_entity_name</code></td>
+              <td>string</td>
+              <td>de_org</td>
+              <td>substanziell</td>
+              <td><strong>S</strong></td>
+              <td><strong>DE-Erweiterung (Unternehmen):</strong> Firma / Name der juristischen Person</td>
+            </tr>
+            <tr>
+              <td><code>role</code></td>
+              <td>array</td>
+              <td>de_org</td>
+              <td>substanziell</td>
+              <td><strong>S</strong></td>
+              <td><strong>DE-Erweiterung (Unternehmen):</strong> Rolle der natürlichen Person (z. B.
+                <code>GESCHAEFTSFUEHRER</code>, <code>PROKURIST</code>)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 id="semantik">7.2 &nbsp;Semantische Annotationen (JSON-LD)</h3>
+        <p>Jede UserInfo-Response SOLLTE einen JSON-LD-Kontext einbinden, um Interoperabilität mit dem
+          Knowledge-Graph-BB (BB-17) herzustellen:</p>
+        <pre><code>{
+  "@context": [
+    "https://schema.org/",
+    "https://verwdigistack.de/contexts/identity/v1.jsonld"
+  ],
+  "@type": "Person",
+  "sub": "urn:de:bund:id:ppid:Xk92...rT",
+  "given_name": "Maria",
+  "family_name": "Musterfrau",
+  "acr": "http://eidas.europa.eu/LoA/high"
+}</code></pre>
+
+        <!-- ════════════════════════════════════════════════ 8 API -->
+        <h2 id="service-apis">8 &nbsp;Service-APIs</h2>
+
+        <h3 id="api-uebersicht">8.1 &nbsp;API-Übersicht</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Endpoint</th>
+              <th>Protokoll</th>
+              <th>Beschreibung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>/.well-known/openid-configuration</code></td>
+              <td>OIDC Discovery</td>
+              <td>Discovery-Dokument mit allen Endpunkten und Capabilities</td>
+            </tr>
+            <tr>
+              <td><code>/authorize</code></td>
+              <td>OAuth 2.1 / OIDC</td>
+              <td>Authorization Endpoint – leitet Nutzer:in zur Authentifizierung</td>
+            </tr>
+            <tr>
+              <td><code>/token</code></td>
+              <td>OAuth 2.1 / OIDC</td>
+              <td>Token Endpoint – tauscht Authorization Code gegen Tokens</td>
+            </tr>
+            <tr>
+              <td><code>/userinfo</code></td>
+              <td>OIDC UserInfo</td>
+              <td>Gibt Nutzerattribute (Claims) für ein Access Token zurück</td>
+            </tr>
+            <tr>
+              <td><code>/jwks</code></td>
+              <td>OIDC / RFC 7517</td>
+              <td>JSON Web Key Set – öffentliche Schlüssel zur Token-Verifikation</td>
+            </tr>
+            <tr>
+              <td><code>/sessions/logout</code></td>
+              <td>OIDC SLO</td>
+              <td>Initiiert Front-Channel Single Log-Out</td>
+            </tr>
+            <tr>
+              <td><code>/backchannel-logout</code></td>
+              <td>OIDC BCLO</td>
+              <td>Back-Channel Logout Endpoint für RPs</td>
+            </tr>
+            <tr>
+              <td><code>/introspect</code></td>
+              <td>RFC 7662</td>
+              <td>Token-Introspektion für RPs (Validity Check)</td>
+            </tr>
+            <tr>
+              <td><code>/revoke</code></td>
+              <td>RFC 7009</td>
+              <td>Token Revocation – widerruft Access/Refresh Token</td>
+            </tr>
+            <tr>
+              <td><code>/admin/clients</code></td>
+              <td>REST (intern)</td>
+              <td>Self-Service-Portal API: RP-Registrierung und -Verwaltung (BundID SSP)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 id="api-auth-flow">8.2 &nbsp;OIDC Authorization Code Flow (Hauptfluss)</h3>
+        <pre><code>Sequenz: Bürger:in → Fachverfahren (RP) → BB-01 (IdP) → eID-Server
+
+1. RP leitet Nutzer:in auf /authorize um:
+   GET /authorize
+     ?response_type=code
+     &client_id=fv-kfz-bund
+     &redirect_uri=https://kfz.bund.de/callback
+     &scope=openid profile email de_eid
+     &state=opaque-csrf-token
+     &nonce=random-nonce
+     &acr_values=http%3A%2F%2Feidas.europa.eu%2FLoA%2Fhigh
+     &code_challenge=BASE64URL(SHA256(code_verifier))
+     &code_challenge_method=S256
+
+2. IdP authentifiziert Nutzer:in (LoA hoch → eID-Flow via AusweisApp2)
+
+3. IdP leitet zurück:
+   GET https://kfz.bund.de/callback
+     ?code=AUTH_CODE
+     &state=opaque-csrf-token
+
+4. RP tauscht Code gegen Tokens:
+   POST /token
+   Content-Type: application/x-www-form-urlencoded
+   grant_type=authorization_code
+   &code=AUTH_CODE
+   &redirect_uri=https://kfz.bund.de/callback
+   &code_verifier=original-verifier
+   &client_id=fv-kfz-bund
+   &client_secret=...  (vertrauliche Clients)
+
+5. Response:
+   {
+     "access_token": "eyJ...",
+     "token_type": "Bearer",
+     "expires_in": 300,
+     "id_token": "eyJ...",
+     "refresh_token": "dGhp..."
+   }
+
+6. ID-Token Payload (Beispiel, LoA hoch / eID):
+   {
+     "iss": "https://id.bund.de",
+     "sub": "urn:de:bund:id:ppid:Xk92rT...",
+     "aud": "fv-kfz-bund",
+     "iat": 1740402862,
+     "exp": 1740403162,
+     "nonce": "random-nonce",
+     "acr": "http://eidas.europa.eu/LoA/high",
+     "amr": ["eid"],
+     "auth_time": 1740402850
+   }
+
+7. RP ruft UserInfo ab:
+   GET /userinfo
+   Authorization: Bearer eyJ...
+
+   Response:
+   {
+     "sub": "urn:de:bund:id:ppid:Xk92rT...",
+     "given_name": "Maria",
+     "family_name": "Musterfrau",
+     "birthdate": "1985-03-14",
+     "address": {
+       "street_address": "Musterstraße 1",
+       "locality": "Musterstadt",
+       "postal_code": "12345",
+       "country": "DE"
+     },
+     "acr": "http://eidas.europa.eu/LoA/high",
+     "email": "maria@example.de",
+     "email_verified": true
+   }</code></pre>
+
+        <h3 id="api-loa-tabelle">8.4 &nbsp;Authentifizierung &amp; Scopes</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Scope</th>
+              <th>Claims</th>
+              <th>LoA min.</th>
+              <th>Anmerkung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>openid</code></td>
+              <td><code>sub</code>, <code>iss</code>, <code>acr</code>, <code>amr</code>, <code>auth_time</code></td>
+              <td>niedrig</td>
+              <td>Pflicht-Scope</td>
+            </tr>
+            <tr>
+              <td><code>profile</code></td>
+              <td><code>given_name</code>, <code>family_name</code>, <code>birthdate</code>,
+                <code>place_of_birth</code>, <code>nationality</code></td>
+              <td>substanziell</td>
+              <td>Personenbezogene Daten; Datenschutzhinweis erforderlich</td>
+            </tr>
+            <tr>
+              <td><code>email</code></td>
+              <td><code>email</code>, <code>email_verified</code></td>
+              <td>niedrig</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td><code>address</code></td>
+              <td><code>address</code> (Meldeadresse)</td>
+              <td>hoch</td>
+              <td>Nur bei eID-Authentifizierung; Meldedaten aus nPA</td>
+            </tr>
+            <tr>
+              <td><code>de_eid</code></td>
+              <td><code>document_validity</code>, <code>de_restricted_id</code></td>
+              <td>hoch</td>
+              <td><strong>DE-Erweiterung</strong>; RP muss bei BundID SSP freigeschaltet sein</td>
+            </tr>
+            <tr>
+              <td><code>de_org</code></td>
+              <td><code>legal_entity_id</code>, <code>legal_entity_name</code>, <code>role</code></td>
+              <td>substanziell</td>
+              <td><strong>DE-Erweiterung</strong>; Unternehmensidentität via ELSTER-Anbindung</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 id="api-acr-values">8.5 &nbsp;ACR-Werte (Vertrauensniveaus)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th><code>acr_values</code> (Request)</th>
+              <th><code>acr</code> (ID-Token)</th>
+              <th>LoA</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>http://eidas.europa.eu/LoA/low</code></td>
+              <td><code>http://eidas.europa.eu/LoA/low</code></td>
+              <td>Niedrig</td>
+            </tr>
+            <tr>
+              <td><code>http://eidas.europa.eu/LoA/substantial</code></td>
+              <td><code>http://eidas.europa.eu/LoA/substantial</code></td>
+              <td>Substanziell</td>
+            </tr>
+            <tr>
+              <td><code>http://eidas.europa.eu/LoA/high</code></td>
+              <td><code>http://eidas.europa.eu/LoA/high</code></td>
+              <td>Hoch</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ════════════════════════════════════════════ 9 WORKFLOWS -->
+        <h2 id="workflows">9 &nbsp;Interne Workflows</h2>
+
+        <h3 id="wf-stepup">9.1 &nbsp;Step-Up Authentication Flow</h3>
+        <pre><code>Nutzer:in hat Session mit LoA substanziell.
+Fachverfahren fordert LoA hoch an (acr_values=high).
+
+1. IdP erkennt: Session-LoA (substanziell) &lt; gefordertes LoA (hoch)
+2. IdP leitet Nutzer:in zu Step-Up-Seite
+3. Nutzer:in wählt eID-Methode:
+   a) AusweisApp2 (NFC am Smartphone) → eID-Server → nPA-Chip-Auth
+   b) EUDI Wallet (künftig) → Presentation Request
+4. Bei Erfolg: Session wird auf LoA hoch angehoben
+5. IdP stellt neuen Code / neues Token mit acr=high aus
+6. Fachverfahren erhält Token und fährt fort</code></pre>
+
+        <h3 id="wf-federation">9.2 &nbsp;Landeskonten-Föderations-Flow</h3>
+        <pre><code>Nutzerin hat Konto bei BayernID (Länderkonto).
+Bundesdienst fordert BundID-Authentifizierung.
+
+1. BundID-Anmeldemaske: Nutzer:in wählt "Mit Länderkonto anmelden"
+2. BundID agiert als OIDC RP gegenüber BayernID-IdP
+3. BayernID authentifiziert Nutzer:in, gibt LoA-konformes ID-Token zurück
+4. BundID mappt Landeskonten-Attribute auf BundID-Claims-Schema
+5. BundID stellt eigenes ID-Token mit PPID (sub) für den Bundesdienst aus
+   → Bundesdienst sieht niemals die Landeskonten-Kennung
+6. Mapping wird revisionssicher gespeichert</code></pre>
+
+        <!-- ════════════════════════════════════════ 10 KONFORMITÄT -->
+        <h2 id="konformitaet">10 &nbsp;Konformitätskriterien</h2>
+
+        <h3 id="konformitaet-muss">10.1 &nbsp;MUSS-Kriterien für Stack-Konformität (Level 1)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Kriterium</th>
+              <th>Prüfmethode</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>CONF-01</td>
+              <td>Discovery-Dokument erreichbar und valide gem. OIDC Discovery 1.0</td>
+              <td>Automatisiert: OpenID Certified Test Suite</td>
+            </tr>
+            <tr>
+              <td>CONF-02</td>
+              <td>Authorization Code Flow mit PKCE (S256) funktional</td>
+              <td>Automatisiert: RFC 7636 Test</td>
+            </tr>
+            <tr>
+              <td>CONF-03</td>
+              <td>ID-Token enthält <code>sub</code>, <code>iss</code>, <code>aud</code>, <code>acr</code>,
+                <code>amr</code></td>
+              <td>Automatisiert: JWT-Claim-Validierung</td>
+            </tr>
+            <tr>
+              <td>CONF-04</td>
+              <td><code>sub</code>-Claim ist pairwise (verschiedene RPs → verschiedene <code>sub</code>-Werte für
+                denselben Nutzer)</td>
+              <td>Automatisiert: Zwei-RP-Test</td>
+            </tr>
+            <tr>
+              <td>CONF-05</td>
+              <td>Drei LoA-Stufen (low/substantial/high) werden korrekt ausgeliefert</td>
+              <td>Automatisiert: ACR-Verifikation</td>
+            </tr>
+            <tr>
+              <td>CONF-06</td>
+              <td>TLS 1.3 auf allen Endpunkten (Fallback TLS 1.2 mit BSI-konformen Ciphers)</td>
+              <td>Automatisiert: testssl.sh / SSLLabs</td>
+            </tr>
+            <tr>
+              <td>CONF-07</td>
+              <td>Token-Ablaufzeiten eingehalten: Access Token max. 300 s, Refresh Token rotiert</td>
+              <td>Automatisiert: Zeitstempel-Check</td>
+            </tr>
+            <tr>
+              <td>CONF-08</td>
+              <td>SAML 2.0 Web Browser SSO Profile funktional (für Legacy-Anbindung)</td>
+              <td>Manuell + SAML-Test-Tool</td>
+            </tr>
+            <tr>
+              <td>CONF-09</td>
+              <td>Verfügbarkeit ≥ 99,9 % über 30-Tages-Messzeitraum</td>
+              <td>Monitoring: Uptime-Check über Stack-Monitoring-BB</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 id="konformitaet-level2">10.2 &nbsp;SOLL-Kriterien (Level 2: Feature-Complete)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Kriterium</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>CONF-10</td>
+              <td>eID-Anbindung (LoA hoch) via BSI TR-03124-konformem eID-Server funktional</td>
+            </tr>
+            <tr>
+              <td>CONF-11</td>
+              <td>Scopes <code>de_eid</code> und <code>de_org</code> (DE-Erweiterungen) korrekt implementiert</td>
+            </tr>
+            <tr>
+              <td>CONF-12</td>
+              <td>Step-Up Authentication (LoA-Hochstufung) auslösbar über <code>acr_values</code></td>
+            </tr>
+            <tr>
+              <td>CONF-13</td>
+              <td>Back-Channel SLO implementiert (RFC Logout)</td>
+            </tr>
+            <tr>
+              <td>CONF-14</td>
+              <td>Token-Introspektion (RFC 7662) und -Revokation (RFC 7009) funktional</td>
+            </tr>
+            <tr>
+              <td>CONF-15</td>
+              <td>OIDC Federation 1.0 für Landeskonten-Anbindung implementiert</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ════════════════════════════════════════════ 11 REFERENZEN -->
+        <h2 id="referenzen">11 &nbsp;Referenzen &amp; Ressourcen</h2>
+
+        <h3>11.1 &nbsp;Normative Referenzen</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Standard</th>
+              <th>Titel</th>
+              <th>Relevanz</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>OIDC Core 1.0</strong></td>
+              <td>OpenID Connect Core 1.0 (OpenID Foundation, 2014)</td>
+              <td>Basis-Protokoll für Authentifizierung und Claims</td>
+            </tr>
+            <tr>
+              <td><strong>OIDC Discovery 1.0</strong></td>
+              <td>OpenID Connect Discovery 1.0</td>
+              <td>Discovery-Dokument <code>/.well-known/openid-configuration</code></td>
+            </tr>
+            <tr>
+              <td><strong>OIDC Federation 1.0</strong></td>
+              <td>OpenID Federation 1.0 (Draft)</td>
+              <td>Landeskonten-Föderations-Gateway</td>
+            </tr>
+            <tr>
+              <td><strong>RFC 6749</strong></td>
+              <td>OAuth 2.0 Authorization Framework</td>
+              <td>Basis für Authorization Code Flow</td>
+            </tr>
+            <tr>
+              <td><strong>RFC 7636</strong></td>
+              <td>Proof Key for Code Exchange (PKCE)</td>
+              <td>Sicherung des Authorization Code Flows</td>
+            </tr>
+            <tr>
+              <td><strong>RFC 7519</strong></td>
+              <td>JSON Web Token (JWT)</td>
+              <td>Format für ID-Token und Access Token</td>
+            </tr>
+            <tr>
+              <td><strong>RFC 7662</strong></td>
+              <td>OAuth 2.0 Token Introspection</td>
+              <td>Token-Validierung durch RPs</td>
+            </tr>
+            <tr>
+              <td><strong>RFC 7009</strong></td>
+              <td>OAuth 2.0 Token Revocation</td>
+              <td>Token-Widerruf</td>
+            </tr>
+            <tr>
+              <td><strong>eIDAS 2.0</strong></td>
+              <td>VO (EU) 2024/1183 – Überarbeitete eIDAS-Verordnung</td>
+              <td>Rechtsrahmen für digitale Identitäten und Vertrauensniveaus</td>
+            </tr>
+            <tr>
+              <td><strong>BSI TR-03107-1</strong></td>
+              <td>Elektronische Identitäten und Vertrauensdienste im E-Government – Teil 1: Vertrauensniveaus</td>
+              <td>LoA-Definitionen für Deutschland; eIDAS-Erweiterung</td>
+            </tr>
+            <tr>
+              <td><strong>BSI TR-03124</strong></td>
+              <td>eID-Client – Technische Richtlinie für den eID-Server</td>
+              <td>eID-Anbindung (AusweisApp2 / EUDI Wallet)</td>
+            </tr>
+            <tr>
+              <td><strong>BSI TR-02102-2</strong></td>
+              <td>Kryptographische Verfahren: TLS</td>
+              <td>TLS-Cipher-Suites für Stack-Konformität</td>
+            </tr>
+            <tr>
+              <td><strong>PAuswG</strong></td>
+              <td>Personalausweisgesetz – §19a: Übermittlung des dienste- und kartenspezifischen Kennzeichens</td>
+              <td>Rechtliche Basis für <code>de_restricted_id</code>-Claim</td>
+            </tr>
+            <tr>
+              <td><strong>OZG 2.0</strong></td>
+              <td>Onlinezugangsgesetz (geänderte Fassung, in Kraft seit 24.07.2024)</td>
+              <td>BundID als zentrales Bürgerkonto; Portalverbund; Once-Only</td>
+            </tr>
+            <tr>
+              <td><strong>IT-PR 2022/27</strong></td>
+              <td>IT-Planungsrat-Beschluss 2022/27: Interoperable Nutzerkonten</td>
+              <td>Anerkennung von Identifizierungsmitteln auf Bundesebene</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>11.2 &nbsp;Referenzimplementierungen &amp; Werkzeuge</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Produkt</th>
+              <th>Typ</th>
+              <th>Anmerkung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>BundID</strong> (ITZBund)</td>
+              <td>Produktiv-IdP</td>
+              <td>Referenzimplementierung; Anbindung via BundID Self-Service-Portal (SSP)</td>
+            </tr>
+            <tr>
+              <td><strong>Keycloak</strong> (Red Hat / Community)</td>
+              <td>Open-Source-IdP</td>
+              <td>OIDC-/SAML-konform; Stack-Konformität mit DE-Erweiterungs-Plugin möglich</td>
+            </tr>
+            <tr>
+              <td><strong>Authelia</strong></td>
+              <td>Open-Source-IdP (leichtgewichtig)</td>
+              <td>Für kleinere Deployments; Level-1-konform</td>
+            </tr>
+            <tr>
+              <td><strong>AusweisApp2</strong> (Governikus)</td>
+              <td>eID-Client</td>
+              <td>Referenz-eID-Client; iOS/Android/Desktop; BSI TR-03124-konform</td>
+            </tr>
+            <tr>
+              <td><strong>OpenID Certification</strong></td>
+              <td>Test-Suite</td>
+              <td><a href="https://openid.net/certification/" target="_blank"
+                  rel="noopener">openid.net/certification/</a> – CONF-01/02/03 automatisiert prüfbar</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>11.3 &nbsp;Mapping zu GovStack Identity BB v1.0</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>GovStack KDF</th>
+              <th>VerwDigiStack-Entsprechung</th>
+              <th>DE-Erweiterung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Identity Registration</td>
+              <td>FA-REG-01 bis FA-REG-04</td>
+              <td>Step-Up via ELSTER / eID</td>
+            </tr>
+            <tr>
+              <td>Authentication</td>
+              <td>FA-LOA-01 bis FA-LOA-03</td>
+              <td>BSI TR-03107-LoA; eID-Anbindung</td>
+            </tr>
+            <tr>
+              <td>SSO</td>
+              <td>FA-SSO-01 bis FA-SSO-06</td>
+              <td>Landeskonten-Föderations-Gateway</td>
+            </tr>
+            <tr>
+              <td>User Claims / UserInfo</td>
+              <td>Abschnitt 7.1 Claims-Tabelle</td>
+              <td><code>de_eid</code>, <code>de_org</code> Scopes; DKK-Pseudonym</td>
+            </tr>
+            <tr>
+              <td>Verifiable Credentials</td>
+              <td>→ BB-05 EUDI Wallet (Verweis)</td>
+              <td>VC-Ausstellung nach eIDAS 2.0 Annex I</td>
+            </tr>
+            <tr>
+              <td>–</td>
+              <td>KDF-08 Vollmachten / Vertretung</td>
+              <td>DE-spezifisch; kein GovStack-Äquivalent</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ════════════════════════ FOOTER PAGINATION -->
+        <div class="pagination">
+          <a class="pagination__link pagination__link--prev" href="../bb-noots/index.html">
+            <span class="pagination__dir">← Zurück</span>
+            <span class="pagination__title">BB-06 · Register (NOOTS)</span>
+          </a>
+          <a class="pagination__link pagination__link--next" href="../bb-portal/index.html">
+            <span class="pagination__dir">Weiter →</span>
+            <span class="pagination__title">BB-02 · Portal &amp; Formular</span>
+          </a>
+        </div>
+
+        <div class="page-footer">
+          <div class="page-footer__meta">Apache-2.0 · Version 0.2 DRAFT · Stand: Feb 2026</div>
+          <div class="page-footer__feedback">
+            <span class="page-footer__feedback-label">Hilfreich?</span>
+            <div class="page-footer__feedback-btns">
+              <button class="feedback-btn">👍</button>
+              <button class="feedback-btn">👎</button>
+            </div>
+          </div>
+        </div>
+
+      </article>
+
+      <aside class="content__toc">
+        <div class="toc" id="toc">
+          <div class="toc__title">Auf dieser Seite</div>
+          <ul class="toc__list"></ul>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="../../assets/js/shell.js"></script>
+  <script src="../../assets/js/site.js"></script>
 </body>
+
 </html>

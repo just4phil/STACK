@@ -1,95 +1,1257 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BB-03 · Postfach – VerwDigiStack Spezifikation</title>
-  <meta name="description" content="Sicheres Behördenpostfach. Messaging, Benachrichtigungen, Multi-Kanal.">
+  <title>BB-03 Postfach – VerwDigiStack Spezifikation</title>
+  <meta name="description"
+    content="Spezifikation des Postfach Building Blocks: Föderale Kommunikationsinfrastruktur auf Basis von Matrix und MLS.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="../../assets/css/tokens.css">
   <link rel="stylesheet" href="../../assets/css/main.css">
 </head>
+
 <body>
-<script>window.PAGE_META = { title: 'BB-03 · Postfach', section: 'Building Block' };</script>
+  <script>window.PAGE_META = { title: 'BB-03 · Postfach', section: 'Building Blocks' };</script>
+  <div class="layout">
+    <main class="content">
+      <article class="content__main prose">
 
-<div class="layout">
-
-  <main class="content">
-    <article class="content__main prose">
-
-      <div class="prose-header">
-        <div class="prose-header__breadcrumb">
-          <a href="../../index.html">VerwDigiStack</a><span class="prose-header__breadcrumb-sep">/</span><a href="../index.html">Building Blocks</a><span class="prose-header__breadcrumb-sep">/</span><span>BB-03 · Postfach</span>
+        <div class="prose-header">
+          <div class="prose-header__breadcrumb">
+            <a href="../../index.html">VerwDigiStack</a>
+            <span class="prose-header__breadcrumb-sep">/</span>
+            <a href="../index.html">Building Blocks</a>
+            <span class="prose-header__breadcrumb-sep">/</span>
+            <span>BB-03 · Postfach</span>
+          </div>
+          <div class="prose-header__meta">
+            <span class="prose-header__tag prose-header__tag--building-block">◈ Building Block</span>
+            <span class="prose-header__tag prose-header__tag--draft">DRAFT</span>
+            <span class="prose-header__version">Version 0.3</span>
+          </div>
+          <h1>BB-03 · Postfach &amp; Kommunikation</h1>
+          <p>
+            Föderale Kommunikationsinfrastruktur für die sichere, E2E-verschlüsselte Kommunikation
+            zwischen Bürger:innen, Organisationen und öffentlichen Stellen –
+            basierend auf <strong>Matrix</strong> und <strong>MLS (RFC 9420)</strong>,
+            gemäß ZAPUK-Zielarchitektur des IT-Planungsrats.
+          </p>
         </div>
-        <div class="prose-header__meta">
-          <span class="prose-header__tag prose-header__tag--building-block">◈ Building Block</span>
-          <span class="prose-header__tag prose-header__tag--draft">DRAFT</span>
-        </div>
-        <h1>BB-03 · Postfach</h1>
-        <p>Sicheres Behördenpostfach. Messaging, Benachrichtigungen, Multi-Kanal.</p>
-      </div>
 
-      <div class="callout callout--warning">
-        <div class="callout__icon">✏</div>
-        <div class="callout__content">
-          <div class="callout__title">Seite wird ausgefüllt</div>
-          <div class="callout__body">
-            Dieser Abschnitt ist als Platzhalter angelegt und wird sukzessive befüllt.
-            Die Struktur folgt dem einheitlichen BB-Template (11 Abschnitte).
+        <!-- ═══════════════════════ §1 VERSIONSHISTORIE ═══════════════════════ -->
+        <h2 id="versionshistorie">§1 Versionshistorie</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Version</th>
+              <th>Datum</th>
+              <th>Änderung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>0.1</td>
+              <td>2025-06-01</td>
+              <td>Initiales Stub (Platzhalter)</td>
+            </tr>
+            <tr>
+              <td>0.2</td>
+              <td>2025-09-15</td>
+              <td>ZAPUK-Anforderungsanalyse integriert</td>
+            </tr>
+            <tr>
+              <td><strong>0.3</strong></td>
+              <td><strong>2026-02-24</strong></td>
+              <td><strong>Vollständige Spezifikation auf Basis ZAPUK-Zielarchitektur v1.0: Matrix + MLS, 18 ADRs, alle
+                  11 Abschnitte</strong></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ═══════════════════════ §2 BESCHREIBUNG ═══════════════════════ -->
+        <h2 id="beschreibung">§2 Beschreibung</h2>
+
+        <h3>Zweck</h3>
+        <p>
+          BB-03 Postfach spezifiziert eine <strong>einheitliche föderale Kommunikationsinfrastruktur</strong>,
+          die sämtliche bestehenden Postfach- und Kommunikationslösungen der öffentlichen Hand konsolidiert.
+          Die Infrastruktur ist eine <strong>fachlich agnostische Querschnittskomponente</strong> (ADR-0001)
+          und ersetzt den fragmentierten Ist-Zustand aus ZBP, MJP, OZG-Plus-Postfach, Postfach 2.0,
+          De-Mail, EGVP und weiteren Insellösungen.
+        </p>
+
+        <h3>Architekturübersicht</h3>
+        <pre><code>
+┌─────────────────────────────────────────────────────────────────────┐
+│                    ZAPUK Kommunikationsinfrastruktur                │
+│                                                                     │
+│  ┌──────────────┐   ┌──────────────┐   ┌──────────────────────┐    │
+│  │  Bürger:in   │   │  Unternehmen │   │  Öffentliche Stelle  │    │
+│  │  (App/Web)   │   │  (Fachverf.) │   │  (Desktop/Fachverf.) │    │
+│  └──────┬───────┘   └──────┬───────┘   └──────────┬───────────┘    │
+│         │                  │                       │                │
+│         ▼                  ▼                       ▼                │
+│  ┌─────────────────────────────────────────────────────────────┐    │
+│  │              Postfachzugänge (Matrix Clients)               │    │
+│  │   Zentraler Zugang · Dritt-Clients · Fachverfahren-SDK     │    │
+│  │              ┌─────────────────────────┐                    │    │
+│  │              │   MLS E2E-Verschlüsselung                   │    │
+│  │              │   (RFC 9420 / Olm transitional)              │    │
+│  │              └─────────────────────────┘                    │    │
+│  └────────────────────────┬────────────────────────────────────┘    │
+│                           │  Matrix Client-Server API              │
+│                           ▼                                        │
+│  ┌─────────────────────────────────────────────────────────────┐    │
+│  │            Postfach-Backends (Matrix Homeserver)             │    │
+│  │                                                             │    │
+│  │   ┌───────────────┐          ┌───────────────┐              │    │
+│  │   │ Zentrales     │◄────────►│ Dezentrales   │              │    │
+│  │   │ Backend       │ Matrix   │ Backend       │              │    │
+│  │   │ (FITKO)       │ S2S-API  │ (Land/Beh.)   │              │    │
+│  │   └───────────────┘          └───────────────┘              │    │
+│  │         ▲                          ▲                        │    │
+│  │         │ Registrierung            │ Anschlussbedingungen   │    │
+│  │         ▼                          ▼                        │    │
+│  │   ┌─────────────────────────────────────────┐               │    │
+│  │   │        Self-Service-Portal (ADR-0008)   │               │    │
+│  │   └─────────────────────────────────────────┘               │    │
+│  └─────────────────────────────────────────────────────────────┘    │
+│                                                                     │
+│  ┌───────────────────────┐  ┌──────────────────────────────────┐   │
+│  │ BB-01 Identity (OIDC) │  │ BB-09 Consent · BB-10 E-Signatur │   │
+│  └───────────────────────┘  └──────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────────┘
+                </code></pre>
+
+        <h3>Topologie</h3>
+        <p>
+          <strong>Offene, föderierte Client-Server-Architektur mit hybrider Topologie</strong> (ADR-0002):
+          Ein zentral bereitgestelltes Backend für alle Nutzergruppen (ADR-0006) sowie die Möglichkeit
+          für Behörden, Unternehmen und andere Organisationen, eigene Backends nach Registrierung
+          und Einhaltung der Anschlussbedingungen zu betreiben (ADR-0004).
+        </p>
+
+        <h3>Abgrenzung</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>In-Scope</th>
+              <th>Out-of-Scope</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Nachrichtenversand &amp; -empfang (asynchron &amp; Echtzeit)</td>
+              <td>Authentifizierung → BB-01 Identity</td>
+            </tr>
+            <tr>
+              <td>E2E-Verschlüsselung (MLS / Olm)</td>
+              <td>Einwilligungsverwaltung → BB-09 Consent</td>
+            </tr>
+            <tr>
+              <td>Federation (Matrix S2S)</td>
+              <td>Qualifizierte Signaturen → BB-10 E-Signatur</td>
+            </tr>
+            <tr>
+              <td>Postfachverwaltung, Zustellbestätigung</td>
+              <td>Formularmanagement → BB-02 Portal</td>
+            </tr>
+            <tr>
+              <td>Fachverfahren-Anbindung via SDK</td>
+              <td>Prozessorchestrierung → BB-11 BPM</td>
+            </tr>
+            <tr>
+              <td>Attachments, strukturierte Nachrichten</td>
+              <td>Registerdatenabfrage → BB-06 NOOTS</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ═══════════════════════ §3 BEGRIFFE ═══════════════════════ -->
+        <h2 id="begriffe">§3 Begriffe &amp; Definitionen</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Begriff</th>
+              <th>Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Matrix</strong></td>
+              <td>Offener Standard für dezentrale Echtzeitkommunikation (spec.matrix.org). Server replizieren
+                strukturierte Nachrichten über Föderations-API.</td>
+            </tr>
+            <tr>
+              <td><strong>MLS</strong></td>
+              <td>Messaging Layer Security (RFC 9420). IETF-standardisiertes E2E-Verschlüsselungsprotokoll mit PFS,
+                Post-Compromise Security, effizienter Gruppenverschlüsselung.</td>
+            </tr>
+            <tr>
+              <td><strong>Homeserver</strong></td>
+              <td>Matrix-Server, der Nutzerkonten verwaltet, Nachrichten speichert (verschlüsselt) und mit anderen
+                Homeservern föderiert.</td>
+            </tr>
+            <tr>
+              <td><strong>Postfachzugang</strong></td>
+              <td>Client-Anwendung (Web, App, Fachverfahren), die über die Matrix Client-Server API mit dem Homeserver
+                kommuniziert.</td>
+            </tr>
+            <tr>
+              <td><strong>Postfach-Backend</strong></td>
+              <td>Serverseitige Komponente (Matrix Homeserver + Erweiterungen) für Nachrichtenspeicherung, Federation,
+                Zustellbestätigung.</td>
+            </tr>
+            <tr>
+              <td><strong>Room</strong></td>
+              <td>Matrix-Raum: Kommunikationskanal zwischen zwei oder mehr Teilnehmenden. Enthält Events (Nachrichten,
+                State-Changes).</td>
+            </tr>
+            <tr>
+              <td><strong>Event</strong></td>
+              <td>Atomare Einheit im Matrix-Protokoll: Nachricht, Statusänderung oder Systeminformation innerhalb eines
+                Rooms.</td>
+            </tr>
+            <tr>
+              <td><strong>MLS Group</strong></td>
+              <td>Kryptografische Gruppe im MLS-Protokoll. Bildet den E2E-verschlüsselten Kanal, der einem Matrix-Room
+                zugeordnet wird.</td>
+            </tr>
+            <tr>
+              <td><strong>Self-Service-Portal</strong></td>
+              <td>Zentrale Verwaltungsoberfläche für die Registrierung von Backends, Zustimmung zu Anschlussbedingungen
+                und SDK-Download (ADR-0008).</td>
+            </tr>
+            <tr>
+              <td><strong>SDK</strong></td>
+              <td>Software Development Kit zur vereinfachten Anbindung von Postfachzugängen inkl. MLS-Verschlüsselung
+                (ADR-0009).</td>
+            </tr>
+            <tr>
+              <td><strong>Zero-Trust</strong></td>
+              <td>Sicherheitsarchitektur: Kein implizites Vertrauen in Netzwerk oder Infrastruktur. Authentizität wird
+                auf E2E-Ebene sichergestellt.</td>
+            </tr>
+            <tr>
+              <td><strong>Anschlussbedingungen</strong></td>
+              <td>Technische und organisatorische Voraussetzungen für den Betrieb dezentraler Backends (ADR-0004).</td>
+            </tr>
+            <tr>
+              <td><strong>Federation</strong></td>
+              <td>Verbindung mehrerer Homeserver zum Kommunikationsverbund über Matrix Server-Server API.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ═══════════════════════ §4 SCHLÜSSELFUNKTIONALITÄTEN ═══════════════════════ -->
+        <h2 id="schlüsselfunktionalitäten">§4 Schlüsselfunktionalitäten</h2>
+        <p>Mapping auf GovStack Messaging BB Key Digital Functionalities (KDF) mit DE-spezifischen Erweiterungen:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>KDF-ID</th>
+              <th>Funktionalität</th>
+              <th>GovStack-Mapping</th>
+              <th>ZAPUK-Spezifik</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>KDF-01</td>
+              <td><strong>Nachrichtenversand</strong></td>
+              <td>MSG-SEND</td>
+              <td>Matrix m.room.message Events, Attachments via Content Repository API, strukturierte Nachrichtentypen
+              </td>
+            </tr>
+            <tr>
+              <td>KDF-02</td>
+              <td><strong>Nachrichtenempfang</strong></td>
+              <td>MSG-RECEIVE</td>
+              <td>Sync-API (/sync), Push-Benachrichtigungen, Offline-Fähigkeit</td>
+            </tr>
+            <tr>
+              <td>KDF-03</td>
+              <td><strong>E2E-Verschlüsselung</strong></td>
+              <td>MSG-ENCRYPT</td>
+              <td>MLS (RFC 9420) primär, Olm/Megolm transitional. PFS + Post-Compromise Security. Key-Management via MLS
+                Delivery Service.</td>
+            </tr>
+            <tr>
+              <td>KDF-04</td>
+              <td><strong>Föderation</strong></td>
+              <td>MSG-FEDERATE</td>
+              <td>Matrix Server-Server API. Dezentrale Backends treten dem Kommunikationsverbund bei. DNS-basiertes
+                Routing.</td>
+            </tr>
+            <tr>
+              <td>KDF-05</td>
+              <td><strong>Zustellbestätigung</strong></td>
+              <td>MSG-RECEIPT</td>
+              <td>Matrix Read-Receipts (m.receipt), Abrufbestätigung, Zustellquittung als rechtsverbindlicher Nachweis
+              </td>
+            </tr>
+            <tr>
+              <td>KDF-06</td>
+              <td><strong>Multi-Device</strong></td>
+              <td>MSG-SYNC</td>
+              <td>MLS-Mehrgerätefähigkeit, Cross-Signing, Session-Sync über Homeserver</td>
+            </tr>
+            <tr>
+              <td>KDF-07</td>
+              <td><strong>Postfachverwaltung</strong></td>
+              <td>MSG-MANAGE</td>
+              <td>Postfach-Erstellung/Löschung, Berechtigungssteuerung, Aufbewahrungsfristen, Archivierung</td>
+            </tr>
+            <tr>
+              <td>KDF-08</td>
+              <td><strong>Adressierung</strong></td>
+              <td>MSG-ADDRESS</td>
+              <td>Matrix User-IDs (@user:homeserver.de), Verzeichnisdienst-Integration, QR-Code-basierte Kontaktaufnahme
+              </td>
+            </tr>
+            <tr>
+              <td>KDF-09</td>
+              <td><strong>Fachverfahren-Anbindung</strong></td>
+              <td>–</td>
+              <td>SDK für Fachverfahren-Integration. Automatisierter Bescheidversand, Statusupdates, Rückkanal. Offenes
+                Ökosystem (ADR-0003).</td>
+            </tr>
+            <tr>
+              <td>KDF-10</td>
+              <td><strong>Strukturierte Nachrichten</strong></td>
+              <td>–</td>
+              <td>Custom Matrix Event Types: Terminabfragen, Abstimmungen, Formulare. Modular erweiterbar (ADR-0001).
+              </td>
+            </tr>
+            <tr>
+              <td>KDF-11</td>
+              <td><strong>Authentizitätsprüfung</strong></td>
+              <td>–</td>
+              <td>Automatisierte kryptographische Identitätsprüfung auf E2E-Ebene (ADR-0013). Zero-Trust. Optional QES
+                (ADR-0017).</td>
+            </tr>
+            <tr>
+              <td>KDF-12</td>
+              <td><strong>Benachrichtigungen</strong></td>
+              <td>MSG-NOTIFY</td>
+              <td>Push (FCM/APNs), E-Mail-Fallback, konfigurierbar pro Nutzer:in. Keine Inhaltsdaten in der
+                Benachrichtigung.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ═══════════════════════ §5 QUERSCHNITTSANFORDERUNGEN ═══════════════════════ -->
+        <h2 id="querschnittsanforderungen">§5 Querschnittsanforderungen</h2>
+
+        <h3>5.1 Sicherheit</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Anforderung</th>
+              <th>Referenz</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>SEC-01</td>
+              <td>Alle Nachrichten und Anhänge MÜSSEN E2E-verschlüsselt übertragen werden. Kein Aufbrechen der
+                Verschlüsselung durch Backends.</td>
+              <td>ADR-0012, RFC 9420</td>
+            </tr>
+            <tr>
+              <td>SEC-02</td>
+              <td>MLS MUSS als primäres E2E-Protokoll implementiert werden. Olm/Megolm ist als Übergangslösung zulässig.
+              </td>
+              <td>ADR-0012</td>
+            </tr>
+            <tr>
+              <td>SEC-03</td>
+              <td>Perfect Forward Secrecy (PFS) und Post-Compromise Security (PCS) MÜSSEN unterstützt werden.</td>
+              <td>RFC 9420 §16</td>
+            </tr>
+            <tr>
+              <td>SEC-04</td>
+              <td>Zero-Trust: Authentizität MUSS auf der E2E-Verschlüsselungsschicht hergestellt werden, nicht auf
+                Transportebene.</td>
+              <td>ADR-0013</td>
+            </tr>
+            <tr>
+              <td>SEC-05</td>
+              <td>Transport-Verschlüsselung: TLS 1.3+ für alle Server-zu-Server und Client-zu-Server Verbindungen.</td>
+              <td>BSI TR-02102-2</td>
+            </tr>
+            <tr>
+              <td>SEC-06</td>
+              <td>Key-Management: MLS KeyPackage Distribution, automatische Key-Rotation, Geräteverifikation via
+                Cross-Signing.</td>
+              <td>RFC 9420 §11</td>
+            </tr>
+            <tr>
+              <td>SEC-07</td>
+              <td>Kryptographische Algorithmen MÜSSEN den BSI-Vorgaben entsprechen (TR-02102-1).</td>
+              <td>BSI TR-02102-1</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>5.2 Datenschutz</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Anforderung</th>
+              <th>Referenz</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>PRI-01</td>
+              <td>Metadaten-Minimierung: Backends speichern nur die für Federation notwendigen Metadaten.
+                Nachrichteninhalte sind serverseitig nicht einsehbar.</td>
+              <td>DSGVO Art. 25</td>
+            </tr>
+            <tr>
+              <td>PRI-02</td>
+              <td>Löschfristen: Nutzer:innen MÜSSEN Nachrichten endgültig löschen können. Konfigurierbare
+                Aufbewahrungsfristen.</td>
+              <td>DSGVO Art. 17</td>
+            </tr>
+            <tr>
+              <td>PRI-03</td>
+              <td>Datenportabilität: Export aller eigenen Nachrichten in offenem Format MUSS möglich sein.</td>
+              <td>DSGVO Art. 20</td>
+            </tr>
+            <tr>
+              <td>PRI-04</td>
+              <td>Kein Tracking: Keine Analyse von Kommunikationsverhalten durch Backends.</td>
+              <td>DSGVO Art. 5</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>5.3 SLA &amp; Performance</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Metrik</th>
+              <th>Ziel (zentrales Backend)</th>
+              <th>Anmerkung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Verfügbarkeit</td>
+              <td>≥ 99,9 %</td>
+              <td>Gemessen pro Kalendermonat</td>
+            </tr>
+            <tr>
+              <td>Nachrichtenzustellung</td>
+              <td>p95 ≤ 2s (intra-Backend), p95 ≤ 5s (föderiert)</td>
+              <td>Vom Absenden bis Speicherung auf Ziel-Homeserver</td>
+            </tr>
+            <tr>
+              <td>Sync-Latenz</td>
+              <td>p95 ≤ 500ms</td>
+              <td>/sync Incremental Response</td>
+            </tr>
+            <tr>
+              <td>Max. Nachrichtengröße</td>
+              <td>≥ 100 MB (inkl. Anhänge)</td>
+              <td>Content Repository API</td>
+            </tr>
+            <tr>
+              <td>Gleichzeitige Sessions</td>
+              <td>≥ 10 Mio.</td>
+              <td>Zentrales Backend Skalierungsziel</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ═══════════════════════ §6 FUNKTIONALE ANFORDERUNGEN ═══════════════════════ -->
+        <h2 id="funktionale-anforderungen">§6 Funktionale Anforderungen</h2>
+
+        <h3>6.1 Messaging (FA-MSG)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Prio</th>
+              <th>Anforderung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>FA-MSG-01</td>
+              <td>MUSS</td>
+              <td>Senden und Empfangen von Textnachrichten über Matrix Client-Server API (m.room.message).</td>
+            </tr>
+            <tr>
+              <td>FA-MSG-02</td>
+              <td>MUSS</td>
+              <td>Senden und Empfangen von Anhängen (Dateien, Bilder, Dokumente) über Content Repository API mit
+                E2E-Verschlüsselung.</td>
+            </tr>
+            <tr>
+              <td>FA-MSG-03</td>
+              <td>MUSS</td>
+              <td>Zustellbestätigung: Empfänger-Client sendet automatisch eine Empfangsbestätigung (m.receipt).</td>
+            </tr>
+            <tr>
+              <td>FA-MSG-04</td>
+              <td>MUSS</td>
+              <td>Asynchrone Kommunikation: Nachrichten werden serverseitig gespeichert, bis alle Geräte des Empfängers
+                synchronisiert haben.</td>
+            </tr>
+            <tr>
+              <td>FA-MSG-05</td>
+              <td>SOLL</td>
+              <td>Lesebestätigung: Optional konfigurierbar je Nutzer:in.</td>
+            </tr>
+            <tr>
+              <td>FA-MSG-06</td>
+              <td>SOLL</td>
+              <td>Strukturierte Nachrichtentypen: Terminabfragen, Abstimmungen, Formulare über Custom Matrix Event
+                Types.</td>
+            </tr>
+            <tr>
+              <td>FA-MSG-07</td>
+              <td>SOLL</td>
+              <td>Nachrichtenantworten (Threading) und Referenzierung (m.relates_to).</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>6.2 Föderation (FA-FED)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Prio</th>
+              <th>Anforderung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>FA-FED-01</td>
+              <td>MUSS</td>
+              <td>Kommunikation zwischen Nutzer:innen auf unterschiedlichen Homeservern über Matrix Server-Server API.
+              </td>
+            </tr>
+            <tr>
+              <td>FA-FED-02</td>
+              <td>MUSS</td>
+              <td>DNS-basiertes Server-Discovery (.well-known/matrix/server).</td>
+            </tr>
+            <tr>
+              <td>FA-FED-03</td>
+              <td>MUSS</td>
+              <td>Backend-Registrierung über Self-Service-Portal mit digitaler Zustimmung zu Anschlussbedingungen.</td>
+            </tr>
+            <tr>
+              <td>FA-FED-04</td>
+              <td>MUSS</td>
+              <td>Möglichkeit des Ausschlusses eines Backends bei Verstoß gegen Anschlussbedingungen.</td>
+            </tr>
+            <tr>
+              <td>FA-FED-05</td>
+              <td>SOLL</td>
+              <td>Interoperabilität mit EU-Systemen unter Aufrechterhaltung der E2E-Verschlüsselung (ADR-0010).</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>6.3 E2E-Verschlüsselung (FA-E2E)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Prio</th>
+              <th>Anforderung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>FA-E2E-01</td>
+              <td>MUSS</td>
+              <td>MLS Group-Erstellung für jeden Kommunikationsraum. Schlüsselmaterial wird per MLS Delivery Service
+                verteilt.</td>
+            </tr>
+            <tr>
+              <td>FA-E2E-02</td>
+              <td>MUSS</td>
+              <td>Automatische Key-Rotation gemäß MLS-Epoch-Mechanismus.</td>
+            </tr>
+            <tr>
+              <td>FA-E2E-03</td>
+              <td>MUSS</td>
+              <td>Multi-Device: Jedes Gerät hat eigenes MLS-Keypair. Hinzufügen/Entfernen von Geräten aktualisiert die
+                MLS-Gruppe.</td>
+            </tr>
+            <tr>
+              <td>FA-E2E-04</td>
+              <td>MUSS</td>
+              <td>Kryptographische Identitätsprüfung der Kommunikationspartner auf E2E-Ebene (ADR-0013).</td>
+            </tr>
+            <tr>
+              <td>FA-E2E-05</td>
+              <td>SOLL</td>
+              <td>Olm/Megolm-Fallback für Matrix-Clients, die MLS noch nicht unterstützen (Übergangsphase).</td>
+            </tr>
+            <tr>
+              <td>FA-E2E-06</td>
+              <td>KANN</td>
+              <td>Post-Quantum-Sicherheit: Vorbereitung für PQ-Cipher-Suites in MLS, sobald IETF-standardisiert.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>6.4 Fachverfahren &amp; Adressierung (FA-FV)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Prio</th>
+              <th>Anforderung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>FA-FV-01</td>
+              <td>MUSS</td>
+              <td>SDK für Fachverfahren-Integration: Automatisierter Nachrichtenversand (Bescheide, Statusupdates) inkl.
+                MLS-Verschlüsselung.</td>
+            </tr>
+            <tr>
+              <td>FA-FV-02</td>
+              <td>MUSS</td>
+              <td>Adressierung über Matrix User-IDs (@nutzer:homeserver.bund.de). Verzeichnisdienst für Auflösung.</td>
+            </tr>
+            <tr>
+              <td>FA-FV-03</td>
+              <td>SOLL</td>
+              <td>QR-Code- und Deep-Link-basierte Kontaktaufnahme für Bürger:innen.</td>
+            </tr>
+            <tr>
+              <td>FA-FV-04</td>
+              <td>SOLL</td>
+              <td>Bidirektionale Kommunikation: Rückkanal für Bürger:innen-Rückfragen an Behörden.</td>
+            </tr>
+            <tr>
+              <td>FA-FV-05</td>
+              <td>KANN</td>
+              <td>Qualifizierte Elektronische Signatur (QES) auf Nachrichtenebene für rechtsverbindliche
+                Nichtabstreitbarkeit (ADR-0017).</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ═══════════════════════ §7 DATENMODELL ═══════════════════════ -->
+        <h2 id="datenmodell">§7 Datenmodell</h2>
+
+        <h3>7.1 Matrix Event-Struktur</h3>
+        <p>Nachrichten werden als Matrix Events übertragen. Die Payload ist E2E-verschlüsselt (MLS-Ciphertext).</p>
+        <pre><code>{
+  "type": "m.room.encrypted",
+  "room_id": "!room:homeserver.bund.de",
+  "sender": "@absender:homeserver.bund.de",
+  "content": {
+    "algorithm": "m.mls.v1",
+    "ciphertext": "&lt;MLS-verschlüsselter Payload&gt;",
+    "session_id": "&lt;MLS Group ID&gt;",
+    "device_id": "DEVICE_A"
+  },
+  "origin_server_ts": 1740000000000,
+  "event_id": "$eventId"
+}
+
+// Entschlüsselter Payload (nur im Client sichtbar):
+{
+  "type": "m.room.message",
+  "content": {
+    "msgtype": "m.text",
+    "body": "Ihr Antrag wurde bewilligt.",
+    "de.bund.postfach": {
+      "message_class": "bescheid",
+      "aktenzeichen": "AZ-2026-12345",
+      "reply_allowed": true,
+      "retention_days": 365
+    }
+  }
+}</code></pre>
+
+        <h3>7.2 Custom Event Types (DE-Erweiterungen)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Event Type</th>
+              <th>Beschreibung</th>
+              <th>ADR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>de.bund.postfach.bescheid</code></td>
+              <td>Verwaltungsbescheid mit Aktenzeichen, Rechtsbehelfsbelehrung, Frist</td>
+              <td>ADR-0001</td>
+            </tr>
+            <tr>
+              <td><code>de.bund.postfach.termin</code></td>
+              <td>Strukturierte Terminabfrage/-bestätigung</td>
+              <td>ADR-0001</td>
+            </tr>
+            <tr>
+              <td><code>de.bund.postfach.abstimmung</code></td>
+              <td>Abstimmung/Umfrage innerhalb eines Raums</td>
+              <td>ADR-0001</td>
+            </tr>
+            <tr>
+              <td><code>de.bund.postfach.quittung</code></td>
+              <td>Zustellquittung (rechtsverbindliche Empfangsbestätigung)</td>
+              <td>ADR-0018</td>
+            </tr>
+            <tr>
+              <td><code>de.bund.postfach.qes</code></td>
+              <td>Qualifiziert signierte Nachricht (QES-Metadaten)</td>
+              <td>ADR-0017</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>7.3 Postfach-Metadaten (Homeserver)</h3>
+        <pre><code>{
+  "user_id": "@nutzer:homeserver.bund.de",
+  "display_name": "Max Mustermann",  // nur lokal/verschlüsselt
+  "devices": [
+    {
+      "device_id": "DEVICE_A",
+      "mls_key_package": "&lt;base64-KeyPackage&gt;",
+      "last_seen": "2026-02-24T15:00:00Z"
+    }
+  ],
+  "rooms": [
+    {
+      "room_id": "!finanzamt:homeserver.bund.de",
+      "role": "citizen",
+      "unread_count": 3,
+      "last_event_ts": 1740000000000
+    }
+  ]
+}</code></pre>
+
+        <!-- ═══════════════════════ §8 SERVICE-APIs ═══════════════════════ -->
+        <h2 id="service-apis">§8 Service-APIs</h2>
+
+        <h3>8.1 API-Übersicht</h3>
+        <p>Die Infrastruktur nutzt die Matrix Specification (spec.matrix.org) als normative API-Grundlage.
+          Stack-spezifische Erweiterungen werden als Matrix-Erweiterungen (MSCs) definiert.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>API</th>
+              <th>Basis</th>
+              <th>Zweck</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Client-Server API</strong></td>
+              <td>Matrix CS API v1.12+</td>
+              <td>Client-Kommunikation: Login, Sync, Messaging, Room Management</td>
+            </tr>
+            <tr>
+              <td><strong>Server-Server API</strong></td>
+              <td>Matrix SS API v1.12+</td>
+              <td>Federation zwischen Homeservern</td>
+            </tr>
+            <tr>
+              <td><strong>Content Repository API</strong></td>
+              <td>Matrix Media API</td>
+              <td>Upload/Download von E2E-verschlüsselten Anhängen</td>
+            </tr>
+            <tr>
+              <td><strong>Push Gateway API</strong></td>
+              <td>Matrix Push API</td>
+              <td>Benachrichtigungen an mobile Endgeräte</td>
+            </tr>
+            <tr>
+              <td><strong>MLS Delivery Service</strong></td>
+              <td>RFC 9420 §5</td>
+              <td>KeyPackage-Verteilung, Welcome-Messages, Commit-Handling</td>
+            </tr>
+            <tr>
+              <td><strong>Self-Service Portal API</strong></td>
+              <td>REST/JSON (OpenAPI 3.1)</td>
+              <td>Backend-Registrierung, Anschlussbedingungen, SDK-Download</td>
+            </tr>
+            <tr>
+              <td><strong>Fachverfahren SDK API</strong></td>
+              <td>REST/JSON + SDK-Wrapper</td>
+              <td>Vereinfachte Integration für Fachverfahren</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>8.2 Nachrichtenversand (Sequenzdiagramm)</h3>
+        <pre><code>
+Bürger:in          Client (SDK)        Homeserver A         Homeserver B        Behörden-FV
+    │                   │                   │                    │                   │
+    │  Nachricht        │                   │                    │                   │
+    │  verfassen ──────►│                   │                    │                   │
+    │                   │                   │                    │                   │
+    │                   │ MLS Encrypt       │                    │                   │
+    │                   │ (RFC 9420)        │                    │                   │
+    │                   │──────────────────►│                    │                   │
+    │                   │ PUT /_matrix/     │                    │                   │
+    │                   │  client/v3/rooms/ │                    │                   │
+    │                   │  {roomId}/send    │                    │                   │
+    │                   │                   │                    │                   │
+    │                   │                   │ Federation S2S     │                   │
+    │                   │                   │ PUT /_matrix/      │                   │
+    │                   │                   │  federation/v1/    │                   │
+    │                   │                   │  send/{txnId} ────►│                   │
+    │                   │                   │                    │                   │
+    │                   │                   │                    │ /sync ◄───────────│
+    │                   │                   │                    │                   │
+    │                   │                   │                    │ MLS Decrypt ─────►│
+    │                   │                   │                    │                   │
+    │                   │                   │                    │ m.receipt ────────►│
+    │                   │                   │                    │ (Zustellquittung) │
+    │                   │                   │                    │                   │
+    │                   │ m.receipt         │                    │                   │
+    │                   │◄─────────────────────────────────────────────────────────  │
+    │  ✓ Zugestellt     │                   │                    │                   │
+    │◄──────────────────│                   │                    │                   │
+                </code></pre>
+
+        <h3>8.3 Self-Service Portal API (Auszug)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Methode</th>
+              <th>Endpunkt</th>
+              <th>Beschreibung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>POST</td>
+              <td>/api/v1/backends</td>
+              <td>Neues Backend registrieren (Anschlussbedingungen akzeptieren)</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/api/v1/backends/{id}</td>
+              <td>Registrierungsstatus abrufen</td>
+            </tr>
+            <tr>
+              <td>DELETE</td>
+              <td>/api/v1/backends/{id}</td>
+              <td>Backend aus Federation entfernen</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/api/v1/sdk/latest</td>
+              <td>Aktuelles SDK herunterladen</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/api/v1/federation/members</td>
+              <td>Liste aller föderierten Backends</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ═══════════════════════ §9 INTERNE WORKFLOWS ═══════════════════════ -->
+        <h2 id="workflows">§9 Interne Workflows</h2>
+
+        <h3>9.1 Fachverfahren-Zustellung (Bescheid)</h3>
+        <pre><code>
+┌──────────────────────────────────────────────────────────────────────────────┐
+│  Fachverfahren (Behörde) sendet Bescheid an Bürger:in                       │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  1. Fachverfahren ruft SDK auf:                                              │
+│     sdk.sendBescheid(empfänger_id, bescheid_payload, aktenzeichen)           │
+│                                                                              │
+│  2. SDK löst Matrix User-ID des Empfängers über Verzeichnisdienst auf       │
+│     → @buerger:homeserver.bund.de                                            │
+│                                                                              │
+│  3. SDK prüft/erstellt Matrix Room (1:1 mit Behörden-Account)               │
+│     → Falls Room existiert: bestehenden Room nutzen                          │
+│     → Falls nicht: Room erstellen + MLS Group initialisieren                 │
+│                                                                              │
+│  4. SDK verschlüsselt Bescheid-Payload mit MLS:                              │
+│     → KeyPackages des Empfängers vom Homeserver abrufen                      │
+│     → MLS Commit + Application Message                                       │
+│                                                                              │
+│  5. SDK sendet verschlüsseltes Event an Homeserver:                          │
+│     → PUT /_matrix/client/v3/rooms/{roomId}/send/m.room.encrypted            │
+│                                                                              │
+│  6. Homeserver föderiert an Empfänger-Homeserver (falls nötig)              │
+│                                                                              │
+│  7. Empfänger-Homeserver löst Push-Benachrichtigung aus                     │
+│     → Push Gateway API → FCM/APNs                                           │
+│     → Inhalt der Benachrichtigung: "Neue Nachricht von [Behörde]"           │
+│       (KEIN Klartext-Inhalt in Push!)                                        │
+│                                                                              │
+│  8. Client empfängt Event via /sync, entschlüsselt mit MLS                  │
+│                                                                              │
+│  9. Client sendet automatisch Zustellquittung:                               │
+│     → de.bund.postfach.quittung Event                                        │
+│                                                                              │
+│  10. Fachverfahren erhält Quittung via SDK-Callback                          │
+│      → Aktenzeichen + Zeitstempel → Zustellnachweis                          │
+└──────────────────────────────────────────────────────────────────────────────┘
+                </code></pre>
+
+        <h3>9.2 Backend-Registrierung (Dezentral)</h3>
+        <pre><code>
+Organisation ──► Self-Service-Portal ──► Anschlussbedingungen    ──► Registrierung
+                    │                       │                           │
+                    │  1. Antrag stellen     │  2. Digital akzeptieren   │  3. DNS-Eintrag
+                    │  (Organisation,        │  (Rechtsverbindlich)      │  konfigurieren
+                    │   Homeserver-Domain)   │                           │  (.well-known)
+                    │                       │                           │
+                    │                       │                           ▼
+                    │                       │                    4. Federation-Test
+                    │                       │                    (Automatisiert)
+                    │                       │                           │
+                    │                       │                           ▼
+                    │                       │                    5. Aufnahme in
+                    │                       │                    Federation-Whitelist
+                    │                       │                           │
+                    │                       │                           ▼
+                    │                       │                    6. Monitoring &amp;
+                    │                       │                    Compliance-Checks
+                </code></pre>
+
+        <h3>9.3 Legacy-Migration</h3>
+        <div class="callout callout--warning">
+          <div class="callout__icon">⚠</div>
+          <div class="callout__content">
+            <div class="callout__title">Migrationsstrategie</div>
+            <div class="callout__body">
+              Bestehende Postfachlösungen (ZBP, MJP, OZG-Plus-Postfach, EGVP, De-Mail) werden über
+              zeitlich befristete <strong>Bridge-Gateways</strong> angebunden, die Nachrichten aus
+              Legacy-Protokollen (OSCI, REST/proprietär, SMTP/S-MIME) in Matrix Events transformieren.
+              Ziel: Vollständige Ablösung der Legacy-Systeme innerhalb von 36 Monaten nach
+              Produktivstart der ZAPUK-Infrastruktur.
+            </div>
           </div>
         </div>
-      </div>
 
-      
-      <h2 id="beschreibung">2  Beschreibung</h2>
-      <p style="color:var(--color-text-secondary)">Inhalte werden ergänzt.</p>
+        <!-- ═══════════════════════ §10 KONFORMITÄTSKRITERIEN ═══════════════════════ -->
+        <h2 id="konformitätskriterien">§10 Konformitätskriterien</h2>
 
-      <h2 id="schluessel-funktionalitaeten">4  Schlüsselfunktionalitäten</h2>
-      <p style="color:var(--color-text-secondary)">Inhalte werden ergänzt.</p>
+        <h3>Level 1 – MUSS (Grundkonformität)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Kriterium</th>
+              <th>Prüfmethode</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>KON-01</td>
+              <td>Matrix Client-Server API v1.12+ vollständig implementiert</td>
+              <td>Sytest / Matrix Compliance Suite</td>
+            </tr>
+            <tr>
+              <td>KON-02</td>
+              <td>Matrix Server-Server Federation API implementiert</td>
+              <td>Federation-Interop-Test mit Referenz-Homeserver</td>
+            </tr>
+            <tr>
+              <td>KON-03</td>
+              <td>MLS (RFC 9420) oder Olm/Megolm E2E-Verschlüsselung aktiv</td>
+              <td>Kryptographischer Audit, MLS-Test-Suite</td>
+            </tr>
+            <tr>
+              <td>KON-04</td>
+              <td>PFS und PCS via MLS-Epoch-Rotation nachweisbar</td>
+              <td>Key-Rotation-Test, Wireshark-Analyse</td>
+            </tr>
+            <tr>
+              <td>KON-05</td>
+              <td>Zustellquittungen (de.bund.postfach.quittung) werden erzeugt</td>
+              <td>End-to-End Zustellungstest</td>
+            </tr>
+            <tr>
+              <td>KON-06</td>
+              <td>TLS 1.3+ für alle Verbindungen</td>
+              <td>SSL-Labs-Scan, BSI TR-02102 Check</td>
+            </tr>
+            <tr>
+              <td>KON-07</td>
+              <td>Registrierung über Self-Service-Portal erfolgreich</td>
+              <td>Registrierungs-Workflow-Test</td>
+            </tr>
+            <tr>
+              <td>KON-08</td>
+              <td>Keine Klartext-Nachrichteninhalte auf dem Server</td>
+              <td>Server-Storage-Audit</td>
+            </tr>
+            <tr>
+              <td>KON-09</td>
+              <td>Benachrichtigungen enthalten keine Inhaltsdaten</td>
+              <td>Push-Payload-Analyse</td>
+            </tr>
+          </tbody>
+        </table>
 
-      <h2 id="funktionale-anforderungen">6  Funktionale Anforderungen</h2>
-      <p style="color:var(--color-text-secondary)">Inhalte werden ergänzt.</p>
+        <h3>Level 2 – SOLL (Erweiterte Konformität)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Kriterium</th>
+              <th>Prüfmethode</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>KON-10</td>
+              <td>SDK-basierte Fachverfahren-Anbindung demonstriert</td>
+              <td>Integrations-Referenztest mit Beispiel-Fachverfahren</td>
+            </tr>
+            <tr>
+              <td>KON-11</td>
+              <td>Strukturierte Nachrichtentypen (Termin, Abstimmung) unterstützt</td>
+              <td>Custom Event Type Roundtrip-Test</td>
+            </tr>
+            <tr>
+              <td>KON-12</td>
+              <td>QES-Integration auf Nachrichtenebene (ADR-0017)</td>
+              <td>QES-Signatur-Verifikationstest</td>
+            </tr>
+            <tr>
+              <td>KON-13</td>
+              <td>EU-Interoperabilität über Federation-Bridge nachweisbar</td>
+              <td>Cross-Border-Kommunikationstest</td>
+            </tr>
+            <tr>
+              <td>KON-14</td>
+              <td>Datenportabilität: Export in standardisiertem Format</td>
+              <td>Export/Import-Roundtrip-Test</td>
+            </tr>
+            <tr>
+              <td>KON-15</td>
+              <td>MLS als primäres E2E-Protokoll (Olm/Megolm nur Fallback)</td>
+              <td>MLS-Primär-Nutzungsquote &gt; 90%</td>
+            </tr>
+          </tbody>
+        </table>
 
-      <h2 id="service-apis">8  Service-APIs</h2>
-      <p style="color:var(--color-text-secondary)">OpenAPI-Spezifikation wird ergänzt.</p>
+        <!-- ═══════════════════════ §11 REFERENZEN ═══════════════════════ -->
+        <h2 id="referenzen">§11 Referenzen &amp; Ressourcen</h2>
 
+        <h3>Normative Referenzen</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Referenz</th>
+              <th>Titel</th>
+              <th>Relevanz</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="https://spec.matrix.org/latest/">Matrix Spec v1.12</a></td>
+              <td>Matrix Specification (Client-Server, Server-Server, Content Repository)</td>
+              <td>Kommunikationsschicht</td>
+            </tr>
+            <tr>
+              <td><a href="https://www.rfc-editor.org/rfc/rfc9420.html">RFC 9420</a></td>
+              <td>The Messaging Layer Security (MLS) Protocol</td>
+              <td>E2E-Verschlüsselung</td>
+            </tr>
+            <tr>
+              <td><a
+                  href="https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Publikationen/TechnischeRichtlinien/TR02102/BSI-TR-02102.html">BSI
+                  TR-02102</a></td>
+              <td>Kryptographische Verfahren: Empfehlungen und Schlüssellängen</td>
+              <td>Algorithmenauswahl</td>
+            </tr>
+            <tr>
+              <td><a href="https://www.it-planungsrat.de/beschluss/beschluss-2024-28">IT-PLR B-2024/28</a></td>
+              <td>Beschluss zur ZAPUK-Architektur Phase I</td>
+              <td>Rechtsgrundlage</td>
+            </tr>
+            <tr>
+              <td><a href="https://www.it-planungsrat.de/beschluss/beschluss-2025-28">IT-PLR B-2025/28</a></td>
+              <td>Beschluss zur ZAPUK-Umsetzung Phase II</td>
+              <td>Rechtsgrundlage</td>
+            </tr>
+            <tr>
+              <td>eIDAS 2.0</td>
+              <td>EU-Verordnung über elektronische Identifizierung</td>
+              <td>QES, Trust Services</td>
+            </tr>
+            <tr>
+              <td>DSGVO</td>
+              <td>Datenschutz-Grundverordnung</td>
+              <td>Datenschutzanforderungen</td>
+            </tr>
+          </tbody>
+        </table>
 
-      <div class="pagination">
-        <a class="pagination__link pagination__link--prev" href="bb-portal/index.html">
-          <span class="pagination__dir">← Zurück</span>
-          <span class="pagination__title">BB-02 · Portal</span>
-        </a>
-        <a class="pagination__link pagination__link--next" href="bb-payment/index.html">
-          <span class="pagination__dir">Weiter →</span>
-          <span class="pagination__title">BB-04 · Payment</span>
-        </a>
-      </div>
+        <h3>ZAPUK Architecture Decision Records</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ADR</th>
+              <th>Entscheidung</th>
+              <th>Gewählte Option</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a
+                  href="https://gitlab.opencode.de/it-planungsrat/fit-ab/zapuk/-/blob/main/Zielarchitektur/Architekturentscheidungen/ADR-0001-Querschnittlichkeit-und-Erweiterbarkeit-der-Infrastruktur.md">ADR-0001</a>
+              </td>
+              <td>Querschnittlichkeit</td>
+              <td>Modular erweiterbar, fachlich agnostisch</td>
+            </tr>
+            <tr>
+              <td><a
+                  href="https://gitlab.opencode.de/it-planungsrat/fit-ab/zapuk/-/blob/main/Zielarchitektur/Architekturentscheidungen/ADR-0002-Infrastrukturtopologie.md">ADR-0002</a>
+              </td>
+              <td>Topologie</td>
+              <td>Hybrider Ansatz (zentral + dezentral)</td>
+            </tr>
+            <tr>
+              <td><a
+                  href="https://gitlab.opencode.de/it-planungsrat/fit-ab/zapuk/-/blob/main/Zielarchitektur/Architekturentscheidungen/ADR-0003-Bereitstellung-von-Postfach-Zugängen.md">ADR-0003</a>
+              </td>
+              <td>Postfachzugänge</td>
+              <td>Offen für Drittanwendungen</td>
+            </tr>
+            <tr>
+              <td><a
+                  href="https://gitlab.opencode.de/it-planungsrat/fit-ab/zapuk/-/blob/main/Zielarchitektur/Architekturentscheidungen/ADR-0004-Bereitstellung-von-Postfach-Backends.md">ADR-0004</a>
+              </td>
+              <td>Backend-Betrieb</td>
+              <td>Registrierungspflichtig mit Anschlussbedingungen</td>
+            </tr>
+            <tr>
+              <td><a
+                  href="https://gitlab.opencode.de/it-planungsrat/fit-ab/zapuk/-/blob/main/Zielarchitektur/Architekturentscheidungen/ADR-0005-Anzahl-und-Zuschnitt-der-zentral-bereitgestellten-Postfach-Zugänge.md">ADR-0005</a>
+              </td>
+              <td>Zentrale Zugänge</td>
+              <td>Ein konfigurierbarer Zugang für alle</td>
+            </tr>
+            <tr>
+              <td><a
+                  href="https://gitlab.opencode.de/it-planungsrat/fit-ab/zapuk/-/blob/main/Zielarchitektur/Architekturentscheidungen/ADR-0009-SDKs-zur-vereinfachten-Anbindung-von-Postfach-Zugängen.md">ADR-0009</a>
+              </td>
+              <td>SDKs</td>
+              <td>Bereitstellung zur vereinfachten Anbindung</td>
+            </tr>
+            <tr>
+              <td><a
+                  href="https://gitlab.opencode.de/it-planungsrat/fit-ab/zapuk/-/blob/main/Zielarchitektur/Architekturentscheidungen/ADR-0011-Kommunikationsschicht.md">ADR-0011</a>
+              </td>
+              <td>Kommunikationsschicht</td>
+              <td>Matrix Standard</td>
+            </tr>
+            <tr>
+              <td><a
+                  href="https://gitlab.opencode.de/it-planungsrat/fit-ab/zapuk/-/blob/main/Zielarchitektur/Architekturentscheidungen/ADR-0012-Ende-zu-Ende-Verschlüsselungsschicht.md">ADR-0012</a>
+              </td>
+              <td>E2E-Verschlüsselung</td>
+              <td>MLS (RFC 9420)</td>
+            </tr>
+            <tr>
+              <td><a
+                  href="https://gitlab.opencode.de/it-planungsrat/fit-ab/zapuk/-/blob/main/Zielarchitektur/Architekturentscheidungen/ADR-0013-Authentizität-in-der-Nachrichtenübermittlung.md">ADR-0013</a>
+              </td>
+              <td>Authentizität</td>
+              <td>Auf E2E-Verschlüsselungsschicht (Zero-Trust)</td>
+            </tr>
+          </tbody>
+        </table>
 
-      <div class="page-footer">
-        <div class="page-footer__meta">Apache-2.0 · Version 0.1 DRAFT</div>
-        <div class="page-footer__feedback">
-          <span class="page-footer__feedback-label">Hilfreich?</span>
-          <div class="page-footer__feedback-btns">
-            <button class="feedback-btn">👍</button>
-            <button class="feedback-btn">👎</button>
+        <h3>Referenzimplementierungen</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Komponente</th>
+              <th>Implementierung</th>
+              <th>Lizenz</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Matrix Homeserver</td>
+              <td><a href="https://github.com/element-hq/synapse">Synapse</a> (Python), <a
+                  href="https://conduit.rs">Conduit</a> (Rust)</td>
+              <td>AGPL-3.0 / Apache-2.0</td>
+            </tr>
+            <tr>
+              <td>Matrix Client SDK</td>
+              <td><a href="https://github.com/nicktelen/matrix-rust-sdk">matrix-rust-sdk</a>, <a
+                  href="https://github.com/nicktelen/matrix-js-sdk">matrix-js-sdk</a></td>
+              <td>Apache-2.0</td>
+            </tr>
+            <tr>
+              <td>MLS Library</td>
+              <td><a href="https://openmls.tech">OpenMLS</a> (Rust), <a
+                  href="https://github.com/nicktelen/mlspp">mlspp</a> (C++)</td>
+              <td>MIT / BSD</td>
+            </tr>
+            <tr>
+              <td>Reference Client</td>
+              <td><a href="https://element.io">Element</a> (Web/Desktop/Mobile)</td>
+              <td>Apache-2.0</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="pagination">
+          <a class="pagination__link pagination__link--prev" href="../bb-portal/index.html">
+            <span class="pagination__dir">← Zurück</span>
+            <span class="pagination__title">BB-02 · Portal & Formular</span>
+          </a>
+          <a class="pagination__link pagination__link--next" href="../bb-payment/index.html">
+            <span class="pagination__dir">Weiter →</span>
+            <span class="pagination__title">BB-04 · Payment</span>
+          </a>
+        </div>
+
+        <div class="page-footer">
+          <div class="page-footer__meta">Apache-2.0 · Version 0.3 DRAFT</div>
+          <div class="page-footer__feedback">
+            <span class="page-footer__feedback-label">Hilfreich?</span>
+            <div class="page-footer__feedback-btns">
+              <button class="feedback-btn">👍</button>
+              <button class="feedback-btn">👎</button>
+            </div>
           </div>
         </div>
-      </div>
 
-    </article>
-    <aside class="content__toc">
-      <div class="toc" id="toc">
-        <div class="toc__title">Auf dieser Seite</div>
-        <ul class="toc__list"></ul>
-      </div>
-    </aside>
-  </main>
+      </article>
 
-</div>
+      <aside class="content__toc">
+        <div class="toc" id="toc">
+          <div class="toc__title">Auf dieser Seite</div>
+          <ul class="toc__list"></ul>
+        </div>
+      </aside>
+    </main>
+  </div>
 
-<script src="../../assets/js/shell.js"></script>
-<script src="../../assets/js/site.js"></script>
+  <script src="../../assets/js/shell.js"></script>
+  <script src="../../assets/js/site.js"></script>
 </body>
+
 </html>
