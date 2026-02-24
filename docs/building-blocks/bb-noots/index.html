@@ -1,95 +1,1259 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BB-06 · Register (NOOTS) – VerwDigiStack Spezifikation</title>
-  <meta name="description" content="Registerabruf via NOOTS/OOTS. Registermodernisierungsgesetz, Once-Only.">
+  <title>BB-06 Register (NOOTS) – VerwDigiStack Spezifikation</title>
+  <meta name="description"
+    content="Spezifikation des Register Building Blocks: National Once-Only Technical System für föderalen Registerdatenaustausch.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="../../assets/css/tokens.css">
   <link rel="stylesheet" href="../../assets/css/main.css">
 </head>
+
 <body>
-<script>window.PAGE_META = { title: 'BB-06 · Register (NOOTS)', section: 'Building Block' };</script>
+  <script>window.PAGE_META = { title: 'BB-06 · Register (NOOTS)', section: 'Building Blocks' };</script>
+  <div class="layout">
+    <main class="content">
+      <article class="content__main prose">
 
-<div class="layout">
-
-  <main class="content">
-    <article class="content__main prose">
-
-      <div class="prose-header">
-        <div class="prose-header__breadcrumb">
-          <a href="../../index.html">VerwDigiStack</a><span class="prose-header__breadcrumb-sep">/</span><a href="../index.html">Building Blocks</a><span class="prose-header__breadcrumb-sep">/</span><span>BB-06 · Register (NOOTS)</span>
+        <div class="prose-header">
+          <div class="prose-header__breadcrumb">
+            <a href="../../index.html">VerwDigiStack</a>
+            <span class="prose-header__breadcrumb-sep">/</span>
+            <a href="../index.html">Building Blocks</a>
+            <span class="prose-header__breadcrumb-sep">/</span>
+            <span>BB-06 · Register (NOOTS)</span>
+          </div>
+          <div class="prose-header__meta">
+            <span class="prose-header__tag prose-header__tag--building-block">◈ Building Block</span>
+            <span class="prose-header__tag prose-header__tag--draft">DRAFT</span>
+            <span class="prose-header__version">Version 0.3</span>
+          </div>
+          <h1>BB-06 · Register (NOOTS)</h1>
+          <p>
+            National Once-Only Technical System für den sicheren, rechtskonformen Austausch von
+            Nachweisdaten zwischen Verwaltungsregistern. Dezentrale Datenhaltung, zentrale Vermittlung,
+            vollständige Nachvollziehbarkeit – auf Basis des <strong>Registermodernisierungsgesetzes (RegMoG)</strong>,
+            der <strong>Steuer-IDNr als Ordnungsmerkmal</strong> und interoperabel mit dem
+            <strong>EU-OOTS (SDG-VO)</strong>.
+          </p>
         </div>
-        <div class="prose-header__meta">
-          <span class="prose-header__tag prose-header__tag--building-block">◈ Building Block</span>
-          <span class="prose-header__tag prose-header__tag--draft">DRAFT</span>
-        </div>
-        <h1>BB-06 · Register (NOOTS)</h1>
-        <p>Registerabruf via NOOTS/OOTS. Registermodernisierungsgesetz, Once-Only.</p>
-      </div>
 
-      <div class="callout callout--warning">
-        <div class="callout__icon">✏</div>
-        <div class="callout__content">
-          <div class="callout__title">Seite wird ausgefüllt</div>
-          <div class="callout__body">
-            Dieser Abschnitt ist als Platzhalter angelegt und wird sukzessive befüllt.
-            Die Struktur folgt dem einheitlichen BB-Template (11 Abschnitte).
+        <!-- ═══════════════════════ §1 VERSIONSHISTORIE ═══════════════════════ -->
+        <h2 id="versionshistorie">§1 Versionshistorie</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Version</th>
+              <th>Datum</th>
+              <th>Änderung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>0.1</td>
+              <td>2025-06-01</td>
+              <td>Initiales Stub (Platzhalter)</td>
+            </tr>
+            <tr>
+              <td>0.2</td>
+              <td>2025-10-01</td>
+              <td>NOOTS-HLA v1.1 integriert, Komponentenübersicht</td>
+            </tr>
+            <tr>
+              <td><strong>0.3</strong></td>
+              <td><strong>2026-02-24</strong></td>
+              <td><strong>Vollständige Spezifikation: NOOTS-Architektur, SAK-APIs, Registerdatennavigation, DSC,
+                  EU-OOTS-Interoperabilität, alle 11 Abschnitte</strong></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ═══════════════════════ §2 BESCHREIBUNG ═══════════════════════ -->
+        <h2 id="beschreibung">§2 Beschreibung</h2>
+
+        <h3>Zweck</h3>
+        <p>
+          BB-06 Register spezifiziert das <strong>National Once-Only Technical System (NOOTS)</strong>
+          als föderale Infrastruktur für den automatisierten, rechtskonformen Austausch von Nachweisdaten
+          zwischen Verwaltungsregistern. Das Leitprinzip:
+          <strong>Bürger:innen und Unternehmen geben ihre Daten nur einmal an</strong> –
+          Behörden tauschen sie bei konkretem Verwaltungsbedarf, mit rechtlicher Grundlage
+          und unter Einbindung des Datenschutzcockpits, untereinander aus.
+        </p>
+        <p>
+          Die Daten verbleiben dabei <strong>dezentral bei den registerführenden Stellen</strong>.
+          NOOTS fungiert als <strong>zentrale Vermittlungsinfrastruktur</strong> mit vollständiger
+          Nachvollziehbarkeit aller Datenabrufe.
+        </p>
+
+        <h3>Architekturübersicht</h3>
+        <pre><code>
+┌──────────────────────────────────────────────────────────────────────────┐
+│                     NOOTS – Architektur                                  │
+│                                                                          │
+│  ┌──────────────┐                          ┌──────────────────────────┐  │
+│  │  Online-Dienst│                          │  Fachverfahren (Behörde) │  │
+│  │  (Antrag)     │                          │  (Data Consumer)         │  │
+│  └──────┬───────┘                          └──────────┬───────────────┘  │
+│         │                                              │                 │
+│         │  Bürger:in stellt Antrag                     │  Behörde benötigt│
+│         │  → kein manueller Nachweis nötig             │  Nachweisdaten   │
+│         │                                              │                 │
+│         ▼                                              ▼                 │
+│  ┌─────────────────────────────────────────────────────────────────┐     │
+│  │                    SAK (Sicherer Anschlussknoten)                │     │
+│  │         Consumer-SAK ◄──────────────── Provider-SAK             │     │
+│  │         REST-API             NOOTS-Backbone           REST-API  │     │
+│  └─────────────────────────┬───────────────────────────────────────┘     │
+│                            │                                             │
+│         ┌──────────────────┼──────────────────┐                         │
+│         ▼                  ▼                  ▼                         │
+│  ┌─────────────┐  ┌───────────────┐  ┌──────────────────┐              │
+│  │ Registerdaten│  │ IAM Behörden  │  │ Intermediäre     │              │
+│  │ navigation   │  │ (Zugangs-     │  │ Plattform        │              │
+│  │ (Discovery   │  │  steuerung)   │  │ (EU-OOTS-        │              │
+│  │  & Routing)  │  │               │  │  Gateway)        │              │
+│  └─────────────┘  └───────────────┘  └──────────────────┘              │
+│                                                                          │
+│  ┌────────────────────────────────────────────────────────────────┐      │
+│  │              Datenschutzcockpit (DSC)                           │      │
+│  │  Bürger:innen sehen: Wer hat wann welche Daten abgerufen?     │      │
+│  └────────────────────────────────────────────────────────────────┘      │
+│                                                                          │
+│  ┌───────────────┐ ┌───────────────┐ ┌──────────────┐ ┌──────────────┐ │
+│  │ Melderegister  │ │ Fahrzeug-     │ │ Handels-     │ │ Waffenregister│ │
+│  │               │ │ register      │ │ register     │ │              │ │
+│  └───────────────┘ └───────────────┘ └──────────────┘ └──────────────┘ │
+│  Data Provider (registerführende Stellen)                                │
+└──────────────────────────────────────────────────────────────────────────┘
+                </code></pre>
+
+        <h3>Abgrenzung</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>In-Scope</th>
+              <th>Out-of-Scope</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Nachweisdatenabruf (Once-Only)</td>
+              <td>Identitätsfeststellung → BB-01 Identity</td>
+            </tr>
+            <tr>
+              <td>Registerdatennavigation (Discovery)</td>
+              <td>Nachrichtenzustellung → BB-03 Postfach</td>
+            </tr>
+            <tr>
+              <td>SAK-Infrastruktur (Sichere Anschlussknoten)</td>
+              <td>Einwilligung für Datenteilung → BB-09 Consent</td>
+            </tr>
+            <tr>
+              <td>Datenschutzcockpit (DSC)</td>
+              <td>Bezahlung von Gebühren → BB-04 Payment</td>
+            </tr>
+            <tr>
+              <td>EU-OOTS-Gateway (SDG-VO)</td>
+              <td>Digitale Signaturen → BB-10 E-Signatur</td>
+            </tr>
+            <tr>
+              <td>IDNr-basiertes Matching</td>
+              <td>Formularwesen → BB-02 Portal</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ═══════════════════════ §3 BEGRIFFE ═══════════════════════ -->
+        <h2 id="begriffe">§3 Begriffe &amp; Definitionen</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Begriff</th>
+              <th>Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>NOOTS</strong></td>
+              <td>National Once-Only Technical System. Föderale Infrastruktur für den automatisierten
+                Nachweisdatenaustausch zwischen Verwaltungsregistern.</td>
+            </tr>
+            <tr>
+              <td><strong>Once-Only-Prinzip</strong></td>
+              <td>Bürger:innen und Unternehmen müssen Daten bei Behörden nur einmal angeben. Bei erneuter Nutzung werden
+                sie registerübergreifend abgerufen.</td>
+            </tr>
+            <tr>
+              <td><strong>SAK</strong></td>
+              <td>Sicherer Anschlussknoten. Zentral bereitgestellte, dezentral betriebene Gateway-Komponente für den
+                Zugang zum NOOTS-Backbone. Security-by-Design.</td>
+            </tr>
+            <tr>
+              <td><strong>Data Provider</strong></td>
+              <td>Registerführende Stelle, die Nachweisdaten über den SAK bereitstellt (z.B. Meldeamt,
+                Fahrzeugregister).</td>
+            </tr>
+            <tr>
+              <td><strong>Data Consumer</strong></td>
+              <td>Behörde/Fachverfahren, die Nachweisdaten über den SAK abruft.</td>
+            </tr>
+            <tr>
+              <td><strong>Registerdatennavigation</strong></td>
+              <td>Zentrale NOOTS-Komponente für Discovery und Routing: Findet die zuständige Datenquelle für einen
+                Nachweistyp.</td>
+            </tr>
+            <tr>
+              <td><strong>IDNr</strong></td>
+              <td>Steuer-Identifikationsnummer als übergreifendes Ordnungsmerkmal für natürliche Personen (IDNrG).
+                Ermöglicht eindeutige Zuordnung registerübergreifend.</td>
+            </tr>
+            <tr>
+              <td><strong>IDA-Verfahren</strong></td>
+              <td>Identitätsdatenabrufverfahren. Erlaubt berechtigten Stellen den automatisierten Abruf der IDNr und
+                Basisdaten vom BVA.</td>
+            </tr>
+            <tr>
+              <td><strong>DSC</strong></td>
+              <td>Datenschutzcockpit. Transparenzsystem für Bürger:innen: Zeigt an, welche Behörde wann welche Daten
+                abgerufen hat.</td>
+            </tr>
+            <tr>
+              <td><strong>EU-OOTS</strong></td>
+              <td>European Once-Only Technical System (SDG-VO). Ermöglicht grenzüberschreitenden Nachweisaustausch
+                zwischen EU-Mitgliedstaaten.</td>
+            </tr>
+            <tr>
+              <td><strong>Evidence Broker</strong></td>
+              <td>EU-OOTS-Komponente: Mappt Datensets auf spezifische Nachweistypen für grenzüberschreitende Anfragen.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>DSD</strong></td>
+              <td>Data Service Directory. EU-OOTS-Katalog zum Auffinden von Evidence Providern.</td>
+            </tr>
+            <tr>
+              <td><strong>XNachweis</strong></td>
+              <td>Standardisiertes Datenformat für den Nachweisdatenaustausch im NOOTS (Nachfolger XRegister).</td>
+            </tr>
+            <tr>
+              <td><strong>RegMoG</strong></td>
+              <td>Registermodernisierungsgesetz. Rechtsgrundlage für Registervernetzung und IDNr-Nutzung.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ═══════════════════════ §4 SCHLÜSSELFUNKTIONALITÄTEN ═══════════════════════ -->
+        <h2 id="schlüsselfunktionalitäten">§4 Schlüsselfunktionalitäten</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>KDF-ID</th>
+              <th>Funktionalität</th>
+              <th>GovStack-Mapping</th>
+              <th>NOOTS-Spezifik</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>KDF-01</td>
+              <td><strong>Nachweisdatenabruf</strong></td>
+              <td>REG-QUERY</td>
+              <td>Automatisierter Abruf von Nachweisdaten beim Data Provider über SAK-API. Keine Vollkopien, nur
+                bedarfsgerechte Abfrage.</td>
+            </tr>
+            <tr>
+              <td>KDF-02</td>
+              <td><strong>Registerdatennavigation</strong></td>
+              <td>REG-DISCOVER</td>
+              <td>Discovery-Service: Findet zuständige Data Provider für einen Nachweistyp und eine Region. Routing an
+                den korrekten SAK.</td>
+            </tr>
+            <tr>
+              <td>KDF-03</td>
+              <td><strong>IDNr-Matching</strong></td>
+              <td>REG-MATCH</td>
+              <td>Eindeutige Zuordnung von Personen über die Steuer-IDNr als registerübergreifendes Ordnungsmerkmal
+                (IDNrG).</td>
+            </tr>
+            <tr>
+              <td>KDF-04</td>
+              <td><strong>Datenschutzcockpit</strong></td>
+              <td>–</td>
+              <td>Bürger:innen-Dashboard: Transparente Anzeige aller Datenabrufe (Wer, Wann, Welche Daten, Zu welchem
+                Zweck). Widerspruchsmöglichkeit.</td>
+            </tr>
+            <tr>
+              <td>KDF-05</td>
+              <td><strong>Zugangssteuerung</strong></td>
+              <td>REG-AUTH</td>
+              <td>IAM für Behörden: Rollenbasierte Berechtigungen, Zweckbindung, Nachweis der Rechtsgrundlage für jeden
+                Datenabruf.</td>
+            </tr>
+            <tr>
+              <td>KDF-06</td>
+              <td><strong>EU-OOTS-Interoperabilität</strong></td>
+              <td>REG-CROSSBORDER</td>
+              <td>Intermediäre Plattform als Gateway zum europäischen Once-Only Technical System (SDG-VO). Evidence
+                Broker, DSD-Anbindung.</td>
+            </tr>
+            <tr>
+              <td>KDF-07</td>
+              <td><strong>Audit-Trail</strong></td>
+              <td>REG-AUDIT</td>
+              <td>Vollständiges, revisionssicheres Protokoll aller Datenabrufe. Rechtlich erforderlich für DSC und
+                Aufsichtsbehörden.</td>
+            </tr>
+            <tr>
+              <td>KDF-08</td>
+              <td><strong>Registeranbindung</strong></td>
+              <td>REG-CONNECT</td>
+              <td>Standardisierte Anbindung von Data Providern über SAK. Mandantenfähig, mehrere Register pro SAK.</td>
+            </tr>
+            <tr>
+              <td>KDF-09</td>
+              <td><strong>Datentransformation</strong></td>
+              <td>REG-TRANSFORM</td>
+              <td>Mapping zwischen registerinternen Schemata und XNachweis-Standardformat. Semantische
+                Interoperabilität.</td>
+            </tr>
+            <tr>
+              <td>KDF-10</td>
+              <td><strong>Consent-Integration</strong></td>
+              <td>–</td>
+              <td>Anbindung an BB-09 Consent: Bei datenschutzrechtlich erforderlicher Einwilligung wird diese vor dem
+                Abruf eingeholt (→ DSC).</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ═══════════════════════ §5 QUERSCHNITTSANFORDERUNGEN ═══════════════════════ -->
+        <h2 id="querschnittsanforderungen">§5 Querschnittsanforderungen</h2>
+
+        <h3>5.1 Sicherheit</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Anforderung</th>
+              <th>Referenz</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>SEC-01</td>
+              <td>Alle Datenabrufe MÜSSEN über den SAK erfolgen. Direkte Register-zu-Register-Verbindungen sind nicht
+                zulässig.</td>
+              <td>AD-NOOTS HLA</td>
+            </tr>
+            <tr>
+              <td>SEC-02</td>
+              <td>TLS 1.3+ (mTLS) für alle SAK-zu-SAK und SAK-zu-Backbone Verbindungen.</td>
+              <td>BSI TR-02102-2</td>
+            </tr>
+            <tr>
+              <td>SEC-03</td>
+              <td>Zero-Trust: Jeder Datenabruf MUSS authentifiziert, autorisiert und zweckgebunden sein.</td>
+              <td>BSI Zero-Trust-Positionspapier</td>
+            </tr>
+            <tr>
+              <td>SEC-04</td>
+              <td>Security-by-Default: SAKs MÜSSEN in der Standardkonfiguration die maximal sichere Einstellung
+                verwenden.</td>
+              <td>AD-NOOTS Security</td>
+            </tr>
+            <tr>
+              <td>SEC-05</td>
+              <td>Alle übertragenen Nachweisdaten MÜSSEN transportverschlüsselt und zusätzlich per
+                Payload-Verschlüsselung geschützt sein.</td>
+              <td>BSI TR-02102-1</td>
+            </tr>
+            <tr>
+              <td>SEC-06</td>
+              <td>SAK-Authentifizierung über X.509-Zertifikate aus einer föderalen PKI.</td>
+              <td>eIDAS Trust Services</td>
+            </tr>
+            <tr>
+              <td>SEC-07</td>
+              <td>Angriffserkennungs- und Anomalie-Monitoring auf SAK-Ebene.</td>
+              <td>BSI IT-Grundschutz</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>5.2 Datenschutz</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Anforderung</th>
+              <th>Referenz</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>PRI-01</td>
+              <td>Datensparsamkeit: Nur die für den konkreten Verwaltungszweck erforderlichen Datenfelder DÜRFEN
+                abgerufen werden.</td>
+              <td>DSGVO Art. 5, RegMoG</td>
+            </tr>
+            <tr>
+              <td>PRI-02</td>
+              <td>Zweckbindung: Jeder Datenabruf MUSS eine konkrete Rechtsgrundlage referenzieren.</td>
+              <td>DSGVO Art. 6, IDNrG §4</td>
+            </tr>
+            <tr>
+              <td>PRI-03</td>
+              <td>Datenschutzcockpit: Alle Datenabrufe MÜSSEN für betroffene Bürger:innen im DSC sichtbar sein.</td>
+              <td>RegMoG §9, IDNrG §10</td>
+            </tr>
+            <tr>
+              <td>PRI-04</td>
+              <td>Keine zentrale Datenhaltung: NOOTS speichert keine Kopien von Nachweisdaten. Daten verbleiben beim
+                Data Provider.</td>
+              <td>AD-NOOTS HLA</td>
+            </tr>
+            <tr>
+              <td>PRI-05</td>
+              <td>Löschprotokoll: Cache-Daten auf SAK-Ebene MÜSSEN nach Abschluss der Transaktion gelöscht werden.</td>
+              <td>DSGVO Art. 17</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>5.3 SLA &amp; Performance</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Metrik</th>
+              <th>Ziel</th>
+              <th>Anmerkung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Verfügbarkeit NOOTS-Backbone</td>
+              <td>≥ 99,9 %</td>
+              <td>Gemessen pro Kalendermonat</td>
+            </tr>
+            <tr>
+              <td>Nachweisdatenabruf (national)</td>
+              <td>p95 ≤ 3s</td>
+              <td>Request bis Response, inkl. Routing</td>
+            </tr>
+            <tr>
+              <td>Nachweisdatenabruf (EU-OOTS)</td>
+              <td>p95 ≤ 10s</td>
+              <td>Grenzüberschreitend via Intermediäre Plattform</td>
+            </tr>
+            <tr>
+              <td>SAK-Registrierung</td>
+              <td>≤ 5 Werktage</td>
+              <td>Von Antrag bis Betriebsbereitschaft</td>
+            </tr>
+            <tr>
+              <td>DSC-Aktualisierung</td>
+              <td>≤ 60s</td>
+              <td>Abruf im DSC sichtbar nach Datenzugriff</td>
+            </tr>
+            <tr>
+              <td>Gleichzeitige Abrufe</td>
+              <td>≥ 100.000/min</td>
+              <td>Skalierungsziel zentrales Backbone</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ═══════════════════════ §6 FUNKTIONALE ANFORDERUNGEN ═══════════════════════ -->
+        <h2 id="funktionale-anforderungen">§6 Funktionale Anforderungen</h2>
+
+        <h3>6.1 Nachweisdatenabruf (FA-NAB)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Prio</th>
+              <th>Anforderung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>FA-NAB-01</td>
+              <td>MUSS</td>
+              <td>Data Consumer sendet strukturierte Nachweisanfrage über Consumer-SAK an NOOTS-Backbone.</td>
+            </tr>
+            <tr>
+              <td>FA-NAB-02</td>
+              <td>MUSS</td>
+              <td>Registerdatennavigation ermittelt zuständigen Data Provider und routet Anfrage an dessen Provider-SAK.
+              </td>
+            </tr>
+            <tr>
+              <td>FA-NAB-03</td>
+              <td>MUSS</td>
+              <td>Provider-SAK leitet Anfrage an Register weiter, empfängt Antwort und transformiert sie in
+                XNachweis-Format.</td>
+            </tr>
+            <tr>
+              <td>FA-NAB-04</td>
+              <td>MUSS</td>
+              <td>Jeder Datenabruf erzeugt einen Audit-Trail-Eintrag mit: Zeitstempel, Consumer-ID, Provider-ID,
+                Nachweistyp, Rechtsgrundlage.</td>
+            </tr>
+            <tr>
+              <td>FA-NAB-05</td>
+              <td>MUSS</td>
+              <td>Datensparsamkeit: Anfrage spezifiziert exakt benötigte Datenfelder (Field-Level Filtering).</td>
+            </tr>
+            <tr>
+              <td>FA-NAB-06</td>
+              <td>SOLL</td>
+              <td>Batch-Abruf: Mehrere Nachweistypen in einer Transaktion bündeln (z.B. Meldebestätigung +
+                Familienstandsnachweis).</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>6.2 Registerdatennavigation (FA-NAV)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Prio</th>
+              <th>Anforderung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>FA-NAV-01</td>
+              <td>MUSS</td>
+              <td>Katalog aller registrierten Data Provider mit Metadata: Nachweistypen, Zuständigkeitsgebiet,
+                SAK-Endpunkt.</td>
+            </tr>
+            <tr>
+              <td>FA-NAV-02</td>
+              <td>MUSS</td>
+              <td>Routing-Logik: Auflösung von Nachweistyp + Region → zuständiger Data Provider.</td>
+            </tr>
+            <tr>
+              <td>FA-NAV-03</td>
+              <td>MUSS</td>
+              <td>Selbstregistrierung von Data Providern im Katalog über Self-Service-Portal.</td>
+            </tr>
+            <tr>
+              <td>FA-NAV-04</td>
+              <td>SOLL</td>
+              <td>Versionierung: Mehrere Versionen eines Nachweistyps parallel unterstützen.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>6.3 Datenschutzcockpit (FA-DSC)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Prio</th>
+              <th>Anforderung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>FA-DSC-01</td>
+              <td>MUSS</td>
+              <td>Bürger:innen können sich mit BB-01 Identity (eID/BundID) am DSC anmelden.</td>
+            </tr>
+            <tr>
+              <td>FA-DSC-02</td>
+              <td>MUSS</td>
+              <td>Anzeige aller Datenabrufe: Wer (Behörde), Wann (Zeitstempel), Was (Datenfelder), Warum
+                (Rechtsgrundlage).</td>
+            </tr>
+            <tr>
+              <td>FA-DSC-03</td>
+              <td>MUSS</td>
+              <td>Filterung nach Zeitraum, Behörde, Nachweistyp.</td>
+            </tr>
+            <tr>
+              <td>FA-DSC-04</td>
+              <td>SOLL</td>
+              <td>Push-Benachrichtigung (via BB-03 Postfach) bei jedem Datenabruf, konfigurierbar.</td>
+            </tr>
+            <tr>
+              <td>FA-DSC-05</td>
+              <td>SOLL</td>
+              <td>Widerspruchsfunktion: Bürger:innen können bei Verdacht auf unrechtmäßigen Zugriff direkt Widerspruch
+                einlegen.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>6.4 EU-OOTS-Interoperabilität (FA-EU)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Prio</th>
+              <th>Anforderung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>FA-EU-01</td>
+              <td>MUSS</td>
+              <td>Intermediäre Plattform übersetzt NOOTS-interne Anfragen in EU-OOTS Evidence Exchange Requests.</td>
+            </tr>
+            <tr>
+              <td>FA-EU-02</td>
+              <td>MUSS</td>
+              <td>Anbindung an EU Evidence Broker und Data Service Directory (DSD).</td>
+            </tr>
+            <tr>
+              <td>FA-EU-03</td>
+              <td>MUSS</td>
+              <td>Empfang von grenzüberschreitenden Evidence Requests und Weiterleitung an zuständige deutsche Data
+                Provider.</td>
+            </tr>
+            <tr>
+              <td>FA-EU-04</td>
+              <td>SOLL</td>
+              <td>Semantische Transformation zwischen XNachweis und EU Evidence Exchange Data Model (EDM).</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>6.5 SAK-Betrieb (FA-SAK)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Prio</th>
+              <th>Anforderung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>FA-SAK-01</td>
+              <td>MUSS</td>
+              <td>SAK wird als Container-Image zentral bereitgestellt und dezentral im Verantwortungsbereich des
+                Teilnehmers betrieben.</td>
+            </tr>
+            <tr>
+              <td>FA-SAK-02</td>
+              <td>MUSS</td>
+              <td>Mandantenfähigkeit: Ein SAK kann mehrere Data Provider/Consumer bedienen.</td>
+            </tr>
+            <tr>
+              <td>FA-SAK-03</td>
+              <td>MUSS</td>
+              <td>Automatische Updates: SAK-Software wird über zentrale Registry aktualisiert (Rolling Updates).</td>
+            </tr>
+            <tr>
+              <td>FA-SAK-04</td>
+              <td>MUSS</td>
+              <td>Health-Check und Monitoring: SAK meldet Status an zentrales NOOTS-Monitoring.</td>
+            </tr>
+            <tr>
+              <td>FA-SAK-05</td>
+              <td>SOLL</td>
+              <td>Offline-Resilience: SAK puffert Anfragen bei temporärer Backbone-Unterbrechung.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ═══════════════════════ §7 DATENMODELL ═══════════════════════ -->
+        <h2 id="datenmodell">§7 Datenmodell</h2>
+
+        <h3>7.1 Nachweisanfrage (Evidence Request)</h3>
+        <pre><code>{
+  "request_id": "req-2026-02-24-abc123",
+  "timestamp": "2026-02-24T15:30:00Z",
+  "consumer": {
+    "organisation_id": "de.bund.bva",
+    "sak_id": "sak-bva-001",
+    "user_id": "sachbearbeiter@bva.bund.de",
+    "legal_basis": "SGB X §67a Abs. 2"
+  },
+  "subject": {
+    "id_type": "idnr",
+    "id_value": "12345678901",
+    "matching_criteria": {
+      "family_name": "Mustermann",
+      "date_of_birth": "1990-01-15"
+    }
+  },
+  "evidence_type": "de.register.meldewesen.meldebescheinigung",
+  "requested_fields": [
+    "current_address",
+    "registration_date",
+    "family_status"
+  ],
+  "purpose": "Wohngeld-Antrag, Aktenzeichen WG-2026-789"
+}</code></pre>
+
+        <h3>7.2 Nachweisantwort (Evidence Response)</h3>
+        <pre><code>{
+  "response_id": "res-2026-02-24-xyz789",
+  "request_id": "req-2026-02-24-abc123",
+  "timestamp": "2026-02-24T15:30:01.234Z",
+  "provider": {
+    "organisation_id": "de.land.nrw.koeln.meldeamt",
+    "sak_id": "sak-koeln-003",
+    "register_id": "de.register.meldewesen"
+  },
+  "status": "success",
+  "evidence": {
+    "format": "xnachweis/v2",
+    "data": {
+      "current_address": {
+        "street": "Musterstraße 42",
+        "postal_code": "50667",
+        "city": "Köln",
+        "country": "DE"
+      },
+      "registration_date": "2023-06-15",
+      "family_status": "verheiratet"
+    },
+    "validity": {
+      "issued_at": "2026-02-24T15:30:01Z",
+      "valid_until": "2026-05-24T15:30:01Z"
+    }
+  },
+  "audit": {
+    "dsc_notification_sent": true,
+    "audit_trail_id": "audit-2026-02-24-def456"
+  }
+}</code></pre>
+
+        <h3>7.3 Registerdatennavigation – Katalog-Eintrag</h3>
+        <pre><code>{
+  "provider_id": "de.land.nrw.koeln.meldeamt",
+  "register_type": "de.register.meldewesen",
+  "evidence_types": [
+    "de.register.meldewesen.meldebescheinigung",
+    "de.register.meldewesen.erweiterte_meldebescheinigung"
+  ],
+  "jurisdiction": {
+    "level": "kommune",
+    "region": "DE-NW-K",
+    "name": "Stadt Köln"
+  },
+  "sak_endpoint": "https://sak.koeln.de/noots/v1",
+  "supported_formats": ["xnachweis/v2", "eu-edm/v1"],
+  "status": "active",
+  "last_health_check": "2026-02-24T15:00:00Z"
+}</code></pre>
+
+        <h3>7.4 DSC-Eintrag (Datenschutzcockpit)</h3>
+        <pre><code>{
+  "dsc_entry_id": "dsc-2026-02-24-ghi012",
+  "subject_idnr": "12345678901",
+  "consumer": {
+    "name": "Bundesverwaltungsamt",
+    "department": "Referat Wohngeld"
+  },
+  "timestamp": "2026-02-24T15:30:01Z",
+  "evidence_type": "Meldebescheinigung",
+  "fields_accessed": ["current_address", "registration_date", "family_status"],
+  "legal_basis": "SGB X §67a Abs. 2",
+  "purpose": "Prüfung Wohngeld-Antrag",
+  "objection_status": "none"
+}</code></pre>
+
+        <!-- ═══════════════════════ §8 SERVICE-APIs ═══════════════════════ -->
+        <h2 id="service-apis">§8 Service-APIs</h2>
+
+        <h3>8.1 API-Übersicht</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>API</th>
+              <th>Typ</th>
+              <th>Zweck</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Consumer-SAK API</strong></td>
+              <td>REST/JSON (OpenAPI 3.1)</td>
+              <td>Fachverfahren → SAK: Nachweisanfrage stellen, Ergebnis empfangen</td>
+            </tr>
+            <tr>
+              <td><strong>Provider-SAK API</strong></td>
+              <td>REST/JSON (OpenAPI 3.1)</td>
+              <td>SAK → Register: Daten beim Data Provider abfragen</td>
+            </tr>
+            <tr>
+              <td><strong>Backbone API</strong></td>
+              <td>REST/JSON (intern)</td>
+              <td>SAK ↔ NOOTS-Backbone: Routing, Matching, Audit</td>
+            </tr>
+            <tr>
+              <td><strong>Navigation API</strong></td>
+              <td>REST/JSON (OpenAPI 3.1)</td>
+              <td>Discovery: Data Provider für Nachweistyp finden</td>
+            </tr>
+            <tr>
+              <td><strong>DSC API</strong></td>
+              <td>REST/JSON (OpenAPI 3.1)</td>
+              <td>Bürger:innen-Frontend: Abrufhistorie einsehen</td>
+            </tr>
+            <tr>
+              <td><strong>IDA API</strong></td>
+              <td>REST/JSON</td>
+              <td>IDNr-Abfrage und Basisdaten-Matching (BVA)</td>
+            </tr>
+            <tr>
+              <td><strong>EU-OOTS Gateway API</strong></td>
+              <td>REST/XML+JSON</td>
+              <td>Intermediäre Plattform ↔ EU-OOTS Evidence Exchange</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>8.2 Consumer-SAK API (Auszug)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Methode</th>
+              <th>Endpunkt</th>
+              <th>Beschreibung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>POST</td>
+              <td>/api/v1/evidence/request</td>
+              <td>Nachweisdatenanfrage stellen</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/api/v1/evidence/request/{id}</td>
+              <td>Status einer laufenden Anfrage abfragen</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/api/v1/evidence/request/{id}/response</td>
+              <td>Nachweisantwort abrufen</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/api/v1/navigation/providers?type={evidenceType}&amp;region={regionCode}</td>
+              <td>Zuständigen Data Provider suchen</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/api/v1/navigation/evidence-types</td>
+              <td>Alle verfügbaren Nachweistypen auflisten</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td>/api/v1/health</td>
+              <td>SAK-Health-Check</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>8.3 Nachweisdatenabruf (Sequenzdiagramm)</h3>
+        <pre><code>
+Fachverfahren     Consumer-SAK      NOOTS-Backbone    Registerdaten-     Provider-SAK      Register
+(Behörde)                                              navigation                          (Data Provider)
+    │                  │                  │                  │                  │                  │
+    │ POST /evidence/  │                  │                  │                  │                  │
+    │ request ────────►│                  │                  │                  │                  │
+    │                  │                  │                  │                  │                  │
+    │                  │ Authentifizierung │                  │                  │                  │
+    │                  │ (mTLS + OAuth2)  │                  │                  │                  │
+    │                  │─────────────────►│                  │                  │                  │
+    │                  │                  │                  │                  │                  │
+    │                  │                  │ GET /providers?   │                  │                  │
+    │                  │                  │ type=...&region= │                  │                  │
+    │                  │                  │─────────────────►│                  │                  │
+    │                  │                  │                  │                  │                  │
+    │                  │                  │ Provider-SAK-URL ◄│                  │                  │
+    │                  │                  │                  │                  │                  │
+    │                  │                  │ Route Request    │                  │                  │
+    │                  │                  │──────────────────────────────────►│                  │
+    │                  │                  │                  │                  │                  │
+    │                  │                  │                  │                  │ Query Register   │
+    │                  │                  │                  │                  │─────────────────►│
+    │                  │                  │                  │                  │                  │
+    │                  │                  │                  │                  │ Register Data  ◄─│
+    │                  │                  │                  │                  │                  │
+    │                  │                  │                  │                  │ Transform →      │
+    │                  │                  │                  │                  │ XNachweis        │
+    │                  │                  │                  │                  │                  │
+    │                  │                  │ Evidence Response│                  │                  │
+    │                  │                  │◄────────────────────────────────── │                  │
+    │                  │                  │                  │                  │                  │
+    │                  │                  │ Audit-Trail +    │                  │                  │
+    │                  │                  │ DSC-Notification │                  │                  │
+    │                  │                  │                  │                  │                  │
+    │                  │ Evidence Response│                  │                  │                  │
+    │                  │◄─────────────── │                  │                  │                  │
+    │                  │                  │                  │                  │                  │
+    │ Response ◄───────│                  │                  │                  │                  │
+    │ (XNachweis)      │                  │                  │                  │                  │
+                </code></pre>
+
+        <!-- ═══════════════════════ §9 INTERNE WORKFLOWS ═══════════════════════ -->
+        <h2 id="workflows">§9 Interne Workflows</h2>
+
+        <h3>9.1 Data Provider Onboarding</h3>
+        <pre><code>
+┌──────────────────────────────────────────────────────────────────────────────┐
+│  Registerführende Stelle schließt sich an NOOTS an                           │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  1. Antrag über Self-Service-Portal:                                         │
+│     → Organisation, Register, Nachweistypen, SAK-Infrastruktur              │
+│                                                                              │
+│  2. Automatisierte Prüfung der Anschlussbedingungen:                        │
+│     → Netzwerkanbindung, Zertifikate (föderale PKI), Rechtsgrundlage        │
+│                                                                              │
+│  3. SAK-Bereitstellung:                                                      │
+│     → Container-Image von zentraler Registry herunterladen                   │
+│     → In eigener Infrastruktur deployen                                      │
+│     → Konfiguration über Self-Service-Portal                                │
+│                                                                              │
+│  4. Registeranbindung:                                                       │
+│     → Provider-SAK-Adapter für registerinternes API konfigurieren           │
+│     → Datenmapping: Register-Schema → XNachweis definieren                  │
+│                                                                              │
+│  5. Integration-Test:                                                        │
+│     → Automatisierter Smoke-Test über NOOTS-Testumgebung                    │
+│     → Nachweisanfrage mit Testdaten senden/empfangen                        │
+│                                                                              │
+│  6. Eintrag in Registerdatennavigation:                                     │
+│     → Data Provider wird im Katalog veröffentlicht                          │
+│     → Nachweistypen mit Zuständigkeitsgebiet verknüpft                      │
+│                                                                              │
+│  7. Produktivbetrieb:                                                        │
+│     → SAK-Monitoring aktiv                                                   │
+│     → Health-Checks an NOOTS-Backbone                                       │
+│     → Audit-Trail-Logging aktiv                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+                </code></pre>
+
+        <h3>9.2 EU-OOTS grenzüberschreitender Nachweis</h3>
+        <pre><code>
+EU-Mitgliedstaat (z.B. FR)                      NOOTS (DE)
+         │                                          │
+         │  Evidence Request                        │
+         │  (SDG-VO, EU-OOTS) ────────────────────►│
+         │                                          │
+         │                              Intermediäre Plattform
+         │                              empfängt Request
+         │                                          │
+         │                              Mapping: EU-EDM → XNachweis
+         │                                          │
+         │                              Routing über Registerdaten-
+         │                              navigation → Provider-SAK
+         │                                          │
+         │                              Data Provider liefert Nachweis
+         │                                          │
+         │                              Rückübersetzung: XNachweis → EU-EDM
+         │                                          │
+         │  Evidence Response                       │
+         │  ◄──────────────────────────────────────│
+         │                                          │
+         │                              DSC-Eintrag für Bürger:in
+         │                              (grenzüberschreitender Abruf)
+                </code></pre>
+
+        <!-- ═══════════════════════ §10 KONFORMITÄTSKRITERIEN ═══════════════════════ -->
+        <h2 id="konformitätskriterien">§10 Konformitätskriterien</h2>
+
+        <h3>Level 1 – MUSS (Grundkonformität)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Kriterium</th>
+              <th>Prüfmethode</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>KON-01</td>
+              <td>SAK-API (Consumer + Provider) vollständig implementiert</td>
+              <td>API-Conformance-Test-Suite</td>
+            </tr>
+            <tr>
+              <td>KON-02</td>
+              <td>mTLS mit föderaler PKI für alle SAK-Verbindungen</td>
+              <td>Zertifikatsprüfung, TLS-Scan</td>
+            </tr>
+            <tr>
+              <td>KON-03</td>
+              <td>Audit-Trail für jeden Datenabruf erzeugt</td>
+              <td>Audit-Log-Analyse</td>
+            </tr>
+            <tr>
+              <td>KON-04</td>
+              <td>DSC-Notification bei jedem Datenabruf ausgelöst</td>
+              <td>DSC-Integration-Test</td>
+            </tr>
+            <tr>
+              <td>KON-05</td>
+              <td>XNachweis-Format für Nachweisantworten</td>
+              <td>Schema-Validierung</td>
+            </tr>
+            <tr>
+              <td>KON-06</td>
+              <td>Kein persistentes Caching von Nachweisdaten auf SAK</td>
+              <td>Storage-Audit nach Transaktion</td>
+            </tr>
+            <tr>
+              <td>KON-07</td>
+              <td>IDNr-basiertes Matching funktional</td>
+              <td>End-to-End Matching-Test</td>
+            </tr>
+            <tr>
+              <td>KON-08</td>
+              <td>Registerdatennavigation liefert korrekte Provider</td>
+              <td>Discovery-Routing-Test</td>
+            </tr>
+            <tr>
+              <td>KON-09</td>
+              <td>Health-Check-Endpunkt verfügbar und aktiv</td>
+              <td>Monitoring-Integration-Test</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Level 2 – SOLL (Erweiterte Konformität)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Kriterium</th>
+              <th>Prüfmethode</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>KON-10</td>
+              <td>EU-OOTS-Evidence-Exchange funktional (SDG-VO)</td>
+              <td>Cross-Border-Interop-Test</td>
+            </tr>
+            <tr>
+              <td>KON-11</td>
+              <td>Batch-Abruf für mehrere Nachweistypen</td>
+              <td>Multi-Evidence-Request-Test</td>
+            </tr>
+            <tr>
+              <td>KON-12</td>
+              <td>Semantische Transformation XNachweis ↔ EU-EDM</td>
+              <td>Format-Roundtrip-Validierung</td>
+            </tr>
+            <tr>
+              <td>KON-13</td>
+              <td>SAK-Auto-Update über zentrale Registry</td>
+              <td>Rolling-Update-Test</td>
+            </tr>
+            <tr>
+              <td>KON-14</td>
+              <td>Offline-Resilience: Request-Buffering bei Backbone-Ausfall</td>
+              <td>Failover-Szenario-Test</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ═══════════════════════ §11 REFERENZEN ═══════════════════════ -->
+        <h2 id="referenzen">§11 Referenzen &amp; Ressourcen</h2>
+
+        <h3>Normative Referenzen</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Referenz</th>
+              <th>Titel</th>
+              <th>Relevanz</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="https://www.gesetze-im-internet.de/idnrg/">IDNrG</a></td>
+              <td>Identifikationsnummerngesetz</td>
+              <td>Rechtsgrundlage für registerübergreifendes Ordnungsmerkmal</td>
+            </tr>
+            <tr>
+              <td><a href="https://www.gesetze-im-internet.de/regmog/">RegMoG</a></td>
+              <td>Registermodernisierungsgesetz</td>
+              <td>Rechtsgrundlage für Registervernetzung und DSC</td>
+            </tr>
+            <tr>
+              <td><a href="https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32018R1724">SDG-VO (EU)
+                  2018/1724</a></td>
+              <td>Single Digital Gateway Verordnung</td>
+              <td>EU-OOTS, grenzüberschreitender Evidence Exchange</td>
+            </tr>
+            <tr>
+              <td><a href="https://www.bsi.bund.de/TR-02102">BSI TR-02102</a></td>
+              <td>Kryptographische Verfahren</td>
+              <td>TLS, Algorithmenauswahl für SAK</td>
+            </tr>
+            <tr>
+              <td>DSGVO</td>
+              <td>Datenschutz-Grundverordnung</td>
+              <td>Datensparsamkeit, Zweckbindung, Transparenz</td>
+            </tr>
+            <tr>
+              <td>eIDAS 2.0</td>
+              <td>EU-Verordnung über elektronische Identifizierung</td>
+              <td>Trust Services, PKI für SAK-Zertifikate</td>
+            </tr>
+            <tr>
+              <td>NOOTS-Staatsvertrag (2024)</td>
+              <td>Staatsvertrag Bund-Länder zur NOOTS-Einführung</td>
+              <td>Organisatorische und rechtliche Grundlage</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Architektur-Dokumentation</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Dokument</th>
+              <th>Quelle</th>
+              <th>Inhalt</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>AD-NOOTS-03 (HLA)</td>
+              <td><a href="https://noots.gov.de">noots.gov.de</a></td>
+              <td>High-Level Architecture: Gesamtarchitektur, Komponentenübersicht</td>
+            </tr>
+            <tr>
+              <td>SAK-API-Spezifikation</td>
+              <td><a href="https://gitlab.opencode.de">OpenCoDE GitLab</a></td>
+              <td>REST-API-Definition für Consumer- und Provider-SAK</td>
+            </tr>
+            <tr>
+              <td>EU-OOTS HLA v1.1.2</td>
+              <td><a href="https://ec.europa.eu/digital-building-blocks/sites/display/OOTS/">EU SDG/OOTS</a></td>
+              <td>Europäische Gesamtarchitektur, Common Services, Evidence Exchange</td>
+            </tr>
+            <tr>
+              <td>XNachweis Spezifikation</td>
+              <td>FITKO / IT-PLR</td>
+              <td>Standardisiertes Datenformat für Nachweisdaten</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>GovStack-Mapping</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>GovStack BB</th>
+              <th>NOOTS-Äquivalent</th>
+              <th>Anmerkung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Digital Registries BB</td>
+              <td>NOOTS (gesamt)</td>
+              <td>GovStack fokussiert auf Registry-CRUD; NOOTS fokussiert auf Nachweisdatenaustausch</td>
+            </tr>
+            <tr>
+              <td>REG-QUERY</td>
+              <td>Consumer-SAK API POST /evidence/request</td>
+              <td>Automatisierter Nachweisabruf</td>
+            </tr>
+            <tr>
+              <td>REG-DISCOVER</td>
+              <td>Registerdatennavigation</td>
+              <td>Data Service Directory-Äquivalent</td>
+            </tr>
+            <tr>
+              <td>Information Mediator BB</td>
+              <td>NOOTS-Backbone + SAK</td>
+              <td>Routing, Authentifizierung, Audit</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Referenzimplementierungen</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Komponente</th>
+              <th>Implementierung</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>NOOTS MVP</td>
+              <td>FITKO / BVA</td>
+              <td>Inbetriebnahme Q1/2026</td>
+            </tr>
+            <tr>
+              <td>SAK</td>
+              <td>Container-Image (zentral bereitgestellt)</td>
+              <td>Erste Anbindung April 2025</td>
+            </tr>
+            <tr>
+              <td>Datenschutzcockpit</td>
+              <td>FITKO / BMI</td>
+              <td>Pilotierung 2025</td>
+            </tr>
+            <tr>
+              <td>IDA-Verfahren</td>
+              <td>BVA</td>
+              <td>Produktiv für Top-19-Register</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="pagination">
+          <a class="pagination__link pagination__link--prev" href="../bb-wallet/index.html">
+            <span class="pagination__dir">← Zurück</span>
+            <span class="pagination__title">BB-05 · EUDI Wallet</span>
+          </a>
+          <a class="pagination__link pagination__link--next" href="../bb-api-gateway/index.html">
+            <span class="pagination__dir">Weiter →</span>
+            <span class="pagination__title">BB-07 · API-Gateway</span>
+          </a>
+        </div>
+
+        <div class="page-footer">
+          <div class="page-footer__meta">Apache-2.0 · Version 0.3 DRAFT</div>
+          <div class="page-footer__feedback">
+            <span class="page-footer__feedback-label">Hilfreich?</span>
+            <div class="page-footer__feedback-btns">
+              <button class="feedback-btn">👍</button>
+              <button class="feedback-btn">👎</button>
+            </div>
           </div>
         </div>
-      </div>
 
-      
-      <h2 id="beschreibung">2  Beschreibung</h2>
-      <p style="color:var(--color-text-secondary)">Inhalte werden ergänzt.</p>
+      </article>
 
-      <h2 id="schluessel-funktionalitaeten">4  Schlüsselfunktionalitäten</h2>
-      <p style="color:var(--color-text-secondary)">Inhalte werden ergänzt.</p>
-
-      <h2 id="funktionale-anforderungen">6  Funktionale Anforderungen</h2>
-      <p style="color:var(--color-text-secondary)">Inhalte werden ergänzt.</p>
-
-      <h2 id="service-apis">8  Service-APIs</h2>
-      <p style="color:var(--color-text-secondary)">OpenAPI-Spezifikation wird ergänzt.</p>
-
-
-      <div class="pagination">
-        <a class="pagination__link pagination__link--prev" href="bb-wallet/index.html">
-          <span class="pagination__dir">← Zurück</span>
-          <span class="pagination__title">BB-05 · EUDI Wallet</span>
-        </a>
-        <a class="pagination__link pagination__link--next" href="bb-api-gateway/index.html">
-          <span class="pagination__dir">Weiter →</span>
-          <span class="pagination__title">BB-07 · API-Gateway</span>
-        </a>
-      </div>
-
-      <div class="page-footer">
-        <div class="page-footer__meta">Apache-2.0 · Version 0.1 DRAFT</div>
-        <div class="page-footer__feedback">
-          <span class="page-footer__feedback-label">Hilfreich?</span>
-          <div class="page-footer__feedback-btns">
-            <button class="feedback-btn">👍</button>
-            <button class="feedback-btn">👎</button>
-          </div>
+      <aside class="content__toc">
+        <div class="toc" id="toc">
+          <div class="toc__title">Auf dieser Seite</div>
+          <ul class="toc__list"></ul>
         </div>
-      </div>
+      </aside>
+    </main>
+  </div>
 
-    </article>
-    <aside class="content__toc">
-      <div class="toc" id="toc">
-        <div class="toc__title">Auf dieser Seite</div>
-        <ul class="toc__list"></ul>
-      </div>
-    </aside>
-  </main>
-
-</div>
-
-<script src="../../assets/js/shell.js"></script>
-<script src="../../assets/js/site.js"></script>
+  <script src="../../assets/js/shell.js"></script>
+  <script src="../../assets/js/site.js"></script>
 </body>
+
 </html>
