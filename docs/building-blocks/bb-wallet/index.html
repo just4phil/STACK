@@ -1,95 +1,1328 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BB-05 · EUDI Wallet – VerwDigiStack Spezifikation</title>
-  <meta name="description" content="EU Digital Identity Wallet nach eIDAS 2.0. Verifiable Credentials, SD-JWT.">
+  <meta name="description"
+    content="Spezifikation des EUDI Wallet Building Blocks: EU Digital Identity Wallet nach eIDAS 2.0, ARF 2.0, SD-JWT, mdoc, OpenID4VP/VCI.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="../../assets/css/tokens.css">
   <link rel="stylesheet" href="../../assets/css/main.css">
 </head>
+
 <body>
-<script>window.PAGE_META = { title: 'BB-05 · EUDI Wallet', section: 'Building Block' };</script>
+  <script>window.PAGE_META = { title: 'BB-05 · EUDI Wallet', section: 'Building Blocks' };</script>
+  <div class="layout">
+    <main class="content">
+      <article class="content__main prose">
 
-<div class="layout">
-
-  <main class="content">
-    <article class="content__main prose">
-
-      <div class="prose-header">
-        <div class="prose-header__breadcrumb">
-          <a href="../../index.html">VerwDigiStack</a><span class="prose-header__breadcrumb-sep">/</span><a href="../index.html">Building Blocks</a><span class="prose-header__breadcrumb-sep">/</span><span>BB-05 · EUDI Wallet</span>
+        <div class="prose-header">
+          <div class="prose-header__breadcrumb">
+            <a href="../../index.html">VerwDigiStack</a>
+            <span class="prose-header__breadcrumb-sep">/</span>
+            <a href="../index.html">Building Blocks</a>
+            <span class="prose-header__breadcrumb-sep">/</span>
+            <span>BB-05 · EUDI Wallet</span>
+          </div>
+          <div class="prose-header__meta">
+            <span class="prose-header__tag prose-header__tag--building-block">◈ Building Block</span>
+            <span class="prose-header__tag prose-header__tag--draft">DRAFT</span>
+            <span class="prose-header__version">Version 0.3</span>
+          </div>
+          <h1>BB-05 · EUDI Wallet</h1>
+          <p>
+            European Digital Identity Wallet nach <strong>eIDAS 2.0</strong>
+            (Verordnung (EU) 2024/1183). Verifiable Credentials in <strong>SD-JWT VC</strong>
+            und <strong>mdoc/ISO 18013-5</strong>, Issuance via <strong>OpenID4VCI</strong>,
+            Presentation via <strong>OpenID4VP</strong>, hardwaregebundene Schlüssel
+            (<strong>WSCD/WSCA</strong>), Selective Disclosure und Zero-Knowledge-Proofs –
+            eingebettet in das EU Trust Framework mit Trusted Lists und
+            Attestation Status/Revocation Lists.
+          </p>
         </div>
-        <div class="prose-header__meta">
-          <span class="prose-header__tag prose-header__tag--building-block">◈ Building Block</span>
-          <span class="prose-header__tag prose-header__tag--draft">DRAFT</span>
-        </div>
-        <h1>BB-05 · EUDI Wallet</h1>
-        <p>EU Digital Identity Wallet nach eIDAS 2.0. Verifiable Credentials, SD-JWT.</p>
-      </div>
 
-      <div class="callout callout--warning">
-        <div class="callout__icon">✏</div>
-        <div class="callout__content">
-          <div class="callout__title">Seite wird ausgefüllt</div>
-          <div class="callout__body">
-            Dieser Abschnitt ist als Platzhalter angelegt und wird sukzessive befüllt.
-            Die Struktur folgt dem einheitlichen BB-Template (11 Abschnitte).
+        <!-- ═══════════════════════ §1 VERSIONSHISTORIE ═══════════════════════ -->
+        <h2 id="versionshistorie">§1 Versionshistorie</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Version</th>
+              <th>Datum</th>
+              <th>Änderung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>0.1</td>
+              <td>2025-06-01</td>
+              <td>Initiales Stub (Platzhalter, 4 Abschnitte)</td>
+            </tr>
+            <tr>
+              <td>0.2</td>
+              <td>2025-10-01</td>
+              <td>ARF 1.4 integriert, Credential-Formate skizziert</td>
+            </tr>
+            <tr>
+              <td><strong>0.3</strong></td>
+              <td><strong>2026-02-24</strong></td>
+              <td><strong>Vollständige Spezifikation: ARF 2.0, eIDAS 2.0, SD-JWT + mdoc Dual-Format, OpenID4VP/VCI,
+                  WSCD/WSCA, Trust Framework, alle 11 Abschnitte</strong></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ═══════════════════════ §2 BESCHREIBUNG ═══════════════════════ -->
+        <h2 id="beschreibung">§2 Beschreibung</h2>
+
+        <h3>Zweck</h3>
+        <p>
+          BB-05 spezifiziert die <strong>EUDI Wallet</strong> als zentrale
+          Benutzerschnittstelle für die digitale Identität in der europäischen und
+          deutschen Verwaltung. Die Wallet ermöglicht es Bürger:innen,
+          <strong>Person Identification Data (PID)</strong> und beliebige
+          <strong>Attestations (Verifiable Credentials)</strong> sicher auf ihrem
+          Endgerät zu speichern, zu verwalten und bei Bedarf selektiv vorzuzeigen –
+          sowohl online als auch offline, national wie grenzüberschreitend.
+        </p>
+        <p>
+          Die EUDI Wallet ist <strong>keine einzelne App</strong>, sondern ein
+          zertifizierbares Ökosystem aus Wallet Provider, PID Provider, Attestation
+          Providern, Relying Parties und einem EU-weiten Trust Framework. Deutschland
+          setzt dies mit der <strong>staatlichen EUDI Wallet</strong> (BMI/BSI) und
+          dem <strong>Funke-Innovationswettbewerb</strong> (SPRIND) um.
+        </p>
+
+        <h3>Architekturübersicht</h3>
+        <pre><code>
+┌──────────────────────────────────────────────────────────────────────────┐
+│                    EUDI Wallet Ökosystem                                 │
+│                                                                          │
+│                        ┌──────────────────┐                              │
+│                        │  Wallet Unit     │                              │
+│                        │  (Endgerät)      │                              │
+│                        │                  │                              │
+│                        │  ┌────────────┐  │                              │
+│                        │  │  WSCA      │  │  Wallet Secure               │
+│                        │  │  (App)     │  │  Cryptographic Application   │
+│                        │  └─────┬──────┘  │                              │
+│                        │        │         │                              │
+│                        │  ┌─────▼──────┐  │                              │
+│                        │  │  WSCD      │  │  Wallet Secure               │
+│                        │  │  (SE/TEE)  │  │  Cryptographic Device        │
+│                        │  └────────────┘  │                              │
+│                        │                  │                              │
+│                        │  Credentials:    │                              │
+│                        │  • PID (SD-JWT)  │                              │
+│                        │  • mDL (mdoc)    │                              │
+│                        │  • Diplome       │                              │
+│                        │  • Führerschein  │                              │
+│                        └────────┬─────────┘                              │
+│                                 │                                        │
+│              ┌──────────────────┼──────────────────┐                    │
+│              │                  │                  │                    │
+│              ▼                  ▼                  ▼                    │
+│   ┌──────────────────┐ ┌───────────────┐ ┌──────────────────┐          │
+│   │ PID Provider     │ │ Attestation   │ │ Relying Party    │          │
+│   │ (Staat / eID)    │ │ Provider      │ │ (Behörde, Bank,  │          │
+│   │                  │ │ (Uni, Firma,  │ │  Telko, ...)     │          │
+│   │ OpenID4VCI       │ │  Behörde)     │ │                  │          │
+│   │ → PID issuance   │ │ OpenID4VCI    │ │ OpenID4VP        │          │
+│   └──────────────────┘ └───────────────┘ │ → Presentation   │          │
+│                                           └──────────────────┘          │
+│                                                                          │
+│   ┌──────────────────────────────────────────────────────────────┐      │
+│   │               EU Trust Framework                              │      │
+│   │  ┌──────────┐  ┌──────────────┐  ┌────────────────────────┐  │      │
+│   │  │ Trusted   │  │ Wallet       │  │ Attestation Status/    │  │      │
+│   │  │ Lists     │  │ Provider     │  │ Revocation Lists       │  │      │
+│   │  │ (LOTL)    │  │ Zertifiz.    │  │ (ASL / ARL)            │  │      │
+│   │  └──────────┘  └──────────────┘  └────────────────────────┘  │      │
+│   └──────────────────────────────────────────────────────────────┘      │
+└──────────────────────────────────────────────────────────────────────────┘
+                </code></pre>
+
+        <h3>Abgrenzung</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>In-Scope</th>
+              <th>Out-of-Scope</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Wallet Unit (WSCA/WSCD, Credential Storage)</td>
+              <td>Identitätsfeststellung (eID) → BB-01 Identity</td>
+            </tr>
+            <tr>
+              <td>PID Issuance &amp; Management</td>
+              <td>Registerabruf → BB-06 NOOTS</td>
+            </tr>
+            <tr>
+              <td>Attestation Issuance (OpenID4VCI)</td>
+              <td>Sichere Nachrichtenübermittlung → BB-03 Postfach</td>
+            </tr>
+            <tr>
+              <td>Verifiable Presentation (OpenID4VP)</td>
+              <td>E-Signatur (QES) → BB-10 E-Signatur</td>
+            </tr>
+            <tr>
+              <td>Dual-Format: SD-JWT VC + mdoc</td>
+              <td>Consent-Management → BB-09 Consent</td>
+            </tr>
+            <tr>
+              <td>Trust Framework (Trusted Lists, Revocation)</td>
+              <td>Bezahlfunktionen → BB-04 Payment</td>
+            </tr>
+            <tr>
+              <td>Proximity &amp; Remote Presentation</td>
+              <td>Fachverfahrensspezifische Logik</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ═══════════════════════ §3 BEGRIFFE ═══════════════════════ -->
+        <h2 id="begriffe">§3 Begriffe &amp; Definitionen</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Begriff</th>
+              <th>Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>EUDI Wallet</strong></td>
+              <td>European Digital Identity Wallet. Sichere mobile Anwendung, mit der Bürger:innen sich EU-weit
+                identifizieren und Nachweise vorzeigen können.</td>
+            </tr>
+            <tr>
+              <td><strong>Wallet Unit</strong></td>
+              <td>Instanz der Wallet-Software auf einem konkreten Endgerät eines konkreten Nutzers.</td>
+            </tr>
+            <tr>
+              <td><strong>Wallet Provider</strong></td>
+              <td>Organisation, die die Wallet-Lösung bereitstellt und betreibt. In DE: Staat (BMI/BSI).</td>
+            </tr>
+            <tr>
+              <td><strong>PID</strong></td>
+              <td>Person Identification Data. Kernidentitätsdaten (Name, Geburtsdatum, Staatsangehörigkeit), staatlich
+                ausgestellt, LoA High.</td>
+            </tr>
+            <tr>
+              <td><strong>Attestation</strong></td>
+              <td>Verifiable Credential: digital signierter Nachweis eines Providers (Führerschein, Diplom,
+                Meldebestätigung etc.).</td>
+            </tr>
+            <tr>
+              <td><strong>SD-JWT VC</strong></td>
+              <td>Selective Disclosure JSON Web Token – Verifiable Credential. IETF-Standard für datensparme Vorzeigung
+                einzelner Claims.</td>
+            </tr>
+            <tr>
+              <td><strong>mdoc</strong></td>
+              <td>Mobile Document nach ISO/IEC 18013-5. Binäres Credential-Format (CBOR), primär für mDL und
+                Proximity-Szenarien.</td>
+            </tr>
+            <tr>
+              <td><strong>OpenID4VCI</strong></td>
+              <td>OpenID for Verifiable Credential Issuance. Protokoll zum Ausstellen von Credentials in die Wallet.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>OpenID4VP</strong></td>
+              <td>OpenID for Verifiable Presentations. Protokoll zum Vorzeigen von Credentials gegenüber Relying
+                Parties.</td>
+            </tr>
+            <tr>
+              <td><strong>WSCD</strong></td>
+              <td>Wallet Secure Cryptographic Device. Vertrauenswürdige Hardware (SE, TEE, eSIM) für kryptografische
+                Schlüssel.</td>
+            </tr>
+            <tr>
+              <td><strong>WSCA</strong></td>
+              <td>Wallet Secure Cryptographic Application. Sichere Software, die auf dem WSCD läuft und kryptografische
+                Operationen ausführt.</td>
+            </tr>
+            <tr>
+              <td><strong>ARF</strong></td>
+              <td>Architecture Reference Framework. EU-Referenzarchitektur für das EUDI-Wallet-Ökosystem (aktuell v2.0,
+                Mai 2025).</td>
+            </tr>
+            <tr>
+              <td><strong>Trusted List</strong></td>
+              <td>Von Mitgliedstaaten veröffentlichte Listen qualifizierter Vertrauensdiensteanbieter, PID-Provider,
+                Wallet-Provider.</td>
+            </tr>
+            <tr>
+              <td><strong>LOTL</strong></td>
+              <td>List of Trusted Lists. Von der EU-Kommission veröffentlichte Meta-Liste aller nationalen Trusted
+                Lists.</td>
+            </tr>
+            <tr>
+              <td><strong>ASL / ARL</strong></td>
+              <td>Attestation Status List / Attestation Revocation List. Mechanismen zur Statusprüfung und Sperrung von
+                Credentials.</td>
+            </tr>
+            <tr>
+              <td><strong>LoA High</strong></td>
+              <td>Level of Assurance High gemäß eIDAS. Höchste Vertrauensstufe für Identifizierung.</td>
+            </tr>
+            <tr>
+              <td><strong>Holder Binding</strong></td>
+              <td>Kryptografische Bindung eines Credentials an den Holder (via WSCD-Schlüssel). Verhindert
+                Credential-Transfer.</td>
+            </tr>
+            <tr>
+              <td><strong>Trust Mark</strong></td>
+              <td>Offizielles EU-Gütezeichen für zertifizierte EUDI Wallets.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ═══════════════════════ §4 SCHLÜSSELFUNKTIONALITÄTEN ═══════════════════════ -->
+        <h2 id="schlüsselfunktionalitäten">§4 Schlüsselfunktionalitäten</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>KDF-ID</th>
+              <th>Funktionalität</th>
+              <th>GovStack-Mapping</th>
+              <th>EUDI-Spezifik</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>KDF-01</td>
+              <td><strong>PID Issuance</strong></td>
+              <td>ID-ISSUE</td>
+              <td>Staatliche Stelle stellt PID (LoA High) via OpenID4VCI in die Wallet aus. Basierend auf
+                eID/BundID-Authentifizierung.</td>
+            </tr>
+            <tr>
+              <td>KDF-02</td>
+              <td><strong>Attestation Issuance</strong></td>
+              <td>CRED-ISSUE</td>
+              <td>Beliebige Provider stellen Credentials (Führerschein, Diplom, Meldebestätigung) via OpenID4VCI aus.
+                Dual-Format: SD-JWT VC + mdoc.</td>
+            </tr>
+            <tr>
+              <td>KDF-03</td>
+              <td><strong>Selective Disclosure</strong></td>
+              <td>CRED-PRESENT</td>
+              <td>Bürger:in zeigt nur benötigte Attribute vor (z.B. „Alter ≥ 18" ohne Geburtsdatum). SD-JWT:
+                claim-level, mdoc: namespace-level.</td>
+            </tr>
+            <tr>
+              <td>KDF-04</td>
+              <td><strong>Online Presentation</strong></td>
+              <td>CRED-PRESENT</td>
+              <td>Vorzeigung von Credentials über OpenID4VP (HTTPS) gegenüber Remote Relying Parties (Webportale,
+                Online-Dienste).</td>
+            </tr>
+            <tr>
+              <td>KDF-05</td>
+              <td><strong>Proximity Presentation</strong></td>
+              <td>CRED-PRESENT</td>
+              <td>Offline-Vorzeigung via NFC/BLE/QR-Code nach ISO 18013-5. Für Polizeikontrollen, Vor-Ort-Prüfungen.
+              </td>
+            </tr>
+            <tr>
+              <td>KDF-06</td>
+              <td><strong>Holder Binding</strong></td>
+              <td>CRED-BIND</td>
+              <td>Kryptografische Bindung jedes Credentials an WSCD-Schlüssel. Device-signierte Presentations.</td>
+            </tr>
+            <tr>
+              <td>KDF-07</td>
+              <td><strong>Revocation Check</strong></td>
+              <td>CRED-REVOKE</td>
+              <td>Relying Parties prüfen Credential-Status via ASL/ARL. Provider können Credentials sperren.</td>
+            </tr>
+            <tr>
+              <td>KDF-08</td>
+              <td><strong>Trust Verification</strong></td>
+              <td>TRUST-VERIFY</td>
+              <td>Wallet und Relying Parties validieren Gegenseite über EU Trusted Lists (LOTL). Mutual Trust.</td>
+            </tr>
+            <tr>
+              <td>KDF-09</td>
+              <td><strong>Cross-Border Recognition</strong></td>
+              <td>ID-CROSSBORDER</td>
+              <td>PID wird EU-weit anerkannt. Grenzüberschreitende Authentifizierung ohne nationale Vorregistrierung.
+              </td>
+            </tr>
+            <tr>
+              <td>KDF-10</td>
+              <td><strong>Credential Management</strong></td>
+              <td>CRED-MANAGE</td>
+              <td>Übersicht, Erneuerung, Löschung von Credentials im Wallet-UI. Benachrichtigung bei Ablauf.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ═══════════════════════ §5 QUERSCHNITTSANFORDERUNGEN ═══════════════════════ -->
+        <h2 id="querschnittsanforderungen">§5 Querschnittsanforderungen</h2>
+
+        <h3>5.1 Sicherheit</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Anforderung</th>
+              <th>Referenz</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>SEC-01</td>
+              <td>Private Schlüssel MÜSSEN in einem zertifizierten WSCD (SE, TEE, eSIM) gespeichert und verarbeitet
+                werden. Export ist nicht zulässig.</td>
+              <td>ARF 2.0, eIDAS Art. 5a</td>
+            </tr>
+            <tr>
+              <td>SEC-02</td>
+              <td>Wallet Unit MUSS vor jeder kryptografischen Operation die Nutzer-Authentifizierung verlangen
+                (Biometrie, PIN).</td>
+              <td>ARF 2.0 WSCA</td>
+            </tr>
+            <tr>
+              <td>SEC-03</td>
+              <td>Holder Binding: Jedes Credential MUSS kryptografisch an den WSCD-Schlüssel des Holders gebunden sein.
+              </td>
+              <td>ARF 2.0, SD-JWT KB</td>
+            </tr>
+            <tr>
+              <td>SEC-04</td>
+              <td>Wallet Provider MUSS die Wallet-Integrität zur Laufzeit überprüfen (Attestation,
+                App-Integrity-Checks).</td>
+              <td>ARF 2.0 WIA</td>
+            </tr>
+            <tr>
+              <td>SEC-05</td>
+              <td>TLS 1.3 für alle Remote-Kommunikation (OpenID4VCI, OpenID4VP). Certificate Pinning empfohlen.</td>
+              <td>BSI TR-02102-2</td>
+            </tr>
+            <tr>
+              <td>SEC-06</td>
+              <td>Credentials MÜSSEN lokal verschlüsselt gespeichert werden (AES-256-GCM, Schlüssel im WSCD).</td>
+              <td>BSI TR-02102-1</td>
+            </tr>
+            <tr>
+              <td>SEC-07</td>
+              <td>Wallet MUSS zertifiziert sein (CC EAL4+ oder gleichwertig) und das EU Trust Mark tragen.</td>
+              <td>eIDAS Art. 5c</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>5.2 Datenschutz</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Anforderung</th>
+              <th>Referenz</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>PRI-01</td>
+              <td>Selective Disclosure: Bürger:innen MÜSSEN wählen können, welche Attribute sie vorzeigen. Nur
+                angeforderte Felder werden übermittelt.</td>
+              <td>eIDAS Art. 5a(4), DSGVO Art. 5</td>
+            </tr>
+            <tr>
+              <td>PRI-02</td>
+              <td>Unlinkability: Wallet SOLL verhindern, dass Provider nachvollziehen können, bei welchen Relying
+                Parties Credentials vorgezeigt werden.</td>
+              <td>ARF 2.0 Privacy</td>
+            </tr>
+            <tr>
+              <td>PRI-03</td>
+              <td>Pseudonyme Presentations: Wallet SOLL pseudonyme Identifikatoren unterstützen, wenn kein PID
+                erforderlich ist.</td>
+              <td>eIDAS Art. 5a(5)</td>
+            </tr>
+            <tr>
+              <td>PRI-04</td>
+              <td>Keine Tracking-Möglichkeit: Wallet Provider DARF NICHT nachvollziehen können, wo und wann Credentials
+                genutzt werden.</td>
+              <td>eIDAS Art. 5a(14)</td>
+            </tr>
+            <tr>
+              <td>PRI-05</td>
+              <td>Datenhaltung: Alle Credentials verbleiben ausschließlich auf dem Endgerät. Kein Cloud-Backup ohne
+                explizite Nutzerentscheidung.</td>
+              <td>DSGVO Art. 25</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>5.3 SLA &amp; Performance</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Metrik</th>
+              <th>Ziel</th>
+              <th>Anmerkung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>PID Issuance</td>
+              <td>≤ 10s</td>
+              <td>Inkl. eID-Authentifizierung, OpenID4VCI-Flow</td>
+            </tr>
+            <tr>
+              <td>Online Presentation</td>
+              <td>≤ 3s</td>
+              <td>OpenID4VP Request → Response</td>
+            </tr>
+            <tr>
+              <td>Proximity Presentation (NFC)</td>
+              <td>≤ 2s</td>
+              <td>Tap → Credential-Übertragung</td>
+            </tr>
+            <tr>
+              <td>Revocation Check</td>
+              <td>≤ 500ms</td>
+              <td>ASL/ARL-Abfrage durch Relying Party</td>
+            </tr>
+            <tr>
+              <td>Wallet-Verfügbarkeit</td>
+              <td>≥ 99,5 %</td>
+              <td>Backend-Services (Issuance, Status)</td>
+            </tr>
+            <tr>
+              <td>Offline-Fähigkeit</td>
+              <td>100 %</td>
+              <td>Proximity Presentation ohne Netzwerk</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ═══════════════════════ §6 FUNKTIONALE ANFORDERUNGEN ═══════════════════════ -->
+        <h2 id="funktionale-anforderungen">§6 Funktionale Anforderungen</h2>
+
+        <h3>6.1 PID &amp; Credential Issuance (FA-ISS)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Prio</th>
+              <th>Anforderung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>FA-ISS-01</td>
+              <td>MUSS</td>
+              <td>PID Issuance via OpenID4VCI mit Authorization Code Flow + PKCE. PID Provider authentifiziert Nutzer
+                über eID (LoA High).</td>
+            </tr>
+            <tr>
+              <td>FA-ISS-02</td>
+              <td>MUSS</td>
+              <td>PID wird als SD-JWT VC ausgestellt. Claims: family_name, given_name, birth_date, nationality,
+                age_over_18, issuance_date, expiry_date.</td>
+            </tr>
+            <tr>
+              <td>FA-ISS-03</td>
+              <td>MUSS</td>
+              <td>Attestation Issuance: Beliebige Provider können Credentials via OpenID4VCI ausstellen. Deferred
+                Issuance für asynchrone Prozesse.</td>
+            </tr>
+            <tr>
+              <td>FA-ISS-04</td>
+              <td>MUSS</td>
+              <td>Dual-Format: Jedes Credential SOLL sowohl als SD-JWT VC als auch als mdoc verfügbar sein.</td>
+            </tr>
+            <tr>
+              <td>FA-ISS-05</td>
+              <td>MUSS</td>
+              <td>Credential-Binding: Bei Issuance wird der öffentliche Schlüssel des WSCD in das Credential eingebettet
+                (cnf claim / DeviceKey).</td>
+            </tr>
+            <tr>
+              <td>FA-ISS-06</td>
+              <td>SOLL</td>
+              <td>Batch Issuance: Mehrere Credentials in einer Session ausstellen (z.B. PID + mDL gleichzeitig).</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>6.2 Verifiable Presentation – Online (FA-VPO)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Prio</th>
+              <th>Anforderung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>FA-VPO-01</td>
+              <td>MUSS</td>
+              <td>Relying Party sendet OpenID4VP Authorization Request mit gewünschten Credential-Typen und Attributen.
+              </td>
+            </tr>
+            <tr>
+              <td>FA-VPO-02</td>
+              <td>MUSS</td>
+              <td>Wallet zeigt Nutzer:in an, welche Attribute angefordert werden. Nutzer:in bestätigt oder lehnt ab
+                (Consent Screen).</td>
+            </tr>
+            <tr>
+              <td>FA-VPO-03</td>
+              <td>MUSS</td>
+              <td>Wallet erstellt VP Token: SD-JWT mit Disclosure nur der freigegebenen Claims + Key Binding JWT
+                (WSCD-signiert).</td>
+            </tr>
+            <tr>
+              <td>FA-VPO-04</td>
+              <td>MUSS</td>
+              <td>Wallet validiert Relying Party anhand Trusted Lists vor der Presentation.</td>
+            </tr>
+            <tr>
+              <td>FA-VPO-05</td>
+              <td>SOLL</td>
+              <td>Same-Device- und Cross-Device-Flow unterstützen (QR-Code-basiert für Cross-Device).</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>6.3 Verifiable Presentation – Proximity (FA-VPP)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Prio</th>
+              <th>Anforderung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>FA-VPP-01</td>
+              <td>MUSS</td>
+              <td>Proximity Presentation nach ISO/IEC 18013-5: mdoc über NFC, BLE oder QR-Code.</td>
+            </tr>
+            <tr>
+              <td>FA-VPP-02</td>
+              <td>MUSS</td>
+              <td>Geräte-Engagement: Device Engagement via QR-Code oder NFC-Tap zum Session-Aufbau.</td>
+            </tr>
+            <tr>
+              <td>FA-VPP-03</td>
+              <td>MUSS</td>
+              <td>Offline-fähig: Keine Netzwerkverbindung für die Credential-Vorzeigung erforderlich.</td>
+            </tr>
+            <tr>
+              <td>FA-VPP-04</td>
+              <td>MUSS</td>
+              <td>Reader Authentication: Verifizier-Gerät muss sich gegenüber der Wallet authentifizieren.</td>
+            </tr>
+            <tr>
+              <td>FA-VPP-05</td>
+              <td>SOLL</td>
+              <td>Selective Disclosure auf Namespace/Element-Ebene nach ISO 18013-5.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>6.4 Trust &amp; Revocation (FA-TRV)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Prio</th>
+              <th>Anforderung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>FA-TRV-01</td>
+              <td>MUSS</td>
+              <td>Wallet validiert PID-/Attestation-Provider-Zertifikate gegen EU Trusted Lists (via LOTL).</td>
+            </tr>
+            <tr>
+              <td>FA-TRV-02</td>
+              <td>MUSS</td>
+              <td>Relying Parties validieren Wallet Provider Attestation gegen Trusted Lists.</td>
+            </tr>
+            <tr>
+              <td>FA-TRV-03</td>
+              <td>MUSS</td>
+              <td>Revocation: Relying Parties MÜSSEN Attestation Status Lists (ASL) und Attestation Revocation Lists
+                (ARL) prüfen.</td>
+            </tr>
+            <tr>
+              <td>FA-TRV-04</td>
+              <td>MUSS</td>
+              <td>Provider können Credentials jederzeit revozieren. Revocation-URL ist im Credential eingebettet.</td>
+            </tr>
+            <tr>
+              <td>FA-TRV-05</td>
+              <td>SOLL</td>
+              <td>Wallet zeigt Nutzer:in den Gültigkeitsstatus aller gespeicherten Credentials an.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>6.5 Credential Management (FA-MGT)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Prio</th>
+              <th>Anforderung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>FA-MGT-01</td>
+              <td>MUSS</td>
+              <td>Credential-Übersicht: Liste aller gespeicherten PIDs und Attestations mit Gültigkeitsstatus.</td>
+            </tr>
+            <tr>
+              <td>FA-MGT-02</td>
+              <td>MUSS</td>
+              <td>Credential-Löschung: Nutzer:in kann jedes Credential einzeln löschen (inkl. WSCD-Schlüssel).</td>
+            </tr>
+            <tr>
+              <td>FA-MGT-03</td>
+              <td>MUSS</td>
+              <td>Credential-Erneuerung: Automatische oder manuelle Re-Issuance vor Ablauf.</td>
+            </tr>
+            <tr>
+              <td>FA-MGT-04</td>
+              <td>SOLL</td>
+              <td>Presentation History: Transparente Anzeige, welche Credentials wann an wen vorgezeigt wurden.</td>
+            </tr>
+            <tr>
+              <td>FA-MGT-05</td>
+              <td>SOLL</td>
+              <td>Backup &amp; Recovery: Sichere Wiederherstellung bei Geräteverlust (verschlüsseltes Backup, nicht für
+                private Schlüssel).</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ═══════════════════════ §7 DATENMODELL ═══════════════════════ -->
+        <h2 id="datenmodell">§7 Datenmodell</h2>
+
+        <h3>7.1 PID als SD-JWT VC</h3>
+        <pre><code>{
+  "header": {
+    "alg": "ES256",
+    "typ": "vc+sd-jwt",
+    "kid": "pid-provider-key-2026-01"
+  },
+  "payload": {
+    "iss": "https://pid.bund.de",
+    "sub": "WalletUnit-Key-Hash-abc123",
+    "iat": 1740393600,
+    "exp": 1771929600,
+    "vct": "urn:eu:europa:ec:eudi:pid:1",
+    "cnf": {
+      "jwk": {
+        "kty": "EC",
+        "crv": "P-256",
+        "x": "...",
+        "y": "..."
+      }
+    },
+    "_sd": [
+      "hash-of-family_name-disclosure",
+      "hash-of-given_name-disclosure",
+      "hash-of-birth_date-disclosure",
+      "hash-of-nationality-disclosure",
+      "hash-of-age_over_18-disclosure",
+      "hash-of-resident_address-disclosure"
+    ],
+    "_sd_alg": "sha-256",
+    "status": {
+      "status_list": {
+        "uri": "https://pid.bund.de/status/v1",
+        "idx": 42
+      }
+    }
+  },
+  "disclosures": [
+    ["salt1", "family_name", "Mustermann"],
+    ["salt2", "given_name", "Erika"],
+    ["salt3", "birth_date", "1990-01-15"],
+    ["salt4", "nationality", "DE"],
+    ["salt5", "age_over_18", true],
+    ["salt6", "resident_address", {
+      "street": "Musterstraße 42",
+      "city": "Berlin",
+      "postal_code": "10115",
+      "country": "DE"
+    }]
+  ],
+  "key_binding_jwt": "eyJ...  (WSCD-signiert, bindet VP an Session)"
+}</code></pre>
+
+        <h3>7.2 mDL als mdoc (ISO 18013-5, CBOR)</h3>
+        <pre><code>// Konzeptuelle Darstellung (CBOR → JSON-Notation)
+{
+  "docType": "org.iso.18013.5.1.mDL",
+  "issuerSigned": {
+    "nameSpaces": {
+      "org.iso.18013.5.1": [
+        { "elementIdentifier": "family_name",    "elementValue": "Mustermann" },
+        { "elementIdentifier": "given_name",     "elementValue": "Erika" },
+        { "elementIdentifier": "birth_date",     "elementValue": "1990-01-15" },
+        { "elementIdentifier": "issue_date",     "elementValue": "2025-06-01" },
+        { "elementIdentifier": "expiry_date",    "elementValue": "2035-06-01" },
+        { "elementIdentifier": "document_number","elementValue": "L12345678" },
+        { "elementIdentifier": "driving_privileges", "elementValue": [
+          { "vehicle_category_code": "B", "issue_date": "2010-03-20" },
+          { "vehicle_category_code": "A", "issue_date": "2012-07-15" }
+        ]}
+      ]
+    },
+    "issuerAuth": "COSE_Sign1 (Issuer-Signatur)"
+  },
+  "deviceSigned": {
+    "deviceAuth": "COSE_Mac0 (WSCD-MAC, Session-gebunden)"
+  }
+}</code></pre>
+
+        <h3>7.3 OpenID4VP Authorization Request</h3>
+        <pre><code>{
+  "response_type": "vp_token",
+  "client_id": "https://verwaltung.example.de",
+  "redirect_uri": "https://verwaltung.example.de/callback",
+  "nonce": "n-0S6_WzA2Mj",
+  "presentation_definition": {
+    "id": "pid-age-verification",
+    "input_descriptors": [
+      {
+        "id": "eu-pid",
+        "format": {
+          "vc+sd-jwt": { "alg": ["ES256"] }
+        },
+        "constraints": {
+          "fields": [
+            { "path": ["$.vct"],          "filter": { "const": "urn:eu:europa:ec:eudi:pid:1" }},
+            { "path": ["$.age_over_18"],  "intent_to_retain": false }
+          ]
+        }
+      }
+    ]
+  }
+}</code></pre>
+
+        <!-- ═══════════════════════ §8 SERVICE-APIs ═══════════════════════ -->
+        <h2 id="service-apis">§8 Service-APIs</h2>
+
+        <h3>8.1 API-Übersicht</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>API</th>
+              <th>Protokoll</th>
+              <th>Zweck</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>OpenID4VCI</strong></td>
+              <td>HTTPS/REST (OAuth 2.0 Extension)</td>
+              <td>Credential Issuance: Provider → Wallet</td>
+            </tr>
+            <tr>
+              <td><strong>OpenID4VP</strong></td>
+              <td>HTTPS/REST (OAuth 2.0 Extension)</td>
+              <td>Credential Presentation: Wallet → Relying Party</td>
+            </tr>
+            <tr>
+              <td><strong>ISO 18013-5 Interface</strong></td>
+              <td>NFC/BLE/WiFi Aware</td>
+              <td>Proximity Presentation: Wallet ↔ Verifier Device</td>
+            </tr>
+            <tr>
+              <td><strong>Status List API</strong></td>
+              <td>HTTPS/REST</td>
+              <td>ASL/ARL: Credential-Gültigkeitsstatus abfragen</td>
+            </tr>
+            <tr>
+              <td><strong>Trusted List API</strong></td>
+              <td>HTTPS/REST</td>
+              <td>LOTL/TL: Vertrauensstatus von Providern/Wallets prüfen</td>
+            </tr>
+            <tr>
+              <td><strong>Wallet Provider API</strong></td>
+              <td>HTTPS/REST</td>
+              <td>Wallet-Registrierung, Integrity-Attestation, Updates</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>8.2 OpenID4VCI – Issuance Flow (Auszug)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Schritt</th>
+              <th>Methode</th>
+              <th>Endpunkt</th>
+              <th>Beschreibung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>GET</td>
+              <td>/.well-known/openid-credential-issuer</td>
+              <td>Issuer Metadata abrufen (unterstützte Credential-Typen, Formate)</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>POST</td>
+              <td>/authorize</td>
+              <td>Authorization Request + PKCE (Nutzer-Auth via eID)</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>POST</td>
+              <td>/token</td>
+              <td>Access Token + c_nonce erhalten</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>POST</td>
+              <td>/credential</td>
+              <td>Credential Request (proof-of-possession mit WSCD-Schlüssel)</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>–</td>
+              <td>/deferred-credential</td>
+              <td>Optional: Deferred Issuance bei asynchroner Prüfung</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>8.3 Credential Issuance (Sequenzdiagramm)</h3>
+        <pre><code>
+Bürger:in        Wallet Unit       PID Provider          Trusted List
+    │                │                  │                      │
+    │ "PID holen"    │                  │                      │
+    │───────────────►│                  │                      │
+    │                │                  │                      │
+    │                │ GET /.well-known/ │                      │
+    │                │ openid-credential-│                      │
+    │                │ issuer ──────────►│                      │
+    │                │                  │                      │
+    │                │ Metadata ◄────── │                      │
+    │                │                  │                      │
+    │                │ Validate Issuer  │                      │
+    │                │ ─────────────────────────────────────►  │
+    │                │ ◄──────────────── Trust confirmed ───── │
+    │                │                  │                      │
+    │                │ POST /authorize  │                      │
+    │                │ (+ PKCE) ───────►│                      │
+    │                │                  │                      │
+    │  eID-Auth      │                  │                      │
+    │◄───────────────│◄────────────────│                      │
+    │  PIN + NFC     │                  │                      │
+    │───────────────►│─────────────────►│                      │
+    │                │                  │                      │
+    │                │ POST /token      │                      │
+    │                │ ────────────────►│                      │
+    │                │ Access Token ◄── │                      │
+    │                │                  │                      │
+    │                │ POST /credential │                      │
+    │                │ (proof: WSCD-    │                      │
+    │                │  signed nonce)──►│                      │
+    │                │                  │                      │
+    │                │ SD-JWT VC ◄───── │                      │
+    │                │                  │                      │
+    │                │ Store in WSCD    │                      │
+    │                │ ──────────────   │                      │
+    │                │                  │                      │
+    │ "PID gespeichert" │               │                      │
+    │◄───────────────│                  │                      │
+                </code></pre>
+
+        <!-- ═══════════════════════ §9 INTERNE WORKFLOWS ═══════════════════════ -->
+        <h2 id="workflows">§9 Interne Workflows</h2>
+
+        <h3>9.1 Wallet-Aktivierung &amp; PID-Erstausstellung</h3>
+        <pre><code>
+┌──────────────────────────────────────────────────────────────────────────────┐
+│  Ersteinrichtung der EUDI Wallet                                             │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  1. Download der zertifizierten Wallet-App                                   │
+│     → App Store / Play Store                                                │
+│     → Trust Mark, Wallet Provider in Trusted List                           │
+│                                                                              │
+│  2. Wallet-Aktivierung:                                                      │
+│     → WSCD-Initialisierung (SE/TEE Schlüsselgenerierung)                   │
+│     → Wallet Instance Attestation (WIA) vom Wallet Provider                │
+│     → Biometrie-/PIN-Setup                                                  │
+│                                                                              │
+│  3. PID-Erstausstellung:                                                     │
+│     → Nutzer wählt "PID holen"                                              │
+│     → eID-Authentifizierung (Personalausweis + PIN / Smart-eID)            │
+│     → PID Provider stellt SD-JWT VC via OpenID4VCI aus                     │
+│     → PID wird lokal gespeichert (WSCD-gebunden)                           │
+│                                                                              │
+│  4. Wallet ist einsatzbereit:                                                │
+│     → Online-Presentation (OpenID4VP)                                       │
+│     → Proximity-Presentation (ISO 18013-5)                                  │
+│     → Weitere Credentials hinzufügen                                        │
+└──────────────────────────────────────────────────────────────────────────────┘
+                </code></pre>
+
+        <h3>9.2 Online-Identifikation bei einer Behörde</h3>
+        <pre><code>
+Bürger:in              Wallet          Behörden-Portal         Trusted List
+    │                    │                    │                      │
+    │  Antrag starten    │                    │                      │
+    │────────────────────────────────────────►│                      │
+    │                    │                    │                      │
+    │                    │  OpenID4VP Request │                      │
+    │                    │  (QR-Code oder    │                      │
+    │                    │   Deep Link)       │                      │
+    │  QR scannen /      │◄───────────────── │                      │
+    │  Deep Link klicken │                    │                      │
+    │───────────────────►│                    │                      │
+    │                    │                    │                      │
+    │                    │ Validate RP ───────────────────────────►  │
+    │                    │ ◄────────────────── OK ──────────────── │
+    │                    │                    │                      │
+    │  "Behörde X        │                    │                      │
+    │   möchte sehen:    │                    │                      │
+    │   Name, Adresse"   │                    │                      │
+    │◄───────────────────│                    │                      │
+    │                    │                    │                      │
+    │  Bestätigen (Bio)  │                    │                      │
+    │───────────────────►│                    │                      │
+    │                    │                    │                      │
+    │                    │ VP Token (SD-JWT   │                      │
+    │                    │ + Disclosures      │                      │
+    │                    │ + Key Binding JWT) │                      │
+    │                    │ ──────────────────►│                      │
+    │                    │                    │                      │
+    │                    │                    │  Verify Signature    │
+    │                    │                    │  Check Revocation    │
+    │                    │                    │  Validate Holder     │
+    │                    │                    │  Binding             │
+    │                    │                    │                      │
+    │  Antrag fortsetzen │                    │                      │
+    │◄────────────────────────────────────── │                      │
+                </code></pre>
+
+        <!-- ═══════════════════════ §10 KONFORMITÄTSKRITERIEN ═══════════════════════ -->
+        <h2 id="konformitätskriterien">§10 Konformitätskriterien</h2>
+
+        <h3>Level 1 – MUSS (Grundkonformität)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Kriterium</th>
+              <th>Prüfmethode</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>KON-01</td>
+              <td>OpenID4VCI Credential Issuance (Auth Code + PKCE)</td>
+              <td>Interoperabilitätstest mit Referenz-Issuer</td>
+            </tr>
+            <tr>
+              <td>KON-02</td>
+              <td>OpenID4VP Verifiable Presentation (Same-Device + Cross-Device)</td>
+              <td>Interoperabilitätstest mit Referenz-Verifier</td>
+            </tr>
+            <tr>
+              <td>KON-03</td>
+              <td>SD-JWT VC Format vollständig unterstützt</td>
+              <td>Credential-Roundtrip-Test</td>
+            </tr>
+            <tr>
+              <td>KON-04</td>
+              <td>mdoc/ISO 18013-5 Format vollständig unterstützt</td>
+              <td>Proximity-Interop-Test</td>
+            </tr>
+            <tr>
+              <td>KON-05</td>
+              <td>WSCD-basiertes Key Management (SE oder TEE)</td>
+              <td>Sicherheitszertifizierung (CC/FIPS)</td>
+            </tr>
+            <tr>
+              <td>KON-06</td>
+              <td>Holder Binding mit Key Binding JWT / DeviceAuth</td>
+              <td>Binding-Validierungstest</td>
+            </tr>
+            <tr>
+              <td>KON-07</td>
+              <td>Selective Disclosure funktional (SD-JWT claims, mdoc elements)</td>
+              <td>Disclosure-Variation-Test</td>
+            </tr>
+            <tr>
+              <td>KON-08</td>
+              <td>Trusted List Validierung (LOTL)</td>
+              <td>Trust-Chain-Test</td>
+            </tr>
+            <tr>
+              <td>KON-09</td>
+              <td>ASL/ARL Revocation Check</td>
+              <td>Revocation-Roundtrip-Test</td>
+            </tr>
+            <tr>
+              <td>KON-10</td>
+              <td>Nutzer-Consent vor jeder Presentation</td>
+              <td>UX-Audit</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Level 2 – SOLL (Erweiterte Konformität)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Kriterium</th>
+              <th>Prüfmethode</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>KON-11</td>
+              <td>Pseudonyme Presentations (ohne PID-Offenlegung)</td>
+              <td>Privacy-Test</td>
+            </tr>
+            <tr>
+              <td>KON-12</td>
+              <td>Batch Issuance (mehrere Credentials pro Session)</td>
+              <td>Multi-Credential-Issuance-Test</td>
+            </tr>
+            <tr>
+              <td>KON-13</td>
+              <td>Deferred Issuance (asynchrone Ausstellung)</td>
+              <td>Deferred-Flow-Test</td>
+            </tr>
+            <tr>
+              <td>KON-14</td>
+              <td>Proximity via BLE und QR zusätzlich zu NFC</td>
+              <td>Multi-Transport-Test</td>
+            </tr>
+            <tr>
+              <td>KON-15</td>
+              <td>Presentation History für Nutzer:innen</td>
+              <td>UX-Review + Datenmodell-Audit</td>
+            </tr>
+            <tr>
+              <td>KON-16</td>
+              <td>Backup &amp; Recovery (verschlüsselt, ohne Schlüsselexport)</td>
+              <td>Recovery-Szenario-Test</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ═══════════════════════ §11 REFERENZEN ═══════════════════════ -->
+        <h2 id="referenzen">§11 Referenzen &amp; Ressourcen</h2>
+
+        <h3>Normative Referenzen</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Referenz</th>
+              <th>Titel</th>
+              <th>Relevanz</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32024R1183">eIDAS 2.0 (EU)
+                  2024/1183</a></td>
+              <td>EU-Verordnung über die europäische digitale Identität</td>
+              <td>Rechtsgrundlage für EUDI Wallet, Trust Framework, Pflichten</td>
+            </tr>
+            <tr>
+              <td><a
+                  href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework">ARF
+                  2.0</a></td>
+              <td>Architecture Reference Framework v2.0</td>
+              <td>Technische Referenzarchitektur, Komponenten, Interaktionen</td>
+            </tr>
+            <tr>
+              <td><a href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/">SD-JWT VC (IETF)</a></td>
+              <td>SD-JWT-based Verifiable Credentials</td>
+              <td>Credential-Format mit Selective Disclosure</td>
+            </tr>
+            <tr>
+              <td><a href="https://www.iso.org/standard/69084.html">ISO/IEC 18013-5</a></td>
+              <td>Personal identification – mDL – Part 5</td>
+              <td>mdoc-Format, Proximity Presentation, mDL</td>
+            </tr>
+            <tr>
+              <td><a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>
+              </td>
+              <td>OpenID for Verifiable Credential Issuance</td>
+              <td>Issuance-Protokoll (Wallet ← Provider)</td>
+            </tr>
+            <tr>
+              <td><a href="https://openid.net/specs/openid-4-verifiable-presentations-1_0.html">OpenID4VP</a></td>
+              <td>OpenID for Verifiable Presentations</td>
+              <td>Presentation-Protokoll (Wallet → Relying Party)</td>
+            </tr>
+            <tr>
+              <td><a href="https://www.bsi.bund.de/TR-02102">BSI TR-02102</a></td>
+              <td>Kryptographische Verfahren: Empfehlungen und Schlüssellängen</td>
+              <td>Algorithmenauswahl (ES256, AES-256) für WSCD</td>
+            </tr>
+            <tr>
+              <td>DSGVO</td>
+              <td>Datenschutz-Grundverordnung</td>
+              <td>Privacy by Design, Datensparsamkeit, Consent</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>DE-spezifische Referenzen</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Referenz</th>
+              <th>Quelle</th>
+              <th>Inhalt</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Staatliche EUDI Wallet DE</td>
+              <td><a href="https://www.digitale-verwaltung.de">BMI</a></td>
+              <td>Deutsche nationale EUDI-Wallet-Lösung, BundID-Integration</td>
+            </tr>
+            <tr>
+              <td>Funke-Innovationswettbewerb</td>
+              <td><a href="https://www.sprind.org">SPRIND</a></td>
+              <td>Prototypen-Wettbewerb für EU-Wallet-Lösungen (2024–2025)</td>
+            </tr>
+            <tr>
+              <td>Smart-eID</td>
+              <td>BSI / Bundesdruckerei</td>
+              <td>Sichere Ableitung der eID auf Smartphone (SE-basiert)</td>
+            </tr>
+            <tr>
+              <td>DE Wallet Architecture</td>
+              <td><a href="https://gitlab.opencode.de">OpenCoDE</a></td>
+              <td>Nationale Architektur-Dokumentation (WSCA/WSCD-Konzepte)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>GovStack-Mapping</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>GovStack BB</th>
+              <th>EUDI-Äquivalent</th>
+              <th>Anmerkung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Identity BB (Credential Mgmt)</td>
+              <td>EUDI Wallet (PID + Attestations)</td>
+              <td>GovStack trennt Identity und Credentials nicht so scharf wie eIDAS 2.0</td>
+            </tr>
+            <tr>
+              <td>Digital Registries BB</td>
+              <td>Attestation Provider</td>
+              <td>Registerdaten werden als Verifiable Credentials in die Wallet ausgestellt</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Referenzimplementierungen</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Komponente</th>
+              <th>Implementierung</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>EU Reference Wallet</td>
+              <td><a href="https://github.com/eu-digital-identity-wallet">GitHub eu-digital-identity-wallet</a></td>
+              <td>Open Source, Android + iOS</td>
+            </tr>
+            <tr>
+              <td>OpenID4VCI Library</td>
+              <td>OpenID Foundation</td>
+              <td>Final Spec (Q3 2025)</td>
+            </tr>
+            <tr>
+              <td>OpenID4VP Library</td>
+              <td>OpenID Foundation</td>
+              <td>Final Spec (Juli 2025)</td>
+            </tr>
+            <tr>
+              <td>SD-JWT Reference</td>
+              <td>IETF oauth-wg</td>
+              <td>RFC-Track (Q1 2026)</td>
+            </tr>
+            <tr>
+              <td>Funke Prototypen (DE)</td>
+              <td>SPRIND Teams</td>
+              <td>Finale Konferenz Okt 2025</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="pagination">
+          <a class="pagination__link pagination__link--prev" href="../bb-payment/index.html">
+            <span class="pagination__dir">← Zurück</span>
+            <span class="pagination__title">BB-04 · Payment</span>
+          </a>
+          <a class="pagination__link pagination__link--next" href="../bb-noots/index.html">
+            <span class="pagination__dir">Weiter →</span>
+            <span class="pagination__title">BB-06 · Register (NOOTS)</span>
+          </a>
+        </div>
+
+        <div class="page-footer">
+          <div class="page-footer__meta">Apache-2.0 · Version 0.3 DRAFT</div>
+          <div class="page-footer__feedback">
+            <span class="page-footer__feedback-label">Hilfreich?</span>
+            <div class="page-footer__feedback-btns">
+              <button class="feedback-btn">👍</button>
+              <button class="feedback-btn">👎</button>
+            </div>
           </div>
         </div>
-      </div>
 
-      
-      <h2 id="beschreibung">2  Beschreibung</h2>
-      <p style="color:var(--color-text-secondary)">Inhalte werden ergänzt.</p>
+      </article>
 
-      <h2 id="schluessel-funktionalitaeten">4  Schlüsselfunktionalitäten</h2>
-      <p style="color:var(--color-text-secondary)">Inhalte werden ergänzt.</p>
-
-      <h2 id="funktionale-anforderungen">6  Funktionale Anforderungen</h2>
-      <p style="color:var(--color-text-secondary)">Inhalte werden ergänzt.</p>
-
-      <h2 id="service-apis">8  Service-APIs</h2>
-      <p style="color:var(--color-text-secondary)">OpenAPI-Spezifikation wird ergänzt.</p>
-
-
-      <div class="pagination">
-        <a class="pagination__link pagination__link--prev" href="bb-payment/index.html">
-          <span class="pagination__dir">← Zurück</span>
-          <span class="pagination__title">BB-04 · Payment</span>
-        </a>
-        <a class="pagination__link pagination__link--next" href="bb-noots/index.html">
-          <span class="pagination__dir">Weiter →</span>
-          <span class="pagination__title">BB-06 · Register</span>
-        </a>
-      </div>
-
-      <div class="page-footer">
-        <div class="page-footer__meta">Apache-2.0 · Version 0.1 DRAFT</div>
-        <div class="page-footer__feedback">
-          <span class="page-footer__feedback-label">Hilfreich?</span>
-          <div class="page-footer__feedback-btns">
-            <button class="feedback-btn">👍</button>
-            <button class="feedback-btn">👎</button>
-          </div>
+      <aside class="content__toc">
+        <div class="toc" id="toc">
+          <div class="toc__title">Auf dieser Seite</div>
+          <ul class="toc__list"></ul>
         </div>
-      </div>
+      </aside>
+    </main>
+  </div>
 
-    </article>
-    <aside class="content__toc">
-      <div class="toc" id="toc">
-        <div class="toc__title">Auf dieser Seite</div>
-        <ul class="toc__list"></ul>
-      </div>
-    </aside>
-  </main>
-
-</div>
-
-<script src="../../assets/js/shell.js"></script>
-<script src="../../assets/js/site.js"></script>
+  <script src="../../assets/js/shell.js"></script>
+  <script src="../../assets/js/site.js"></script>
 </body>
+
 </html>
